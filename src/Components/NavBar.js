@@ -2,12 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../Styles/Navbar.scss";
 import logo from "../assets/logo.png";
 import coloredLogo from "../assets/BytechsColor.png";
-// import { changeActiveSection } from "../utils/scrollUtils"; // Existing scroll utility
-import { switchLanguage, updateLanguageButtonColors } from "../utils/navUtils"; // Import the new utils
+// import { changeActiveSection } from "../utils/scrollUtils";
+import { switchLanguage, updateLanguageButtonColors } from "../utils/navUtils";
 
-const NavBar = () => {
-  const [isLightMode, setIsLightMode] = useState(false);
-  const [setActiveSection] = useState("");
+const NavBar = ({ isLightMode, activeSection }) => {
+  // const [isLightMode, setIsLightMode] = useState(false);
+  // const [activeSection, setActiveSection] = useState("home");
   const [activeLanguage, setActiveLanguage] = useState("en");
 
   // Handle language switching using the utility function
@@ -31,7 +31,7 @@ const NavBar = () => {
   //   return () => {
   //     window.removeEventListener("scroll", handleScroll);
   //   };
-  // });
+  // }, []);
 
   // Effect to update language button colors when the mode changes
   useEffect(() => {

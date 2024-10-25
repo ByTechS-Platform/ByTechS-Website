@@ -5,6 +5,7 @@ import { validateForm } from "../utils/formUtils"; // Optional: form validation 
 import shape1 from "../assets/shapesContactPage1.png";
 import shape2 from "../assets/shapesContactPage2.png";
 import shape3 from "../assets/shapesContactPage3.png";
+import SideNav from "./SideNav";
 
 const ContactUs = () => {
   const [activeLanguage, setActiveLanguage] = useState("en");

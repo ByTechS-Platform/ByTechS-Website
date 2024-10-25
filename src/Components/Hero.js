@@ -5,19 +5,18 @@ import shape1 from "../assets/shapesHomePage1.png";
 import shape2 from "../assets/shapesHomePage2.png";
 import shape3 from "../assets/shapesHomePage3.png";
 import { animateProgressBar } from "../utils/progressUtils";
+import SideNav from "./SideNav";
 
 
 const Hero = () => {
   const progressBarRef = useRef(null);
   const progressNumberRef = useRef(null);
 
-
   useEffect(() => {
     if (progressBarRef.current && progressNumberRef.current) {
       animateProgressBar(progressBarRef, progressNumberRef); // Call the function only when refs are ready
     }
-  }, [progressBarRef, progressNumberRef]); // Add refs to dependencies
-  
+  }, [progressBarRef, progressNumberRef]); // Add refs to dependencie
 
   return (
     <section id="home" className="section home">
@@ -49,7 +48,7 @@ const Hero = () => {
             <img src={shape3} alt="Shape 3" className="shape shape-3"></img>
           </div>
         </div>
-
+        <SideNav />
       </div>
     </section>
   );
