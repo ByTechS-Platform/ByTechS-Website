@@ -1,0 +1,136 @@
+/* =================================
+   Contact Us Section
+================================= */
+.contact {
+  background-color: #ffffff; /* White background */
+  color: #282a36; /* Dark text color */
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 1% 1% 1%; /* Padding-top to account for the fixed navbar */
+    min-height: 90vh;
+    position: relative;
+
+    .content {
+      background-color: #5552e1;
+      padding: 40px;
+      border-radius: 20px;
+    //   margin-right: 10%;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ffffff; /* White text for contrast */
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 14px;
+      color: #ffffff; /* White text */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    form input,
+    form textarea {
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #cccccc; /* Light border */
+      background-color: #f9f9f9; /* Light gray background */
+      color: #282a36;
+      font-size: 14px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    form textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    form button {
+      background-color: #6272a4;
+      color: #ffffff;
+      padding: 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 16px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact form button:hover {
+      background-color: #5350a6;
+    }
+
+    .illustration {
+      flex: 1;
+      position: relative;
+      width: 90%;
+      max-width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: auto;
+      margin-left: -20%;
+
+      .shapes {
+        display: flex;
+        gap: 40px;
+        position: relative;
+        margin-left: 250px;
+        // margin-top: -100px;
+        z-index: 1;
+      }
+
+      .shapes img {
+        width: 130px;
+      }
+
+      /* Shape Animations */
+      .shape {
+        opacity: 0;
+        transform: translateY(50px); /* Initially shifted down */
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .shape-1 {
+        animation-delay: 0.5s; /* Delay for the first image */
+      }
+
+      .shape-2 {
+        animation-delay: 1s; /* Delay for the second image */
+      }
+
+      .shape-3 {
+        animation-delay: 1.5s; /* Delay for the third image */
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px); /* Start from below */
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0); /* End at original position */
+        }
+      }
+    }
+  }
+}

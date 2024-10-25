@@ -1,0 +1,30 @@
+/* =================================
+   Fonts
+================================= */
+@font-face {
+    font-family: "29LT Zawi";
+    src: url("./assets/Fonts/alfont_com_29LTZawi-Bold.ttf") format("woff2");
+    // src: url("/landing-page/assets/Fonts/alfont_com_29LTZawi-Bold.ttf") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "29LT ZawiBold";
+    src: url("./assets/Fonts/alfont_com_29LTZawi-Black-1.ttf") format("woff2");
+    font-weight: bold;
+    font-style: bold;
+}
+
+body {
+   margin: 0;
+    font-family: '29LT Zawi';
+    background-color: #5843ed;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

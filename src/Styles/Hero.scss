@@ -1,0 +1,200 @@
+/* =================================
+   Sections
+================================= */
+.section {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   padding: 150px; /* Padding-top to account for the fixed navbar */
+  //   min-height: 100vh;
+  //   position: relative;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3% 1%; /* Padding-top to account for the fixed navbar */
+    min-height: 100vh;
+    position: relative;
+
+    .content {
+      z-index: 100;
+      width: 75%;
+      /* T1 Class */
+      .T1 {
+        font-family: "29LT Zawi";
+        font-weight: 400;
+        font-size: 40px;
+        width: auto;
+        height: 34px;
+        margin-bottom: -1%;
+        line-height: 33.6px;
+      }
+
+      /* Styling for 'COMING SOON ...' Heading */
+      h1[data-en="COMING SOON ..."] {
+        font-family: "29LT Zawi"; /* Custom font */
+        font-weight: 700; /* Bold weight */
+        font-size: 120px;
+        line-height: 132px;
+        text-align: center;
+        width: 1000px;
+        height: 132px;
+        opacity: 1; /* Initially visible */
+        transition: opacity 1s ease; /* Optional opacity transition */
+
+        /* Visibility Class for Animation */
+        h1[data-en="COMING SOON ..."].visible {
+          opacity: 1;
+        }
+      }
+
+     
+      /* General Content Styles */
+      .home .content,
+      .contact .content,
+      .follow .content {
+        max-width: 50%;
+        margin-bottom: 20%;
+      }
+
+      /* Home Content */
+      .home .content h1 {
+        margin-bottom: 20px;
+        font-family: "29LT ZawiBold";
+      }
+
+      .home .content p {
+        font-size: 30px;
+      }
+
+      /* =================================
+    Progress Bar Animation
+    ================================= */
+      @keyframes progressAnimation {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .progress-bar {
+        position: relative;
+        width: 349px;
+        height: 24px;
+        margin-left: 30%;
+        background-color: #8075f2;
+        border-radius: 80px;
+        margin-bottom: 30px;
+      }
+
+      .progress-bar .progress {
+        background-color: #70e1f5;
+        height: 100%;
+        border-radius: 80px;
+        animation: progressAnimation 10s linear infinite;
+      }
+
+      .progress-bar span {
+        position: relative;
+        bottom: 120%;
+        left: 105%;
+        margin-right: 40%;
+        font-size: 30px;
+      }
+    }
+
+    /* =================================
+    Illustration Styling
+    ================================= */
+    .illustration {
+      flex: 1;
+      position: relative;
+      width: 80%;
+      max-width: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: auto;
+      margin-left: -25%;
+
+      .shapes {
+        display: flex;
+        gap: 40px;
+        position: relative;
+        margin-left: 250px;
+        // margin-top: -100px;
+        z-index: 1;
+      }
+
+      .shapes img {
+        width: 100px;
+      }
+
+      /* Shape Animations */
+      .shape {
+        opacity: 0;
+        transform: translateY(50px); /* Initially shifted down */
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .shape-1 {
+        animation-delay: 0.5s; /* Delay for the first image */
+      }
+
+      .shape-2 {
+        animation-delay: 1s; /* Delay for the second image */
+      }
+
+      .shape-3 {
+        animation-delay: 1.5s; /* Delay for the third image */
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px); /* Start from below */
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0); /* End at original position */
+        }
+      }
+    }
+
+    /* =================================
+   Side Navigation
+================================= */
+.side-nav {
+  position: fixed;
+  top: 50%;
+  right: 1%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.side-nav .circle {
+  width: 15px;
+  height: 15px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.side-nav .circle.active {
+  opacity: 1;
+}
+
+.side-nav .circle.contact-active {
+  background-color: #5552e1;
+  opacity: 1; /* Fully visible */
+}
+  }
+}
