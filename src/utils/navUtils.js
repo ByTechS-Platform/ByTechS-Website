@@ -14,13 +14,11 @@ export const updateLanguageButtonColors = (isLightMode) => {
   );
   languageButtonsNav.forEach((button) => {
     if (isLightMode) {
-      if (button.classList.contains("active")) {
-        button.style.color = "#5552E1";
-      } else {
-        button.style.color = "black";
-      }
+      button.style.color = button.classList.contains("active")
+        ? "#5552E1"
+        : "black";
     } else {
-      button.style.color = ""; // Revert to default
+      button.style.color = ""; // Reset to default
     }
   });
 };

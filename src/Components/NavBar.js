@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../Styles/Navbar.scss";
 import logo from "../assets/logo.png";
 import coloredLogo from "../assets/BytechsColor.png";
-// import { changeActiveSection } from "../utils/scrollUtils";
 import { switchLanguage, updateLanguageButtonColors } from "../utils/navUtils";
 
 const NavBar = ({ isLightMode, activeSection }) => {
