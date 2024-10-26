@@ -2,14 +2,14 @@
    Contact Us Section
 ================================= */
 .contact {
-  background-color: #ffffff; /* White background */
-  color: #282a36; /* Dark text color */
+  background-color: #ffffff;
+  color: #282a36; 
 
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5% 1% 1% 1%; /* Padding-top to account for the fixed navbar */
+    padding: 5% 1% 1% 1%;
     min-height: 90vh;
     position: relative;
 
@@ -17,7 +17,6 @@
       background-color: #5552e1;
       padding: 40px;
       border-radius: 20px;
-    //   margin-right: 10%;
       max-width: 500px;
       text-align: left;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -26,13 +25,13 @@
     h2 {
       font-size: 32px;
       margin-bottom: 10px;
-      color: #ffffff; /* White text for contrast */
+      color: #ffffff;
     }
 
     p {
       margin-bottom: 30px;
       font-size: 14px;
-      color: #ffffff; /* White text */
+      color: #ffffff;
     }
 
     form {
@@ -50,8 +49,8 @@
     form textarea {
       padding: 15px;
       border-radius: 10px;
-      border: 1px solid #cccccc; /* Light border */
-      background-color: #f9f9f9; /* Light gray background */
+      border: 1px solid #cccccc;
+      background-color: #f9f9f9;
       color: #282a36;
       font-size: 14px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -94,7 +93,6 @@
         gap: 40px;
         position: relative;
         margin-left: 250px;
-        // margin-top: -100px;
         z-index: 1;
       }
 
@@ -102,33 +100,32 @@
         width: 130px;
       }
 
-      /* Shape Animations */
       .shape {
         opacity: 0;
-        transform: translateY(50px); /* Initially shifted down */
+        transform: translateY(50px);
         animation: fadeInUp 1s ease forwards;
       }
 
       .shape-1 {
-        animation-delay: 0.5s; /* Delay for the first image */
+        animation-delay: 0.5s; 
       }
 
       .shape-2 {
-        animation-delay: 1s; /* Delay for the second image */
+        animation-delay: 1s;
       }
 
       .shape-3 {
-        animation-delay: 1.5s; /* Delay for the third image */
+        animation-delay: 1.5s;
       }
 
       @keyframes fadeInUp {
         0% {
           opacity: 0;
-          transform: translateY(50px); /* Start from below */
+          transform: translateY(50px);
         }
         100% {
           opacity: 1;
-          transform: translateY(0); /* End at original position */
+          transform: translateY(0); 
         }
       }
     }

@@ -2,11 +2,8 @@
    News Section
 ================================= */
 .news {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: flex-start;
   background-color: #5843ed;
-  padding: 80px;
+  padding: 120px 5%;
   color: #ffffff;
 }
 
@@ -16,17 +13,12 @@
 }
 
 .news-content {
-  // display: flex;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
   display: grid;
   grid-template-columns: 2fr 1fr;
-//   grid-gap: 20px;
   align-items: flex-start;
   gap: 5%;
   width: 100%;
-  margin-top: 2%;
+  margin-top: 4%;
 
   .news-container {
     display: flex;
@@ -40,23 +32,21 @@
   .event {
     background-color: #ffffff;
     border-radius: 20px;
-    padding: 20px;
     padding-bottom: 0px;
     color: #000000;
     height: 450px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
-    
+
     img {
-        border-radius: 20px;
-        margin: -20px;
-        padding: 20px;
-        width: 100%;
-        height: 40%;
-        object-fit: cover;
-        margin-bottom: 20px;
+      border-radius: 20px;
+      margin: -20px;
+      width: 100%;
+      height: 40%;
+      object-fit: cover;
+      margin-bottom: 20px;
     }
-}
+  }
 
   .event-tag {
     padding: 20px;
@@ -75,12 +65,14 @@
   }
 
   .event-content {
+    padding: 3%;
     font-size: 14px;
     line-height: 1.5;
     text-align: justify;
   }
 
   .event-date {
+    padding: 0px 3%;
     text-align: right;
     color: #888888;
     font-size: 11px;

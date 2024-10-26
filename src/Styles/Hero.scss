@@ -2,25 +2,18 @@
    Sections
 ================================= */
 .section {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   padding: 150px; /* Padding-top to account for the fixed navbar */
-  //   min-height: 100vh;
-  //   position: relative;
-
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3% 1%; /* Padding-top to account for the fixed navbar */
+    padding: 3% 1%; 
     min-height: 100vh;
     position: relative;
 
     .content {
       z-index: 100;
       width: 75%;
-      /* T1 Class */
+
       .T1 {
         font-family: "29LT Zawi";
         font-weight: 400;
@@ -33,15 +26,15 @@
 
       /* Styling for 'COMING SOON ...' Heading */
       h1[data-en="COMING SOON ..."] {
-        font-family: "29LT Zawi"; /* Custom font */
-        font-weight: 700; /* Bold weight */
+        font-family: "29LT Zawi";
+        font-weight: 700; 
         font-size: 120px;
         line-height: 132px;
         text-align: center;
         width: 1000px;
         height: 132px;
-        opacity: 1; /* Initially visible */
-        transition: opacity 1s ease; /* Optional opacity transition */
+        opacity: 1;
+        transition: opacity 1s ease; 
 
         /* Visibility Class for Animation */
         h1[data-en="COMING SOON ..."].visible {
@@ -49,8 +42,7 @@
         }
       }
 
-     
-      /* General Content Styles */
+    
       .home .content,
       .contact .content,
       .follow .content {
@@ -58,7 +50,6 @@
         margin-bottom: 20%;
       }
 
-      /* Home Content */
       .home .content h1 {
         margin-bottom: 20px;
         font-family: "29LT ZawiBold";
@@ -125,41 +116,39 @@
         gap: 40px;
         position: relative;
         margin-left: 250px;
-        // margin-top: -100px;
         z-index: 1;
       }
 
       .shapes img {
         width: 100px;
       }
-
-      /* Shape Animations */
+    
       .shape {
         opacity: 0;
-        transform: translateY(50px); /* Initially shifted down */
+        transform: translateY(50px); 
         animation: fadeInUp 1s ease forwards;
       }
 
       .shape-1 {
-        animation-delay: 0.5s; /* Delay for the first image */
+        animation-delay: 0.5s;
       }
 
       .shape-2 {
-        animation-delay: 1s; /* Delay for the second image */
+        animation-delay: 1s; 
       }
 
       .shape-3 {
-        animation-delay: 1.5s; /* Delay for the third image */
+        animation-delay: 1.5s; 
       }
 
       @keyframes fadeInUp {
         0% {
           opacity: 0;
-          transform: translateY(50px); /* Start from below */
+          transform: translateY(50px);
         }
         100% {
           opacity: 1;
-          transform: translateY(0); /* End at original position */
+          transform: translateY(0);
         }
       }
     }
@@ -175,7 +164,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 1000; /* Ensure it stays on top */
+  z-index: 1000; 
 }
 
 .side-nav .circle {
@@ -194,7 +183,7 @@
 
 .side-nav .circle.contact-active {
   background-color: #5552e1;
-  opacity: 1; /* Fully visible */
+  opacity: 1; 
 }
   }
 }
