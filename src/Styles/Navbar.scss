@@ -1,174 +1,294 @@
 nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    z-index: 1000; /* Ensure the navbar stays on top of all content */
-    /* Nav is transparent by default */
-}
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
 
-/* Navigation Links and Buttons */
-nav a,
-nav .language-switch button {
+  /* Navigation Links and Buttons */
+  a,
+  .language-switch button {
     color: #ffffff;
     text-decoration: none;
-}
+  }
 
-/* Logo Styles */
-nav .logo {
+  /* Logo Styles */
+  .logo {
     margin-left: 10%;
     transition: 0.3s ease;
-}
+  }
 
-img.logo {
-    height: 95px;
-    width: 199px;
-}
-
-/* Navigation Links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    margin-right: auto;
-    margin-top: 30px;
-}
-
-.nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* Language Switch Container */
-.language-switch {
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 4px;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-}
-
-/* Language Switch Button */
-.language-switch button {
-    background: none;
-    background-color: transparent;
-    border: none;
-    padding: 15px;
-    border-radius: 21px; /* Slightly less than container to account for padding */
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    color: #ffffff;
-    font-family: "29LT ZawiBold";
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    outline: none;
-}
-
-/* Active Button State */
-.language-switch button.active {
-    background-color: #ffffff;
-    color: #5552E1;
-}
-
-/* Hover State for Inactive Buttons */
-.language-switch button:not(.active):hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Light Mode Navigation Styles */
-nav.light-mode a,
-nav.light-mode .burger-menu .burger-links a {
+  /* Light Mode Navigation Styles */
+  .light-mode a,
+  .light-mode .burger-menu .burger-links a {
     color: #000000;
-}
+  }
 
-nav.light-mode .burger-icon span {
+  .light-mode .burger-icon span {
     background-color: #000000;
-}
+  }
 
-nav.light-mode .language-switch button {
-    color: #5552E1;
-}
+  .light-mode .language-switch button {
+    color: #5552e1;
+  }
 
-nav.light-mode .language-switch button.active {
+  .light-mode .language-switch button.active {
     color: #000000;
+  }
 }
 
-/* Burger Menu */
-.burger-menu {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    flex-direction: column;
-    align-items: flex-end;
-    z-index: 1001;
+@media (max-width: 1500px) {
+  nav {
+    img.logo {
+      height: 95px;
+      width: 199px;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 50px;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    /* Language Switch Container */
+    .language-switch {
+      display: flex;
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 4px;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: fit-content;
+    }
+
+    /* Language Switch Button */
+    .language-switch button {
+      background: none;
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      border-radius: 21px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+      font-family: "29LT ZawiBold";
+      text-align: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      outline: none;
+    }
+
+    /* Active Button State */
+    .language-switch button.active {
+      background-color: #ffffff;
+      color: #5552e1;
+    }
+
+    /* Hover State for Inactive Buttons */
+    .language-switch button:not(.active):hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .burger-menu {
+      display: none;
+    }
+  }
 }
 
-.burger-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
+/* Adjustments for tablets */
+@media (max-width: 1024px) {
+  nav {
+    img.logo {
+      height: auto;
+      width: 155px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 50px;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    /* Language Switch Container */
+    .language-switch {
+      display: flex;
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 3px;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: fit-content;
+    }
+
+    /* Language Switch Button */
+    .language-switch button {
+      background: none;
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      border-radius: 21px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      color: #ffffff;
+      font-family: "29LT ZawiBold";
+      text-align: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      outline: none;
+    }
+
+    .language-switch button.active {
+      background-color: #ffffff;
+      color: #5552e1;
+    }
+
+    .language-switch button:not(.active):hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .burger-menu {
+      display: none; 
+    }
+  }
 }
 
-.burger-icon span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #ffffff;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
+/* Mobile Screens */
+@media (max-width: 768px) {
+  nav {
+    img.logo {
+      height: auto;
+      width: 140px;
+    }
 
-/* Burger Menu Toggle Animation */
-.burger-menu.active .burger-icon span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
+    .nav-links {
+      display: none;
+    }
 
-.burger-menu.active .burger-icon span:nth-child(2) {
-    opacity: 0;
-}
+    .language-switch {
+      display: none; 
+    }
 
-.burger-menu.active .burger-icon span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-}
+    .burger-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
 
-/* Burger Menu Links */
-.burger-links {
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: #5843ed;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
-}
+      .burger-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
 
-.burger-links li {
-    list-style: none;
-}
+        span {
+          display: block;
+          width: 100%;
+          height: 3px;
+          background-color: #ffffff;
+          border-radius: 3px;
+          transition: all 0.3s ease;
+        }
 
-.burger-links a,
-.burger-links button {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-}
+        /* Burger Menu Toggle Animation */
+        .active .burger-icon span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
 
-.burger-menu.active .burger-links {
-    display: flex;
+        .active .burger-icon span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .active .burger-icon span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
+      }
+
+      /* Burger Menu Links */
+      .burger-links {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: #5843ed;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        align-items: center;
+
+        .language-switch {
+          display: flex; /* Hidden by default on larger screens */
+
+          button {
+            background: none;
+            background-color: transparent;
+            border: none;
+            padding: 15px;
+            border-radius: 21px; /* Slightly less than container to account for padding */
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: "29LT ZawiBold";
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            outline: none;
+          }
+
+          /* Active Button State */
+          button.active {
+            background-color: #ffffff;
+            color: #5552e1;
+          }
+
+          /* Hover State for Inactive Buttons */
+          button:not(.active):hover {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+
+      .burger-links li {
+        list-style: none;
+      }
+
+      .burger-links a,
+      .burger-links button {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .burger-menu.active .burger-links {
+        display: flex;
+      }
+    }
+  }
 }
