@@ -12,6 +12,10 @@ const News = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
   useEffect(() => {
     const fetchNews = async () => {
       const url = `https://api.airtable.com/v0/${baseId}/${tableName}?sort[0][field]=ID&sort[0][direction]=desc`;
@@ -35,6 +39,21 @@ const News = () => {
     fetchNews(); // Call the function to fetch news data
   }, []);
 
+  // Handle pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNewsData = newsData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(newsData.length / itemsPerPage);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prevPage) => prevPage + 1);
+  };
+
   if (loading) {
     return <p>Loading news...</p>; // Display a loading message while fetching
   }
@@ -54,8 +73,8 @@ const News = () => {
           ByTechS News
         </span>
         <div className="news-content">
-          {newsData.length > 0 ? (
-            newsData.map((record) => {
+          {currentNewsData.length > 0 ? (
+            currentNewsData.map((record) => {
               const { fields } = record;
               const imageUrl = fields.Image ? fields.Image[0].url : "";
               return (
@@ -77,6 +96,28 @@ const News = () => {
           ) : (
             <p>No news available at the moment.</p> // Fallback if there's no news
           )}
+        </div>
+        {/* Pagination Controls */}
+        <div className="pagination">
+          <button
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+            data-en="Previous"
+            data-ar="السابق"
+          >
+            Previous
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            data-en="Next"
+            data-ar="التالي"
+          >
+            Next
+          </button>
         </div>
       </div>
       <div className="new-vector"></div>
