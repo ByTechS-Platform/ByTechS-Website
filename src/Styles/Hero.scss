@@ -155,11 +155,12 @@
         /* Styling for 'COMING SOON ...' Heading */
         h1[data-en="COMING SOON ..."] {
           font-weight: 700;
-          font-size: 120px;
+          font-size: 100px;
           line-height: 132px;
-          text-align: center;
+          text-align: left;
           width: 1000px;
           height: 132px;
+          margin: 5% 7%;
         }
 
         /* =================================
@@ -190,8 +191,8 @@
         margin-left: -25%;
 
         .shapes {
-          gap: 40px;
-          margin-left: 250px;
+          gap: 30px;
+          margin-left: 215px;
         }
 
         .shapes img {
@@ -223,10 +224,11 @@
         /* Styling for 'COMING SOON ...' Heading */
         h1[data-en="COMING SOON ..."] {
           font-weight: 700;
-          font-size: 80px;
+          font-size: 70px;
           line-height: 132px;
-          text-align: center;
+          text-align: left;
           width: 650px;
+          margin: 0 10%;
         }
 
         /* =================================
@@ -334,8 +336,8 @@
 /* Adjustments for small mobile phones */
 @media (max-width: 480px) {
   .section .container {
-    padding: 30% 3%;
-    width: 100%;
+    padding: 30% 3% 10% 3%;
+    width: 90%;
     flex-direction: column;
     .content {
       width: 100%;
@@ -363,17 +365,17 @@
       .progress-bar {
         width: 200px;
         height: 20px;
-        // margin-left: 25%;
-        // margin-bottom: 30px;
-        margin-right: 70%;
-        margin-top: -30px;
+        margin: 20px 50px; /* Centers the bar vertically */
+        align-self: center; /* Aligns the progress bar to the left within centered container */
+        align-items: center;
       }
 
       .progress-bar span {
-        bottom: 100%;
+        // bottom: 0%;
         left: 105%;
-        margin-right: 50%;
+        margin-right: 60%;
         font-size: 22px;
+        margin-bottom: 7%;
       }
     }
 
@@ -381,7 +383,7 @@
     Illustration Styling
     ================================= */
     .illustration {
-      margin-left: -45%;
+      margin-left: -65%;
 
       .shapes {
         gap: 20px;
