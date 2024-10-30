@@ -32,17 +32,70 @@ const NavBar = ({ isLightMode, activeSection }) => {
   };
 
   return (
-    <div>
-      <nav className={isLightMode ? "light-mode" : ""}>
-        {/* <!-- Logo --> */}
-        <img
-          src={isLightMode ? coloredLogo : logo}
-          className="logo"
-          alt="Bytechs Logo"
-        ></img>
+    <nav className={isLightMode ? "light-mode" : ""}>
+      {/* <!-- Logo --> */}
+      <img
+        src={isLightMode ? coloredLogo : logo}
+        className="logo"
+        alt="Bytechs Logo"
+      ></img>
 
-        {/* <!-- Navigation Links for Desktop --> */}
-        <ul className="nav-links">
+      {/* <!-- Navigation Links for Desktop --> */}
+      <ul className="nav-links">
+        <li>
+          <a href="#home" data-en="Home" data-ar="الرئيسية">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#contact" data-en="Contact Us" data-ar="اتصل بنا">
+            Contact Us
+          </a>
+        </li>
+        <li>
+          <a href="#news" data-en="News" data-ar="الأخبار">
+            News
+          </a>
+        </li>
+        <li>
+          <a href="#follow" data-en="Follow Us" data-ar="تابعنا">
+            Follow Us
+          </a>
+        </li>
+      </ul>
+
+      {/* <!-- Language Switch --> */}
+      <div className="language-switch">
+        <button
+          className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
+          onClick={() => toggleLanguage("en")}
+        >
+          English
+        </button>
+        <button
+          className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
+          onClick={() => toggleLanguage("ar")}
+        >
+          العربية
+        </button>
+
+        <noscript>Please enable JavaScript to switch languages</noscript>
+      </div>
+
+      {/* Burger Menu */}
+      <div
+        className={`burger-menu ${burgerMenuOpen ? "active" : ""}`}
+        onClick={toggleBurgerMenu}
+      >
+        {/* Burger Icon */}
+        <div className="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        {/* Mobile Navigation Links */}
+        <ul className="burger-links">
           <li>
             <a href="#home" data-en="Home" data-ar="الرئيسية">
               Home
@@ -63,86 +116,28 @@ const NavBar = ({ isLightMode, activeSection }) => {
               Follow Us
             </a>
           </li>
-        </ul>
 
-        {/* <!-- Language Switch --> */}
-        <div className="language-switch">
-          <button
-            className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-            onClick={() => toggleLanguage("en")}
-          >
-            English
-          </button>
-          <button
-            className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-            onClick={() => toggleLanguage("ar")}
-          >
-            العربية
-          </button>
+          {/* Language Switch inside Burger Menu */}
 
-          <noscript>Please enable JavaScript to switch languages</noscript>
-        </div>
+          <div className="language-switch">
+            <button
+              className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
+              onClick={() => toggleLanguage("en")}
+            >
+              English
+            </button>
+            <button
+              className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
+              onClick={() => toggleLanguage("ar")}
+            >
+              العربية
+            </button>
 
-        {/* Burger Menu */}
-        <div
-          className={`burger-menu ${burgerMenuOpen ? "active" : ""}`}
-          onClick={toggleBurgerMenu}
-        >
-          {/* Burger Icon */}
-          <div className="burger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
+            <noscript>Please enable JavaScript to switch languages</noscript>
           </div>
-
-          {/* Mobile Navigation Links */}
-          <ul className="burger-links">
-            <li>
-              <a href="#home" data-en="Home" data-ar="الرئيسية">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#contact" data-en="Contact Us" data-ar="اتصل بنا">
-                Contact Us
-              </a>
-            </li>
-            <li>
-              <a href="#news" data-en="News" data-ar="الأخبار">
-                News
-              </a>
-            </li>
-            <li>
-              <a href="#follow" data-en="Follow Us" data-ar="تابعنا">
-                Follow Us
-              </a>
-            </li>
-
-            {/* Language Switch inside Burger Menu */}
-            
-              <div className="language-switch">
-                <button
-                  className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-                  onClick={() => toggleLanguage("en")}
-                >
-                  English
-                </button>
-                <button
-                  className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-                  onClick={() => toggleLanguage("ar")}
-                  >
-                  العربية
-                </button>
-
-                <noscript>
-                  Please enable JavaScript to switch languages
-                </noscript>
-              </div>
-            
-                  </ul>
-        </div>
-      </nav>
-    </div>
+        </ul>
+      </div>
+    </nav>
   );
 };
 
