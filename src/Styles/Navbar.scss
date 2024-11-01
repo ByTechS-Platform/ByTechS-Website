@@ -168,7 +168,7 @@ nav {
     }
 
     .burger-menu {
-      display: none; 
+      display: none;
     }
   }
 }
@@ -186,7 +186,7 @@ nav {
     }
 
     .language-switch {
-      display: none; 
+      display: none;
     }
 
     .burger-menu {
@@ -235,13 +235,14 @@ nav {
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        top: 50px;
+        top: 60px;
         right: 0;
         background-color: #5843ed;
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         align-items: center;
+        width: 90%;
 
         .language-switch {
           display: flex; /* Hidden by default on larger screens */
@@ -285,9 +286,21 @@ nav {
         text-decoration: none;
         font-size: 18px;
       }
+    }
 
-      .burger-menu.active .burger-links {
-        display: flex;
+    .burger-menu.active .burger-links {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    .burger-menu {
+      /* Burger Menu Links */
+      .burger-links {
+        top: 70px;
+        width: 90%;
       }
     }
   }
