@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
 import "../Styles/News.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // Airtable config (move these to a secure environment in production)
 const airtableApiKey =
@@ -11,10 +14,7 @@ const News = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Pagination states
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const [currentIndex, setCurrentIndex] = useState(1); // Track the center slide
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -39,20 +39,6 @@ const News = () => {
     fetchNews(); // Call the function to fetch news data
   }, []);
 
-  // Handle pagination
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentNewsData = newsData.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(newsData.length / itemsPerPage);
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) setCurrentPage((prevPage) => prevPage - 1);
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage((prevPage) => prevPage + 1);
-  };
 
   if (loading) {
     return <p>Loading news...</p>; // Display a loading message while fetching
@@ -61,6 +47,20 @@ const News = () => {
   if (error) {
     return <p>{error}</p>; // Display the error message if any
   }
+
+  // Handle left and right arrow clicks
+  const slideLeft = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? newsData.length - 1 : prevIndex - 1
+    );
+  };
+
+  const slideRight = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === newsData.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
 
   return (
     <section id="news" className="section news">
@@ -72,55 +72,47 @@ const News = () => {
         >
           ByTechS News
         </span>
-        <div className="news-content">
-          {currentNewsData.length > 0 ? (
-            currentNewsData.map((record) => {
+
+        <div className="carousel">
+          <div className="carousel-wrapper">
+            {newsData.map((record, index) => {
               const { fields } = record;
               const imageUrl = fields.Image ? fields.Image[0].url : "";
+              const isActive = index === currentIndex;
+              const isPrev =
+                index ===
+                (currentIndex - 1 + newsData.length) % newsData.length;
+              const isNext = index === (currentIndex + 1) % newsData.length;
+
               return (
-                <div key={record.id} className="event">
+                <div
+                  key={record.id}
+                  className={`carousel-slide ${
+                    isActive ? "active" : isPrev ? "prev" : isNext ? "next" : ""
+                  }`}
+                >
                   {imageUrl && <img src={imageUrl} alt={fields.Name} />}
-                  <span
-                    className="event-tag"
-                    data-en="Initiatives"
-                    data-ar="مبادرات"
-                  >
-                    {fields.Type}
-                  </span>
+                  <span className="event-tag">{fields.Type}</span>
                   <p className="event-title">{fields.Title}</p>
                   <p className="event-content">{fields.Content}</p>
                   <p className="event-date">{fields.Date}</p>
                 </div>
               );
-            })
-          ) : (
-            <p>No news available at the moment.</p> // Fallback if there's no news
-          )}
-        </div>
-        {/* Pagination Controls */}
-        <div className="pagination">
-          <button
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
-            data-en="Previous"
-            data-ar="السابق"
-          >
-            Previous
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            data-en="Next"
-            data-ar="التالي"
-          >
-            Next
-          </button>
+            })}
+          </div>
+
+          <div className="arrows">
+            {/* Left Arrow */}
+            <button className="arrow left-arrow" onClick={slideLeft}>
+              &#9664;
+            </button>
+            {/* Right Arrow */}
+            <button className="arrow right-arrow" onClick={slideRight}>
+              &#9654;
+            </button>
+          </div>
         </div>
       </div>
-      <div className="new-vector"></div>
     </section>
   );
 };

@@ -12,50 +12,84 @@
     text-align: left;
   }
 
-  .news-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: flex-start;
-    gap: 5%;
+  .news-container {
+    position: relative;
     width: 100%;
-    margin-top: 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .news-container {
+    .carousel {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      max-width: 100%;
-      width: 100%;
-      margin-right: 0;
-    }
-
-    .event {
-      background-color: #ffffff;
-      border-radius: 20px;
-      padding-bottom: 0;
-      color: #000000;
-      height: auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      align-items: center;
       width: 100%;
 
-      img {
-        border-radius: 20px;
-        margin: -20px;
+      .carousel-wrapper {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
         width: 100%;
-        height: 35%;
-        object-fit: cover;
-        margin-bottom: 20px;
+      }
+
+      .carousel-slide {
+        flex: 0 33.33%;
+        opacity: 0.5;
+        transform: scale(0.8);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .carousel-slide.prev,
+      .carousel-slide.next {
+        opacity: 0.75;
+        transform: scale(0.8);
+      }
+    }
+    .arrows {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .arrow {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #e1e1e8;
+        cursor: pointer;
+        position: absolute;
+        // top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        padding: 0 15px;
       }
     }
 
-    .event-tag {
-      padding: 10px 20px;
-      border-radius: 21px;
-      background-color: #5552e1;
-      color: white;
-      font-size: 11px;
+    .left-arrow {
+      left: 45%;
     }
 
+    .right-arrow {
+      right: 45%;
+    }
+  }
+
+  .news-content {
     .event-title {
       color: #5552e1;
       font-size: 18px;
@@ -77,118 +111,12 @@
     }
   }
 
-  .pagination {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-
-    span {
-      margin: 0 10px;
-      padding: 15px;
-    }
-
-    button {
-      background: none;
-      background-color: transparent;
-      border: none;
-      padding: 15px;
-      border-radius: 21px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-      color: #ffffff;
-      font-family: "29LT ZawiBold";
-      text-align: center;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      outline: none;
-    }
-
-    button.active {
-      background-color: #ffffff;
-      color: #5552e1;
-    }
-
-    button:not(.active):hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-  }
-
   @media (max-width: 1024px) {
-    padding: 100px 4%;
-    .news-title {
-      font-size: 30px;
-    }
-
-    .news-content {
-      grid-template-columns: 1fr;
-      gap: 4%;
-
-      .news-container {
-        max-width: 90%;
-        margin: 0 auto;
-      }
-    }
   }
 
   @media (max-width: 768px) {
-    padding: 80px 3%;
-
-    .news-title {
-      font-size: 28px;
-    }
-
-    .news-content {
-      .event-tag {
-        font-size: 10px;
-      }
-
-      .event-title {
-        font-size: 16px;
-      }
-
-      .event-content {
-        font-size: 13px;
-      }
-
-      .event-date {
-        font-size: 10px;
-      }
-    }
   }
 
   @media (max-width: 480px) {
-    padding: 60px 2%;
-
-    .news-title {
-      font-size: 24px;
-    }
-
-    .news-content {
-      .event-tag {
-        font-size: 9px;
-      }
-
-      .event-title {
-        font-size: 15px;
-      }
-
-      .event-content {
-        font-size: 12px;
-      }
-
-      .event-date {
-        font-size: 9px;
-      }
-    }
-
-    .pagination {
-      gap: 5px;
-
-      button {
-        padding: 10px;
-        font-size: 12px;
-      }
-    }
   }
 }
