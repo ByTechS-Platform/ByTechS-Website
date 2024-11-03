@@ -2,9 +2,13 @@
 export function switchLanguage(lang) {
   // Switch language for elements with data attributes
   document.querySelectorAll("[data-en]").forEach((element) => {
-    element.textContent =
-      lang === "en"
-        ? element.getAttribute("data-en")
-        : element.getAttribute("data-ar");
+    element.childNodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent =
+          lang === "en"
+            ? element.getAttribute("data-en")
+            : element.getAttribute("data-ar");
+      }
+    });
   });
 }

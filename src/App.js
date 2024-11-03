@@ -18,7 +18,7 @@ function App() {
       <Hero />
       <ContactUs />
       <News />
-      <FollowUs />
+      {/* <FollowUs /> */}
       <Footer />
     </div>
   );

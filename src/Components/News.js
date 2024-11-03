@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
 import "../Styles/News.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FollowUs from "./FollowUs";
 
 // Airtable config (move these to a secure environment in production)
 const airtableApiKey =
@@ -48,6 +48,9 @@ const News = () => {
     return <p>{error}</p>; // Display the error message if any
   }
 
+   const lastNewsImageUrl =
+     newsData.length > 0 ? newsData[0].fields.Image[0].url : "";
+
   // Handle left and right arrow clicks
   const slideLeft = () => {
     setCurrentIndex((prevIndex) =>
@@ -63,57 +66,68 @@ const News = () => {
 
 
   return (
-    <section id="news" className="section news">
-      <div className="news-container">
-        <span
-          className="news-title"
-          data-en="BytechS News"
-          data-ar="أخبار بايتكس"
-        >
-          ByTechS News
-        </span>
+    <>
+      <section id="news" className="section news">
+        <div className="news-container">
+          <span
+            className="news-title"
+            data-en="BytechS News"
+            data-ar="أخبار بايتكس"
+          >
+            ByTechS News
+          </span>
 
-        <div className="carousel">
-          <div className="carousel-wrapper">
-            {newsData.map((record, index) => {
-              const { fields } = record;
-              const imageUrl = fields.Image ? fields.Image[0].url : "";
-              const isActive = index === currentIndex;
-              const isPrev =
-                index ===
-                (currentIndex - 1 + newsData.length) % newsData.length;
-              const isNext = index === (currentIndex + 1) % newsData.length;
+          <div className="carousel">
+            <div className="carousel-wrapper">
+              {newsData.map((record, index) => {
+                const { fields } = record;
+                const imageUrl = fields.Image ? fields.Image[0].url : "";
+                const isActive = index === currentIndex;
+                const isPrev =
+                  index ===
+                  (currentIndex - 1 + newsData.length) % newsData.length;
+                const isNext = index === (currentIndex + 1) % newsData.length;
 
-              return (
-                <div
-                  key={record.id}
-                  className={`carousel-slide ${
-                    isActive ? "active" : isPrev ? "prev" : isNext ? "next" : ""
-                  }`}
-                >
-                  {imageUrl && <img src={imageUrl} alt={fields.Name} />}
-                  <span className="event-tag">{fields.Type}</span>
-                  <p className="event-title">{fields.Title}</p>
-                  <p className="event-content">{fields.Content}</p>
-                  <p className="event-date">{fields.Date}</p>
-                </div>
-              );
-            })}
-          </div>
+                return (
+                  <div
+                    key={record.id}
+                    className={`carousel-slide ${
+                      isActive
+                        ? "active"
+                        : isPrev
+                        ? "prev"
+                        : isNext
+                        ? "next"
+                        : ""
+                    }`}
+                  >
+                    {imageUrl && <img src={imageUrl} alt={fields.Name} />}
+                    <span className="event-tag">{fields.Type}</span>
+                    <p className="event-title">{fields.Title}</p>
+                    <p className="event-content">{fields.Content}</p>
+                    <p className="event-date">{fields.Date}</p>
+                  </div>
+                );
+              })}
+            </div>
 
-          <div className="arrows">
-            {/* Left Arrow */}
-            <button className="arrow left-arrow" onClick={slideLeft}>
-              &#9664;
-            </button>
-            {/* Right Arrow */}
-            <button className="arrow right-arrow" onClick={slideRight}>
-              &#9654;
-            </button>
+            <div className="arrows">
+              {/* Left Arrow */}
+              <button className="arrow left-arrow" onClick={slideLeft}>
+                &#9664;
+              </button>
+              {/* Right Arrow */}
+              <button className="arrow right-arrow" onClick={slideRight}>
+                &#9654;
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Render FollowUs component and pass the last image URL */}
+      <FollowUs followImage={lastNewsImageUrl} />
+    </>
   );
 };
 
