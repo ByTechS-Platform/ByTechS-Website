@@ -4,7 +4,6 @@ import xLogo from "../assets/X.png";
 import whatsappLogo from "../assets/Whatsup.png";
 import instagramLogo from "../assets/insta.png";
 import linkedinLogo from "../assets/link.png";
-import followImage from "../assets/images/follow-image.JPG";
 
 const FollowUs = ({ followImage }) => {
   return (

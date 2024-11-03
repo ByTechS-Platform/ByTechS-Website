@@ -4,7 +4,6 @@ import ContactUs from './Components/ContactUs';
 import Hero from './Components/Hero';
 import NavBar from './Components/NavBar';
 import News from './Components/News';
-import FollowUs from './Components/FollowUs';
 import Footer from './Components/Footer';
 
 function App() {
