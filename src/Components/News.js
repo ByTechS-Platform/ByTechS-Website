@@ -14,7 +14,7 @@ const News = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(1); // Track the center slide
+  const [currentIndex, setCurrentIndex] = useState(0); 
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -27,7 +27,7 @@ const News = () => {
           },
         });
         const data = await response.json();
-        setNewsData(data.records); // Store the news data
+        setNewsData(data.records.slice(0, 3)); // Store the news data
         setLoading(false); // Set loading to false once the data is fetched
       } catch (error) {
         console.error("Error fetching Airtable data:", error);
@@ -111,17 +111,43 @@ const News = () => {
               })}
             </div>
 
+          </div>
             <div className="arrows">
               {/* Left Arrow */}
               <button className="arrow left-arrow" onClick={slideLeft}>
-                &#9664;
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5 8.25 12l7.5-7.5"
+                  />
+                </svg>
               </button>
               {/* Right Arrow */}
               <button className="arrow right-arrow" onClick={slideRight}>
-                &#9654;
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                  />
+                </svg>
               </button>
             </div>
-          </div>
         </div>
       </section>
 
