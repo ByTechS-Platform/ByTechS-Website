@@ -5,12 +5,10 @@ import coloredLogo from "../assets/BytechsColor.png";
 import { updateLanguageButtonColors } from "../utils/navUtils";
 import { switchLanguage } from "../utils/languageUtils";
 
-
-const NavBar = ({ isLightMode, activeSection }) => {
-  // const [isLightMode, setIsLightMode] = useState(false);
-  // const [activeSection, setActiveSection] = useState("home");
+const NavBar = () => {
   const [activeLanguage, setActiveLanguage] = useState("en");
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
+  const [isLightBackground, setIsLightBackground] = useState(false);
 
   // Handle language switching using the utility function
   const toggleLanguage = (lang) => {
@@ -18,15 +16,34 @@ const NavBar = ({ isLightMode, activeSection }) => {
     switchLanguage(lang);
   };
 
-  // Memoize the language button color update function
-  const updateButtonColors = useCallback(() => {
-    updateLanguageButtonColors(isLightMode);
-  }, [isLightMode]);
+  const handleScroll = () => {
+    // Check section background color or scroll position
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionBottom = section.getBoundingClientRect().bottom;
 
-  // Effect to update language button colors when the mode changes
+      // Assuming section is visible when in viewport
+      if (
+        sectionTop <= window.innerHeight / 2 &&
+        sectionBottom >= window.innerHeight / 2
+      ) {
+        const backgroundColor =
+          window.getComputedStyle(section).backgroundColor;
+        const [r, g, b] = backgroundColor.match(/\d+/g).map(Number);
+
+        // Set threshold for "light" background (adjust as necessary)
+        const isLight = (r + g + b) / 3 > 200;
+        setIsLightBackground(isLight);
+      }
+    });
+  };
+
   useEffect(() => {
-    updateButtonColors();
-  }, [isLightMode, updateButtonColors]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  // Effect to update language button colors when the mode changes
 
   // Toggle burger menu visibility
   const toggleBurgerMenu = () => {
@@ -34,10 +51,10 @@ const NavBar = ({ isLightMode, activeSection }) => {
   };
 
   return (
-    <nav className={isLightMode ? "light-mode" : ""}>
+    <nav style={{ color: isLightBackground ? "black" : "white" }}>
       {/* <!-- Logo --> */}
       <img
-        src={isLightMode ? coloredLogo : logo}
+        src={isLightBackground ? coloredLogo : logo}
         className="logo"
         alt="Bytechs Logo"
       ></img>
@@ -45,22 +62,42 @@ const NavBar = ({ isLightMode, activeSection }) => {
       {/* <!-- Navigation Links for Desktop --> */}
       <ul className="nav-links">
         <li>
-          <a href="#home" data-en="Home" data-ar="الرئيسية">
+          <a
+            href="#home"
+            data-en="Home"
+            data-ar="الرئيسية"
+            style={{ color: isLightBackground ? "black" : "white" }}
+          >
             Home
           </a>
         </li>
         <li>
-          <a href="#contact" data-en="Contact Us" data-ar="اتصل بنا">
+          <a
+            href="#contact"
+            data-en="Contact Us"
+            data-ar="اتصل بنا"
+            style={{ color: isLightBackground ? "black" : "white" }}
+          >
             Contact Us
           </a>
         </li>
         <li>
-          <a href="#news" data-en="News" data-ar="الأخبار">
+          <a
+            href="#news"
+            data-en="News"
+            data-ar="الأخبار"
+            style={{ color: isLightBackground ? "black" : "white" }}
+          >
             News
           </a>
         </li>
         <li>
-          <a href="#follow" data-en="Follow Us" data-ar="تابعنا">
+          <a
+            href="#follow"
+            data-en="Follow Us"
+            data-ar="تابعنا"
+            style={{ color: isLightBackground ? "black" : "white" }}
+          >
             Follow Us
           </a>
         </li>
@@ -71,12 +108,32 @@ const NavBar = ({ isLightMode, activeSection }) => {
         <button
           className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
           onClick={() => toggleLanguage("en")}
+          style={{
+            color:
+              activeLanguage === "en"
+                ? isLightBackground
+                  ? "#5552e1"
+                  : "#5552e1"
+                : isLightBackground
+                ? "#333"
+                : "#ddd",
+          }}
         >
           English
         </button>
         <button
           className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
           onClick={() => toggleLanguage("ar")}
+          style={{
+            color:
+              activeLanguage === "ar"
+                ? isLightBackground
+                  ? "#5552e1"
+                  : "#5552e1"
+                : isLightBackground
+                ? "#333"
+                : "#ddd",
+          }}
         >
           العربية
         </button>
@@ -91,9 +148,15 @@ const NavBar = ({ isLightMode, activeSection }) => {
       >
         {/* Burger Icon */}
         <div className="burger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span
+            style={{ backgroundColor: isLightBackground ? "black" : "white" }}
+          ></span>
+          <span
+            style={{ backgroundColor: isLightBackground ? "black" : "white" }}
+          ></span>
+          <span
+            style={{ backgroundColor: isLightBackground ? "black" : "white" }}
+          ></span>
         </div>
 
         {/* Mobile Navigation Links */}

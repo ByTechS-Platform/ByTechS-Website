@@ -23,10 +23,10 @@ nav {
   }
 
   /* Light Mode Navigation Styles */
-  .light-mode a,
-  .light-mode .burger-menu .burger-links a {
-    color: #000000;
-  }
+  // .light-mode a,
+  // .light-mode .burger-menu .burger-links a {
+  //   color: #000000;
+  // }
 
   .light-mode .burger-icon span {
     background-color: #000000;
@@ -36,9 +36,9 @@ nav {
     color: #5552e1;
   }
 
-  .light-mode .language-switch button.active {
-    color: #000000;
-  }
+}
+.isLightBackground .language-switch button.active {
+  color: #000000;
 }
 
 @media (max-width: 1500px) {
@@ -93,6 +93,11 @@ nav {
 
     /* Active Button State */
     .language-switch button.active {
+      background-color: rgb(255, 255, 255);
+      color: #5552e1;
+    }
+
+    .language-switch button.active is {
       background-color: rgb(255, 255, 255);
       color: #5552e1;
     }
