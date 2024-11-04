@@ -4,7 +4,7 @@
 .news {
   background-color: #5843ed;
   padding: 120px 5%;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
 
   .news-title {
     font-size: 50px;
@@ -34,7 +34,7 @@
 
       .carousel-slide {
         flex: 1 0 25%;
-        background-color: #ffffff;
+        background-color: rgb(255, 255, 255);
         border-radius: 20px;
         color: #000000;
         transition: transform 0.5s ease, opacity 0.5s ease;
@@ -94,8 +94,8 @@
       .carousel-slide.next {
         opacity: 0.75;
         transform: scale(0.8); /* Smaller height */
-  flex: 1 0 30%; /* Wider width */
-  max-width: 30%;
+        flex: 1 0 30%; /* Wider width */
+        max-width: 30%;
       }
     }
     .arrows {
@@ -126,7 +126,7 @@
       .size-6 {
         width: 1.5rem; // Adjust size as needed
         height: 1.5rem;
-        color: #ffffff; // Customize color
+        color: rgb(255, 255, 255); // Customize color
         transition: transform 0.2s ease-in-out;
 
         &:hover {

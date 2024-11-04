@@ -12,7 +12,7 @@ nav {
   /* Navigation Links and Buttons */
   a,
   .language-switch button {
-    color: #ffffff;
+    color: rgb(255, 255, 255);
     text-decoration: none;
   }
 
@@ -58,7 +58,7 @@ nav {
     }
 
     .nav-links a {
-      color: #ffffff;
+      color: rgb(255, 255, 255);
       text-decoration: none;
       font-size: 18px;
     }
@@ -84,7 +84,7 @@ nav {
       cursor: pointer;
       font-size: 14px;
       font-weight: bold;
-      color: #ffffff;
+      color: rgb(255, 255, 255);
       font-family: "29LT ZawiBold";
       text-align: center;
       transition: background-color 0.3s ease, color 0.3s ease;
@@ -93,7 +93,7 @@ nav {
 
     /* Active Button State */
     .language-switch button.active {
-      background-color: #ffffff;
+      background-color: rgb(255, 255, 255);
       color: #5552e1;
     }
 
@@ -125,7 +125,7 @@ nav {
     }
 
     .nav-links a {
-      color: #ffffff;
+      color: rgb(255, 255, 255);
       text-decoration: none;
       font-size: 16px;
     }
@@ -151,7 +151,7 @@ nav {
       cursor: pointer;
       font-size: 12px;
       font-weight: bold;
-      color: #ffffff;
+      color: rgb(255, 255, 255);
       font-family: "29LT ZawiBold";
       text-align: center;
       transition: background-color 0.3s ease, color 0.3s ease;
@@ -159,7 +159,7 @@ nav {
     }
 
     .language-switch button.active {
-      background-color: #ffffff;
+      background-color: rgb(255, 255, 255);
       color: #5552e1;
     }
 
@@ -210,7 +210,7 @@ nav {
           display: block;
           width: 100%;
           height: 3px;
-          background-color: #ffffff;
+          background-color: rgb(255, 255, 255);
           border-radius: 3px;
           transition: all 0.3s ease;
         }
@@ -256,7 +256,7 @@ nav {
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            color: #ffffff;
+            color: rgb(255, 255, 255);
             font-family: "29LT ZawiBold";
             text-align: center;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -265,7 +265,7 @@ nav {
 
           /* Active Button State */
           button.active {
-            background-color: #ffffff;
+            background-color: rgb(255, 255, 255);
             color: #5552e1;
           }
 
@@ -282,7 +282,7 @@ nav {
 
       .burger-links a,
       .burger-links button {
-        color: #ffffff;
+        color: rgb(255, 255, 255);
         text-decoration: none;
         font-size: 18px;
       }

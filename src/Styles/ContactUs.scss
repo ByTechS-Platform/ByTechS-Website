@@ -2,7 +2,7 @@
    Contact Us Section
 ================================= */
 .contact {
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
   color: #282a36;
 
   .container {
@@ -54,7 +54,7 @@
 
     form button {
       background-color: #6272a4;
-      color: #ffffff;
+      color: rgb(255, 255, 255);
       padding: 15px;
       border: none;
       cursor: pointer;
@@ -74,13 +74,13 @@
       h2 {
         font-size: 32px;
         margin-bottom: 10px;
-        color: #ffffff;
+        color: rgb(255, 255, 255);
       }
 
       p {
         margin-bottom: 30px;
         font-size: 14px;
-        color: #ffffff;
+        color: rgb(255, 255, 255);
       }
 
       form input,
@@ -88,7 +88,7 @@
         width: 100%;
       }
 
-      .content{
+      .content {
         flex: 2;
       }
     }
@@ -244,8 +244,6 @@
       p {
         font-size: 11px;
       }
-
-      
 
       form button {
         font-size: 14px;
