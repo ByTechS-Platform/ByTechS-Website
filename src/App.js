@@ -17,7 +17,6 @@ function App() {
       <Hero />
       <ContactUs />
       <News />
-      {/* <FollowUs /> */}
       <Footer />
     </div>
   );
