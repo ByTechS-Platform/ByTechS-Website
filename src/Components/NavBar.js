@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../Styles/Navbar.scss";
 import logo from "../assets/logo.png";
 import coloredLogo from "../assets/BytechsColor.png";
-import { updateLanguageButtonColors } from "../utils/navUtils";
 import { switchLanguage } from "../utils/languageUtils";
 
 const NavBar = () => {
@@ -11,12 +10,13 @@ const NavBar = () => {
   const [isLightBackground, setIsLightBackground] = useState(false);
 
   // Handle language switching using the utility function
-  const toggleLanguage = (lang) => {
-    setActiveLanguage(lang);
-    switchLanguage(lang);
+  const toggleLanguage = () => {
+    const newLanguage = activeLanguage === "en" ? "ar" : "en";
+    setActiveLanguage(newLanguage);
+    switchLanguage(newLanguage);
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     // Check section background color or scroll position
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
@@ -37,12 +37,12 @@ const NavBar = () => {
         setIsLightBackground(isLight);
       }
     });
-  };
+  },[]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
   // Effect to update language button colors when the mode changes
 
   // Toggle burger menu visibility
@@ -107,7 +107,7 @@ const NavBar = () => {
       <div className="language-switch">
         <button
           className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-          onClick={() => toggleLanguage("en")}
+          onClick={toggleLanguage}
           style={{
             color:
               activeLanguage === "en"
@@ -123,7 +123,7 @@ const NavBar = () => {
         </button>
         <button
           className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-          onClick={() => toggleLanguage("ar")}
+          onClick={toggleLanguage}
           style={{
             color:
               activeLanguage === "ar"
@@ -187,13 +187,13 @@ const NavBar = () => {
           <div className="language-switch">
             <button
               className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-              onClick={() => toggleLanguage("en")}
+              onClick={() => toggleLanguage(activeLanguage)}
             >
               English
             </button>
             <button
               className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-              onClick={() => toggleLanguage("ar")}
+              onClick={() => toggleLanguage(activeLanguage)}
             >
               العربية
             </button>

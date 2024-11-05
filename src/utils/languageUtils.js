@@ -1,6 +1,6 @@
 // languageUtils.js
 export function switchLanguage(lang) {
-  // Switch language for elements with data attributes
+  // Update elements with data attributes
   document.querySelectorAll("[data-en]").forEach((element) => {
     element.childNodes.forEach((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
@@ -11,4 +11,8 @@ export function switchLanguage(lang) {
       }
     });
   });
+
+  // Emit custom event for language change
+  const event = new CustomEvent("languageChange", { detail: { lang } });
+  window.dispatchEvent(event);
 }
