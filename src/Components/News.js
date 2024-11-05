@@ -14,8 +14,11 @@ const News = () => {
   const [loading, setLoading] = useState(true);
   const [activeLanguage, setActiveLanguage] = useState("en");
   const [error, setError] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(1);
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const [visibleCount, setVisibleCount] = useState(2);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -37,17 +40,39 @@ const News = () => {
     fetchNews();
   }, []);
 
-   useEffect(() => {
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNewsData = newsData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(newsData.length / itemsPerPage);
+  const pageNumbers = Array.from(
+    { length: totalPages },
+    (_, index) => index + 1
+  );
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  useEffect(() => {
     const handleLanguageSwitch = (event) => {
       const { lang } = event.detail;
       setActiveLanguage(lang);
     };
 
-     // Listen for language changes (if triggered globally)
-     window.addEventListener("languageChange", handleLanguageSwitch);
-     return () =>
-       window.removeEventListener("languageChange", handleLanguageSwitch);
-   }, []);
+    // Listen for language changes (if triggered globally)
+    window.addEventListener("languageChange", handleLanguageSwitch);
+    return () =>
+      window.removeEventListener("languageChange", handleLanguageSwitch);
+  }, []);
 
   if (loading) {
     return <p>Loading news...</p>; // Display a loading message while fetching
@@ -59,23 +84,6 @@ const News = () => {
 
   const lastNewsImageUrl =
     newsData.length > 0 ? newsData[0].fields.Image[0].url : "";
-
-  // Handle left and right arrow clicks
-  const slideLeft = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? newsData.length - 1 : prevIndex - 1
-    );
-  };
-
-  const slideRight = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === newsData.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 2); // Load 3 more items at a time
-  };
 
   return (
     <>
@@ -92,89 +100,75 @@ const News = () => {
           {/* Carousel */}
           <div className="carousel">
             <div className="carousel-wrapper">
-              {newsData.slice(0, visibleCount).map((record, index) => {
-                const { fields } = record;
-                const imageUrl = fields.Image ? fields.Image[0].url : "";
-                const isActive = index === currentIndex;
-                const isPrev =
-                  index ===
-                  (currentIndex - 1 + newsData.length) % newsData.length;
-                const isNext = index === (currentIndex + 1) % newsData.length;
+              {currentNewsData.length > 0 ? (
+                currentNewsData.map((record) => {
+                  const { fields } = record;
+                  const imageUrl = fields.Image ? fields.Image[0].url : "";
 
-                return (
-                  <div
-                    key={record.id}
-                    className={`carousel-slide ${
-                      isActive
-                        ? "active"
-                        : isPrev
-                        ? "prev"
-                        : isNext
-                        ? "next"
-                        : ""
-                    }`}
-                  >
-                    {imageUrl && <img src={imageUrl} alt={fields.Name} />}
-                    <span className="event-tag">
-                      {activeLanguage === "en" ? fields.Tag_eng : fields.Tag_ar}
-                    </span>
-                    <p className="event-title">
-                      {activeLanguage === "en"
-                        ? fields.Title_eng
-                        : fields.Title_ar}
-                    </p>
-                    <p className="event-content">
-                      {activeLanguage === "en"
-                        ? fields.Content_eng
-                        : fields.Content_ar}
-                    </p>
-                    <p className="event-date">{fields.Date}</p>
-                  </div>
-                );
-              })}
+                  return (
+                    <div key={record.id} className="carousel-slide">
+                      <div className="image-container">
+                        {imageUrl && <img src={imageUrl} alt={fields.Name} />}
+                      </div>
+                      <span className="event-tag">
+                        {activeLanguage === "en"
+                          ? fields.Tag_eng
+                          : fields.Tag_ar}
+                      </span>
+                      <p className="event-title">
+                        {activeLanguage === "en"
+                          ? fields.Title_eng
+                          : fields.Title_ar}
+                      </p>
+                      <p className="event-content">
+                        {activeLanguage === "en"
+                          ? fields.Content_eng
+                          : fields.Content_ar}
+                      </p>
+                      <p className="event-date">{fields.Date}</p>
+                    </div>
+                  );
+                })
+              ) : (
+                <p>No news available at the moment.</p>
+              )}
             </div>
           </div>
 
-          {/* Carousel Navigation Arrows */}
-          <div className="arrows">
-            <button className="arrow left-arrow" onClick={slideLeft}>
-              {/* Left Arrow Icon */}
+          <div className="pagination">
+            <button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              data-en="Previous"
+              data-ar="السابق"
+            >
+              Previous
             </button>
-            <button className="arrow right-arrow" onClick={slideRight}>
-              {/* Right Arrow Icon */}
-            </button>
-          </div>
+            {/* <span>
+              Page {currentPage} of {totalPages}
+            </span> */}
 
-          {/* Static List for Additional News Items */}
-          <div className="news-list">
-            {newsData.slice(visibleCount).map((record) => (
-              <div key={record.id} className="news-item">
-                <img
-                  src={record.fields.Image[0]?.url}
-                  alt={record.fields.Name}
-                  className="news-image"
-                />
-                <h3>
-                  {activeLanguage === "en"
-                    ? record.fields.Title_eng
-                    : record.fields.Title_ar}
-                </h3>
-                <p>
-                  {activeLanguage === "en"
-                    ? record.fields.Content_eng
-                    : record.fields.Content_ar}
-                </p>
-                <p className="event-date">{record.fields.Date}</p>
-              </div>
+            {/* Page Numbers */}
+            {pageNumbers.map((number) => (
+              <button
+                key={number}
+                onClick={() => handlePageClick(number)}
+                className={currentPage === number ? "active" : ""}
+                data-en={number}
+                data-ar={number}
+              >
+                {number}
+              </button>
             ))}
-          </div>
-
-          {/* Load More Button */}
-          {visibleCount < newsData.length && (
-            <button className="load-more" onClick={handleLoadMore}>
-              Load More
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              data-en="Next"
+              data-ar="التالي"
+            >
+              Next
             </button>
-          )}
+          </div>
         </div>
       </section>
 
