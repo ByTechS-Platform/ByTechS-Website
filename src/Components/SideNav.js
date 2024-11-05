@@ -3,6 +3,7 @@ import "../Styles/SideNav.scss"; // Optional: for styling the side nav
 
 const SideNav = () => {
   const [activeSection, setActiveSection] = useState("home"); // Track the active section
+  const [isLightBackground, setIsLightBackground] = useState(false);
   const sections = ["home", "contact", "news", "follow"]; // IDs of your sections
 
   useEffect(() => {
@@ -14,6 +15,12 @@ const SideNav = () => {
       sectionElements.forEach((section, index) => {
         if (section && window.scrollY >= section.offsetTop - 100) {
           currentSection = sections[index];
+
+          const backgroundColor =
+            window.getComputedStyle(section).backgroundColor;
+          const [r, g, b] = backgroundColor.match(/\d+/g).map(Number);
+          const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+          setIsLightBackground(brightness > 180); // Adjust threshold if needed
         }
       });
 
@@ -33,7 +40,9 @@ const SideNav = () => {
       {sections.map((section) => (
         <a href={`#${section}`} key={section}>
           <div
-            className={`circle ${activeSection === section ? "active" : ""}`}
+            className={`circle ${
+              activeSection === section ? "active" : "unactive"
+            } ${isLightBackground ? "light" : "dark"}`}
           ></div>
         </a>
       ))}

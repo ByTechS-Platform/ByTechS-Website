@@ -9,7 +9,7 @@
   z-index: 1000;
 }
 
-.circle {
+.circle.dark {
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -17,6 +17,10 @@
   transition: background-color 0.3s;
 }
 
-.circle.active {
-  background-color: #333; /* Color for active circle */
+.circle.unactive.light {
+  background-color: #8483bd; /* Active color on light background */
+}
+
+.circle.active.light {
+  background-color: #5552e1; /* Active color specifically on light */
 }
