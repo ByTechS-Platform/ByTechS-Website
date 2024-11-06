@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../Styles/ContactUs.scss";
+import emailjs from "emailjs-com";
 import { switchLanguage } from "../utils/languageUtils"; // Import the language switch utility
 import { validateForm } from "../utils/formUtils"; // Optional: form validation utility
 import shape1 from "../assets/shapesContactPage1.png";
@@ -23,9 +24,22 @@ const ContactUs = () => {
 
     // Optionally validate the form
     if (validateForm(form)) {
-      alert("Form submitted successfully!");
-      // You can handle form submission here (e.g., send data to server)
-      form.reset();
+       emailjs
+         .sendForm(
+           "service_8ejml3s",
+           "template_ax08khh",
+           form,
+           "E605m3_HIompvEY5J"
+         )
+         .then((response) => {
+           console.log("SUCCESS!", response.status, response.text);
+           alert("Message sent successfully!");
+           form.reset();
+         })
+         .catch((error) => {
+           console.error("FAILED...", error);
+           alert("Message failed to send. Please try again.");
+         });
     }
   };
 
