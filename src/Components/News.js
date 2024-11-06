@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { switchLanguage } from "../utils/languageUtils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+
 import FollowUs from "./FollowUs";
 import "../Styles/News.scss";
 
@@ -88,7 +93,11 @@ const News = () => {
   return (
     <>
       <section id="news" className="section news">
-        <div className="news-container">
+        <div
+          className={`news-container ${
+            activeLanguage === "ar" ? "align-right" : "align-left"
+          }`}
+        >
           <span
             className="news-title"
             data-en="BytechS News"
@@ -112,22 +121,32 @@ const News = () => {
                           {imageUrl && <img src={imageUrl} alt={fields.Name} />}
                         </a>
                       </div>
-                      <span className="event-tag">
-                        {activeLanguage === "en"
-                          ? fields.Tag_eng
-                          : fields.Tag_ar}
-                      </span>
-                      <p className="event-title">
-                        {activeLanguage === "en"
-                          ? fields.Title_eng
-                          : fields.Title_ar}
+                      <div className="content-container">
+                        <span className="event-tag">
+                          {activeLanguage === "en"
+                            ? fields.Tag_eng
+                            : fields.Tag_ar}
+                        </span>
+                        <p className="event-title">
+                          {activeLanguage === "en"
+                            ? fields.Title_eng
+                            : fields.Title_ar}
+                        </p>
+                        <p className="event-content">
+                          {activeLanguage === "en"
+                            ? fields.Content_eng
+                            : fields.Content_ar}
+                        </p>
+                      </div>
+                      <p
+                        className={`${
+                          activeLanguage === "ar"
+                            ? "event-date-ar"
+                            : "event-date-en"
+                        }`}
+                      >
+                        {fields.Date}
                       </p>
-                      <p className="event-content">
-                        {activeLanguage === "en"
-                          ? fields.Content_eng
-                          : fields.Content_ar}
-                      </p>
-                      <p className="event-date">{fields.Date}</p>
                     </div>
                   );
                 })
@@ -138,13 +157,11 @@ const News = () => {
           </div>
 
           <div className="pagination">
-            <button
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-              data-en="Previous"
-              data-ar="السابق"
-            >
-              Previous
+            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+              <FontAwesomeIcon
+                icon={faChevronLeft}
+                style={{ color: "#32eddf" }}
+              />
             </button>
             {/* <span>
               Page {currentPage} of {totalPages}
@@ -165,10 +182,11 @@ const News = () => {
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              data-en="Next"
-              data-ar="التالي"
             >
-              Next
+              <FontAwesomeIcon
+                icon={faChevronRight}
+                style={{ color: "#32eddf" }}
+              />
             </button>
           </div>
         </div>

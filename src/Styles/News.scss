@@ -1,3 +1,11 @@
+// Alignment classes
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+
 /* =================================
    News Section
 ================================= */
@@ -9,25 +17,21 @@
   .news-title {
     font-size: 50px;
     font-weight: 800;
-    text-align: left;
   }
 
   .news-container {
-    position: relative;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
+    width: 100%;
 
     .carousel {
-      position: relative;
       width: 90%;
 
       .carousel-wrapper {
         display: flex;
         justify-content: center;
-        width: 100%;
         gap: 10px;
         flex-wrap: wrap;
       }
@@ -40,14 +44,11 @@
         transition: transform 0.5s ease, opacity 0.5s ease;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        // max-width: 45%;
-        height: 800px;
+        max-width: 50%;
+        height: 520px;
 
         .image-container {
-          width: 100%;
           border-radius: 20px;
-          margin-bottom: 20px;
           height: 250px;
           overflow: hidden;
 
@@ -57,34 +58,50 @@
           }
         }
 
-        .event-tag {
-          padding: 20px 10px;
-          border-radius: 21px;
-          background-color: #5552e1;
-          color: #fff;
-          font-size: 14px;
-        }
-
-        .event-title {
-          color: #5552e1;
-          font-size: 20px;
+        .content-container {
           margin-top: 25px;
-          font-weight: 600;
-          padding: 0 7%;
+          height: 100%;
+
+          .event-tag {
+            margin: 0 10px;
+            padding: 10px;
+            background-color: #5552e1;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 21px;
+            width: fit-content;
+          }
+
+          .event-title {
+            margin: 15px 10px 5px 10px;
+            padding: 2% 0;
+            color: #5552e1;
+            font-size: 18px;
+          }
+
+          .event-content {
+            padding: 0px 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: justify;
+          }
         }
 
-        .event-content {
-          margin-top: 20px;
-          padding: 20px;
-          font-size: 14px;
-          line-height: 1.5;
-          text-align: justify;
-        }
-
-        .event-date {
+        .event-date-en {
           text-align: right;
           color: #888;
           font-size: 11px;
+          position: relative;
+          bottom: 10px;
+          right: 15px;
+        }
+        .event-date-ar {
+          text-align: left;
+          color: #888;
+          font-size: 11px;
+          position: relative;
+          bottom: 10px;
+          left: 15px;
         }
       }
     }
@@ -95,11 +112,6 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-
-    span {
-      margin: 0 10px;
-      padding: 15px;
-    }
 
     button {
       background: none;
@@ -126,53 +138,29 @@
   /* Responsive Styles */
   @media (max-width: 1024px) {
     padding: 80px 3%;
-
     .news-title {
       font-size: 40px;
       text-align: center;
     }
-
     .carousel-slide {
       max-width: 60%;
       height: 600px;
-
-      .event-title {
-        font-size: 18px;
-      }
-
-      .event-content {
-        font-size: 13px;
-      }
     }
   }
 
   @media (max-width: 768px) {
     padding: 60px 3%;
-
     .news-title {
       font-size: 35px;
     }
-
     .carousel-wrapper {
       flex-direction: column;
       gap: 15px;
     }
-
     .carousel-slide {
       max-width: 100%;
       height: auto;
-      width: 100%;
-
-      .event-title {
-        font-size: 18px;
-      }
-
-      .event-content {
-        font-size: 13px;
-        padding: 15px;
-      }
     }
-
     .pagination button {
       padding: 8px 12px;
       font-size: 13px;
@@ -181,32 +169,15 @@
 
   @media (max-width: 480px) {
     padding: 40px 2%;
-
     .news-title {
       font-size: 28px;
       text-align: center;
     }
-
     .carousel-slide {
-      .event-title {
-        font-size: 16px;
-      }
-
-      .event-content {
-        font-size: 12px;
-        padding: 10px;
-      }
-
       .image-container {
         height: 180px;
       }
-
-      .event-tag {
-        font-size: 12px;
-        padding: 8px 12px;
-      }
     }
-
     .pagination button {
       padding: 6px 10px;
       font-size: 12px;
