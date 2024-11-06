@@ -24,7 +24,7 @@ const News = () => {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          `https://api.airtable.com/v0/${baseId}/${tableName}`,
+          `https://api.airtable.com/v0/${baseId}/${tableName}?sort[0][field]=ID&sort[0][direction]=desc`,
           {
             headers: { Authorization: `Bearer ${airtableApiKey}` },
           }
