@@ -44,12 +44,12 @@
         transition: transform 0.5s ease, opacity 0.5s ease;
         display: flex;
         flex-direction: column;
-        max-width: 50%;
+        // max-width: 50%;
         height: 520px;
 
         .image-container {
           border-radius: 20px;
-          height: 250px;
+          height: 350px;
           overflow: hidden;
 
           img {
@@ -134,7 +134,12 @@
       }
     }
   }
-
+ @media (max-width: 1500px){
+  .carousel-slide {
+      max-width: 50%;
+      height: 600px;
+    }
+ }
   /* Responsive Styles */
   @media (max-width: 1024px) {
     padding: 80px 3%;
@@ -143,7 +148,7 @@
       text-align: center;
     }
     .carousel-slide {
-      max-width: 60%;
+      max-width: 50%;
       height: 600px;
     }
   }
