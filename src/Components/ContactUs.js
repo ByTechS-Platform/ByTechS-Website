@@ -121,10 +121,14 @@ const ContactUs = () => {
             </button>
           </form>
 
-          <p className="join-us" data-en="Join Our Team " data-ar="إنضم لفريقنا " >
-            Join Our Team 
+          <p
+            className="join-us"
+            data-en="Join Our Team "
+            data-ar="إنضم لفريقنا "
+          >
+            Join Our Team
             <a
-              href="https://ykpx11ahkzn.typeform.com/to/f8Y1yZ52"
+              href="https://s48vtcw2aje.typeform.com/to/bjlhJnv1"
               data-en="Now"
               data-ar="الآن"
             >
