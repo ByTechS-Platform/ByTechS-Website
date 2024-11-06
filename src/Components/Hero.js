@@ -25,7 +25,7 @@ const Hero = () => {
           <p
             className="T1"
             data-en="Creating The Future Within"
-            data-ar="خلق المستقبل من الداخل"
+            data-ar="بالتقنية نبني المستقبل"
           >
             Creating The Future Within
           </p>
