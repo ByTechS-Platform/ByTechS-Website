@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/ByTechS-Platform/Landing-Page.git/static/css/main.5ab0f49a.css",
-    "main.js": "/ByTechS-Platform/Landing-Page.git/static/js/main.6fe5dfcb.js",
-    "static/js/453.ecfe0b1f.chunk.js": "/ByTechS-Platform/Landing-Page.git/static/js/453.ecfe0b1f.chunk.js",
-    "static/media/alfont_com_29LTZawi-Bold.ttf": "/ByTechS-Platform/Landing-Page.git/static/media/alfont_com_29LTZawi-Bold.14e6d171d7d3bdfc65d9.ttf",
-    "static/media/alfont_com_29LTZawi-Black-1.ttf": "/ByTechS-Platform/Landing-Page.git/static/media/alfont_com_29LTZawi-Black-1.72b7558e993c3e37c801.ttf",
-    "static/media/shapesHomePage1.png": "/ByTechS-Platform/Landing-Page.git/static/media/shapesHomePage1.2725cf399d3cd21fdf8e.png",
-    "static/media/shapesContactPage1.png": "/ByTechS-Platform/Landing-Page.git/static/media/shapesContactPage1.3eb2a01ee1f042ed6a75.png",
-    "static/media/shapesHomePage3.png": "/ByTechS-Platform/Landing-Page.git/static/media/shapesHomePage3.d43cd1267792435085e6.png",
-    "static/media/shapesContactPage3.png": "/ByTechS-Platform/Landing-Page.git/static/media/shapesContactPage3.6edced73ee8ba9521369.png",
-    "static/media/shapesHomePage2.png": "/ByTechS-Platform/Landing-Page.git/static/media/shapesHomePage2.96625be5228a822ce4b7.png",
-    "static/media/shapesContactPage2.png": "/ByTechS-Platform/Landing-Page.git/static/media/shapesContactPage2.153a8efdc894dc268073.png",
-    "index.html": "/ByTechS-Platform/Landing-Page.git/index.html",
-    "main.5ab0f49a.css.map": "/ByTechS-Platform/Landing-Page.git/static/css/main.5ab0f49a.css.map",
-    "main.6fe5dfcb.js.map": "/ByTechS-Platform/Landing-Page.git/static/js/main.6fe5dfcb.js.map",
-    "453.ecfe0b1f.chunk.js.map": "/ByTechS-Platform/Landing-Page.git/static/js/453.ecfe0b1f.chunk.js.map"
+    "main.css": "/Landing-Page.git/static/css/main.b93a2e0d.css",
+    "main.js": "/Landing-Page.git/static/js/main.454da7e5.js",
+    "static/js/453.ecfe0b1f.chunk.js": "/Landing-Page.git/static/js/453.ecfe0b1f.chunk.js",
+    "static/media/alfont_com_29LTZawi-Bold.ttf": "/Landing-Page.git/static/media/alfont_com_29LTZawi-Bold.14e6d171d7d3bdfc65d9.ttf",
+    "static/media/alfont_com_29LTZawi-Black-1.ttf": "/Landing-Page.git/static/media/alfont_com_29LTZawi-Black-1.72b7558e993c3e37c801.ttf",
+    "static/media/shapesHomePage1.png": "/Landing-Page.git/static/media/shapesHomePage1.2725cf399d3cd21fdf8e.png",
+    "static/media/shapesContactPage1.png": "/Landing-Page.git/static/media/shapesContactPage1.3eb2a01ee1f042ed6a75.png",
+    "static/media/shapesHomePage3.png": "/Landing-Page.git/static/media/shapesHomePage3.d43cd1267792435085e6.png",
+    "static/media/shapesContactPage3.png": "/Landing-Page.git/static/media/shapesContactPage3.6edced73ee8ba9521369.png",
+    "static/media/shapesHomePage2.png": "/Landing-Page.git/static/media/shapesHomePage2.96625be5228a822ce4b7.png",
+    "static/media/shapesContactPage2.png": "/Landing-Page.git/static/media/shapesContactPage2.153a8efdc894dc268073.png",
+    "index.html": "/Landing-Page.git/index.html",
+    "main.b93a2e0d.css.map": "/Landing-Page.git/static/css/main.b93a2e0d.css.map",
+    "main.454da7e5.js.map": "/Landing-Page.git/static/js/main.454da7e5.js.map",
+    "453.ecfe0b1f.chunk.js.map": "/Landing-Page.git/static/js/453.ecfe0b1f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ab0f49a.css",
-    "static/js/main.6fe5dfcb.js"
+    "static/css/main.b93a2e0d.css",
+    "static/js/main.454da7e5.js"
   ]
 }
