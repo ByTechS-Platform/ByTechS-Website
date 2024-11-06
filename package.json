@@ -2,7 +2,7 @@
   "name": "lading-page",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ByTechS-Platform.github.io/Landing-Page.git",
+  "homepage": "https://ByTechS-Platform.github.io/Landing-Page",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
