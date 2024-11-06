@@ -108,7 +108,9 @@ const News = () => {
                   return (
                     <div key={record.id} className="carousel-slide">
                       <div className="image-container">
-                        {imageUrl && <img src={imageUrl} alt={fields.Name} />}
+                        <a href={fields.Post}>
+                          {imageUrl && <img src={imageUrl} alt={fields.Name} />}
+                        </a>
                       </div>
                       <span className="event-tag">
                         {activeLanguage === "en"
