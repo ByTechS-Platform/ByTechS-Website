@@ -19,9 +19,6 @@ const News = () => {
   const [loading, setLoading] = useState(true);
   const [activeLanguage, setActiveLanguage] = useState("en");
   const [error, setError] = useState(null);
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [visibleCount, setVisibleCount] = useState(2);
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
 
@@ -35,7 +32,7 @@ const News = () => {
           }
         );
         const data = await response.json();
-        setNewsData(data.records); // Display all news
+        setNewsData(data.records);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching Airtable data:", error);
@@ -163,11 +160,6 @@ const News = () => {
                 style={{ color: "#32eddf" }}
               />
             </button>
-            {/* <span>
-              Page {currentPage} of {totalPages}
-            </span> */}
-
-            {/* Page Numbers */}
             {pageNumbers.map((number) => (
               <button
                 key={number}

@@ -4,9 +4,6 @@ import "../Styles/Footer.scss";
 const Footer = () => {
   return (
     <div>
-      {/* <!-- =========================
-         Footer
-    ============================== --> */}
       <footer>
         <p
           data-en="© 2024 Bytechs. All rights reserved."

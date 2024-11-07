@@ -1,21 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import "../Styles/ContactUs.scss";
 import emailjs from "emailjs-com";
-import { switchLanguage } from "../utils/languageUtils"; // Import the language switch utility
 import { validateForm } from "../utils/formUtils"; // Optional: form validation utility
 import shape1 from "../assets/shapesContactPage1.png";
 import shape2 from "../assets/shapesContactPage2.png";
 import shape3 from "../assets/shapesContactPage3.png";
 
 const ContactUs = () => {
-  const [activeLanguage, setActiveLanguage] = useState("en");
   const formRef = useRef(null); // Reference for the form
-
-  // Handle language toggle
-  const handleLanguageToggle = (lang) => {
-    setActiveLanguage(lang);
-    switchLanguage(lang); // Call the language switch utility function
-  };
 
   // Handle form submission
   const handleSubmit = (event) => {
@@ -135,22 +127,6 @@ const ContactUs = () => {
               &nbsp;Now
             </a>
           </p>
-
-          {/* Language Switch */}
-          {/* <div className="language-switch">
-              <button
-                className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-                onClick={() => handleLanguageToggle("en")}
-              >
-                English
-              </button>
-              <button
-                className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-                onClick={() => handleLanguageToggle("ar")}
-              >
-                العربية
-              </button>
-            </div> */}
         </div>
       </div>
     </section>

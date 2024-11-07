@@ -7,7 +7,6 @@ import shape3 from "../assets/shapesHomePage3.png";
 import { animateProgressBar } from "../utils/progressUtils";
 import SideNav from "./SideNav";
 
-
 const Hero = () => {
   const progressBarRef = useRef(null);
   const progressNumberRef = useRef(null);

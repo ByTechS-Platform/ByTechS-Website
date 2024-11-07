@@ -43,7 +43,6 @@ const NavBar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
-  // Effect to update language button colors when the mode changes
 
   // Toggle burger menu visibility
   const toggleBurgerMenu = () => {
@@ -183,7 +182,6 @@ const NavBar = () => {
           </li>
 
           {/* Language Switch inside Burger Menu */}
-
           <div className="language-switch">
             <button
               className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
