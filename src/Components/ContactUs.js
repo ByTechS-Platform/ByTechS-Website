@@ -120,7 +120,7 @@ const ContactUs = () => {
           >
             Join Our Team
             <a
-              href="https://s48vtcw2aje.typeform.com/to/bjlhJnv1"
+              href="https://ykpx11ahkzn.typeform.com/to/kJvy5Efs"
               data-en="Now"
               data-ar="الآن"
             >
