@@ -18,7 +18,7 @@ const News = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeLanguage, setActiveLanguage] = useState("en");
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
 

@@ -33,7 +33,7 @@ const SideNav = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [sections]);
 
   return (
     <div className="side-nav">

@@ -8,8 +8,8 @@ import Footer from './Components/Footer';
 
 function App() {
 
-   const [isLightMode, setIsLightMode] = useState(false);
-   const [activeSection, setActiveSection] = useState("home");
+   const [isLightMode] = useState(false);
+   const [activeSection] = useState("home");
 
   return (
     <div className="App">

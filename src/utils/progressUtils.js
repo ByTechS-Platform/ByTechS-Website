@@ -8,6 +8,7 @@ export const animateProgressBar = (progressBarRef, progressNumberRef) => {
     return;
   }
 
+  // eslint-disable-next-line no-unused-vars
   const interval = setInterval(() => {
     if (progress >= 100) {
       progress = 0; // Reset progress without clearing the interval
