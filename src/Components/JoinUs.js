@@ -14,15 +14,15 @@ const JoinUs = () => {
      nameAr: "",
      nameEn: "",
      nationality: "",
-     dob: "",
+    //  dob: "",
      email: "",
      phone: "",
-     linkedin: "",
-     github: "",
+    //  linkedin: "",
+    //  github: "",
      major: "",
      degree: "",
      experience: "",
-     intrestedIn: "",
+     interestedIn: "",
      whyByTechs: "",
      terms: false,
    });
@@ -32,19 +32,49 @@ const JoinUs = () => {
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     setError(null);
     setSuccess(null);
 
     try {
-      await axios.post(
+      // Prepare data in Airtable format
+      const airtableData = {
+        fields: {
+          Name_ar: formData.nameAr,
+          Name_en: formData.nameEn,
+          Nationality: formData.nationality,
+          // DOB: formData.dob,
+          Email: formData.email,
+          Phone_Number: formData.phone,
+          // LinkedIn: formData.linkedin,
+          // GitHub: formData.github,
+          Major: formData.major,
+          Academic_qualification: formData.degree,
+          Experience: formData.experience,
+          Interested_In: formData.interestedIn,
+          Why_ByTechs: formData.whyByTechs,
+          // Terms: formData.terms ? "Yes" : "No",
+        },
+      };
+      
+      console.log(JSON.stringify({ fields: formData }, null, 2));
+      console.log(JSON.stringify(airtableData, null, 2));
+
+
+      // Submit data to Airtable
+      const response = await axios.post(
         `https://api.airtable.com/v0/${baseId}/${tableName}`,
-        formData,
+        airtableData,
         {
           headers: {
             Authorization: `Bearer ${airtableApiKey}`,
@@ -52,29 +82,48 @@ const JoinUs = () => {
           },
         }
       );
+
       setSuccess("Your application has been submitted successfully.");
-      setLoading(false);
       setFormData({
         nameAr: "",
         nameEn: "",
         nationality: "",
-        dob: "",
+        // dob: "",
         email: "",
         phone: "",
-        linkedin: "",
-        github: "",
+        // linkedin: "",
+        // github: "",
         major: "",
         degree: "",
         experience: "",
-        intrestedIn: "",
+        interestedIn: "",
         whyByTechs: "",
         terms: false,
       });
     } catch (error) {
-      setError("Failed to submit your application. Please try again later.");
+      console.error(error);
+      // // Handle specific errors
+      // if (error.response?.status === 403) {
+      //   setError(
+      //     "Access forbidden. Please check your API key, base ID, and table permissions."
+      //   );
+      // } else if (error.response?.status === 401) {
+      //   setError("Unauthorized access. Verify your API key.");
+      // } else {
+      //   setError(
+      //     error.response?.data?.error?.message ||
+      //       "Failed to submit your application. Please try again later."
+      //   );
+      // }
+
+      const errorMessage =
+        error.response?.data?.error?.message || "Unknown error occurred.";
+      setError(`Failed to submit your application: ${errorMessage}`);
+    } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="join-us-page">
@@ -105,14 +154,14 @@ const JoinUs = () => {
           onChange={handleChange}
           required
         />
-        <input
+        {/* <input
           type="date"
           name="dob"
           placeholder="Date of Birth"
           value={formData.dob}
           onChange={handleChange}
           required
-        />
+        /> */}
         <input
           type="email"
           name="email"
@@ -129,7 +178,7 @@ const JoinUs = () => {
           onChange={handleChange}
           required
         />
-        <input
+        {/* <input
           type="text"
           name="linkedin"
           placeholder="LinkedIn Profile"
@@ -142,7 +191,7 @@ const JoinUs = () => {
           placeholder="GitHub Profile"
           value={formData.github}
           onChange={handleChange}
-        />
+        /> */}
         <input
           type="text"
           name="major"
@@ -167,9 +216,9 @@ const JoinUs = () => {
         ></textarea>
         <input
           type="text"
-          name="intrestedIn"
+          name="interestedIn"
           placeholder="Interested In"
-          value={formData.intrestedIn}
+          value={formData.interestedIn}
           onChange={handleChange}
         />
         <textarea
