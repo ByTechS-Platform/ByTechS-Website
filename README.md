@@ -1,4 +1,113 @@
-# Getting Started with Create React App
+# Landing Page
+
+A modern and responsive landing page built with **React.js**. This project showcases a clean design, interactive components, and smooth navigation. It includes sections like a hero banner, contact form, news section, and footer.
+
+## Table of Contents
+
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
+
+## Demo
+
+Check out the live demo of the project:  
+[Live Demo](https://bytechs.net/)
+
+## Features
+
+- **Responsive Design**: Works seamlessly on all devices (desktop, tablet, mobile).  
+- **Interactive Components**: Includes a carousel, contact form, and more.  
+- **Custom Fonts**: Uses custom fonts (`29LT Zawi`) for a unique look. 
+- **Smooth Navigation**: Easy to navigate through the page with smooth scrolling.
+- **Modern UI**: Features a modern and clean design.
+- **Connected with Airtable**: Stores and retrive data in Airtable.
+- **Deployment**: Easily deployable using Netlify and Squarespace.  
+
+## Installation
+
+Follow these steps to set up the project locally:
+
+1. **Clone the repository**:  
+   ```bash
+   git clone https://github.com/ByTechS-Platform/lading-page.git
+
+2. Navigate to the project directory:
+    ```bash
+    cd lading-page
+    ```
+
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+4. Start the development server:
+    ```bash
+    npm start
+    ```
+
+5. Open your browser and visit:
+http://localhost:3000
+
+## Usage
+
+- **Navigation**: Use the navigation bar to scroll to different sections of the page.  
+- **Contact Form**: Fill out the contact form to send a message.  
+- **News Section**: Browse the latest updates in the news section.  
+
+## Technologies Used
+
+- **Frontend**: React.js, React Router, React FontAwesome  
+- **Styling**: SCSS, Custom Fonts (`29LT Zawi`)  
+- **Carousel**: React Slick, Slick Carousel  
+- **Form Handling**: EmailJS  
+- **Testing**: Jest, React Testing Library  
+- **Deployment**: GitHub Pages  
+
+## Folder Structure
+
+Here’s an overview of the project structure:
+```
+lading-page/
+├── public/ # Static assets
+├── src/ # Source code
+│ ├── Components/ # Reusable components (NavBar, Hero, ContactUs, News, Footer)
+│ ├── assets/ # Fonts and other assets
+│ ├── App.js # Main application component
+│ ├── App.scss # Global styles
+│ ├── index.js # Entry point
+│ └── index.scss # Font and base styles
+├── package.json # Project dependencies and scripts
+└── README.md # Project documentation
+```
+## Contributing
+
+Contributions are welcome! If you’d like to contribute, please follow these steps:
+
+1. **Fork the repository**.  
+2. **Create a new branch**:  
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+3. Commit your changes:
+    ```bash
+    git commit -m 'Add some feature'
+    ```
+
+4. Push to the branch:
+    ```bash
+    git push origin feature/YourFeatureName
+    ```
+
+5. Submit a pull request.
+
+
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +176,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
