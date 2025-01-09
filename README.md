@@ -73,16 +73,35 @@ http://localhost:3000
 Here’s an overview of the project structure:
 ```
 lading-page/
-├── public/ # Static assets
-├── src/ # Source code
-│ ├── Components/ # Reusable components (NavBar, Hero, ContactUs, News, Footer)
-│ ├── assets/ # Fonts and other assets
-│ ├── App.js # Main application component
-│ ├── App.scss # Global styles
-│ ├── index.js # Entry point
-│ └── index.scss # Font and base styles
-├── package.json # Project dependencies and scripts
-└── README.md # Project documentation
+├── src/
+│   ├── assets/
+│   ├── Components/
+│   │   ├── ContactUs.js
+│   │   ├── FollowUs.js
+│   │   ├── Footer.js
+│   │   ├── Hero.js
+│   │   ├── NavBar.js
+│   │   ├── News.js
+│   │   └── SideNav.js
+│   ├── Styles/
+│   │   ├── ContactUs.scss
+│   │   ├── FollowUs.scss
+│   │   ├── Footer.scss
+│   │   ├── Hero.scss
+│   │   ├── Navbar.scss
+│   │   ├── News.scss
+│   │   └── SideNav.scss
+│   ├── utils/
+│   ├── App.js
+│   ├── App.scss
+│   ├── App.test.js
+│   ├── index.js
+│   ├── index.scss
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+├── .gitignore
+└── package-lock.json
 ```
 ## Contributing
 
