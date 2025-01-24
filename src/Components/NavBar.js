@@ -9,14 +9,16 @@ const NavBar = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [isLightBackground, setIsLightBackground] = useState(false);
 
-  // Handle language switching using the utility function
+  // Emit global language change event
   const toggleLanguage = () => {
     const newLanguage = activeLanguage === "en" ? "ar" : "en";
     setActiveLanguage(newLanguage);
-    switchLanguage(newLanguage);
+    switchLanguage(newLanguage); // Update the DOM elements
+    window.dispatchEvent(
+      new CustomEvent("languageChange", { detail: { lang: newLanguage } })
+    );
   };
 
-  // Update the background based on scroll position
   const handleScroll = useCallback(() => {
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
@@ -41,68 +43,44 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
+  const toggleBurgerMenu = () => setBurgerMenuOpen((prevState) => !prevState);
+
+  const renderNavLinks = () => {
+    const links = [
+      { href: "#home", en: "Home", ar: "الرئيسية" },
+      { href: "#contact", en: "About Us", ar: "من نحن؟" },
+      { href: "#about", en: "Contact Us", ar: "تواصل معنا" },
+      { href: "#news", en: "News", ar: "الأخبار" },
+      { href: "#follow", en: "Follow Us", ar: "تابعنا" },
+    ];
+
+    return links.map((link) => (
+      <li key={link.href}>
+        <a
+          href={link.href}
+          data-en={link.en}
+          data-ar={link.ar}
+          style={{ color: isLightBackground ? "black" : "white" }}
+        >
+          {activeLanguage === "en" ? link.en : link.ar}
+        </a>
+      </li>
+    ));
+  };
+
   return (
     <nav
-      style={{
-        color: isLightBackground ? "black" : "white",
-        direction: activeLanguage === "ar" ? "rtl" : "ltr",
-      }}
+      style={{ color: isLightBackground ? "black" : "white" }}
       className={activeLanguage === "ar" ? "align-right" : "align-left"}
     >
-      {/* Logo */}
-      <div className="left-container">
-        <img
-          src={isLightBackground ? coloredLogo : logo}
-          className="logo"
-          alt="Bytechs Logo"
-        />
+      <img
+        src={isLightBackground ? coloredLogo : logo}
+        className="logo"
+        alt="Bytechs Logo"
+      />
 
-        {/* Navigation Links */}
-        <ul className="nav-links">
-          <li>
-            <a
-              href="#home"
-              data-en="Home"
-              data-ar="الرئيسية"
-              style={{ textAlign: activeLanguage === "ar" ? "right" : "left" }}
-            >
-              {activeLanguage === "ar" ? "الرئيسية" : "Home"}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              data-en="Contact Us"
-              data-ar="اتصل بنا"
-              style={{ textAlign: activeLanguage === "ar" ? "right" : "left" }}
-            >
-              {activeLanguage === "ar" ? "اتصل بنا" : "Contact Us"}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#news"
-              data-en="News"
-              data-ar="الأخبار"
-              style={{ textAlign: activeLanguage === "ar" ? "right" : "left" }}
-            >
-              {activeLanguage === "ar" ? "الأخبار" : "News"}
-            </a>
-          </li>
-          <li>
-            <a
-              href="#follow"
-              data-en="Follow Us"
-              data-ar="تابعنا"
-              style={{ textAlign: activeLanguage === "ar" ? "right" : "left" }}
-            >
-              {activeLanguage === "ar" ? "تابعنا" : "Follow Us"}
-            </a>
-          </li>
-        </ul>
-      </div>
+      <ul className="nav-links">{renderNavLinks()}</ul>
 
-      {/* Language Switch */}
       <div className="language-switch">
         <button
           className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
@@ -117,6 +95,7 @@ const NavBar = () => {
                 ? "#333"
                 : "#ddd",
           }}
+          aria-label="Switch to English"
         >
           English
         </button>
@@ -133,15 +112,16 @@ const NavBar = () => {
                 ? "#333"
                 : "#ddd",
           }}
+          aria-label="Switch to Arabic"
         >
           العربية
         </button>
+        <noscript>Please enable JavaScript to switch languages</noscript>
       </div>
 
-      {/* Burger Menu */}
       <div
         className={`burger-menu ${burgerMenuOpen ? "active" : ""}`}
-        onClick={() => setBurgerMenuOpen((prevState) => !prevState)}
+        onClick={toggleBurgerMenu}
       >
         <div className="burger-icon">
           <span
@@ -154,6 +134,7 @@ const NavBar = () => {
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
           ></span>
         </div>
+        <ul className="burger-links">{renderNavLinks()}</ul>
       </div>
     </nav>
   );
