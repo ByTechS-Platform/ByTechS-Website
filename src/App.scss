@@ -2,9 +2,24 @@
   text-align: center;
   body {
     margin: 0;
-    font-family: "IBM Plex Sans";
+    // font-family: "IBM Plex Sans";
     background-color: #5843ed;
     color: #ffffff;
     overflow-x: hidden;
+  }
+  section {
+    padding: 0px 80px;
+  }
+  // Alignment classes
+  .align-left {
+    align-items: end;
+    text-align: left;
+    font-family: "IBM Plex Sans";
+  }
+  .align-right {
+    align-content: start;
+
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic";
   }
 }

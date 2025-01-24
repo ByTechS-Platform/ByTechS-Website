@@ -12,10 +12,22 @@
       z-index: 100;
       align-items: start;
 
+      .T1 {
+          // font-family: "IBM Plex Sans";
+          font-weight: 400;
+          font-size: 40px;
+          width: auto;
+          height: 34px;
+          margin-bottom: -1%;
+          line-height: 33.6px;
+          text-align: center !important;
+        }
+
       h1[data-en="COMING SOON ..."] {
-        font-family: "29LT Zawi";
+        // font-family: "IBM Plex Sans";
         opacity: 1;
         transition: opacity 1s ease;
+        text-align: center !important;
 
         /* Visibility Class for Animation */
         h1[data-en="COMING SOON ..."].visible {
@@ -144,7 +156,7 @@
         width: 65%;
 
         .T1 {
-          font-family: "29LT Zawi";
+          // font-family: "IBM Plex Sans";
           font-weight: 400;
           font-size: 40px;
           width: auto;
@@ -158,7 +170,6 @@
           font-weight: 700;
           font-size: 98px;
           line-height: 132px;
-          text-align: center;
           width: 100%;
           height: 132px;
           margin: 5%;
@@ -215,7 +226,7 @@
         width: 65%;
 
         .T1 {
-          font-family: "29LT Zawi";
+          // font-family: "IBM Plex Sans";
           font-weight: 400;
           font-size: 26px;
           width: auto;
@@ -281,7 +292,7 @@
         // width: 65%;
 
         .T1 {
-          font-family: "29LT Zawi";
+          // font-family: "IBM Plex Sans";
           font-weight: 300;
           font-size: 24px;
           line-height: 1.2;
@@ -344,7 +355,7 @@
       width: 100%;
 
       .T1 {
-        font-family: "29LT Zawi";
+        // font-family: "IBM Plex Sans";
         font-weight: 300;
         font-size: 16px;
         line-height: 1.2;
