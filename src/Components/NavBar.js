@@ -73,14 +73,15 @@ const NavBar = () => {
       style={{ color: isLightBackground ? "black" : "white" }}
       className={activeLanguage === "ar" ? "align-right" : "align-left"}
     >
-      <img
-        src={isLightBackground ? coloredLogo : logo}
-        className="logo"
-        alt="Bytechs Logo"
-      />
+      <div className="logo-elements">
+        <img
+          src={isLightBackground ? coloredLogo : logo}
+          className="logo"
+          alt="Bytechs Logo"
+        />
 
-      <ul className="nav-links">{renderNavLinks()}</ul>
-
+        <ul className="nav-links">{renderNavLinks()}</ul>
+      </div>
       <div className="language-switch">
         <button
           className={`Eng ${activeLanguage === "en" ? "active" : ""}`}

@@ -2,7 +2,7 @@ nav {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 95%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -11,11 +11,11 @@ nav {
   padding: 20px;
   z-index: 1000;
 
-  .left-container{
+  .logo-elements{
     display: flex;
     align-items: center;
-    gap: 30px;
   }
+
   /* Navigation Links and Buttons */
   a,
   .language-switch button {
@@ -25,7 +25,7 @@ nav {
 
   /* Logo Styles */
   .logo {
-    margin-left: 10%;
+    // margin-left: 10%;
     transition: 0.3s ease;
   }
 
