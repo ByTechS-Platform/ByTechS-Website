@@ -19,58 +19,65 @@ Check out the live demo of the project:
 
 ## Features
 
-- **Responsive Design**: Works seamlessly on all devices (desktop, tablet, mobile).  
-- **Interactive Components**: Includes a carousel, contact form, and more.  
-- **Custom Fonts**: Uses custom fonts (`29LT Zawi`) for a unique look. 
+- **Responsive Design**: Works seamlessly on all devices (desktop, tablet, mobile).
+- **Interactive Components**: Includes a carousel, contact form, and more.
+- **Custom Fonts**: Uses custom fonts (`IBM Plex Sans`) for a unique look.
 - **Smooth Navigation**: Easy to navigate through the page with smooth scrolling.
 - **Modern UI**: Features a modern and clean design.
 - **Connected with Airtable**: Stores and retrive data in Airtable.
-- **Deployment**: Easily deployable using Netlify and Squarespace.  
+- **Deployment**: Easily deployable using Netlify and Squarespace.
 
 ## Installation
 
 Follow these steps to set up the project locally:
 
-1. **Clone the repository**:  
+1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/ByTechS-Platform/lading-page.git
 
+   ```
+
 2. Navigate to the project directory:
-    ```bash
-    cd lading-page
-    ```
+
+   ```bash
+   cd lading-page
+   ```
 
 3. Install dependencies:
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 4. Start the development server:
-    ```bash
-    npm start
-    ```
+
+   ```bash
+   npm start
+   ```
 
 5. Open your browser and visit:
-http://localhost:3000
+   http://localhost:3000
 
 ## Usage
 
-- **Navigation**: Use the navigation bar to scroll to different sections of the page.  
-- **Contact Form**: Fill out the contact form to send a message.  
-- **News Section**: Browse the latest updates in the news section.  
+- **Navigation**: Use the navigation bar to scroll to different sections of the page.
+- **Contact Form**: Fill out the contact form to send a message.
+- **News Section**: Browse the latest updates in the news section.
 
 ## Technologies Used
 
-- **Frontend**: React.js, React Router, React FontAwesome  
-- **Styling**: SCSS, Custom Fonts (`29LT Zawi`)  
-- **Carousel**: React Slick, Slick Carousel  
-- **Form Handling**: EmailJS  
-- **Testing**: Jest, React Testing Library  
-- **Deployment**: GitHub Pages  
+- **Frontend**: React.js, React Router, React FontAwesome
+- **Styling**: SCSS, Custom Fonts (`IBM Plex Sans`)
+- **Carousel**: React Slick, Slick Carousel
+- **Form Handling**: EmailJS
+- **Testing**: Jest, React Testing Library
+- **Deployment**: GitHub Pages
 
 ## Folder Structure
 
 Here’s an overview of the project structure:
+
 ```
 lading-page/
 ├── src/
@@ -103,28 +110,29 @@ lading-page/
 ├── .gitignore
 └── package-lock.json
 ```
+
 ## Contributing
 
 Contributions are welcome! If you’d like to contribute, please follow these steps:
 
-1. **Fork the repository**.  
-2. **Create a new branch**:  
+1. **Fork the repository**.
+2. **Create a new branch**:
    ```bash
    git checkout -b feature/YourFeatureName
    ```
 3. Commit your changes:
-    ```bash
-    git commit -m 'Add some feature'
-    ```
+
+   ```bash
+   git commit -m 'Add some feature'
+   ```
 
 4. Push to the branch:
-    ```bash
-    git push origin feature/YourFeatureName
-    ```
+
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
 
 5. Submit a pull request.
-
-
 
 <!-- # Getting Started with Create React App
 
