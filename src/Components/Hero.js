@@ -35,11 +35,12 @@ const Hero = () => {
 
   return (
     <section id="home" className="section home">
-      <div className={`container ${activeLanguage === "ar" ? "align-right" : "align-left"
-        }`}>
-        <div
-          className="content"
-        >
+      <div
+        className={`container ${
+          activeLanguage === "ar" ? "align-right" : "align-left"
+        }`}
+      >
+        <div className="content">
           <p
             className="T1"
             data-en="Creating The Future Within"
@@ -49,15 +50,18 @@ const Hero = () => {
               ? "بالتقنية نبني المستقبل"
               : "Creating The Future Within"}
           </p>
-          <h1 data-en="COMING SOON ..." data-ar="... قريباً ">
-            {activeLanguage === "ar" ? "... قريباً" : "COMING SOON ..."}
+          <h1 data-en="COMING SOON ..." data-ar="قريباً ...">
+            {activeLanguage === "ar" ? "قريباً ..." : "COMING SOON ..."}
           </h1>
+          
+          <div className="progress-bar-wrapper">
           <div className="progress-bar">
             <div ref={progressBarRef} className="progress"></div>
+          </div>
             <span ref={progressNumberRef} id="progress-number">
               0%
             </span>
-          </div>
+            </div>
         </div>
 
         {/* Illustration Images */}
