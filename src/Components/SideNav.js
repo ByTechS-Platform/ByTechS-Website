@@ -4,7 +4,10 @@ import "../Styles/SideNav.scss"; // Optional: for styling the side nav
 const SideNav = () => {
   const [activeSection, setActiveSection] = useState("home"); // Track the active section
   const [isLightBackground, setIsLightBackground] = useState(false);
-  const sections = useMemo(() => ["home", "contact", "news", "follow"], []);
+  const sections = useMemo(
+    () => ["home", "about", "news", "contact"],
+    []
+  );
  // IDs of your sections
 
   useEffect(() => {

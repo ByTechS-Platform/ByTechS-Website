@@ -12,15 +12,30 @@
       z-index: 100;
       align-items: start;
 
+      .T1 {
+          font-weight: 400;
+          font-size: 40px;
+          width: auto;
+          height: 34px;
+          line-height: 33.6px;
+          text-align: center !important;
+        }
+
       h1[data-en="COMING SOON ..."] {
-        font-family: "29LT Zawi";
         opacity: 1;
         transition: opacity 1s ease;
+        text-align: center !important;
 
-        /* Visibility Class for Animation */
         h1[data-en="COMING SOON ..."].visible {
           opacity: 1;
         }
+      }
+
+      .progress-bar-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
       }
     }
     /* =================================
@@ -47,10 +62,6 @@
       border-radius: 80px;
       animation: progressAnimation 10.2s linear infinite;
     }
-
-    .progress-bar span {
-      position: relative;
-    }
   }
 
   /* =================================
@@ -58,7 +69,7 @@
     ================================= */
   .illustration {
     display: flex;
-    flex: 1;
+    flex: 0.75;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -144,23 +155,18 @@
         width: 65%;
 
         .T1 {
-          font-family: "29LT Zawi";
           font-weight: 400;
-          font-size: 40px;
+          font-size: 35px;
           width: auto;
           height: 34px;
-          margin-bottom: -1%;
           line-height: 33.6px;
         }
 
-        /* Styling for 'COMING SOON ...' Heading */
         h1[data-en="COMING SOON ..."] {
           font-weight: 700;
-          font-size: 98px;
+          font-size: 75px;
           line-height: 132px;
-          text-align: center;
           width: 100%;
-          height: 132px;
           margin: 5%;
         }
 
@@ -171,14 +177,9 @@
         .progress-bar {
           width: 349px;
           height: 24px;
-          margin-left: 23%;
-          margin-bottom: 30px;
         }
 
-        .progress-bar span {
-          bottom: 120%;
-          left: 105%;
-          margin-right: 40%;
+        .progress-bar-wrapper span {
           font-size: 30px;
         }
       }
@@ -187,9 +188,10 @@
     Illustration Styling
     ================================= */
       .illustration {
-        width: 80%;
+        width: 70%;
         max-width: 90%;
         margin-left: -20%;
+        margin: auto;
 
         .shapes {
           gap: 30px;
@@ -197,7 +199,7 @@
         }
 
         .shapes img {
-          width: 100px;
+          width: 80px;
         }
       }
     }
@@ -215,7 +217,7 @@
         width: 65%;
 
         .T1 {
-          font-family: "29LT Zawi";
+          // font-family: "IBM Plex Sans";
           font-weight: 400;
           font-size: 26px;
           width: auto;
@@ -281,7 +283,7 @@
         // width: 65%;
 
         .T1 {
-          font-family: "29LT Zawi";
+          // font-family: "IBM Plex Sans";
           font-weight: 300;
           font-size: 24px;
           line-height: 1.2;
@@ -344,7 +346,7 @@
       width: 100%;
 
       .T1 {
-        font-family: "29LT Zawi";
+        // font-family: "IBM Plex Sans";
         font-weight: 300;
         font-size: 16px;
         line-height: 1.2;

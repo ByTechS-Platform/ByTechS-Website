@@ -5,6 +5,7 @@ import Hero from './Components/Hero';
 import NavBar from './Components/NavBar';
 import News from './Components/News';
 import Footer from './Components/Footer';
+import AboutUs from './Components/AboutUs';
 
 function App() {
 
@@ -15,8 +16,9 @@ function App() {
     <div className="App">
       <NavBar isLightMode={isLightMode} activeSection={activeSection} />
       <Hero />
-      <ContactUs />
+      <AboutUs />
       <News />
+      <ContactUs />
       <Footer />
     </div>
   );
