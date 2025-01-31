@@ -17,8 +17,8 @@ function App() {
       <NavBar isLightMode={isLightMode} activeSection={activeSection} />
       <Hero />
       <AboutUs />
-      <ContactUs />
       <News />
+      <ContactUs />
       <Footer />
     </div>
   );
