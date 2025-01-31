@@ -2,7 +2,7 @@
 
 .about {
   background-color: rgb(255, 255, 255);
-  color: #282a36;
+  color: $prime;
 
   .container {
     display: flex;
@@ -20,13 +20,13 @@
       // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
       h2 {
-        font-size: 50px;
+        font-size: 42px;
         margin-bottom: 10px;
         color: #5552e1;
       }
       p {
         margin-bottom: 20px;
-        font-size: 22px;
+        font-size: 20px;
         color: #1d1c4f;
         font-weight: 400;
         line-height: 32px;
@@ -34,47 +34,65 @@
       }
 
       .cards-wrapper {
-         width: 100%;
+        width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        gap: 20px;
-        display: inline-flex;
+        display: grid;
+        grid-template-columns: 1fr; // Default: single column for small screens
+        gap: 20px; // Space between grid items
 
-        .card{
+        .card {
           background-color: #fff;
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
           border-radius: 5px;
           padding: 40px 20px 20px 20px;
 
-          img {
-            width: 50px;
-            height: auto;
+          .card-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img {
+              width: 30px;
+              height: auto;
+            }
+            
+            h3 {
+              font-size: 18px;
+              color: #5552e1;
+            }
           }
-          h3 {
-            margin-bottom: 10px;
-            font-size: 20px;
-            color: #5552e1;
-          }
+
           p {
             margin-bottom: 10px;
             font-size: 16px;
             color: #1d1c4f;
           }
-          li{
+
+          li {
             font-size: 16px;
             color: #1d1c4f;
             margin-bottom: 10px;
             text-align: justify;
           }
-        }
-        .goal{
-          flex: 1.4;
-        }
-        .mission{
-          flex: 1;
+
+          .goal {
+            padding: auto;
+          }
         }
 
+        // Responsive Layout for Tablets and Desktops
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr; // Two columns for tablets and desktops
+          grid-template-rows: auto auto; // Two rows
+
+          .card.mission {
+            grid-column: 1; // Place mission cards in the first column
+          }
+
+          .card.goal {
+            grid-column: 2; // Place goal card in the second column
+            grid-row: span 2; // Make it span both rows
+          }
+        }
       }
     }
   }

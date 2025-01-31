@@ -17,47 +17,52 @@ const AboutUs = () => {
             language === "ar" ? "align-right" : "align-left"
           }`}
         >
-          <h2 data-en="What is Bytechs?" data-ar="ماذا يعني بايتكس؟">
-            {language === "en" ? "What is Bytechs?" : "ماذا يعني بايتكس؟"}
+          <h2 data-en="What is Bytechs?" data-ar="عن مبادرة بايتكس">
+            {language === "en" ? "What is Bytechs?" : "عن مبادرة بايتكس"}
           </h2>
           <p
             data-en="An initiative reshaping the world of technology by creating a sustainable ecosystem to activate the technical movement in artificial intelligence and emerging technologies. We support innovation, entrepreneurship, and applied research to contribute to achieving the three pillars of Saudi Vision 2030: an ambitious nation, a vibrant society, and a thriving economy."
-            data-ar="مبادرة تعيد تشكيل عالم التقنية من خلال إنشاء نظام بيئي مستدام لتعزيز الحركة التقنية في الذكاء الاصطناعي والتقنيات الناشئة. نحن ندعم الابتكار وريادة الأعمال والبحوث التطبيقية للمساهمة في تحقيق ركائز رؤية المملكة 2030: وطن طموح، مجتمع نابض بالحياة، واقتصاد مزدهر."
+            data-ar="مبادرة تعمل على إعادة تشكيل عالم التقنية من خلال خلق نظام بيئي مستدام لتفعيل الحراك التقني في مجالات الذكاء الاصطناعي والتقنيات الناشئة. ندعم الابتكار، ريادة الأعمال، والبحث العملي لنساهم في تحقيق أعمدة رؤية المملكة الثلاث وطن طموح، مجتمع حيوي، واقتصاد مزدهر."
           >
             {language === "en"
               ? "An initiative reshaping the world of technology by creating a sustainable ecosystem to activate the technical movement in artificial intelligence and emerging technologies. We support innovation, entrepreneurship, and applied research to contribute to achieving the three pillars of Saudi Vision 2030: an ambitious nation, a vibrant society, and a thriving economy."
-              : "مبادرة تعيد تشكيل عالم التقنية من خلال إنشاء نظام بيئي مستدام لتعزيز الحركة التقنية في الذكاء الاصطناعي والتقنيات الناشئة. نحن ندعم الابتكار وريادة الأعمال والبحوث التطبيقية للمساهمة في تحقيق ركائز رؤية المملكة 2030: وطن طموح، مجتمع نابض بالحياة، واقتصاد مزدهر."}
+              : " مبادرة تعمل على إعادة تشكيل عالم التقنية من خلال خلق نظام بيئي مستدام لتفعيل الحراك التقني في مجالات الذكاء الاصطناعي والتقنيات الناشئة. ندعم الابتكار، ريادة الأعمال، والبحث العملي لنساهم في تحقيق أعمدة رؤية المملكة الثلاث وطن طموح، مجتمع حيوي، واقتصاد مزدهر."}
           </p>
 
           <div className="cards-wrapper">
             <div className="card mission">
-              <img src={element} alt="shape1" />
-              <h3 data-en="Our Mission" data-ar="مهمتنا">
-                {language === "en" ? "Our Mission" : "مهمتنا"}
-              </h3>
+              <div className="card-top">
+                <img src={element} alt="shape1" />
+                <h3 data-en="Our Mission" data-ar="مهمتنا">
+                  {language === "en" ? "Our Mission" : "مهمتنا"}
+                </h3>
+              </div>
               <p
                 className="card-content"
                 data-en="We aim to create a vibrant and sustainable tech community that enhances the Kingdom's position as a global leader in technology."
-                data-ar="نسعى إلى إنشاء مجتمع تقني نابض بالحياة ومستدام يعزز مكانة المملكة كقائد عالمي في التكنولوجيا."
+                data-ar="نسعى لخلق مجتمع تقني حيوي ومستدام يعزز من مكانة المملكة كرائد عالمي في التقنية."
               >
                 {language === "en"
                   ? "We aim to create a vibrant and sustainable tech community that enhances the Kingdom's position as a global leader in technology."
-                  : "نسعى إلى إنشاء مجتمع تقني نابض بالحياة ومستدام يعزز مكانة المملكة كقائد عالمي في التكنولوجيا."}
+                  : "نسعى لخلق مجتمع تقني حيوي ومستدام يعزز من مكانة المملكة كرائد عالمي في التقنية."}
               </p>
             </div>
+
             <div className="card goal">
-              <img src={target} alt="shape1" />
-              <h3 data-en="Our Goals" data-ar="هدفنا">
-                {language === "en" ? "Our Goals" : "هدفنا"}
-              </h3>
+              <div className="card-top">
+                <img src={target} alt="shape1" />
+                <h3 data-en="Our Goals" data-ar="هدفنا">
+                  {language === "en" ? "Our Goals" : "هدفنا"}
+                </h3>
+              </div>
               <ul className="our-goal-list">
                 <li
                   data-en="Build specialized tech communities focusing on interaction and knowledge exchange."
-                  data-ar="بناء مجتمعات تقنية متخصصة تركز على التفاعل وتبادل المعرفة."
+                  data-ar="بناء مجتمعات تقنية تخصصية تركز على التفاعل وتبادل الخبرات."
                 >
                   {language === "en"
                     ? "Build specialized tech communities focusing on interaction and knowledge exchange."
-                    : "بناء مجتمعات تقنية متخصصة تركز على التفاعل وتبادل المعرفة."}
+                    : "بناء مجتمعات تقنية تخصصية تركز على التفاعل وتبادل الخبرات."}
                 </li>
                 <li
                   data-en="Provide specialized training programs that support technical and professional skills."
@@ -69,13 +74,31 @@ const AboutUs = () => {
                 </li>
                 <li
                   data-en="Launch a digital platform that facilitates collaboration and communication between tech enthusiasts and experts."
-                  data-ar="إطلاق منصة رقمية تسهل التعاون والتواصل بين عشاق التقنية والخبراء."
+                  data-ar="إطلاق منصة رقمية تسهّل التعاون والتواصل بين المهتمين والخبراء في التقنية."
                 >
                   {language === "en"
                     ? "Launch a digital platform that facilitates collaboration and communication between tech enthusiasts and experts."
-                    : "إطلاق منصة رقمية تسهل التعاون والتواصل بين عشاق التقنية والخبراء."}
+                    : "إطلاق منصة رقمية تسهّل التعاون والتواصل بين المهتمين والخبراء في التقنية."}
                 </li>
               </ul>
+            </div>
+
+            <div className="card mission">
+              <div className="card-top">
+                <img src={element} alt="shape1" />
+                <h3 data-en="Our Values" data-ar="قيمنا">
+                  {language === "en" ? "Our Values" : "قيمنا"}
+                </h3>
+              </div>
+              <p
+                className="card-content"
+                data-en="Innovation, Sustainability, Quality, Empowerment, Leadership, Giving, Collaboration, Inclusivity, Respect, and Promoting Tech Awareness."
+                data-ar="الابتكار، الاستدامة، الجودة، التمكين، الريادة، العطاء، التعاون، الشمولية، الاحترام، تعزيز الوعي التقني."
+              >
+                {language === "en"
+                  ? "Innovation, Sustainability, Quality, Empowerment, Leadership, Giving, Collaboration, Inclusivity, Respect, and Promoting Tech Awareness."
+                  : "الابتكار، الاستدامة، الجودة، التمكين، الريادة، العطاء، التعاون، الشمولية، الاحترام، تعزيز الوعي التقني."}
+              </p>
             </div>
           </div>
         </div>
