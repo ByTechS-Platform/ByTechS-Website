@@ -50,8 +50,9 @@ const Hero = () => {
               ? "بالتقنية نبني المستقبل"
               : "Creating The Future Within"}
           </p>
-          <h1 data-en="COMING SOON ..." data-ar="قريباً ...">
-            {activeLanguage === "ar" ? "قريباً ..." : "COMING SOON ..."}
+
+          <h1 data-en="COMING SOON ..." data-ar="... قــريــبـاً ">
+            COMING SOON •••
           </h1>
           
           <div className="progress-bar-wrapper">
