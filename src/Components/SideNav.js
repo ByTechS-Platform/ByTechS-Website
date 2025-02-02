@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "../Styles/SideNav.scss"; // Optional: for styling the side nav
 
 const SideNav = () => {
   const [activeSection, setActiveSection] = useState("home"); // Track the active section
   const [isLightBackground, setIsLightBackground] = useState(false);
-  const sections = ["home", "contact", "news", "follow"]; // IDs of your sections
+  const sections = useMemo(
+    () => ["home", "about", "communities", "news", "contact"],
+    []
+  );
+ // IDs of your sections
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +37,7 @@ const SideNav = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [sections]);
 
   return (
     <div className="side-nav">

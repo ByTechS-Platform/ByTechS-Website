@@ -1,10 +1,25 @@
 .App {
-  text-align: center;
+  // text-align: center;
   body {
     margin: 0;
-    font-family: "29LT Zawi";
+    // font-family: "IBM Plex Sans";
     background-color: #5843ed;
     color: #ffffff;
     overflow-x: hidden;
+  }
+  section {
+    padding: 20px 80px;
+  }
+  // Alignment classes
+  .align-left {
+    align-items: end;
+    text-align: left;
+    font-family: "IBM Plex Sans";
+  }
+  .align-right {
+    align-content: start;
+    direction: rtl;
+    text-align: right;
+    font-family: "IBM Plex Sans Arabic";
   }
 }

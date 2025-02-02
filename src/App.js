@@ -6,10 +6,11 @@ import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import JoinUs from './Components/JoinUs';
 
+
 function App() {
 
-   const [isLightMode, setIsLightMode] = useState(false);
-   const [activeSection, setActiveSection] = useState("home");
+   const [isLightMode] = useState(false);
+   const [activeSection] = useState("home");
 
   return (
     <div className="App">
@@ -20,7 +21,6 @@ function App() {
           <Route path="/join-us" element={<JoinUs />} />
         </Routes>
       </Router>
-
       <Footer />
     </div>
   );

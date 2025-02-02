@@ -5,7 +5,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-import FollowUs from "./FollowUs";
+// import FollowUs from "./FollowUs";
 import "../Styles/News.scss";
 
 // Airtable config (move these to a secure environment in production)
@@ -18,7 +18,7 @@ const News = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeLanguage, setActiveLanguage] = useState("en");
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
 
@@ -185,7 +185,7 @@ const News = () => {
       </section>
 
       {/* Render FollowUs component and pass the last image URL */}
-      <FollowUs followImage={lastNewsImageUrl} />
+      {/* <FollowUs followImage={lastNewsImageUrl} /> */}
     </>
   );
 };

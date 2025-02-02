@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "../Styles/ContactUs.scss";
 import emailjs from "emailjs-com";
 import { validateForm } from "../utils/formUtils"; // Optional: form validation utility
@@ -8,6 +8,7 @@ import shape3 from "../assets/shapesContactPage3.png";
 
 const ContactUs = () => {
   const formRef = useRef(null); // Reference for the form
+  const [activeLanguage, setActiveLanguage] = useState("en");
 
   // Handle form submission
   const handleSubmit = (event) => {
@@ -16,24 +17,36 @@ const ContactUs = () => {
 
     // Optionally validate the form
     if (validateForm(form)) {
-       emailjs
-         .sendForm(
-           "service_8ejml3s",
-           "template_ax08khh",
-           form,
-           "E605m3_HIompvEY5J"
-         )
-         .then((response) => {
-           console.log("SUCCESS!", response.status, response.text);
-           alert("Message sent successfully!");
-           form.reset();
-         })
-         .catch((error) => {
-           console.error("FAILED...", error);
-           alert("Message failed to send. Please try again.");
-         });
+      emailjs
+        .sendForm(
+          "service_8ejml3s",
+          "template_ax08khh",
+          form,
+          "E605m3_HIompvEY5J"
+        )
+        .then((response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Message sent successfully!");
+          form.reset();
+        })
+        .catch((error) => {
+          console.error("FAILED...", error);
+          alert("Message failed to send. Please try again.");
+        });
     }
   };
+
+  useEffect(() => {
+    const handleLanguageSwitch = (event) => {
+      const { lang } = event.detail;
+      setActiveLanguage(lang);
+    };
+
+    // Listen for language changes (if triggered globally)
+    window.addEventListener("languageChange", handleLanguageSwitch);
+    return () =>
+      window.removeEventListener("languageChange", handleLanguageSwitch);
+  }, []);
 
   return (
     <section id="contact" className="contact">
@@ -47,7 +60,11 @@ const ContactUs = () => {
           </div>
         </div>
 
-        <div className="content">
+        <div
+          className={`content ${
+            activeLanguage === "ar" ? "align-right" : "align-left"
+          }`}
+        >
           <h2 data-en="Contact Us" data-ar="اتصل بنا">
             Contact Us
           </h2>
@@ -113,20 +130,22 @@ const ContactUs = () => {
             </button>
           </form>
 
-          <p
+          <a
+            href="https://s48vtcw2aje.typeform.com/to/bjlhJnv1"
             className="join-us"
             data-en="Join Our Team "
             data-ar="إنضم لفريقنا "
           >
             Join Our Team
-            <a
-              href="https://ykpx11ahkzn.typeform.com/to/kJvy5Efs"
+            {/* <a
+              href="https://s48vtcw2aje.typeform.com/to/bjlhJnv1"
+
               data-en="Now"
               data-ar="الآن"
             >
               &nbsp;Now
-            </a>
-          </p>
+            </a> */}
+          </a>
         </div>
       </div>
     </section>

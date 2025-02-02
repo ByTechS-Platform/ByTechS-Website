@@ -1,4 +1,4 @@
-// languageUtils.js
+// // languageUtils.js
 export function switchLanguage(lang) {
   // Update elements with data attributes
   document.querySelectorAll("[data-en]").forEach((element) => {

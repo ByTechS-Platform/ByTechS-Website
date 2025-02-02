@@ -1,78 +1,99 @@
-/* =================================
-   Contact Us Section
-================================= */
-.contact {
+@import "../styles/variables";
+
+.about {
   background-color: rgb(255, 255, 255);
-  color: #282a36;
+  color: $prime;
 
   .container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 5% 7% 1% 2%;
+    padding: 5% 0% 1% 0%;
     min-height: 90vh;
     position: relative;
     // flex-direction: row; /* Default layout for larger screens */
 
     .content {
-      flex: 1;
-      background-color: #5552e1;
       padding: 40px;
       border-radius: 20px;
-      max-width: 500px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 65%;
+      // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
-      .join-us {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 13px;
-        margin: 20px 0 0 0;
-        color: #ffffff;
+      h2 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #5552e1;
       }
-    }
+      p {
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #1d1c4f;
+        font-weight: 400;
+        line-height: 32px;
+        text-align: justify;
+      }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+      .cards-wrapper {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr; // Default: single column for small screens
+        gap: 20px; // Space between grid items
 
-    .form-group {
-      display: flex;
-      gap: 15px;
-    }
+        .card {
+          background-color: #fff;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+          padding: 40px 20px 20px 20px;
 
-    form input,
-    form textarea {
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid #cccccc;
-      background-color: #f9f9f9;
-      color: #282a36;
-      font-size: 14px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      // width: 100%;
-    }
+          .card-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img {
+              width: 30px;
+              height: auto;
+            }
+            
+            h3 {
+              font-size: 18px;
+              color: #5552e1;
+            }
+          }
 
-    form textarea {
-      resize: none;
-      height: 100px;
-    }
+          p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #1d1c4f;
+          }
 
-    form button {
-      background-color: #6272a4;
-      color: rgb(255, 255, 255);
-      padding: 15px;
-      border: none;
-      cursor: pointer;
-      border-radius: 10px;
-      font-size: 16px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
+          li {
+            font-size: 16px;
+            color: #1d1c4f;
+            margin-bottom: 10px;
+            text-align: justify;
+          }
 
-    .contact form button:hover {
-      background-color: #5350a6;
+          .goal {
+            padding: auto;
+          }
+        }
+
+        // Responsive Layout for Tablets and Desktops
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr; // Two columns for tablets and desktops
+          grid-template-rows: auto auto; // Two rows
+
+          .card.mission {
+            grid-column: 1; // Place mission cards in the first column
+          }
+
+          .card.goal {
+            grid-column: 2; // Place goal card in the second column
+            grid-row: span 2; // Make it span both rows
+          }
+        }
+      }
     }
   }
   @media (max-width: 1500px) {
@@ -97,11 +118,11 @@
       }
 
       .content {
-        flex: 2;
+        flex: 4;
       }
     }
     .illustration {
-      flex: 1;
+      flex: 0.25;
       position: relative;
       width: 90%;
       max-width: 90%;
@@ -119,26 +140,15 @@
         z-index: 1;
       }
 
-      .shapes img {
-        width: 110px;
+      .BytechsPurple img {
+        width: 100%;
       }
 
-      .shape {
+      .BytechsPurple {
         opacity: 0;
         transform: translateY(50px);
         animation: fadeInUp 1s ease forwards;
-      }
-
-      .shape-1 {
         animation-delay: 0.5s;
-      }
-
-      .shape-2 {
-        animation-delay: 1s;
-      }
-
-      .shape-3 {
-        animation-delay: 1.5s;
       }
 
       @keyframes fadeInUp {
@@ -158,7 +168,7 @@
   @media (max-width: 1024px) {
     .container {
       flex-direction: row;
-      padding: 5%;
+      padding: 4% 5%;
       align-items: center;
 
       .content {
@@ -187,8 +197,6 @@
 
         .shapes {
           margin: 0;
-          margin-top: 70%;
-          margin-right: 25%;
           img {
             width: 90px;
           }
@@ -229,8 +237,6 @@
         .shapes {
           margin: 1%;
           gap: 10px;
-          margin-right: 40%;
-          margin-top: 10%;
           img {
             width: 78px;
           }
@@ -242,8 +248,6 @@
   @media (max-width: 480px) {
     .container {
       padding: 10%;
-      margin-left: -20%;
-      margin-right: -20%;
       min-height: auto;
 
       .content {

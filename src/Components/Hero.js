@@ -1,5 +1,4 @@
-// Hero.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../Styles/Hero.scss";
 import shape1 from "../assets/shapesHomePage1.png";
 import shape2 from "../assets/shapesHomePage2.png";
@@ -11,35 +10,62 @@ const Hero = () => {
   const progressBarRef = useRef(null);
   const progressNumberRef = useRef(null);
 
+  // State for active language
+  const [activeLanguage, setActiveLanguage] = useState("en");
+
+  // Effect to animate progress bar
   useEffect(() => {
     if (progressBarRef.current && progressNumberRef.current) {
-      animateProgressBar(progressBarRef, progressNumberRef); // Call the function only when refs are ready
+      animateProgressBar(progressBarRef, progressNumberRef);
     }
-  }, [progressBarRef, progressNumberRef]); // Add refs to dependencie
+  }, []);
+
+  // Effect to listen for language changes
+  useEffect(() => {
+    const handleLanguageSwitch = (event) => {
+      const { lang } = event.detail;
+      setActiveLanguage(lang);
+    };
+
+    // Add event listener for global language changes
+    window.addEventListener("languageChange", handleLanguageSwitch);
+    return () =>
+      window.removeEventListener("languageChange", handleLanguageSwitch);
+  }, []);
 
   return (
     <section id="home" className="section home">
-      <div className="container">
+      <div
+        className={`container ${
+          activeLanguage === "ar" ? "align-right" : "align-left"
+        }`}
+      >
         <div className="content">
           <p
             className="T1"
             data-en="Creating The Future Within"
             data-ar="بالتقنية نبني المستقبل"
           >
-            Creating The Future Within
+            {activeLanguage === "ar"
+              ? "بالتقنية نبني المستقبل"
+              : "Creating The Future Within"}
           </p>
+
           <h1 data-en="COMING SOON ..." data-ar="... قــريــبـاً ">
             COMING SOON •••
           </h1>
+          
+          <div className="progress-bar-wrapper">
           <div className="progress-bar">
             <div ref={progressBarRef} className="progress"></div>
+          </div>
             <span ref={progressNumberRef} id="progress-number">
               0%
             </span>
-          </div>
+            </div>
         </div>
 
-        {/* <!-- Illustration Images --> */}
+        {/* Illustration Images */}
         <div className="illustration">
           <div className="shapes">
             <img src={shape1} alt="Shape 1" className="shape shape-1"></img>

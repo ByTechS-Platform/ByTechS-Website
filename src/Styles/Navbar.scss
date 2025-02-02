@@ -2,12 +2,19 @@ nav {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center !important;
+  text-align: start !important;
   padding: 20px;
   z-index: 1000;
+
+  .logo-elements {
+    display: flex;
+    align-items: center;
+  }
 
   /* Navigation Links and Buttons */
   a,
@@ -18,15 +25,9 @@ nav {
 
   /* Logo Styles */
   .logo {
-    margin-left: 10%;
+    // margin-left: 10%;
     transition: 0.3s ease;
   }
-
-  /* Light Mode Navigation Styles */
-  // .light-mode a,
-  // .light-mode .burger-menu .burger-links a {
-  //   color: #000000;
-  // }
 
   .light-mode .burger-icon span {
     background-color: #000000;
@@ -35,7 +36,6 @@ nav {
   .light-mode .language-switch button {
     color: #5552e1;
   }
-
 }
 .isLightBackground .language-switch button.active {
   color: #000000;
@@ -85,7 +85,7 @@ nav {
       font-size: 14px;
       font-weight: bold;
       color: rgb(255, 255, 255);
-      font-family: "29LT ZawiBold";
+      // font-family: "IBM Plex SansBold";
       text-align: center;
       transition: background-color 0.3s ease, color 0.3s ease;
       outline: none;
@@ -157,7 +157,7 @@ nav {
       font-size: 12px;
       font-weight: bold;
       color: rgb(255, 255, 255);
-      font-family: "29LT ZawiBold";
+      // font-family: "IBM Plex SansBold";
       text-align: center;
       transition: background-color 0.3s ease, color 0.3s ease;
       outline: none;
@@ -183,7 +183,8 @@ nav {
   nav {
     img.logo {
       height: auto;
-      width: 140px;
+      width: 120px;
+      margin-left: 35%;
     }
 
     .nav-links {
@@ -262,7 +263,7 @@ nav {
             font-size: 12px;
             font-weight: bold;
             color: rgb(255, 255, 255);
-            font-family: "29LT ZawiBold";
+            // font-family: "IBM Plex SansBold";
             text-align: center;
             transition: background-color 0.3s ease, color 0.3s ease;
             outline: none;
