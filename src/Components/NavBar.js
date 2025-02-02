@@ -135,7 +135,46 @@ const NavBar = () => {
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
           ></span>
         </div>
-        <ul className="burger-links">{renderNavLinks()}</ul>
+        <ul className="burger-links">
+          {renderNavLinks()}
+          <div className="language-switch">
+            <button
+              className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
+              onClick={toggleLanguage}
+              style={{
+                color:
+                  activeLanguage === "en"
+                    ? isLightBackground
+                      ? "#5552e1"
+                      : "#5552e1"
+                    : isLightBackground
+                    ? "#333"
+                    : "#ddd",
+              }}
+              aria-label="Switch to English"
+            >
+              English
+            </button>
+            <button
+              className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
+              onClick={toggleLanguage}
+              style={{
+                color:
+                  activeLanguage === "ar"
+                    ? isLightBackground
+                      ? "#5552e1"
+                      : "#5552e1"
+                    : isLightBackground
+                    ? "#333"
+                    : "#ddd",
+              }}
+              aria-label="Switch to Arabic"
+            >
+              العربية
+            </button>
+            <noscript>Please enable JavaScript to switch languages</noscript>
+          </div>
+        </ul>
       </div>
     </nav>
   );
