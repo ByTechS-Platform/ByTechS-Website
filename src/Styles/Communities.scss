@@ -3,6 +3,7 @@
 .communities{
     background-color: $white;
     min-height: 100vh;
+    // padding: 5% 0;
 }
 .cards-container {
   display: flex;
@@ -22,21 +23,29 @@
     }
 
     .card-details {
-      text-align: center;
       width: 80%;
 
-      .card-lg-image {
+      .image-container{
         width: 100%;
+        max-width: 500px;
         border-radius: 10px;
         margin-bottom: 15px;
+        background-color: $grey-light;
+        border: 2px solid $prime;
+      }
+      .card-lg-image {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+
       }
 
       .card-title {
-        font-weight: bold;
+        font-weight: bolder;
         margin-bottom: 5px;
         font-weight: normal;
         color: $prime;
-        text-align: left;
       }
 
       .tabs-container {
@@ -69,7 +78,6 @@
       }
 
       .tab-content {
-        text-align: left;
         margin-top: 15px;
         padding: 10px;
 
@@ -97,12 +105,18 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    align-items: center;
+    margin-top: 40px;
+    align-items: start;
     justify-content: start;
     background-color: #fff;
     // padding: 20px;
 
     .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
       width: 200px;
       height: 230px;
       cursor: pointer;
@@ -126,7 +140,7 @@
         color: $prime;
         font-weight: bold;
         margin: 5px;
-        text-align: left;
+        text-align: center;
       }
     }
   }
