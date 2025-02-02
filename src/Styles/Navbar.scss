@@ -11,7 +11,7 @@ nav {
   padding: 20px;
   z-index: 1000;
 
-  .logo-elements{
+  .logo-elements {
     display: flex;
     align-items: center;
   }
@@ -183,7 +183,8 @@ nav {
   nav {
     img.logo {
       height: auto;
-      width: 140px;
+      width: 120px;
+      margin-left: 35%;
     }
 
     .nav-links {
