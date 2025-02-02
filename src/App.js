@@ -1,12 +1,11 @@
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.scss';
-import ContactUs from './Components/ContactUs';
-import Hero from './Components/Hero';
+import Home from './Home';
 import NavBar from './Components/NavBar';
-import News from './Components/News';
 import Footer from './Components/Footer';
-import AboutUs from './Components/AboutUs';
-import Communities from './Components/Communities';
+import JoinUs from './Components/JoinUs';
+
 
 function App() {
 
@@ -15,12 +14,13 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar isLightMode={isLightMode} activeSection={activeSection} />
-      <Hero />
-      <AboutUs />
-      <Communities />
-      <News />
-      <ContactUs />
+      <Router>
+        <NavBar isLightMode={isLightMode} activeSection={activeSection} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/join-us" element={<JoinUs />} />
+        </Routes>
+      </Router>
       <Footer />
     </div>
   );

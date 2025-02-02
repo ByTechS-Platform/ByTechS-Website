@@ -71,7 +71,6 @@ const NavBar = () => {
   return (
     <nav
       style={{ color: isLightBackground ? "black" : "white" }}
-      className={activeLanguage === "ar" ? "align-right" : "align-left"}
     >
       <div className="logo-elements">
         <img
