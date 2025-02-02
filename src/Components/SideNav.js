@@ -5,7 +5,7 @@ const SideNav = () => {
   const [activeSection, setActiveSection] = useState("home"); // Track the active section
   const [isLightBackground, setIsLightBackground] = useState(false);
   const sections = useMemo(
-    () => ["home", "about", "news", "contact"],
+    () => ["home", "about", "communities", "news", "contact"],
     []
   );
  // IDs of your sections
