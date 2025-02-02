@@ -9,10 +9,10 @@ const baseId = "app9KzhrevXRJVMgJ";
 const tableName = "JoinUs";
 
 const JoinUs = () => {
-  // Track the current step (1: Personal, 2: Academic/Professional, 3: Activities/Commitment)
+  // Track the current step (1: Personal, 2: Academic/Experience/Commitment, 3: Community Selection)
   const [step, setStep] = useState(1);
 
-  // Our form state now includes all fields
+  // Our form state now includes all fields plus the new "community" field
   const [formData, setFormData] = useState({
     // Step 1: Personal Information
     nameAr: "",
@@ -24,17 +24,17 @@ const JoinUs = () => {
     email: "",
     phone: "",
     residence: "",
+    proAccounts: "", // Changed to "proAccounts" for the input placeholder
+    // You also have these fields from your earlier code. If not needed, you can remove them:
     githubAccounts: "",
     linkedInbAccounts: "",
     otherLink: "",
 
-    // Step 2: Academic and Professional Information
+    // Combined Step 2: Academic, Professional & Experience Information
     major: "",
     degree: "",
     hasCertificates: "", // "Yes" or "No"
     certificatesDetails: "",
-
-    // Step 3: Activities, Experiences, Commitment, and Terms
     hasExperience: "", // "Yes" or "No"
     experienceDetails: "",
     whyByTechs: "",
@@ -42,13 +42,16 @@ const JoinUs = () => {
     expectation: "",
     commitment: "", // "Yes" or "No"
     terms: "", // "Yes" or "No"
+
+    // Step 3: Community Selection
+    community: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(null);
   const [error, setError] = useState(null);
 
-  // Generic change handler for inputs, radio buttons, and checkboxes
+  // Generic change handler for inputs and radio buttons
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -80,20 +83,25 @@ const JoinUs = () => {
         Email: formData.email,
         Phone_Number: formData.phone,
         Residency: formData.residence,
+        // Using the professional accounts as provided:
         Github_Account: formData.githubAccounts,
         Linkedin_Account: formData.linkedInbAccounts,
         Other_Link: formData.otherLink,
+        // Alternatively, you could use proAccounts if that’s your intended field.
+        // Professional_Accounts: formData.proAccounts,
         Major: formData.major,
         Academic_Qualification: formData.degree,
-        // Relative_Certificates: formData.hasCertificates,
+        // Relative Certificates – if the user said “Yes,” then certificatesDetails should be filled.
         Relative_Certificates: formData.certificatesDetails,
-        // Work_Volunteer_Experience: formData.hasExperience,
+        // Experience details
         Relative_experience: formData.experienceDetails,
         Why_ByTechs: formData.whyByTechs,
         Hear_From: formData.hearAbout,
         Expectation: formData.expectation,
         Commitment: formData.commitment,
         Terms_and_Conditions: formData.terms,
+        // New community field from Step 3
+        Community: formData.community,
       },
     };
 
@@ -121,6 +129,9 @@ const JoinUs = () => {
         phone: "",
         residence: "",
         proAccounts: "",
+        githubAccounts: "",
+        linkedInbAccounts: "",
+        otherLink: "",
         major: "",
         degree: "",
         hasCertificates: "",
@@ -132,6 +143,7 @@ const JoinUs = () => {
         expectation: "",
         commitment: "",
         terms: "",
+        community: "",
       });
       setStep(1);
     } catch (error) {
@@ -143,6 +155,15 @@ const JoinUs = () => {
       setLoading(false);
     }
   };
+
+  // List of communities for the selection cards (adjust names and details as needed)
+  const communities = [
+    "Community 1",
+    "Community 2",
+    "Community 3",
+    "Community 4",
+    "Community 5",
+  ];
 
   return (
     <div className="join-us-page">
@@ -249,9 +270,23 @@ const JoinUs = () => {
               />
               <input
                 type="text"
-                name="proAccounts"
-                placeholder="Professional Accounts (LinkedIn, GitHub, etc.) (Optional)"
-                value={formData.proAccounts}
+                name="githubAccounts"
+                placeholder="GitHub Account (Optional)"
+                value={formData.githubAccounts}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="linkedInbAccounts"
+                placeholder="LinkedIn Account (Optional)"
+                value={formData.linkedInbAccounts}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="otherLink"
+                placeholder="Portfolio or other account (Optional)"
+                value={formData.otherLink}
                 onChange={handleChange}
               />
 
@@ -261,10 +296,10 @@ const JoinUs = () => {
             </div>
           )}
 
-          {/* Step 2: Academic and Professional Information */}
+          {/* Step 2: Combined Academic/Experience/Commitment Information */}
           {step === 2 && (
             <div className="step step-2">
-              <h3>Academic and Professional Information</h3>
+              <h3>Academic, Professional &amp; Experience Information</h3>
               <input
                 type="text"
                 name="major"
@@ -319,21 +354,6 @@ const JoinUs = () => {
                 ></textarea>
               )}
 
-              <div className="navigation-buttons">
-                <button type="button" onClick={prevStep}>
-                  Back
-                </button>
-                <button type="button" onClick={nextStep}>
-                  Next
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Activities, Experiences, Commitment, and Terms */}
-          {step === 3 && (
-            <div className="step step-3">
-              <h3>Activities and Experiences</h3>
               <div className="radio-group">
                 <p>Do you have any relevant work or volunteer experience?</p>
                 <label>
@@ -454,7 +474,47 @@ const JoinUs = () => {
                 <button type="button" onClick={prevStep}>
                   Back
                 </button>
-                <button type="submit" disabled={loading}>
+                <button type="button" onClick={nextStep}>
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3: Community Selection via Cards */}
+          {step === 3 && (
+            <div className="step step-3">
+              <h3>Select Your Community</h3>
+              <div className="community-cards">
+                {communities.map((communityName, index) => (
+                  <div
+                    key={index}
+                    className={`community-card ${
+                      formData.community === communityName ? "selected" : ""
+                    }`}
+                    onClick={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        community: communityName,
+                      }))
+                    }
+                    style={{
+                      border: "1px solid #ccc",
+                      padding: "1rem",
+                      margin: "0.5rem",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <h4>{communityName}</h4>
+                    <p>Details about {communityName}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="navigation-buttons">
+                <button type="button" onClick={prevStep}>
+                  Back
+                </button>
+                <button type="submit" disabled={!formData.community || loading}>
                   {loading ? "Submitting..." : "Submit"}
                 </button>
               </div>
