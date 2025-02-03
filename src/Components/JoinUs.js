@@ -108,6 +108,45 @@ const translations = {
   no: { en: "No", ar: "لا" },
 };
 
+////////////////////////////////////////////////////////////////
+const communities = [
+  {
+    name: { en: "Community 1", ar: "المجتمع 1" },
+    details: {
+      en: "Details about Community 1",
+      ar: "تفاصيل عن المجتمع 1",
+    },
+  },
+  {
+    name: { en: "Community 2", ar: "المجتمع 2" },
+    details: {
+      en: "Details about Community 2",
+      ar: "تفاصيل عن المجتمع 2",
+    },
+  },
+  {
+    name: { en: "Community 3", ar: "المجتمع 3" },
+    details: {
+      en: "Details about Community 3",
+      ar: "تفاصيل عن المجتمع 3",
+    },
+  },
+  {
+    name: { en: "Community 4", ar: "المجتمع 4" },
+    details: {
+      en: "Details about Community 4",
+      ar: "تفاصيل عن المجتمع 4",
+    },
+  },
+  {
+    name: { en: "Community 5", ar: "المجتمع 5" },
+    details: {
+      en: "Details about Community 5",
+      ar: "تفاصيل عن المجتمع 5",
+    },
+  },
+];
+
 const JoinUs = () => {
   // Access the active language from context
   const { language } = useLanguage();
@@ -321,13 +360,13 @@ const JoinUs = () => {
   };
 
   // List of communities for the selection cards (adjust names and details as needed)
-  const communities = [
-    "Community 1",
-    "Community 2",
-    "Community 3",
-    "Community 4",
-    "Community 5",
-  ];
+  // const communities = [
+  //   "Community 1",
+  //   "Community 2",
+  //   "Community 3",
+  //   "Community 4",
+  //   "Community 5",
+  // ];
 
   return (
     <section
@@ -740,21 +779,24 @@ const JoinUs = () => {
               <div className="step step-3">
                 <h3>{translations.communitySelection[language]}</h3>
                 <div className="community-cards">
-                  {communities.map((communityName, index) => (
+                  {communities.map((community, index) => (
                     <div
                       key={index}
                       className={`community-card ${
-                        formData.community === communityName ? "selected" : ""
+                        formData.community === community.name.en
+                          ? "selected"
+                          : ""
                       }`}
                       onClick={() =>
+                        // Store the English name in the form data
                         setFormData((prev) => ({
                           ...prev,
-                          community: communityName,
+                          community: community.name.en,
                         }))
                       }
                     >
-                      <h4>{communityName}</h4>
-                      <p>Details about {communityName}</p>
+                      <h4>{community.name[language]}</h4>
+                      <p>{community.details[language]}</p>
                     </div>
                   ))}
                 </div>
