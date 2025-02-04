@@ -84,6 +84,7 @@ const News = () => {
     return <p>{error}</p>; // Display the error message if any
   }
 
+  // eslint-disable-next-line no-unused-vars
   const lastNewsImageUrl =
     newsData.length > 0 ? newsData[0].fields.Image[0].url : "";
 

@@ -145,3 +145,15 @@
     }
   }
 }
+@media (max-width: 768px){
+ .communities{
+    padding: 20px !important;
+ }   
+ .cards-container{
+    flex-direction: column-reverse;
+
+    .right-panel{
+        justify-content: center;
+    }
+ }
+}
