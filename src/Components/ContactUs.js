@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "../Styles/ContactUs.scss";
 import emailjs from "emailjs-com";
+import { Link } from "react-router-dom";
 import { validateForm } from "../utils/formUtils"; // Optional: form validation utility
 import shape1 from "../assets/shapesContactPage1.png";
 import shape2 from "../assets/shapesContactPage2.png";
@@ -130,22 +131,13 @@ const ContactUs = () => {
             </button>
           </form>
 
-          <a
-            href="https://s48vtcw2aje.typeform.com/to/bjlhJnv1"
+          <Link to="/join-us"
             className="join-us"
             data-en="Join Our Team "
             data-ar="إنضم لفريقنا "
           >
             Join Our Team
-            {/* <a
-              href="https://s48vtcw2aje.typeform.com/to/bjlhJnv1"
-
-              data-en="Now"
-              data-ar="الآن"
-            >
-              &nbsp;Now
-            </a> */}
-          </a>
+          </Link>
         </div>
       </div>
     </section>

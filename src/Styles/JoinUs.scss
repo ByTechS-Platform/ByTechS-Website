@@ -80,15 +80,16 @@
 
     p {
       margin-bottom: 0.5rem;
-      font-weight: bold;
     }
 
     label {
       margin-right: 1.5rem;
       cursor: pointer;
+      display: flex;
 
       input {
         margin-right: 0.5rem;
+        width: auto;
       }
     }
   }

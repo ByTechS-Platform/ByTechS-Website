@@ -16,6 +16,13 @@ nav {
     align-items: center;
   }
 
+  .nav-links {
+
+      li button{
+        background: none;
+        border: none;
+      }
+    }
   /* Navigation Links and Buttons */
   a,
   .language-switch button {
@@ -127,6 +134,7 @@ nav {
       gap: 50px;
       margin-right: auto;
       margin-top: 30px;
+
     }
 
     .nav-links a {

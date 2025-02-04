@@ -1,4 +1,4 @@
-import AssistiveTechnology from "./assets/1.png";
+// import AssistiveTechnology from "./assets/1.png";
 import E_Sport from "./assets/7.png";
 import SupplyChainlogistics from "./assets/z2.png";
 import DigitalMarketing from "./assets/c3.png";
@@ -124,7 +124,7 @@ const CommunitiesData = [
   {
     id: 4,
     image: DigitalMarketing,
-    title: "Digital Marketing.",
+    title: "Digital Marketing",
     titleAr: "مجتمع التسويق الرقمي",
     distinctive:
       "Empowering those interested in digital marketing with the latest skills and strategies. Also, Supporting beginners by providing a solid foundation to enter the field",

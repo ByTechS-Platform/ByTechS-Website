@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
+// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// ⚠️ Note: In production you should not expose your Airtable API key in client-side code.
 const airtableApiKey =
   "pat042Mj9r5Dx98ff.d155c54347ad8585d7dfac9236640398c2592d36036b4f53722c8e1875a6bea1";
 const baseId = "app9KzhrevXRJVMgJ";
@@ -111,43 +112,51 @@ const translations = {
 ////////////////////////////////////////////////////////////////
 const communities = [
   {
-    name: { en: "Community 1", ar: "المجتمع 1" },
+    name: { en: "ByTechs eSports", ar: "مجتمع الرياضات الإلكترونية" },
     details: {
-      en: "Details about Community 1",
-      ar: "تفاصيل عن المجتمع 1",
+      en: "A community that combines e-sports and technical development to enhance skills in gaming and teamwork. Also, it provides an environment that blends passion for gaming with the development of technical and managerial skills.",
+      ar: " مجتمع يجمع بين الرياضات الإلكترونية والتطوير التقني لتطوير المهارات في الألعاب والعمل الجماعي. ويوفر بيئة تجمع بين شغف الألعاب وتنمية المهارات التقنية والإدارية.",
     },
   },
   {
-    name: { en: "Community 2", ar: "المجتمع 2" },
+    name: {
+      en: "ByTechs Supply Chain & Logistics",
+      ar: "مجتمع سلاسل الإمداد والخدمات اللوجستية",
+    },
     details: {
-      en: "Details about Community 2",
-      ar: "تفاصيل عن المجتمع 2",
+      en: "Focuses on empowering members through hands-on workshops and innovative programs. Provides awareness opportunities to apply and transfer knowledge to the community.",
+      ar: "يركز على تمكين الأعضاء عبر ورش عمل عملية وبرامج مبتكرة. ويقدم فرص توعية لتطبيق المعرفة ونقلها للمجتمع.",
     },
   },
   {
-    name: { en: "Community 3", ar: "المجتمع 3" },
+    name: { en: "Digital Marketing", ar: "مجتمع التسويق الرقمي" },
     details: {
-      en: "Details about Community 3",
-      ar: "تفاصيل عن المجتمع 3",
+      en: "Empowering those interested in digital marketing with the latest skills and strategies. Also, Supporting beginners by providing a solid foundation to enter the field",
+      ar: "تمكين المهتمين بالتسويق الرقمي عبر أحدث المهارات والاستراتيجيات. ودعم المبتدئين بتوفير أساس قوي لدخول المجال.",
     },
   },
   {
-    name: { en: "Community 4", ar: "المجتمع 4" },
+    name: { en: "IT Department", ar: "قسم تقنية المعلومات" },
     details: {
-      en: "Details about Community 4",
-      ar: "تفاصيل عن المجتمع 4",
+      en: "A specialized team in developing innovative technical solutions that meet ByTechS's needs, and maintaining and continuously updating ByTechS's digital platforms.",
+      ar: "فريق متخصص في تطوير الحلول التقنية المبتكرة التي تلبي احتياجات بايتكس، إضافةً إلى صيانة وتحديث منصات بايتكس الرقمية بشكل مستمر.",
     },
   },
   {
-    name: { en: "Community 5", ar: "المجتمع 5" },
+    name: {
+      en: "PR & Communications Department",
+      ar: "قسم الاتصال الداخلي والعلاقات العامة",
+    },
     details: {
-      en: "Details about Community 5",
-      ar: "تفاصيل عن المجتمع 5",
+      en: "It fosters a work environment defined by transparency and open communication. and develops internal communication and public relations skills in an innovative way.",
+      ar: "يعزز بيئة عمل تتسم بالشفافية والتواصل المفتوح.ويطور مهارات الاتصال الداخلي والعلاقات العامة بشكل مبتكر",
     },
   },
 ];
 
 const JoinUs = () => {
+   // eslint-disable-next-line no-unused-vars
+   const navigate = useNavigate();
   // Access the active language from context
   const { language } = useLanguage();
 
@@ -188,6 +197,11 @@ const JoinUs = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(null);
   const [error, setError] = useState(null);
+
+  const handleScrollToSection = (sectionId) => {
+    const url = `${window.location.origin}/#${sectionId}`;
+    window.open(url, "_blank"); // Opens the section in a new tab
+  };
 
   // Generic change handler for inputs and radio buttons
   const handleChange = (e) => {
@@ -288,12 +302,9 @@ const JoinUs = () => {
         Email: formData.email,
         Phone_Number: formData.phone,
         Residency: formData.residence,
-        // Using the professional accounts as provided:
         Github_Account: formData.githubAccounts,
         Linkedin_Account: formData.linkedInbAccounts,
         Other_Link: formData.otherLink,
-        // Alternatively, you could use proAccounts if that’s your intended field.
-        // Professional_Accounts: formData.proAccounts,
         Major: formData.major,
         Academic_Qualification: formData.degree,
         Relative_Certificates: formData.certificatesDetails,
@@ -778,6 +789,14 @@ const JoinUs = () => {
             {step === 3 && (
               <div className="step step-3">
                 <h3>{translations.communitySelection[language]}</h3>
+                <button
+                  onClick={() => handleScrollToSection("communities")}
+                  className="comumunities-details-button"
+                >
+                  <span data-en="To know more details about communities click here" data-ar="لتعرف اكثر عن المجتمعات اضغط هنا">
+                    Join Our Team
+                  </span>
+                </button>
                 <div className="community-cards">
                   {communities.map((community, index) => (
                     <div

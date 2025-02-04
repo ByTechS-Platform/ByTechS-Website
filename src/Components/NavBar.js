@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; // Import routing hooks
 import "../Styles/Navbar.scss";
 import logo from "../assets/logo.png";
 import coloredLogo from "../assets/BytechsColor.png";
@@ -8,6 +9,8 @@ const NavBar = () => {
   const [activeLanguage, setActiveLanguage] = useState("en");
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [isLightBackground, setIsLightBackground] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Emit global language change event
   const toggleLanguage = () => {
@@ -45,33 +48,39 @@ const NavBar = () => {
 
   const toggleBurgerMenu = () => setBurgerMenuOpen((prevState) => !prevState);
 
+  // Function to navigate to the home page and scroll to the correct section
+  const handleNavigation = (section) => {
+    if (location.pathname !== "/") {
+      navigate(`/#${section}`);
+    } else {
+      window.location.hash = section; // If already on home, just update hash
+    }
+  };
+
   const renderNavLinks = () => {
     const links = [
-      { href: "#home", en: "Home", ar: "الرئيسية" },
-      { href: "#contact", en: "About Us", ar: "من نحن؟" },
-      { href: "#about", en: "Contact Us", ar: "تواصل معنا" },
-      { href: "#news", en: "News", ar: "الأخبار" },
-      { href: "#follow", en: "Follow Us", ar: "تابعنا" },
+      { href: "home", en: "Home", ar: "الرئيسية" },
+      { href: "about", en: "About Us", ar: "من نحن؟" },
+      { href: "contact", en: "Contact Us", ar: "تواصل معنا" },
+      { href: "news", en: "News", ar: "الأخبار" },
     ];
 
     return links.map((link) => (
       <li key={link.href}>
-        <a
-          href={link.href}
+        <button
+          onClick={() => handleNavigation(link.href)}
           data-en={link.en}
           data-ar={link.ar}
           style={{ color: isLightBackground ? "black" : "white" }}
         >
           {activeLanguage === "en" ? link.en : link.ar}
-        </a>
+        </button>
       </li>
     ));
   };
 
   return (
-    <nav
-      style={{ color: isLightBackground ? "black" : "white" }}
-    >
+    <nav style={{ color: isLightBackground ? "black" : "white" }}>
       <div className="logo-elements">
         <img
           src={isLightBackground ? coloredLogo : logo}
@@ -116,7 +125,6 @@ const NavBar = () => {
         >
           العربية
         </button>
-        <noscript>Please enable JavaScript to switch languages</noscript>
       </div>
 
       <div
@@ -134,46 +142,7 @@ const NavBar = () => {
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
           ></span>
         </div>
-        <ul className="burger-links">
-          {renderNavLinks()}
-          <div className="language-switch">
-            <button
-              className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-              onClick={toggleLanguage}
-              style={{
-                color:
-                  activeLanguage === "en"
-                    ? isLightBackground
-                      ? "#5552e1"
-                      : "#5552e1"
-                    : isLightBackground
-                    ? "#333"
-                    : "#ddd",
-              }}
-              aria-label="Switch to English"
-            >
-              English
-            </button>
-            <button
-              className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-              onClick={toggleLanguage}
-              style={{
-                color:
-                  activeLanguage === "ar"
-                    ? isLightBackground
-                      ? "#5552e1"
-                      : "#5552e1"
-                    : isLightBackground
-                    ? "#333"
-                    : "#ddd",
-              }}
-              aria-label="Switch to Arabic"
-            >
-              العربية
-            </button>
-            <noscript>Please enable JavaScript to switch languages</noscript>
-          </div>
-        </ul>
+        <ul className="burger-links">{renderNavLinks()}</ul>
       </div>
     </nav>
   );

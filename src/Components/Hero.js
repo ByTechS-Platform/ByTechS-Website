@@ -18,7 +18,7 @@ const Hero = () => {
     if (progressBarRef.current && progressNumberRef.current) {
       animateProgressBar(progressBarRef, progressNumberRef);
     }
-  }, []);
+  }, []); // Runs once when the component mounts
 
   // Effect to listen for language changes
   useEffect(() => {
@@ -54,15 +54,15 @@ const Hero = () => {
           <h1 data-en="COMING SOON ..." data-ar="... قــريــبـاً ">
             COMING SOON •••
           </h1>
-          
+
           <div className="progress-bar-wrapper">
-          <div className="progress-bar">
-            <div ref={progressBarRef} className="progress"></div>
-          </div>
+            <div className="progress-bar">
+              <div ref={progressBarRef} className="progress"></div>
+            </div>
             <span ref={progressNumberRef} id="progress-number">
               0%
             </span>
-            </div>
+          </div>
         </div>
 
         {/* Illustration Images */}
