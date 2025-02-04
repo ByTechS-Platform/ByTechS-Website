@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router basename="/ByTechS-Website">
         <ScrollToSection />
         <NavBar isLightMode={isLightMode} activeSection={activeSection} />
         <Routes>
