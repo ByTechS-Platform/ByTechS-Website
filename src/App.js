@@ -5,11 +5,11 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import './App.scss';
-import Home from './Home';
-import NavBar from './Components/NavBar';
-import Footer from './Components/Footer';
-import JoinUs from './Components/JoinUs';
+import "./App.scss";
+import Home from "./Home";
+import NavBar from "./Components/NavBar";
+import Footer from "./Components/Footer";
+import JoinUs from "./Components/JoinUs";
 
 const ScrollToSection = () => {
   const location = useLocation();
@@ -27,13 +27,12 @@ const ScrollToSection = () => {
   return null; // No UI, just handles scrolling
 };
 function App() {
-
-   const [isLightMode] = useState(false);
-   const [activeSection] = useState("home");
+  const [isLightMode] = useState(false);
+  const [activeSection] = useState("home");
 
   return (
     <div className="App">
-      <Router basename="/ByTechS-Website">
+      <Router>
         <ScrollToSection />
         <NavBar isLightMode={isLightMode} activeSection={activeSection} />
         <Routes>
