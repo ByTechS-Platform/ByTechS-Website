@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/ByTechS-Website/static/css/main.7b10a382.css",
-    "main.js": "/ByTechS-Website/static/js/main.5eeb3e5c.js",
-    "static/js/453.ecfe0b1f.chunk.js": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js",
-    "static/media/7.png": "/ByTechS-Website/static/media/7.bc28bf784eea960018a7.png",
-    "static/media/shapesHomePage1.png": "/ByTechS-Website/static/media/shapesHomePage1.2725cf399d3cd21fdf8e.png",
-    "static/media/shapesContactPage1.png": "/ByTechS-Website/static/media/shapesContactPage1.3eb2a01ee1f042ed6a75.png",
-    "static/media/shapesHomePage3.png": "/ByTechS-Website/static/media/shapesHomePage3.d43cd1267792435085e6.png",
-    "static/media/c3.png": "/ByTechS-Website/static/media/c3.f95fc6c15b836f3b2584.png",
-    "static/media/shapesContactPage3.png": "/ByTechS-Website/static/media/shapesContactPage3.6edced73ee8ba9521369.png",
-    "static/media/shapesHomePage2.png": "/ByTechS-Website/static/media/shapesHomePage2.96625be5228a822ce4b7.png",
-    "static/media/z2.png": "/ByTechS-Website/static/media/z2.1bc49301b06c5241b33a.png",
-    "static/media/shapesContactPage2.png": "/ByTechS-Website/static/media/shapesContactPage2.153a8efdc894dc268073.png",
-    "static/media/Bytechs-purple.png": "/ByTechS-Website/static/media/Bytechs-purple.21462fc73bcaae1e199b.png",
-    "static/media/BY-logo.png": "/ByTechS-Website/static/media/BY-logo.e015615c543ed6e4c89f.png",
-    "static/media/instagram-brands-solid.svg": "/ByTechS-Website/static/media/instagram-brands-solid.079d28e25782a50988a2797783f166fd.svg",
-    "static/media/whatsapp-brands-solid.svg": "/ByTechS-Website/static/media/whatsapp-brands-solid.4276cc686fcd8c84b5376c1712695a10.svg",
-    "index.html": "/ByTechS-Website/index.html",
-    "static/media/linkedin-brands-solid.svg": "/ByTechS-Website/static/media/linkedin-brands-solid.73d26cb767e0fe3086c5eeb14a2933de.svg",
-    "static/media/x-twitter-brands-solid.svg": "/ByTechS-Website/static/media/x-twitter-brands-solid.78c9c3d9f0018151a3bbd2b0ee95c106.svg",
-    "main.7b10a382.css.map": "/ByTechS-Website/static/css/main.7b10a382.css.map",
-    "main.5eeb3e5c.js.map": "/ByTechS-Website/static/js/main.5eeb3e5c.js.map",
-    "453.ecfe0b1f.chunk.js.map": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js.map"
+    "main.css": "/static/css/main.7b10a382.css",
+    "main.js": "/static/js/main.7108eee0.js",
+    "static/js/453.ecfe0b1f.chunk.js": "/static/js/453.ecfe0b1f.chunk.js",
+    "static/media/7.png": "/static/media/7.bc28bf784eea960018a7.png",
+    "static/media/shapesHomePage1.png": "/static/media/shapesHomePage1.2725cf399d3cd21fdf8e.png",
+    "static/media/shapesContactPage1.png": "/static/media/shapesContactPage1.3eb2a01ee1f042ed6a75.png",
+    "static/media/shapesHomePage3.png": "/static/media/shapesHomePage3.d43cd1267792435085e6.png",
+    "static/media/c3.png": "/static/media/c3.f95fc6c15b836f3b2584.png",
+    "static/media/shapesContactPage3.png": "/static/media/shapesContactPage3.6edced73ee8ba9521369.png",
+    "static/media/shapesHomePage2.png": "/static/media/shapesHomePage2.96625be5228a822ce4b7.png",
+    "static/media/z2.png": "/static/media/z2.1bc49301b06c5241b33a.png",
+    "static/media/shapesContactPage2.png": "/static/media/shapesContactPage2.153a8efdc894dc268073.png",
+    "static/media/Bytechs-purple.png": "/static/media/Bytechs-purple.21462fc73bcaae1e199b.png",
+    "static/media/BY-logo.png": "/static/media/BY-logo.e015615c543ed6e4c89f.png",
+    "static/media/instagram-brands-solid.svg": "/static/media/instagram-brands-solid.079d28e25782a50988a2797783f166fd.svg",
+    "static/media/whatsapp-brands-solid.svg": "/static/media/whatsapp-brands-solid.4276cc686fcd8c84b5376c1712695a10.svg",
+    "index.html": "/index.html",
+    "static/media/linkedin-brands-solid.svg": "/static/media/linkedin-brands-solid.73d26cb767e0fe3086c5eeb14a2933de.svg",
+    "static/media/x-twitter-brands-solid.svg": "/static/media/x-twitter-brands-solid.78c9c3d9f0018151a3bbd2b0ee95c106.svg",
+    "main.7b10a382.css.map": "/static/css/main.7b10a382.css.map",
+    "main.7108eee0.js.map": "/static/js/main.7108eee0.js.map",
+    "453.ecfe0b1f.chunk.js.map": "/static/js/453.ecfe0b1f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7b10a382.css",
-    "static/js/main.5eeb3e5c.js"
+    "static/js/main.7108eee0.js"
   ]
 }
