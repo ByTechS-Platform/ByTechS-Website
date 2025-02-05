@@ -4,12 +4,15 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { LanguageProvider } from "./utils/LanguageContext";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <LanguageProvider>
-      <App />
+      <BrowserRouter basename="/ByTechS-Website">
+        <App />
+      </BrowserRouter>
     </LanguageProvider>
   </React.StrictMode>
 );

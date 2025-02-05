@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  BrowserRouter,
+  Router,
   Route,
   Routes,
   useLocation,
@@ -32,14 +32,14 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter  basename="/ByTechS-Website">
+      <Router>
         <ScrollToSection />
         <NavBar isLightMode={isLightMode} activeSection={activeSection} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/join-us" element={<JoinUs />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
       <Footer />
     </div>
   );
