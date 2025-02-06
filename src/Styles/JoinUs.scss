@@ -1,5 +1,8 @@
 @import "./variables";
 
+// ======================================================
+// Container & Illustration
+// ======================================================
 .join-us-section {
   background-color: $white;
   display: flex;
@@ -21,6 +24,9 @@
   }
 }
 
+// ======================================================
+// Main Content Page
+// ======================================================
 .join-us-page {
   flex: 2;
   max-width: 800px;
@@ -45,53 +51,59 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+
     .input-field {
       width: 45%;
     }
   }
 
+  // ------------------------------------------------------
+  // Steps Indicator
+  // ------------------------------------------------------
   .steps-indicator {
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
-  }
 
-  .step-indicator {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ccc;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0.5rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
+    .step-indicator {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ccc;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
 
-  .step-indicator-line {
-    width: 40px;
-    height: 2px;
-    background-color: #ccc;
-    margin: auto 0;
-    transition: background-color 0.3s ease;
-  }
-  // .step-indicator-line.active {
-  //   background-color: $prime-active;
-  // }
+      &.active {
+        background-color: $prime;
+      }
+      &.completed {
+        background-color: $prime-light;
+      }
+    }
 
-  .step-indicator.active {
-    background-color: $prime;
-  }
-  .step-indicator.completed,
-  .step-indicator-line.completed,
-  .step-indicator-line.active {
-    background-color: $prime-light;
+    .step-indicator-line {
+      width: 40px;
+      height: 2px;
+      background-color: #ccc;
+      margin: auto 0;
+      transition: background-color 0.3s ease;
+
+      &.active,
+      &.completed {
+        background-color: $prime-light;
+      }
+    }
   }
 }
 
-// Styles for the form
+// ======================================================
+// Form Styles
+// ======================================================
 .join-us-form {
   display: flex;
   flex-direction: column;
@@ -99,7 +111,6 @@
   .comumunities-details-button {
     background: none;
     border: none;
-    // text-decoration: underline;
     cursor: pointer;
   }
 
@@ -119,13 +130,11 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s ease;
-  }
 
-  input:focus,
-  textarea:focus,
-  select:focus {
-    outline: none;
-    border-color: #007bff;
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
   }
 
   textarea {
@@ -139,13 +148,19 @@
 
     p {
       margin-bottom: 0.5rem;
-      text-align: left;
+      margin-top: 0;
+      
+      .align-left{
+        text-align: left !important;
+      }
+      .align-right{
+        text-align: right !important;
+      }
     }
 
     label {
       margin-right: 1.5rem;
       cursor: pointer;
-      // display: flex;
 
       input {
         margin-right: 0.5rem;
@@ -208,7 +223,7 @@
 
       &:hover {
         transform: translateY(-5px);
-        border-color: #007bff;
+        border-color: $prime-hover;
       }
 
       &.selected {
@@ -231,6 +246,55 @@
   }
 }
 
-.step-4 .radio-group, .step-2 .radio-group{
+// These rules adjust the width of radio groups in steps 2 and 4.
+.step-4 .radio-group,
+.step-2 .radio-group {
   width: 100%;
+}
+
+// ======================================================
+// Responsive Styles
+// ======================================================
+@media (max-width: 768px) {
+  .join-us-section {
+    flex-direction: column;
+    align-items: center;
+
+    .illustration {
+      display: none !important;
+    }
+  }
+
+  .join-us-page {
+    margin: 2rem auto;
+    padding: 1rem;
+
+    .form-group {
+      flex-direction: column;
+
+      .input-field {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .steps-indicator {
+      flex-wrap: wrap;
+    }
+  }
+
+  .join-us-form {
+    .radio-group {
+      width: 100%;
+      label {
+        margin-right: 1rem;
+      }
+    }
+
+    .community-cards {
+      .community-card {
+        flex: 1 1 100%;
+      }
+    }
+  }
 }

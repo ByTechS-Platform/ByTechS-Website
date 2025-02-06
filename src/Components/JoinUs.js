@@ -34,16 +34,16 @@ const translations = {
   phone: { en: "Phone Number", ar: "رقم الهاتف" },
   residence: { en: "Place of Residence", ar: "مكان الإقامة" },
   githubAccounts: {
-    en: "GitHub Account (Optional)",
-    ar: "GitHub، (اختياري)",
+    en: "GitHub Account  ",
+    ar: "GitHub،  ",
   },
   linkedInbAccounts: {
-    en: "LinkedIn Account (Optional)",
-    ar: "LinkedIn (اختياري)",
+    en: "LinkedIn Account  ",
+    ar: "LinkedIn  ",
   },
   otherLink: {
-    en: "Portfolio or other account (Optional)",
-    ar: "الحسابات المهنية (اختياري)",
+    en: "Portfolio or other account  ",
+    ar: "الحسابات المهنية  ",
   },
   academicInfo: {
     en: "Academic, Professional & Experience Information",
@@ -75,12 +75,12 @@ const translations = {
     ar: "لماذا تريد الانضمام إلى ByTechS؟",
   },
   hearAbout: {
-    en: "Where did you hear about ByTechS? (Optional)",
-    ar: "من أين سمعت عن ByTechS؟ (اختياري)",
+    en: "Where did you hear about ByTechS?  ",
+    ar: "من أين سمعت عن ByTechS؟  ",
   },
   expectation: {
-    en: "What do you expect the initiative to offer you? (Optional)",
-    ar: "ماذا تتوقع أن تقدم لك المبادرة؟ (اختياري)",
+    en: "What do you expect the initiative to offer you?  ",
+    ar: "ماذا تتوقع أن تقدم لك المبادرة؟  ",
   },
   commitment: {
     en: "I pledge to adhere to the values and principles of ByTechS and work as a team member in alignment with the group’s vision and objectives.",
@@ -451,7 +451,11 @@ const JoinUs = () => {
                   </div>
                   {/* <div className="input-field"> */}
                   <div className="radio-group">
-                    <p>
+                    <p
+                      className={`${
+                        language === "ar" ? "align-right" : "align-left"
+                      }`}
+                    >
                       {translations.gender[language]}
                       <span className="required">*</span>
                     </p>{" "}
@@ -658,7 +662,11 @@ const JoinUs = () => {
                 </div>
                 <div className="input-field">
                   <div className="radio-group">
-                    <p>
+                    <p
+                      className={`${
+                        language === "ar" ? "align-right" : "align-left"
+                      }`}
+                    >
                       {translations.certificatesQuestion[language]}{" "}
                       <span className="required">*</span>
                     </p>
@@ -705,7 +713,11 @@ const JoinUs = () => {
 
                 <div className="input-field">
                   <div className="radio-group">
-                    <p>
+                    <p
+                      className={`${
+                        language === "ar" ? "align-right" : "align-left"
+                      }`}
+                    >
                       {translations.experienceQuestion[language]}{" "}
                       <span className="required">*</span>
                     </p>
@@ -806,58 +818,6 @@ const JoinUs = () => {
                   ></textarea>
                 </div>
 
-                {/* <div className="radio-group">
-                  <p>{translations.commitment[language]}</p>
-                  <label>
-                    <input
-                      type="radio"
-                      name="commitment"
-                      value="Yes"
-                      checked={formData.commitment === "Yes"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.yes[language]}
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="commitment"
-                      value="No"
-                      checked={formData.commitment === "No"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.no[language]}
-                  </label>
-                </div>
-
-                <div className="radio-group">
-                  <p>{translations.terms[language]}</p>
-                  <label>
-                    <input
-                      type="radio"
-                      name="terms"
-                      value="Yes"
-                      checked={formData.terms === "Yes"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.yes[language]}
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="terms"
-                      value="No"
-                      checked={formData.terms === "No"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.no[language]}
-                  </label>
-                </div> */}
-
                 <div className="navigation-buttons">
                   <button type="button" onClick={prevStep}>
                     {translations.back[language]}
@@ -882,10 +842,12 @@ const JoinUs = () => {
                   type="button"
                 >
                   <span
-                    data-en="To know more details about communities click here"
-                    data-ar="لتعرف اكثر عن المجتمعات اضغط هنا"
+                    data-en="For more details about communities click here"
+                    data-ar="لتفاصيل اكثر عن المجتمعات اضغط هنا"
                   >
-                    To know more details about communities click here
+                    {language === "ar"
+                      ? "لتفاصيل اكثر عن المجتمعات اضغط هنا"
+                      : "For more details about communities click here"}
                   </span>
                 </button>
                 <div className="community-cards">
@@ -912,7 +874,11 @@ const JoinUs = () => {
                 </div>
 
                 <div className="radio-group">
-                  <p>
+                  <p
+                    className={`${
+                      language === "ar" ? "align-right" : "align-left"
+                    }`}
+                  >
                     {translations.commitment[language]}
                     <span className="required">*</span>
                   </p>
@@ -941,7 +907,11 @@ const JoinUs = () => {
                 </div>
 
                 <div className="radio-group">
-                  <p>
+                  <p
+                    className={`${
+                      language === "ar" ? "align-right" : "align-left"
+                    }`}
+                  >
                     {translations.terms[language]}
                     <span className="required">*</span>
                   </p>
