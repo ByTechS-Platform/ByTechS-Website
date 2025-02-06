@@ -4,6 +4,7 @@ import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
 // import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import shape1 from "../assets/Shape12.svg";
 
 const airtableApiKey =
   "pat042Mj9r5Dx98ff.d155c54347ad8585d7dfac9236640398c2592d36036b4f53722c8e1875a6bea1";
@@ -33,16 +34,16 @@ const translations = {
   phone: { en: "Phone Number", ar: "رقم الهاتف" },
   residence: { en: "Place of Residence", ar: "مكان الإقامة" },
   githubAccounts: {
-    en: "GitHub Account (Optional)",
-    ar: "GitHub، (اختياري)",
+    en: "GitHub Account  ",
+    ar: "GitHub،  ",
   },
   linkedInbAccounts: {
-    en: "LinkedIn Account (Optional)",
-    ar: "LinkedIn (اختياري)",
+    en: "LinkedIn Account  ",
+    ar: "LinkedIn  ",
   },
   otherLink: {
-    en: "Portfolio or other account (Optional)",
-    ar: "الحسابات المهنية (اختياري)",
+    en: "Portfolio or other account  ",
+    ar: "الحسابات المهنية  ",
   },
   academicInfo: {
     en: "Academic, Professional & Experience Information",
@@ -74,12 +75,12 @@ const translations = {
     ar: "لماذا تريد الانضمام إلى ByTechS؟",
   },
   hearAbout: {
-    en: "Where did you hear about ByTechS? (Optional)",
-    ar: "من أين سمعت عن ByTechS؟ (اختياري)",
+    en: "Where did you hear about ByTechS?  ",
+    ar: "من أين سمعت عن ByTechS؟  ",
   },
   expectation: {
-    en: "What do you expect the initiative to offer you? (Optional)",
-    ar: "ماذا تتوقع أن تقدم لك المبادرة؟ (اختياري)",
+    en: "What do you expect the initiative to offer you?  ",
+    ar: "ماذا تتوقع أن تقدم لك المبادرة؟  ",
   },
   commitment: {
     en: "I pledge to adhere to the values and principles of ByTechS and work as a team member in alignment with the group’s vision and objectives.",
@@ -155,12 +156,12 @@ const communities = [
 ];
 
 const JoinUs = () => {
-   // eslint-disable-next-line no-unused-vars
-   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
+  const navigate = useNavigate();
   // Access the active language from context
   const { language } = useLanguage();
 
-  // Track the current step (1: Personal, 2: Academic/Experience/Commitment, 3: Community Selection)
+  // Track the current step (1: Personal, 2: Academic/Experience, 3: Additional Questions, 4: Community Selection)
   const [step, setStep] = useState(1);
 
   // Our form state now includes all fields plus the new "community" field
@@ -176,21 +177,26 @@ const JoinUs = () => {
     phone: "",
     residence: "",
     proAccounts: "",
+    githubAccounts: "",
+    linkedInbAccounts: "",
+    otherLink: "",
 
-    // Combined Step 2: Academic, Professional & Experience Information
+    // Step 2: Academic & Work Experience Information
     major: "",
     degree: "",
     hasCertificates: "", // "Yes" or "No"
     certificatesDetails: "",
     hasExperience: "", // "Yes" or "No"
     experienceDetails: "",
+
+    // Step 3: Additional Questions
     whyByTechs: "",
     hearAbout: "",
     expectation: "",
     commitment: "", // "Yes" or "No"
     terms: "", // "Yes" or "No"
 
-    // Step 3: Community Selection
+    // Step 4: Community Selection
     community: "",
   });
 
@@ -203,6 +209,12 @@ const JoinUs = () => {
     window.open(url, "_blank"); // Opens the section in a new tab
   };
 
+  const getIndicatorClass = (indicatorStep) => {
+    if (step > indicatorStep) return "completed";
+    if (step === indicatorStep) return "active";
+    return "";
+  };
+
   // Generic change handler for inputs and radio buttons
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -212,7 +224,7 @@ const JoinUs = () => {
     }));
   };
 
-  // Simple form validation function
+  // Simple form validation function (validates all required fields)
   const validateForm = () => {
     setError(null);
     // Validate Step 1: Personal Information
@@ -238,7 +250,7 @@ const JoinUs = () => {
       return false;
     }
 
-    // Validate Step 2: Academic/Experience/Commitment
+    // Validate Step 2: Academic & Work Experience Information
     if (!formData.major.trim() || !formData.degree.trim()) {
       setError("Please fill in your academic information fields.");
       return false;
@@ -257,18 +269,19 @@ const JoinUs = () => {
       setError("Please describe your work or volunteer experience.");
       return false;
     }
+
+    // Validate Step 3: Additional Questions
     if (
       !formData.whyByTechs.trim() ||
       !formData.commitment ||
       !formData.terms
     ) {
       setError(
-        "Please answer all required questions in the academic/professional section."
+        "Please answer all required questions in the additional questions section."
       );
       return false;
     }
-
-    // Validate Step 3: Community Selection
+    // Validate Step 4: Community Selection
     if (!formData.community) {
       setError("Please select a community.");
       return false;
@@ -370,15 +383,6 @@ const JoinUs = () => {
     }
   };
 
-  // List of communities for the selection cards (adjust names and details as needed)
-  // const communities = [
-  //   "Community 1",
-  //   "Community 2",
-  //   "Community 3",
-  //   "Community 4",
-  //   "Community 5",
-  // ];
-
   return (
     <section
       id="join-us-section"
@@ -386,21 +390,24 @@ const JoinUs = () => {
         language === "ar" ? "align-right" : "align-left"
       }`}
     >
+      <div className="illustration">
+        <div className="shapes">
+          <img src={shape1} alt="Shape 1"></img>
+        </div>
+      </div>
       <div className="join-us-page">
         <h2>{translations.joinUsTitle[language]}</h2>
         <p>{translations.joinUsInstruction[language]}</p>
 
         {/* Steps Indicator */}
         <div className="steps-indicator">
-          <div className={`step-indicator ${step === 1 ? "active" : ""}`}>
-            1
-          </div>
-          <div className={`step-indicator ${step === 2 ? "active" : ""}`}>
-            2
-          </div>
-          <div className={`step-indicator ${step === 3 ? "active" : ""}`}>
-            3
-          </div>
+          <div className={`step-indicator ${getIndicatorClass(1)}`}>1</div>
+          <div className={`step-indicator-line ${getIndicatorClass(2)}`}></div>
+          <div className={`step-indicator ${getIndicatorClass(2)}`}>2</div>
+          <div className={`step-indicator-line ${getIndicatorClass(3)}`}></div>
+          <div className={`step-indicator ${getIndicatorClass(3)}`}>3</div>
+          <div className={`step-indicator-line ${getIndicatorClass(4)}`}></div>
+          <div className={`step-indicator ${getIndicatorClass(4)}`}>4</div>
         </div>
 
         {success ? (
@@ -411,164 +418,205 @@ const JoinUs = () => {
             {step === 1 && (
               <div className="step step-1">
                 <h3>{translations.personalInfo[language]}</h3>
-                <label htmlFor="nameAr">
-                  {translations.fullNameArabic[language]}
-                </label>
-                <input
-                  id="nameAr"
-                  type="text"
-                  name="nameAr"
-                  placeholder={translations.fullNameArabic[language]}
-                  value={formData.nameAr}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="nameEn">
-                  {translations.fullNameEnglish[language]}
-                </label>
-                <input
-                  id="nameEn"
-                  type="text"
-                  name="nameEn"
-                  placeholder={translations.fullNameEnglish[language]}
-                  value={formData.nameEn}
-                  onChange={handleChange}
-                  required
-                />
-
-                <div className="radio-group">
-                  <p>{translations.gender[language]}:</p>
-                  <label>
+                <div className="form-group">
+                  <div className="input-field">
+                    <label htmlFor="nameAr">
+                      {translations.fullNameArabic[language]}{" "}
+                      <span className="required">*</span>
+                    </label>
                     <input
-                      type="radio"
-                      name="gender"
-                      value="Male"
-                      checked={formData.gender === "Male"}
+                      id="nameAr"
+                      type="text"
+                      name="nameAr"
+                      // placeholder={translations.fullNameArabic[language]}
+                      value={formData.nameAr}
                       onChange={handleChange}
                       required
                     />
-                    {translations.male[language]}
-                  </label>
-                  <label>
+                  </div>
+                  <div className="input-field">
+                    <label htmlFor="nameEn">
+                      {translations.fullNameEnglish[language]}{" "}
+                      <span className="required">*</span>
+                    </label>
                     <input
-                      type="radio"
-                      name="gender"
-                      value="Female"
-                      checked={formData.gender === "Female"}
+                      id="nameEn"
+                      type="text"
+                      name="nameEn"
+                      // placeholder={translations.fullNameEnglish[language]}
+                      value={formData.nameEn}
                       onChange={handleChange}
                       required
                     />
-                    {translations.female[language]}
-                  </label>
+                  </div>
+                  {/* <div className="input-field"> */}
+                  <div className="radio-group">
+                    <p
+                      className={`${
+                        language === "ar" ? "align-right" : "align-left"
+                      }`}
+                    >
+                      {translations.gender[language]}
+                      <span className="required">*</span>
+                    </p>{" "}
+                    <label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                        checked={formData.gender === "Male"}
+                        onChange={handleChange}
+                        required
+                      />
+                      {translations.male[language]}
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                        checked={formData.gender === "Female"}
+                        onChange={handleChange}
+                        required
+                      />
+                      {translations.female[language]}
+                    </label>
+                  </div>
+                  {/* </div> */}
+                  <div className="input-field">
+                    <label htmlFor="idNumber">
+                      {translations.idNumber[language]}
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="idNumber"
+                      type="text"
+                      name="idNumber"
+                      // placeholder={translations.idNumber[language]}
+                      value={formData.idNumber}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="input-field">
+                    <label htmlFor="nationality">
+                      {translations.nationality[language]}
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="nationality"
+                      type="text"
+                      name="nationality"
+                      // placeholder={translations.nationality[language]}
+                      value={formData.nationality}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="input-field">
+                    <label htmlFor="dob">
+                      {translations.dob[language]}{" "}
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="dob"
+                      type="date"
+                      name="dob"
+                      placeholder={translations.dob[language]}
+                      value={formData.dob}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="input-field">
+                    <label htmlFor="email">
+                      {translations.email[language]}{" "}
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      placeholder="example@mail.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div className="input-field">
+                    <label htmlFor="phone">
+                      {translations.phone[language]}{" "}
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="phone"
+                      type="text"
+                      name="phone"
+                      placeholder="+966"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="input-field">
+                    <label htmlFor="residence">
+                      {translations.residence[language]}{" "}
+                      <span className="required">*</span>
+                    </label>
+                    <input
+                      id="residence"
+                      type="text"
+                      name="residence"
+                      // placeholder={translations.residence[language]}
+                      value={formData.residence}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="input-field">
+                    <label htmlFor="githubAccounts">
+                      {translations.githubAccounts[language]}
+                    </label>
+                    <input
+                      id="githubAccounts"
+                      type="text"
+                      name="githubAccounts"
+                      // placeholder={translations.githubAccounts[language]}
+                      value={formData.githubAccounts}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="input-field">
+                    <label htmlFor="linkedInbAccounts">
+                      {translations.linkedInbAccounts[language]}
+                    </label>
+                    <input
+                      id="linkedInbAccounts"
+                      type="text"
+                      name="linkedInbAccounts"
+                      // placeholder={translations.linkedInbAccounts[language]}
+                      value={formData.linkedInbAccounts}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="input-field">
+                    <label htmlFor="otherLink">
+                      {translations.otherLink[language]}
+                    </label>
+                    <input
+                      id="otherLink"
+                      type="text"
+                      name="otherLink"
+                      // placeholder={translations.otherLink[language]}
+                      value={formData.otherLink}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
-
-                <label htmlFor="idNumber">
-                  {translations.idNumber[language]}
-                </label>
-                <input
-                  id="idNumber"
-                  type="text"
-                  name="idNumber"
-                  placeholder={translations.idNumber[language]}
-                  value={formData.idNumber}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="nationality">
-                  {translations.nationality[language]}
-                </label>
-                <input
-                  id="nationality"
-                  type="text"
-                  name="nationality"
-                  placeholder={translations.nationality[language]}
-                  value={formData.nationality}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="dob">{translations.dob[language]}</label>
-                <input
-                  id="dob"
-                  type="date"
-                  name="dob"
-                  placeholder={translations.dob[language]}
-                  value={formData.dob}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="email">{translations.email[language]}</label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder={translations.email[language]}
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="phone">{translations.phone[language]}</label>
-                <input
-                  id="phone"
-                  type="text"
-                  name="phone"
-                  placeholder={translations.phone[language]}
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="residence">
-                  {translations.residence[language]}
-                </label>
-                <input
-                  id="residence"
-                  type="text"
-                  name="residence"
-                  placeholder={translations.residence[language]}
-                  value={formData.residence}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="githubAccounts">
-                  {translations.githubAccounts[language]}
-                </label>
-                <input
-                  id="githubAccounts"
-                  type="text"
-                  name="githubAccounts"
-                  placeholder={translations.githubAccounts[language]}
-                  value={formData.githubAccounts}
-                  onChange={handleChange}
-                />
-                <label htmlFor="linkedInbAccounts">
-                  {translations.linkedInbAccounts[language]}
-                </label>
-                <input
-                  id="linkedInbAccounts"
-                  type="text"
-                  name="linkedInbAccounts"
-                  placeholder={translations.linkedInbAccounts[language]}
-                  value={formData.linkedInbAccounts}
-                  onChange={handleChange}
-                />
-                <label htmlFor="otherLink">
-                  {translations.otherLink[language]}
-                </label>
-                <input
-                  id="otherLink"
-                  type="text"
-                  name="otherLink"
-                  placeholder={translations.otherLink[language]}
-                  value={formData.otherLink}
-                  onChange={handleChange}
-                />
-
                 <div className="navigation-buttons">
                   <button type="button" onClick={nextStep}>
                     {translations.next[language]}
@@ -577,153 +625,263 @@ const JoinUs = () => {
               </div>
             )}
 
-            {/* Step 2: Combined Academic/Experience/Commitment Information */}
+            {/* Step 2: Academic & Work Experience Information */}
             {step === 2 && (
               <div className="step step-2">
                 <h3>{translations.academicInfo[language]}</h3>
-                <label htmlFor="major">
-                  {translations.academicMajor[language]}
-                </label>
-                <input
-                  id="major"
-                  type="text"
-                  name="major"
-                  placeholder={translations.academicMajor[language]}
-                  value={formData.major}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="degree">{translations.degree[language]}</label>
-                <input
-                  id="degree"
-                  type="text"
-                  name="degree"
-                  placeholder={translations.degree[language]}
-                  value={formData.degree}
-                  onChange={handleChange}
-                  required
-                />
-
-                <div className="radio-group">
-                  <p>{translations.certificatesQuestion[language]}</p>
-                  <label>
-                    <input
-                      type="radio"
-                      name="hasCertificates"
-                      value="Yes"
-                      checked={formData.hasCertificates === "Yes"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.yes[language]}
+                <div className="input-field">
+                  <label htmlFor="major">
+                    {translations.academicMajor[language]}
+                    <span className="required">*</span>
                   </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="hasCertificates"
-                      value="No"
-                      checked={formData.hasCertificates === "No"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.no[language]}
-                  </label>
+                  <input
+                    id="major"
+                    type="text"
+                    name="major"
+                    // placeholder={translations.academicMajor[language]}
+                    value={formData.major}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
-                {formData.hasCertificates === "Yes" && (
-                  <>
-                    <label htmlFor="certificatesDetails">
-                      {translations.certificatesDetails[language]}
-                    </label>
-                    <textarea
-                      id="certificatesDetails"
-                      name="certificatesDetails"
-                      placeholder={translations.certificatesDetails[language]}
-                      value={formData.certificatesDetails}
-                      onChange={handleChange}
-                      required
-                    ></textarea>
-                  </>
-                )}
 
-                <div className="radio-group">
-                  <p>{translations.experienceQuestion[language]}</p>
-                  <label>
-                    <input
-                      type="radio"
-                      name="hasExperience"
-                      value="Yes"
-                      checked={formData.hasExperience === "Yes"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.yes[language]}
+                <div className="input-field">
+                  <label htmlFor="degree">
+                    {translations.degree[language]}
+                    <span className="required">*</span>
                   </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="hasExperience"
-                      value="No"
-                      checked={formData.hasExperience === "No"}
-                      onChange={handleChange}
-                      required
-                    />
-                    {translations.no[language]}
-                  </label>
+                  <input
+                    id="degree"
+                    type="text"
+                    name="degree"
+                    // placeholder={translations.degree[language]}
+                    value={formData.degree}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
-                {formData.hasExperience === "Yes" && (
-                  <>
-                    <label htmlFor="experienceDetails">
-                      {translations.experienceDetails[language]}
+                <div className="input-field">
+                  <div className="radio-group">
+                    <p
+                      className={`${
+                        language === "ar" ? "align-right" : "align-left"
+                      }`}
+                    >
+                      {translations.certificatesQuestion[language]}{" "}
+                      <span className="required">*</span>
+                    </p>
+                    <label>
+                      <input
+                        type="radio"
+                        name="hasCertificates"
+                        value="Yes"
+                        checked={formData.hasCertificates === "Yes"}
+                        onChange={handleChange}
+                        required
+                      />
+                      {translations.yes[language]}
                     </label>
-                    <textarea
-                      id="experienceDetails"
-                      name="experienceDetails"
-                      placeholder={translations.experienceDetails[language]}
-                      value={formData.experienceDetails}
-                      onChange={handleChange}
-                      required
-                    ></textarea>
-                  </>
-                )}
+                    <label>
+                      <input
+                        type="radio"
+                        name="hasCertificates"
+                        value="No"
+                        checked={formData.hasCertificates === "No"}
+                        onChange={handleChange}
+                        required
+                      />
+                      {translations.no[language]}
+                    </label>
+                  </div>
+                  {formData.hasCertificates === "Yes" && (
+                    <>
+                      <label htmlFor="certificatesDetails">
+                        {translations.certificatesDetails[language]}
+                        <span className="required">*</span>
+                      </label>
+                      <textarea
+                        id="certificatesDetails"
+                        name="certificatesDetails"
+                        // placeholder={translations.certificatesDetails[language]}
+                        value={formData.certificatesDetails}
+                        onChange={handleChange}
+                        required
+                      ></textarea>
+                    </>
+                  )}
+                </div>
 
-                <label htmlFor="whyByTechs">
-                  {translations.whyByTechs[language]}
-                </label>
-                <textarea
-                  id="whyByTechs"
-                  name="whyByTechs"
-                  placeholder={translations.whyByTechs[language]}
-                  value={formData.whyByTechs}
-                  onChange={handleChange}
-                  required
-                ></textarea>
+                <div className="input-field">
+                  <div className="radio-group">
+                    <p
+                      className={`${
+                        language === "ar" ? "align-right" : "align-left"
+                      }`}
+                    >
+                      {translations.experienceQuestion[language]}{" "}
+                      <span className="required">*</span>
+                    </p>
+                    <label>
+                      <input
+                        type="radio"
+                        name="hasExperience"
+                        value="Yes"
+                        checked={formData.hasExperience === "Yes"}
+                        onChange={handleChange}
+                        required
+                      />
+                      {translations.yes[language]}
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="hasExperience"
+                        value="No"
+                        checked={formData.hasExperience === "No"}
+                        onChange={handleChange}
+                        required
+                      />
+                      {translations.no[language]}
+                    </label>
+                  </div>
+                  {formData.hasExperience === "Yes" && (
+                    <>
+                      <label htmlFor="experienceDetails">
+                        {translations.experienceDetails[language]}
+                        <span className="required">*</span>
+                      </label>
+                      <textarea
+                        id="experienceDetails"
+                        name="experienceDetails"
+                        // placeholder={translations.experienceDetails[language]}
+                        value={formData.experienceDetails}
+                        onChange={handleChange}
+                        required
+                      ></textarea>
+                    </>
+                  )}
+                </div>
 
-                <label htmlFor="hearAbout">
-                  {translations.hearAbout[language]}
-                </label>
-                <input
-                  id="hearAbout"
-                  type="text"
-                  name="hearAbout"
-                  placeholder={translations.hearAbout[language]}
-                  value={formData.hearAbout}
-                  onChange={handleChange}
-                />
+                <div className="navigation-buttons">
+                  <button type="button" onClick={prevStep}>
+                    {translations.back[language]}
+                  </button>
+                  <button type="button" onClick={nextStep}>
+                    {translations.next[language]}
+                  </button>
+                </div>
+              </div>
+            )}
 
-                <label htmlFor="expectation">
-                  {translations.expectation[language]}
-                </label>
-                <textarea
-                  id="expectation"
-                  name="expectation"
-                  placeholder={translations.expectation[language]}
-                  value={formData.expectation}
-                  onChange={handleChange}
-                ></textarea>
+            {/* Step 3: Additional Questions */}
+            {step === 3 && (
+              <div className="step step-3">
+                <div className="input-field">
+                  <label htmlFor="whyByTechs">
+                    {translations.whyByTechs[language]}
+                    <span className="required">*</span>
+                  </label>
+                  <textarea
+                    id="whyByTechs"
+                    name="whyByTechs"
+                    // placeholder={translations.whyByTechs[language]}
+                    value={formData.whyByTechs}
+                    onChange={handleChange}
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="input-field">
+                  <label htmlFor="hearAbout">
+                    {translations.hearAbout[language]}
+                  </label>
+                  <input
+                    id="hearAbout"
+                    type="text"
+                    name="hearAbout"
+                    // placeholder={translations.hearAbout[language]}
+                    value={formData.hearAbout}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="input-field">
+                  <label htmlFor="expectation">
+                    {translations.expectation[language]}
+                  </label>
+                  <textarea
+                    id="expectation"
+                    name="expectation"
+                    // placeholder={translations.expectation[language]}
+                    value={formData.expectation}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+
+                <div className="navigation-buttons">
+                  <button type="button" onClick={prevStep}>
+                    {translations.back[language]}
+                  </button>
+                  <button type="button" onClick={nextStep}>
+                    {translations.next[language]}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Step 4: Community Selection via Cards */}
+            {step === 4 && (
+              <div className="step step-4">
+                <h3>
+                  {translations.communitySelection[language]}{" "}
+                  <span className="required">*</span>
+                </h3>
+                <button
+                  onClick={() => handleScrollToSection("communities")}
+                  className="comumunities-details-button"
+                  type="button"
+                >
+                  <span
+                    data-en="For more details about communities click here"
+                    data-ar="لتفاصيل اكثر عن المجتمعات اضغط هنا"
+                  >
+                    {language === "ar"
+                      ? "لتفاصيل اكثر عن المجتمعات اضغط هنا"
+                      : "For more details about communities click here"}
+                  </span>
+                </button>
+                <div className="community-cards">
+                  {communities.map((community, index) => (
+                    <div
+                      key={index}
+                      className={`community-card ${
+                        formData.community === community.name.en
+                          ? "selected"
+                          : ""
+                      }`}
+                      onClick={() =>
+                        // Store the English name in the form data
+                        setFormData((prev) => ({
+                          ...prev,
+                          community: community.name.en,
+                        }))
+                      }
+                    >
+                      <h4>{community.name[language]}</h4>
+                      <p>{community.details[language]}</p>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="radio-group">
-                  <p>{translations.commitment[language]}</p>
+                  <p
+                    className={`${
+                      language === "ar" ? "align-right" : "align-left"
+                    }`}
+                  >
+                    {translations.commitment[language]}
+                    <span className="required">*</span>
+                  </p>
                   <label>
                     <input
                       type="radio"
@@ -749,7 +907,14 @@ const JoinUs = () => {
                 </div>
 
                 <div className="radio-group">
-                  <p>{translations.terms[language]}</p>
+                  <p
+                    className={`${
+                      language === "ar" ? "align-right" : "align-left"
+                    }`}
+                  >
+                    {translations.terms[language]}
+                    <span className="required">*</span>
+                  </p>
                   <label>
                     <input
                       type="radio"
@@ -774,51 +939,6 @@ const JoinUs = () => {
                   </label>
                 </div>
 
-                <div className="navigation-buttons">
-                  <button type="button" onClick={prevStep}>
-                    {translations.back[language]}
-                  </button>
-                  <button type="button" onClick={nextStep}>
-                    {translations.next[language]}
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* Step 3: Community Selection via Cards */}
-            {step === 3 && (
-              <div className="step step-3">
-                <h3>{translations.communitySelection[language]}</h3>
-                <button
-                  onClick={() => handleScrollToSection("communities")}
-                  className="comumunities-details-button"
-                >
-                  <span data-en="To know more details about communities click here" data-ar="لتعرف اكثر عن المجتمعات اضغط هنا">
-                    Join Our Team
-                  </span>
-                </button>
-                <div className="community-cards">
-                  {communities.map((community, index) => (
-                    <div
-                      key={index}
-                      className={`community-card ${
-                        formData.community === community.name.en
-                          ? "selected"
-                          : ""
-                      }`}
-                      onClick={() =>
-                        // Store the English name in the form data
-                        setFormData((prev) => ({
-                          ...prev,
-                          community: community.name.en,
-                        }))
-                      }
-                    >
-                      <h4>{community.name[language]}</h4>
-                      <p>{community.details[language]}</p>
-                    </div>
-                  ))}
-                </div>
                 <div className="navigation-buttons">
                   <button type="button" onClick={prevStep}>
                     {translations.back[language]}

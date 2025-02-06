@@ -1,13 +1,39 @@
 @import "./variables";
 
+// ======================================================
+// Container & Illustration
+// ======================================================
+.join-us-section {
+  background-color: $white;
+  display: flex;
+  align-items: center !important;
+
+  .illustration {
+    width: 30%;
+    margin: 0 auto;
+
+    .shapes {
+      max-width: 100%;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+// ======================================================
+// Main Content Page
+// ======================================================
 .join-us-page {
-  max-width: 600px;
+  flex: 2;
+  max-width: 800px;
   margin: 7rem auto;
   padding: 2rem;
   background-color: $white;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  // font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
 
   h2 {
@@ -20,36 +46,79 @@
     margin-bottom: 2rem;
   }
 
+  .form-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .input-field {
+      width: 45%;
+    }
+  }
+
+  // ------------------------------------------------------
+  // Steps Indicator
+  // ------------------------------------------------------
   .steps-indicator {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+    .step-indicator {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ccc;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+
+      &.active {
+        background-color: $prime;
+      }
+      &.completed {
+        background-color: $prime-light;
+      }
+    }
+
+    .step-indicator-line {
+      width: 40px;
+      height: 2px;
+      background-color: #ccc;
+      margin: auto 0;
+      transition: background-color 0.3s ease;
+
+      &.active,
+      &.completed {
+        background-color: $prime-light;
+      }
+    }
+  }
 }
 
-.step-indicator {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #ccc;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0.5rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.step-indicator.active {
-  background-color: #007bff;
-}
-
-}
-
-// Styles for the form
+// ======================================================
+// Form Styles
+// ======================================================
 .join-us-form {
   display: flex;
   flex-direction: column;
+
+  .comumunities-details-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .required {
+    color: $red;
+    margin-left: 2px;
+    font-weight: bold;
+  }
 
   input,
   textarea,
@@ -61,13 +130,11 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s ease;
-  }
 
-  input:focus,
-  textarea:focus,
-  select:focus {
-    outline: none;
-    border-color: #007bff;
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
   }
 
   textarea {
@@ -77,15 +144,23 @@
 
   .radio-group {
     margin-bottom: 1rem;
+    width: 45%;
 
     p {
       margin-bottom: 0.5rem;
+      margin-top: 0;
+      
+      .align-left{
+        text-align: left !important;
+      }
+      .align-right{
+        text-align: right !important;
+      }
     }
 
     label {
       margin-right: 1.5rem;
       cursor: pointer;
-      display: flex;
 
       input {
         margin-right: 0.5rem;
@@ -96,13 +171,13 @@
 
   .navigation-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 1rem;
 
     button {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      background-color: #007bff;
+      background-color: $prime;
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -110,11 +185,11 @@
       transition: background-color 0.3s ease;
 
       &:hover:not(:disabled) {
-        background-color: #0056b3;
+        background-color: $prime-hover;
       }
 
       &:disabled {
-        background-color: #ccc;
+        background-color: $prime-light;
         cursor: not-allowed;
       }
     }
@@ -148,12 +223,12 @@
 
       &:hover {
         transform: translateY(-5px);
-        border-color: #007bff;
+        border-color: $prime-hover;
       }
 
       &.selected {
-        border-color: #28a745;
-        background-color: #e8f5e9;
+        border-color: $primary-light;
+        background-color: $prime-light;
       }
     }
   }
@@ -168,5 +243,58 @@
     color: #dc3545;
     font-weight: bold;
     text-align: center;
+  }
+}
+
+// These rules adjust the width of radio groups in steps 2 and 4.
+.step-4 .radio-group,
+.step-2 .radio-group {
+  width: 100%;
+}
+
+// ======================================================
+// Responsive Styles
+// ======================================================
+@media (max-width: 768px) {
+  .join-us-section {
+    flex-direction: column;
+    align-items: center;
+
+    .illustration {
+      display: none !important;
+    }
+  }
+
+  .join-us-page {
+    margin: 2rem auto;
+    padding: 1rem;
+
+    .form-group {
+      flex-direction: column;
+
+      .input-field {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .steps-indicator {
+      flex-wrap: wrap;
+    }
+  }
+
+  .join-us-form {
+    .radio-group {
+      width: 100%;
+      label {
+        margin-right: 1rem;
+      }
+    }
+
+    .community-cards {
+      .community-card {
+        flex: 1 1 100%;
+      }
+    }
   }
 }

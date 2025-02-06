@@ -80,7 +80,12 @@ const NavBar = () => {
   };
 
   return (
-    <nav style={{ color: isLightBackground ? "black" : "white" }}>
+    <nav
+      style={{
+        color: isLightBackground ? "black" : "white",
+        backgroundColor: isLightBackground ? "white" : "#524fe1",
+      }}
+    >
       <div className="logo-elements">
         <img
           src={isLightBackground ? coloredLogo : logo}

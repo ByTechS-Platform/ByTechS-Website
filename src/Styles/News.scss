@@ -1,8 +1,9 @@
+@import "./variables";
 /* =================================
    News Section
 ================================= */
 .news {
-  background-color: #5843ed;
+  background-color: $prime;
   padding: 120px 0%;
   color: #fff;
 
@@ -165,6 +166,7 @@
     }
   }
 
+  /* Responsive Styles */
   @media (max-width: 1024px) {
     padding: 80px 3%;
     .news-title {

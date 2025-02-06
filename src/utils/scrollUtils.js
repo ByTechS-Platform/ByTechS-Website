@@ -11,7 +11,10 @@ export const changeActiveSection = (
   let index = sections.length;
 
   // Find the current section based on scroll position
-  while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+  while (
+    --index &&
+    window.scrollY + window.innerHeight * 0.1 < sections[index].offsetTop
+  ) {}
 
   if (index < 0 || !sections[index]) return;
 
