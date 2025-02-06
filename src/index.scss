@@ -1,3 +1,4 @@
+@import "../src/Styles/variables";
 /* =================================
    Fonts
 ================================= */
@@ -123,7 +124,7 @@
 body {
   margin: 0;
   font-family: "IBM Plex Sans";
-  background-color: #5843ed;
+  background-color: $prime;
   color: #ffffff;
   overflow-x: hidden;
 }

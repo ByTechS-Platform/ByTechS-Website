@@ -1,9 +1,11 @@
+@import "../src/Styles/variables";
+
 .App {
   // text-align: center;
   body {
     margin: 0;
     // font-family: "IBM Plex Sans";
-    background-color: #5843ed;
+    background-color: $prime;
     color: #ffffff;
     overflow-x: hidden;
   }

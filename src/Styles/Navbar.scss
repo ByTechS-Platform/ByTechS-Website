@@ -1,28 +1,38 @@
+@import "./variables";
+
 nav {
   position: fixed;
   top: 0;
   right: 0;
-  width: 95%;
+  width: 100%;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center !important;
   text-align: start !important;
-  padding: 20px;
+  padding: 10px;
   z-index: 1000;
+  // background-color: $prime;
+
+  // .black{
+  //   background-color: #ffffff;
+  // }
+  // .black{
+  //    background-color: $prime;
+  // }
 
   .logo-elements {
+    // margin-left: 20px;
     display: flex;
     align-items: center;
   }
 
   .nav-links {
-
-      li button{
-        background: none;
-        border: none;
-      }
+    li button {
+      background: none;
+      border: none;
     }
+  }
   /* Navigation Links and Buttons */
   a,
   .language-switch button {
@@ -51,8 +61,9 @@ nav {
 @media (max-width: 1500px) {
   nav {
     img.logo {
-      height: 95px;
-      width: 199px;
+      height: 75px;
+      // width: 199px;
+      margin-left: 35px;
     }
 
     /* Navigation Links */
@@ -124,8 +135,9 @@ nav {
 @media (max-width: 1024px) {
   nav {
     img.logo {
-      height: auto;
-      width: 155px;
+      height: 70px;
+      // width: 155px;
+      margin-left: 30px;
     }
 
     .nav-links {
@@ -134,7 +146,6 @@ nav {
       gap: 50px;
       margin-right: auto;
       margin-top: 30px;
-
     }
 
     .nav-links a {
@@ -190,9 +201,9 @@ nav {
 @media (max-width: 768px) {
   nav {
     img.logo {
-      height: auto;
-      width: 120px;
-      margin-left: 35%;
+      height: 65px;
+      // width: 120px;
+      margin-left: 25px;
     }
 
     .nav-links {
@@ -251,7 +262,7 @@ nav {
         position: absolute;
         top: 60px;
         right: 0;
-        background-color: #5843ed;
+        background-color: $prime;
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

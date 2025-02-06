@@ -1,8 +1,9 @@
+@import "./variables";
 /* =================================
    News Section
 ================================= */
 .news {
-  background-color: #5843ed;
+  background-color: $prime;
   padding: 120px 0%;
   color: #fff;
 
@@ -126,12 +127,12 @@
       }
     }
   }
- @media (max-width: 1500px){
-  .carousel-slide {
+  @media (max-width: 1500px) {
+    .carousel-slide {
       max-width: 50%;
       height: 600px;
     }
- }
+  }
   /* Responsive Styles */
   @media (max-width: 1024px) {
     padding: 80px 3%;
