@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom"; // Import routing hooks
 import "../Styles/Navbar.scss";
-import logo from "../assets/logo.png";
-import coloredLogo from "../assets/BytechsColor.png";
+import logo from "../assets/Bytechs_شعار - أبيض 3.png";
+import coloredLogo from "../assets/Bytechs_شعار - ملون 1.png";
 import { switchLanguage } from "../utils/languageUtils";
 
 const NavBar = () => {
@@ -61,8 +61,9 @@ const NavBar = () => {
     const links = [
       { href: "home", en: "Home", ar: "الرئيسية" },
       { href: "about", en: "About Us", ar: "من نحن؟" },
-      { href: "contact", en: "Contact Us", ar: "تواصل معنا" },
+      { href: "communities", en: "Communities", ar: "المجتمعات" },
       { href: "news", en: "News", ar: "الأخبار" },
+      { href: "contact", en: "Contact Us", ar: "تواصل معنا" },
     ];
 
     return links.map((link) => (
@@ -93,7 +94,13 @@ const NavBar = () => {
         alt="Bytechs Logo"
       />
 
-      <ul className="nav-links">{renderNavLinks()}</ul>
+      <ul
+        className={`nav-links ${
+          activeLanguage === "ar" ? "align-right" : "align-left"
+        }`}
+      >
+        {renderNavLinks()}
+      </ul>
       {/* </div> */}
       <div className="language-switch">
         <button
@@ -147,44 +154,45 @@ const NavBar = () => {
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
           ></span>
         </div>
-        <ul className="burger-links">{renderNavLinks()}
-        <div className="language-switch">
-          <button
-            className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
-            onClick={toggleLanguage}
-            style={{
-              color:
-                activeLanguage === "en"
-                  ? isLightBackground
-                    ? "#5552e1"
-                    : "#5552e1"
-                  : isLightBackground
-                  ? "#333"
-                  : "#ddd",
-            }}
-            aria-label="Switch to English"
-          >
-            English
-          </button>
-          <button
-            className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
-            onClick={toggleLanguage}
-            style={{
-              color:
-                activeLanguage === "ar"
-                  ? isLightBackground
-                    ? "#5552e1"
-                    : "#5552e1"
-                  : isLightBackground
-                  ? "#333"
-                  : "#ddd",
-            }}
-            aria-label="Switch to Arabic"
-          >
-            العربية
-          </button>
-        </div>
-      </ul>
+        <ul className="burger-links">
+          {renderNavLinks()}
+          <div className="language-switch">
+            <button
+              className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
+              onClick={toggleLanguage}
+              style={{
+                color:
+                  activeLanguage === "en"
+                    ? isLightBackground
+                      ? "#5552e1"
+                      : "#5552e1"
+                    : isLightBackground
+                    ? "#333"
+                    : "#ddd",
+              }}
+              aria-label="Switch to English"
+            >
+              English
+            </button>
+            <button
+              className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
+              onClick={toggleLanguage}
+              style={{
+                color:
+                  activeLanguage === "ar"
+                    ? isLightBackground
+                      ? "#5552e1"
+                      : "#5552e1"
+                    : isLightBackground
+                    ? "#333"
+                    : "#ddd",
+              }}
+              aria-label="Switch to Arabic"
+            >
+              العربية
+            </button>
+          </div>
+        </ul>
       </div>
     </nav>
   );
