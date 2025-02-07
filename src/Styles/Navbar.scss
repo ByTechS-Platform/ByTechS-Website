@@ -10,7 +10,7 @@ nav {
   position: sticky;
   top: 0;
   right: 0;
-  width: 100%;
+  // width: 100%;
   margin: auto;
   padding: 10px;
   z-index: 1000;
@@ -179,7 +179,7 @@ nav {
 
     .nav-links {
       display: flex;
-      gap: 50px;
+      gap: 40px;
     }
 
     .language-switch {
@@ -232,11 +232,11 @@ nav {
 
     .nav-links {
       display: flex;
-      gap: 50px;
+      gap: 25px;
     }
 
     .nav-links li button {
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .language-switch {
