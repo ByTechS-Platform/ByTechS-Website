@@ -8,7 +8,7 @@ import shape2 from "../assets/shapesContactPage2.png";
 import shape3 from "../assets/shapesContactPage3.png";
 
 const ContactUs = () => {
-  const formRef = useRef(null); // Reference for the form
+  const formRef = useRef(null);
   const [activeLanguage, setActiveLanguage] = useState("en");
 
   // Handle form submission
@@ -16,7 +16,6 @@ const ContactUs = () => {
     event.preventDefault();
     const form = formRef.current;
 
-    // Optionally validate the form
     if (validateForm(form)) {
       emailjs
         .sendForm(
@@ -27,12 +26,20 @@ const ContactUs = () => {
         )
         .then((response) => {
           console.log("SUCCESS!", response.status, response.text);
-          alert("Message sent successfully!");
+          alert(
+            activeLanguage === "ar"
+              ? "تم إرسال الرسالة بنجاح!"
+              : "Message sent successfully!"
+          );
           form.reset();
         })
         .catch((error) => {
           console.error("FAILED...", error);
-          alert("Message failed to send. Please try again.");
+          alert(
+            activeLanguage === "ar"
+              ? "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
+              : "Message failed to send. Please try again."
+          );
         });
     }
   };
@@ -52,12 +59,12 @@ const ContactUs = () => {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        {/* <!-- Illustration Images --> */}
+        {/* Illustration Images */}
         <div className="illustration">
           <div className="shapes">
-            <img src={shape1} alt="Shape 1"></img>
-            <img src={shape2} alt="Shape 2"></img>
-            <img src={shape3} alt="Shape 3"></img>
+            <img src={shape1} alt="Shape 1" />
+            <img src={shape2} alt="Shape 2" />
+            <img src={shape3} alt="Shape 3" />
           </div>
         </div>
 
@@ -66,77 +73,61 @@ const ContactUs = () => {
             activeLanguage === "ar" ? "align-right" : "align-left"
           }`}
         >
-          <h2 data-en="Contact Us" data-ar="اتصل بنا">
-            Contact Us
-          </h2>
-          <p
-            data-en="Reach out to get more information about BytechS at: BytechS.contact@bytechs.net"
-            data-ar=" للحصول على مزيد من المعلومات حول BytechS اتصل على: BytechS.contact@bytechs.net"
-          >
-            Reach out to get more information about BytechS at
-            BytechS.contact@bytechs.net
+          <h2>{activeLanguage === "ar" ? "تواصل معنا" : "Contact Us"}</h2>
+          <p>
+            {activeLanguage === "ar"
+              ? "للحصول على مزيد من المعلومات حول BytechS تواصل معنا على: BytechS.contact@bytechs.net"
+              : "Reach out to get more information about BytechS at: BytechS.contact@bytechs.net"}
           </p>
           <form id="contact-form" ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder={activeLanguage === "ar" ? "الاسم" : "Your Name"}
                 required
-                data-en="Your Name"
-                data-ar="اسمك"
-              ></input>
+              />
               <input
                 type="email"
                 name="email1"
-                placeholder="Your Email"
+                placeholder={
+                  activeLanguage === "ar" ? "البريد الالكتروني" : "Your Email"
+                }
                 required
-                data-en="Your Email"
-                data-ar="بريدك الالكتروني"
-              ></input>
+              />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 name="phone"
-                placeholder="Phone Number"
+                placeholder={
+                  activeLanguage === "ar" ? "رقم الهاتف" : "Phone Number"
+                }
                 required
-                data-en="Phone Number"
-                data-ar="رقم الهاتف"
-              ></input>
+              />
               <input
                 type="text"
                 name="subject"
-                placeholder="Subject"
+                placeholder={activeLanguage === "ar" ? "الموضوع" : "Subject"}
                 required
-                data-en="Subject"
-                data-ar="الموضوع"
-              ></input>
+              />
             </div>
             <div className="form-group">
               <textarea
                 name="message"
-                placeholder="Message..."
+                placeholder={
+                  activeLanguage === "ar" ? "رسالتك..." : "Your Message..."
+                }
                 required
-                data-en="Message..."
-                data-ar="رسالة..."
               ></textarea>
             </div>
-            <button
-              type="submit"
-              data-en="SUBMIT MESSAGE"
-              data-ar="أرسل الرسالة"
-            >
-              SUBMIT MESSAGE
+            <button type="submit">
+              {activeLanguage === "ar" ? "أرسل الرسالة" : "SUBMIT MESSAGE"}
             </button>
           </form>
 
-          <Link to="/join-us"
-            className="join-us"
-            data-en="Join Our Team "
-            data-ar="إنضم لفريقنا "
-          >
-            Join Our Team
+          <Link to="/join-us" className="join-us">
+            {activeLanguage === "ar" ? "إنضم لفريقنا" : "Join Our Team"}
           </Link>
         </div>
       </div>
