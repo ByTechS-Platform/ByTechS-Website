@@ -12,25 +12,21 @@ nav {
   text-align: start !important;
   padding: 10px;
   z-index: 1000;
-  // background-color: $prime;
-
-  // .black{
-  //   background-color: #ffffff;
-  // }
-  // .black{
-  //    background-color: $prime;
-  // }
 
   .logo-elements {
-    // margin-left: 20px;
     display: flex;
     align-items: center;
   }
 
   .nav-links {
+    margin: auto;
+    padding: 0;
     li button {
       background: none;
       border: none;
+      color: rgb(255, 255, 255);
+      font-size: 18px;
+      cursor: pointer;
     }
   }
   /* Navigation Links and Buttons */
@@ -42,7 +38,6 @@ nav {
 
   /* Logo Styles */
   .logo {
-    // margin-left: 10%;
     transition: 0.3s ease;
   }
 
@@ -53,16 +48,15 @@ nav {
   .light-mode .language-switch button {
     color: #5552e1;
   }
-}
-.isLightBackground .language-switch button.active {
-  color: #000000;
+  .isLightBackground .language-switch button.active {
+    color: #000000;
+  }
 }
 
 @media (max-width: 1500px) {
   nav {
     img.logo {
       height: 75px;
-      // width: 199px;
       margin-left: 35px;
     }
 
@@ -71,8 +65,6 @@ nav {
       list-style: none;
       display: flex;
       gap: 50px;
-      margin-right: auto;
-      margin-top: 30px;
     }
 
     .nav-links a {
@@ -136,7 +128,6 @@ nav {
   nav {
     img.logo {
       height: 70px;
-      // width: 155px;
       margin-left: 30px;
     }
 
@@ -144,13 +135,9 @@ nav {
       list-style: none;
       display: flex;
       gap: 50px;
-      margin-right: auto;
-      margin-top: 30px;
     }
 
-    .nav-links a {
-      color: rgb(255, 255, 255);
-      text-decoration: none;
+    .nav-links li button {
       font-size: 16px;
     }
 
@@ -176,7 +163,6 @@ nav {
       font-size: 12px;
       font-weight: bold;
       color: rgb(255, 255, 255);
-      // font-family: "IBM Plex SansBold";
       text-align: center;
       transition: background-color 0.3s ease, color 0.3s ease;
       outline: none;
@@ -202,7 +188,6 @@ nav {
   nav {
     img.logo {
       height: 65px;
-      // width: 120px;
       margin-left: 25px;
     }
 
