@@ -1,87 +1,187 @@
 @import "./variables";
 
+ button{
+    font-family: "IBM Plex Sans Arabic";
+  }
+// ======================================================
+// Base Navigation Styles
+// ======================================================
 nav {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   margin: auto;
+  padding: 10px;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center !important;
   text-align: start !important;
-  padding: 10px;
-  z-index: 1000;
-  // background-color: $prime;
 
-  // .black{
-  //   background-color: #ffffff;
-  // }
-  // .black{
-  //    background-color: $prime;
-  // }
-
+ 
+  // ------------------------------------------------------
+  // Logo and Logo Elements
+  // ------------------------------------------------------
   .logo-elements {
-    // margin-left: 20px;
     display: flex;
     align-items: center;
   }
 
-  .nav-links {
-    li button {
-      background: none;
-      border: none;
-    }
-  }
-  /* Navigation Links and Buttons */
-  a,
-  .language-switch button {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-  }
-
-  /* Logo Styles */
   .logo {
-    // margin-left: 10%;
     transition: 0.3s ease;
   }
 
-  .light-mode .burger-icon span {
-    background-color: #000000;
+  // ------------------------------------------------------
+  // Navigation Links
+  // ------------------------------------------------------
+  .nav-links {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+
+    // a {
+    //   color: rgb(255, 255, 255);
+    //   text-decoration: none;
+    //   font-size: 18px;
+    // }
+
+    li {
+      button {
+        background: none;
+        border: none;
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
   }
 
-  .light-mode .language-switch button {
-    color: #5552e1;
+  // ------------------------------------------------------
+  // Language Switch Styles (Base)
+  // ------------------------------------------------------
+  .language-switch {
+    a,
+    button {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+    }
+  }
+
+  // ------------------------------------------------------
+  // Light Mode Overrides
+  // ------------------------------------------------------
+  .light-mode {
+    .burger-icon span {
+      background-color: #000000;
+    }
+    .language-switch {
+      button {
+        color: #5552e1;
+      }
+    }
+  }
+
+  .isLightBackground {
+    .language-switch {
+      button.active {
+        color: #000000;
+      }
+    }
   }
 }
-.isLightBackground .language-switch button.active {
-  color: #000000;
+
+.burger-menu {
+  display: none;
+
+  .burger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &.active {
+    .burger-links {
+      display: flex;
+    }
+
+    .burger-icon {
+      span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+      }
+    }
+  }
+
+  .burger-links {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: $prime;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 90%;
+
+    li {
+      button {
+        background: none;
+        border: none;
+        color: rgb(255, 255, 255) !important;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
+
+    // Language switch inside burger menu
+    .language-switch {
+      display: flex;
+
+      button {
+        padding: 15px;
+        font-size: 12px;
+      }
+    }
+  }
 }
 
+// ======================================================
+// Responsive Styles
+// ======================================================
+
+/* For screens up to 1500px */
 @media (max-width: 1500px) {
   nav {
     img.logo {
       height: 75px;
-      // width: 199px;
       margin-left: 35px;
     }
 
-    /* Navigation Links */
     .nav-links {
-      list-style: none;
       display: flex;
       gap: 50px;
-      margin-right: auto;
-      margin-top: 30px;
     }
 
-    .nav-links a {
-      color: rgb(255, 255, 255);
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    /* Language Switch Container */
     .language-switch {
       display: flex;
       background-color: rgba(0, 0, 0, 0.05);
@@ -92,37 +192,28 @@ nav {
       width: fit-content;
     }
 
-    /* Language Switch Button */
-    .language-switch button {
-      background: none;
-      background-color: transparent;
-      border: none;
-      padding: 15px;
-      border-radius: 21px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: bold;
-      color: rgb(255, 255, 255);
-      // font-family: "IBM Plex SansBold";
-      text-align: center;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      outline: none;
-    }
-
-    /* Active Button State */
-    .language-switch button.active {
-      background-color: rgb(255, 255, 255);
-      color: #5552e1;
-    }
-
-    .language-switch button.active is {
-      background-color: rgb(255, 255, 255);
-      color: #5552e1;
-    }
-
-    /* Hover State for Inactive Buttons */
-    .language-switch button:not(.active):hover {
-      background-color: rgba(255, 255, 255, 0.2);
+    .language-switch {
+      button {
+        background: none;
+        background-color: transparent;
+        border: none;
+        padding: 15px;
+        border-radius: 21px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        outline: none;
+      }
+      button.active {
+        background-color: rgb(255, 255, 255);
+        color: #5552e1;
+      }
+      button:not(.active):hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
     }
 
     .burger-menu {
@@ -131,30 +222,23 @@ nav {
   }
 }
 
-/* Adjustments for tablets */
+/* For tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   nav {
     img.logo {
       height: 70px;
-      // width: 155px;
       margin-left: 30px;
     }
 
     .nav-links {
-      list-style: none;
       display: flex;
       gap: 50px;
-      margin-right: auto;
-      margin-top: 30px;
     }
 
-    .nav-links a {
-      color: rgb(255, 255, 255);
-      text-decoration: none;
+    .nav-links li button {
       font-size: 16px;
     }
 
-    /* Language Switch Container */
     .language-switch {
       display: flex;
       background-color: rgba(0, 0, 0, 0.05);
@@ -165,30 +249,28 @@ nav {
       width: fit-content;
     }
 
-    /* Language Switch Button */
-    .language-switch button {
-      background: none;
-      background-color: transparent;
-      border: none;
-      padding: 15px;
-      border-radius: 21px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-      color: rgb(255, 255, 255);
-      // font-family: "IBM Plex SansBold";
-      text-align: center;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      outline: none;
-    }
-
-    .language-switch button.active {
-      background-color: rgb(255, 255, 255);
-      color: #5552e1;
-    }
-
-    .language-switch button:not(.active):hover {
-      background-color: rgba(255, 255, 255, 0.2);
+    .language-switch {
+      button {
+        background: none;
+        background-color: transparent;
+        border: none;
+        padding: 15px;
+        border-radius: 21px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        outline: none;
+      }
+      button.active {
+        background-color: rgb(255, 255, 255);
+        color: #5552e1;
+      }
+      button:not(.active):hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
     }
 
     .burger-menu {
@@ -197,23 +279,21 @@ nav {
   }
 }
 
-/* Mobile Screens */
+/* For mobile screens (max-width: 768px) */
 @media (max-width: 768px) {
   nav {
     img.logo {
       height: 65px;
-      // width: 120px;
       margin-left: 25px;
     }
 
-    .nav-links {
-      display: none;
-    }
-
+    // Hide desktop navigation elements
+    .nav-links,
     .language-switch {
       display: none;
     }
 
+    // Show burger menu
     .burger-menu {
       display: flex;
       flex-direction: column;
@@ -221,7 +301,6 @@ nav {
       justify-content: center;
       width: 50px;
       height: 50px;
-      cursor: pointer;
 
       .burger-icon {
         display: flex;
@@ -239,22 +318,9 @@ nav {
           border-radius: 3px;
           transition: all 0.3s ease;
         }
-
-        /* Burger Menu Toggle Animation */
-        .active .burger-icon span:nth-child(1) {
-          transform: translateY(6px) rotate(45deg);
-        }
-
-        .active .burger-icon span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .active .burger-icon span:nth-child(3) {
-          transform: translateY(-6px) rotate(-45deg);
-        }
       }
 
-      /* Burger Menu Links */
+      // Burger Menu Links (hidden by default)
       .burger-links {
         display: none;
         flex-direction: column;
@@ -269,32 +335,28 @@ nav {
         align-items: center;
         width: 90%;
 
+        // Language Switch within burger menu
         .language-switch {
-          display: flex; /* Hidden by default on larger screens */
+          display: flex;
 
           button {
             background: none;
             background-color: transparent;
             border: none;
             padding: 15px;
-            border-radius: 21px; /* Slightly less than container to account for padding */
+            border-radius: 21px;
             cursor: pointer;
             font-size: 12px;
             font-weight: bold;
             color: rgb(255, 255, 255);
-            // font-family: "IBM Plex SansBold";
             text-align: center;
             transition: background-color 0.3s ease, color 0.3s ease;
             outline: none;
           }
-
-          /* Active Button State */
           button.active {
             background-color: rgb(255, 255, 255);
             color: #5552e1;
           }
-
-          /* Hover State for Inactive Buttons */
           button:not(.active):hover {
             background-color: rgba(255, 255, 255, 0.2);
           }
@@ -313,17 +375,20 @@ nav {
       }
     }
 
-    .burger-menu.active .burger-links {
-      display: flex;
+    // Show burger menu links when active
+    .burger-menu.active {
+      .burger-links {
+        display: flex;
+      }
     }
   }
 }
 
+/* For extra-small screens (max-width: 480px) */
 @media (max-width: 480px) {
   nav {
     width: 100%;
     .burger-menu {
-      /* Burger Menu Links */
       .burger-links {
         top: 70px;
         width: 90%;
