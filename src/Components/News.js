@@ -96,13 +96,13 @@ const News = () => {
             activeLanguage === "ar" ? "align-right" : "align-left"
           }`}
         >
-          <span
+          <h2
             className="news-title"
             data-en="BytechS News"
             data-ar="أخبار بايتكس"
           >
-            ByTechS News
-          </span>
+            {activeLanguage === "en" ? "BytechS News" : "أخبار بايتكس"}
+          </h2>
 
           {/* Carousel */}
           <div className="carousel">
@@ -155,7 +155,11 @@ const News = () => {
           </div>
 
           <div className="pagination">
-            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            <button
+              className={`${activeLanguage === "ar" ? "arrow" : ""}`}
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            >
               <FontAwesomeIcon
                 icon={faChevronLeft}
                 style={{ color: "#32eddf" }}
@@ -173,6 +177,7 @@ const News = () => {
               </button>
             ))}
             <button
+              className={`${activeLanguage === "ar" ? "arrow" : ""}`}
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
             >

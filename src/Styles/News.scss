@@ -4,7 +4,7 @@
 ================================= */
 .news {
   background-color: $prime;
-  padding: 120px 0%;
+  padding: 5% 0%;
   color: #fff;
 
   .news-title {
@@ -137,6 +137,9 @@
     justify-content: center;
     gap: 10px;
 
+    .arrow{
+      transform: rotateY(180deg);
+    }
     button {
       background: none;
       border: none;
@@ -209,7 +212,7 @@
     }
     .carousel-slide {
       min-height: 400px;
-      max-height: 400px;
+      max-height: 500px;
     }
     .image-container {
       height: 180px;
