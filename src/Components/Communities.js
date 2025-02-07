@@ -14,7 +14,7 @@ const tabs = [
 ];
 
 const Communities = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(CommunitiesData[0]);
   const [activeTab, setActiveTab] = useState(tabs[0].en);
   const { language } = useLanguage(); // Access the active language from context
 
@@ -141,10 +141,14 @@ const Communities = () => {
           {CommunitiesData.map((card) => (
             <div
               key={card.id}
-              className="card"
+              className={`card ${
+                selectedCard.id === card.id ? "selected" : ""
+              }`}
               onClick={() => setSelectedCard(card)}
             >
-              <img src={card.image} alt={card.title} />
+              <div className="image-container">
+                <img src={card.image} alt={card.title} />
+              </div>
               <h4 className="card-title">
                 {language === "ar" ? card.titleAr : card.title}
               </h4>

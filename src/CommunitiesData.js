@@ -7,7 +7,7 @@ import DigitalMarketing from "./assets/c3.png";
 
 const CommunitiesData = [
   {
-    id: 2,
+    id: 1,
     image: E_Sport,
     title: "ByTechs eSports",
     titleAr: "مجتمع الرياضات الإلكترونية",
@@ -71,7 +71,7 @@ const CommunitiesData = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     image: SupplyChainlogistics,
     title: "ByTechs Supply Chain & Logistics",
     titleAr: "مجتمع سلاسل الإمداد والخدمات اللوجستية",
@@ -122,7 +122,7 @@ const CommunitiesData = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     image: DigitalMarketing,
     title: "Digital Marketing",
     titleAr: "مجتمع التسويق الرقمي",

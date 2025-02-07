@@ -1,16 +1,17 @@
 @import "./variables";
 
-.communities{
-    background-color: $white;
-    min-height: 100vh;
-    // padding: 5% 0;
+.communities {
+  background-color: $white;
+  min-height: 100vh;
+  padding: 5% 0;
 }
 .cards-container {
   display: flex;
   height: auto;
+  margin-top: 50px;
 
   .left-panel {
-    flex: 1;
+    flex: 1.25;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,9 +26,10 @@
     .card-details {
       width: 80%;
 
-      .image-container{
+      .image-container {
         width: 100%;
         max-width: 500px;
+        height: 300px;
         border-radius: 10px;
         margin-bottom: 15px;
         background-color: $grey-light;
@@ -36,13 +38,14 @@
       .card-lg-image {
         width: 100%;
         max-width: 500px;
+        height: 100%;
+        // max-height: 300px;
         border-radius: 10px;
         margin-bottom: 15px;
-
       }
 
       .card-title {
-        font-weight: bolder;
+        font-weight: bolder !important;
         margin-bottom: 5px;
         font-weight: normal;
         color: $prime;
@@ -90,18 +93,19 @@
           color: #333;
         }
         ul {
-        //   list-style-type: none;
-          li{
+          //   list-style-type: none;
+          li {
             margin-bottom: 5px;
             font-size: 16px;
             color: #666;
-          }}
+          }
+        }
       }
     }
   }
 
   .right-panel {
-    flex: 1;
+    flex: 0.75;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -112,48 +116,57 @@
     // padding: 20px;
 
     .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
 
       width: 200px;
-      height: 230px;
+      height: 200px;
       cursor: pointer;
       transition: transform 0.2s;
-      border-radius: 10px;
       overflow: hidden;
-      background-color: $grey-light;
+      .image-container {
+        border-radius: 10px;
+        height: 145px;
+        background-color: $grey-light;
+      }
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+      }
+
+      &.selected .image-container {
+        border: 2px solid #5552e1; // change the color and thickness as needed
+        border-radius: 10px;
+        // You can also add box-shadow, background-color, etc.
       }
 
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
         border-radius: 10px;
       }
 
-      h4{
+      h4 {
         color: $prime;
-        font-weight: bold;
+        font-weight: 500;
         margin: 5px;
         text-align: center;
       }
     }
   }
 }
-@media (max-width: 768px){
- .communities{
+@media (max-width: 768px) {
+  .communities {
     padding: 20px !important;
- }   
- .cards-container{
+  }
+  .cards-container {
     flex-direction: column-reverse;
 
-    .right-panel{
-        justify-content: center;
+    .right-panel {
+      justify-content: center;
     }
- }
+  }
 }
