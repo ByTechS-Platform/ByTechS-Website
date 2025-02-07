@@ -18,6 +18,17 @@ const Communities = () => {
   const [activeTab, setActiveTab] = useState(tabs[0].en);
   const { language } = useLanguage(); // Access the active language from context
 
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+    // Check if we're on a mobile viewport (adjust breakpoint as needed)
+    if (window.innerWidth <= 768) {
+      const leftPanel = document.querySelector(".left-panel");
+      if (leftPanel) {
+        leftPanel.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <section
       id="communities"
@@ -133,7 +144,14 @@ const Communities = () => {
               </div>
             </div>
           ) : (
-            <img src={BYLogo} alt="Large Logo" className="logo" />
+            <div className="card-placeholder">
+              <h2>
+                {language === "ar"
+                  ? "اختر احد المحتمعات لرؤية تفاصيله"
+                  : "select a community to see more details about it"}
+              </h2>
+              <img src={BYLogo} alt="Large Logo" className="logo" />
+            </div>
           )}
         </div>
 
@@ -142,9 +160,9 @@ const Communities = () => {
             <div
               key={card.id}
               className={`card ${
-                selectedCard.id === card.id ? "selected" : ""
+                selectedCard && selectedCard.id === card.id ? "selected" : ""
               }`}
-              onClick={() => setSelectedCard(card)}
+              onClick={() => handleCardClick(card)}
             >
               <div className="image-container">
                 <img src={card.image} alt={card.title} />
