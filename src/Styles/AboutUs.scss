@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 5% 0% 1% 0%;
+    padding: 5% 2% 1% 2%;
     min-height: 90vh;
     position: relative;
     // flex-direction: row; /* Default layout for larger screens */
@@ -30,7 +30,7 @@
         color: #1d1c4f;
         font-weight: 400;
         line-height: 32px;
-        text-align: justify;
+        // text-align: justify;
       }
 
       .cards-wrapper {
@@ -89,8 +89,12 @@
           }
 
           .card.goal {
+             grid-column: span 2 // Place goal card in the second column
+            // grid-row: span 2; // Make it span both rows
+          }
+          .card.values {
             grid-column: 2; // Place goal card in the second column
-            grid-row: span 2; // Make it span both rows
+            // grid-row: span 2; // Make it span both rows
           }
         }
       }
@@ -181,7 +185,7 @@
       }
 
       p {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .illustration {
@@ -233,14 +237,15 @@
       }
 
       .illustration {
-        flex: 1;
-        .shapes {
-          margin: 1%;
-          gap: 10px;
-          img {
-            width: 78px;
-          }
-        }
+        display: none;
+        // flex: 1;
+        // .shapes {
+        //   margin: 1%;
+        //   gap: 10px;
+        //   img {
+        //     width: 78px;
+        //   }
+        // }
       }
     }
   }

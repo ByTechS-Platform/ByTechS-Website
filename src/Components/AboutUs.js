@@ -3,6 +3,7 @@ import "../Styles/AboutUs.scss";
 import BytechsPurple from "../assets/Bytechs-purple.png";
 import element from "../assets/elements.png";
 import target from "../assets/target-02.png";
+import values from "../assets/values.png";
 import { useLanguage } from "../utils/LanguageContext"; // Import the custom hook
 
 const AboutUs = () => {
@@ -48,6 +49,24 @@ const AboutUs = () => {
               </p>
             </div>
 
+            <div className="card values">
+              <div className="card-top">
+                <img src={values} alt="shape1" />
+                <h3 data-en="Our Values" data-ar="قيمنا">
+                  {language === "en" ? "Our Values" : "قيمنا"}
+                </h3>
+              </div>
+              <p
+                className="card-content"
+                data-en="Innovation, Sustainability, Quality, Empowerment, Leadership, Giving, Collaboration, Inclusivity, Respect, and Promoting Tech Awareness."
+                data-ar="الابتكار، الاستدامة، الجودة، التمكين، الريادة، العطاء، التعاون، الشمولية، الاحترام، تعزيز الوعي التقني."
+              >
+                {language === "en"
+                  ? "Innovation, Sustainability, Quality, Empowerment, Leadership, Giving, Collaboration, Inclusivity, Respect, and Promoting Tech Awareness."
+                  : "الابتكار، الاستدامة، الجودة، التمكين، الريادة، العطاء، التعاون، الشمولية، الاحترام، تعزيز الوعي التقني."}
+              </p>
+            </div>
+
             <div className="card goal">
               <div className="card-top">
                 <img src={target} alt="shape1" />
@@ -81,24 +100,6 @@ const AboutUs = () => {
                     : "إطلاق منصة رقمية تسهّل التعاون والتواصل بين المهتمين والخبراء في التقنية."}
                 </li>
               </ul>
-            </div>
-
-            <div className="card mission">
-              <div className="card-top">
-                <img src={element} alt="shape1" />
-                <h3 data-en="Our Values" data-ar="قيمنا">
-                  {language === "en" ? "Our Values" : "قيمنا"}
-                </h3>
-              </div>
-              <p
-                className="card-content"
-                data-en="Innovation, Sustainability, Quality, Empowerment, Leadership, Giving, Collaboration, Inclusivity, Respect, and Promoting Tech Awareness."
-                data-ar="الابتكار، الاستدامة، الجودة، التمكين، الريادة، العطاء، التعاون، الشمولية، الاحترام، تعزيز الوعي التقني."
-              >
-                {language === "en"
-                  ? "Innovation, Sustainability, Quality, Empowerment, Leadership, Giving, Collaboration, Inclusivity, Respect, and Promoting Tech Awareness."
-                  : "الابتكار، الاستدامة، الجودة، التمكين، الريادة، العطاء، التعاون، الشمولية، الاحترام، تعزيز الوعي التقني."}
-              </p>
             </div>
           </div>
         </div>
