@@ -2,7 +2,7 @@
 import E_Sport from "./assets/7.png";
 import SupplyChainlogistics from "./assets/z2.png";
 import DigitalMarketing from "./assets/c3.png";
-// import FinancialProducts from "./assets/4.png";
+import FinancialProducts from "./assets/4.png";
 // import Sustainability from "./assets/5.png";
 
 const CommunitiesData = [
@@ -173,6 +173,67 @@ const CommunitiesData = [
       "الأعضاء التشغيليين: هيا الخالدي",
     ],
   },
+  {
+    id: 4,
+    image: FinancialProducts,
+    title: "ByTechs IT Department",
+    titleAr: "قسم تقنية المعلومات",
+    distinctive:
+      "A specialized team in developing innovative technical solutions that meet ByTechS's needs, and maintaining and continuously updating ByTechS's digital platforms.",
+    distinctiveAr:
+      "فريق متخصص في تطوير الحلول التقنية المبتكرة التي تلبي احتياجات بايتكس، إضافةً إلى صيانة وتحديث منصات بايتكس الرقمية بشكل مستمر.",
+    objective:
+      "Enhance the technical efficiency of the initiative by providing innovative digital solutions that support development through investing in young talents and developing technical solutions that support ByTechS projects' sustainability and strengthen their presence.",
+    objectiveAr:
+      "تعزيز الكفاءة التقنية للمبادرة من خلال تقديم حلول رقمية مبتكرة تدعم التطور بالاستثمار في الكفاءات الشابة وتطوير الحلول التقنية التي تدعم استدامة مشاريع بايتكس وتعزز تواجدها.",
+    vision:
+      "For the technical team to become a pioneering model in providing integrated technical solutions that reflect the values of innovation and creativity and support ByTechS's future aspirations.",
+    visionAr:
+      "أن يصبح الفريق التقني نموذجًا رياديًا في تقديم حلول تقنية متكاملة تعكس قيم الابتكار والإبداع وتدعم تطلعات بايتكس المستقبلية.",
+    whyUs: [
+      "Skill development through advanced practical experience in technical fields.",
+      "Working in a team characterized by a spirit of giving and passion for achievement.",
+      "Participating in pioneering and inspiring technical projects.",
+      "Continuous learning that contributes to skill enhancement.",
+    ],
+    whyUsAr: [
+      "تطوير المهارات باكتساب خبرات عملية متقدمة في المجالات التقنية.",
+      "العمل في فريق يتسم بروح العطاء وشغف الإنجاز.",
+      "المشاركة في مشاريع تقنية ريادية وملهمة.",
+      "التعلم المستمر الذي يسهم في تعزيز المهارات.",
+    ],
+    audience:
+      "Targeting young talented developers and computer specialists to provide opportunities for gaining practical experience and developing their skills.",
+    audienceAr:
+      "استهداف الكفاءات الشابة من المطورين والمختصين في مجال الحاسب لإتاحة فرص اكتساب خبرات عملية وتنمية مهاراتهم.",
+    activities: [
+      "Developing, improving, and maintaining ByTechS's digital platform.",
+      "Creating the initiative's official website and ensuring its updates align with the latest technical standards.",
+      "Building an environment that promotes team members' skill development.",
+    ],
+    activitiesAr: [
+      "تطوير منصة بايتكس الرقمية وتحسين أدائها وصيانتها.",
+      "إنشاء الموقع الرسمي للمبادرة وضمان تحديثه ليتماشى مع أحدث المعايير التقنية.",
+      "بناء بيئة تعزز تطوير مهارات أعضاء الفريق.",
+    ],
+    structure: [
+      "IT Project Manager: Leading the team to achieve ByTechS's technical goals.",
+      "UX Designers: Designing user-friendly and attractive interfaces.",
+      "Front-end Developers: Developing user interfaces and ensuring their functionality.",
+      "Back-end Developers: Developing server services and managing databases.",
+      "Cyber Security Specialists: Protecting technical projects from threats and ensuring data security.",
+      "Technical Documentation Specialist: Preparing technical documentation and user/developer guides.",
+    ],
+    structureAr: [
+      "قائد الفريق التقني: قيادة الفريق لتحقيق أهداف بايتكس التقنية.",
+      "مصممي تجربة المستخدم: تصميم واجهات سهلة الاستخدام وجذابة للمستخدمين.",
+      "مطوري الواجهة الأمامية: تطوير واجهة المستخدم وضمان عملها.",
+      "مطوري الواجهة الخلفية: تطوير خدمات الخادم وإدارة قواعد البيانات.",
+      "مختصي الأمن السيبراني: حماية المشاريع التقنية من التهديدات وضمان أمن البيانات.",
+      "مختص التوثيق التقني: إعداد الوثائق التقنية وأدلة المستخدم والمطور.",
+    ],
+  },
+
   //   {
   //     id: 5,
   //     image: FinancialProducts,
