@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Import routing hooks
+import React, { useState, useCallback, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Navbar.scss";
 import logo from "../assets/Bytechs_شعار - أبيض 3.png";
 import coloredLogo from "../assets/Bytechs_شعار - ملون 1.png";
 import { switchLanguage } from "../utils/languageUtils";
+import { useLanguage } from "../utils/LanguageContext";
 
 const NavBar = () => {
-  const [activeLanguage, setActiveLanguage] = useState("en");
+  const { language, setLanguage } = useLanguage();
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [isLightBackground, setIsLightBackground] = useState(false);
   const navigate = useNavigate();
@@ -14,8 +15,8 @@ const NavBar = () => {
 
   // Emit global language change event
   const toggleLanguage = () => {
-    const newLanguage = activeLanguage === "en" ? "ar" : "en";
-    setActiveLanguage(newLanguage);
+    const newLanguage = language === "en" ? "ar" : "en";
+    setLanguage(newLanguage);
     switchLanguage(newLanguage); // Update the DOM elements
     window.dispatchEvent(
       new CustomEvent("languageChange", { detail: { lang: newLanguage } })
@@ -48,12 +49,11 @@ const NavBar = () => {
 
   const toggleBurgerMenu = () => setBurgerMenuOpen((prevState) => !prevState);
 
-  // Function to navigate to the home page and scroll to the correct section
   const handleNavigation = (section) => {
     if (location.pathname !== "/") {
       navigate(`/#${section}`);
     } else {
-      window.location.hash = section; // If already on home, just update hash
+      window.location.hash = section;
     }
   };
 
@@ -74,7 +74,7 @@ const NavBar = () => {
           data-ar={link.ar}
           style={{ color: isLightBackground ? "black" : "white" }}
         >
-          {activeLanguage === "en" ? link.en : link.ar}
+          {language === "en" ? link.en : link.ar}
         </button>
       </li>
     ));
@@ -87,7 +87,6 @@ const NavBar = () => {
         backgroundColor: isLightBackground ? "white" : "#524fe1",
       }}
     >
-      {/* <div className="logo-elements"> */}
       <img
         src={isLightBackground ? coloredLogo : logo}
         className="logo"
@@ -96,19 +95,19 @@ const NavBar = () => {
 
       <ul
         className={`nav-links ${
-          activeLanguage === "ar" ? "align-right" : "align-left"
+          language === "ar" ? "align-right" : "align-left"
         }`}
       >
         {renderNavLinks()}
       </ul>
-      {/* </div> */}
+
       <div className="language-switch">
         <button
-          className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
+          className={`Eng ${language === "en" ? "active" : ""}`}
           onClick={toggleLanguage}
           style={{
             color:
-              activeLanguage === "en"
+              language === "en"
                 ? isLightBackground
                   ? "#5552e1"
                   : "#5552e1"
@@ -121,11 +120,11 @@ const NavBar = () => {
           English
         </button>
         <button
-          className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
+          className={`AR ${language === "ar" ? "active" : ""}`}
           onClick={toggleLanguage}
           style={{
             color:
-              activeLanguage === "ar"
+              language === "ar"
                 ? isLightBackground
                   ? "#5552e1"
                   : "#5552e1"
@@ -158,11 +157,11 @@ const NavBar = () => {
           {renderNavLinks()}
           <div className="language-switch">
             <button
-              className={`Eng ${activeLanguage === "en" ? "active" : ""}`}
+              className={`Eng ${language === "en" ? "active" : ""}`}
               onClick={toggleLanguage}
               style={{
                 color:
-                  activeLanguage === "en"
+                  language === "en"
                     ? isLightBackground
                       ? "#5552e1"
                       : "#5552e1"
@@ -175,11 +174,11 @@ const NavBar = () => {
               English
             </button>
             <button
-              className={`AR ${activeLanguage === "ar" ? "active" : ""}`}
+              className={`AR ${language === "ar" ? "active" : ""}`}
               onClick={toggleLanguage}
               style={{
                 color:
-                  activeLanguage === "ar"
+                  language === "ar"
                     ? isLightBackground
                       ? "#5552e1"
                       : "#5552e1"

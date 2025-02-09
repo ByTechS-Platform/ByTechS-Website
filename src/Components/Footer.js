@@ -49,7 +49,7 @@ const Footer = () => {
               data-en="© 2024 Bytechs. All rights reserved."
               data-ar="© 2024 بايتكس. جميع الحقوق محفوظة."
             >
-              © 2024 Bytechs. All rights reserved.
+              © 2024 بايتكس. جميع الحقوق محفوظة.
             </p>
           </div>
         </div>
