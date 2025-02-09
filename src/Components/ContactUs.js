@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
+import { useLanguage } from "../utils/LanguageContext"; // Import context
 import "../Styles/ContactUs.scss";
 import emailjs from "emailjs-com";
 import { Link } from "react-router-dom";
@@ -9,7 +10,7 @@ import shape3 from "../assets/shapesContactPage3.png";
 
 const ContactUs = () => {
   const formRef = useRef(null);
-  const [activeLanguage, setActiveLanguage] = useState("en");
+  const { language } = useLanguage(); // Get the active language from context
 
   // Handle form submission
   const handleSubmit = (event) => {
@@ -27,7 +28,7 @@ const ContactUs = () => {
         .then((response) => {
           console.log("SUCCESS!", response.status, response.text);
           alert(
-            activeLanguage === "ar"
+            language === "ar"
               ? "تم إرسال الرسالة بنجاح!"
               : "Message sent successfully!"
           );
@@ -36,25 +37,13 @@ const ContactUs = () => {
         .catch((error) => {
           console.error("FAILED...", error);
           alert(
-            activeLanguage === "ar"
+            language === "ar"
               ? "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
               : "Message failed to send. Please try again."
           );
         });
     }
   };
-
-  useEffect(() => {
-    const handleLanguageSwitch = (event) => {
-      const { lang } = event.detail;
-      setActiveLanguage(lang);
-    };
-
-    // Listen for language changes (if triggered globally)
-    window.addEventListener("languageChange", handleLanguageSwitch);
-    return () =>
-      window.removeEventListener("languageChange", handleLanguageSwitch);
-  }, []);
 
   return (
     <section id="contact" className="contact">
@@ -70,12 +59,12 @@ const ContactUs = () => {
 
         <div
           className={`content ${
-            activeLanguage === "ar" ? "align-right" : "align-left"
+            language === "ar" ? "align-right" : "align-left"
           }`}
         >
-          <h2>{activeLanguage === "ar" ? "تواصل معنا" : "Contact Us"}</h2>
+          <h2>{language === "ar" ? "تواصل معنا" : "Contact Us"}</h2>
           <p>
-            {activeLanguage === "ar"
+            {language === "ar"
               ? "للحصول على مزيد من المعلومات حول BytechS تواصل معنا على: BytechS.contact@bytechs.net"
               : "Reach out to get more information about BytechS at: BytechS.contact@bytechs.net"}
           </p>
@@ -84,14 +73,14 @@ const ContactUs = () => {
               <input
                 type="text"
                 name="name"
-                placeholder={activeLanguage === "ar" ? "الاسم" : "Your Name"}
+                placeholder={language === "ar" ? "الاسم" : "Your Name"}
                 required
               />
               <input
                 type="email"
                 name="email1"
                 placeholder={
-                  activeLanguage === "ar" ? "البريد الالكتروني" : "Your Email"
+                  language === "ar" ? "البريد الالكتروني" : "Your Email"
                 }
                 required
               />
@@ -100,15 +89,13 @@ const ContactUs = () => {
               <input
                 type="text"
                 name="phone"
-                placeholder={
-                  activeLanguage === "ar" ? "رقم الهاتف" : "Phone Number"
-                }
+                placeholder={language === "ar" ? "رقم الهاتف" : "Phone Number"}
                 required
               />
               <input
                 type="text"
                 name="subject"
-                placeholder={activeLanguage === "ar" ? "الموضوع" : "Subject"}
+                placeholder={language === "ar" ? "الموضوع" : "Subject"}
                 required
               />
             </div>
@@ -116,18 +103,18 @@ const ContactUs = () => {
               <textarea
                 name="message"
                 placeholder={
-                  activeLanguage === "ar" ? "رسالتك..." : "Your Message..."
+                  language === "ar" ? "رسالتك..." : "Your Message..."
                 }
                 required
               ></textarea>
             </div>
             <button type="submit">
-              {activeLanguage === "ar" ? "أرسل الرسالة" : "SUBMIT MESSAGE"}
+              {language === "ar" ? "أرسل الرسالة" : "SUBMIT MESSAGE"}
             </button>
           </form>
 
           <Link to="/join-us" className="join-us">
-            {activeLanguage === "ar" ? "إنضم لفريقنا" : "Join Our Team"}
+            {language === "ar" ? "إنضم لفريقنا" : "Join Our Team"}
           </Link>
         </div>
       </div>

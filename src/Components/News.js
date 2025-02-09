@@ -5,6 +5,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { useLanguage } from "../utils/LanguageContext";
 // import FollowUs from "./FollowUs";
 import "../Styles/News.scss";
 
@@ -15,9 +16,9 @@ const baseId = "app9KzhrevXRJVMgJ";
 const tableName = "News";
 
 const News = () => {
+const { language } = useLanguage(); // Get active language from context
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeLanguage, setActiveLanguage] = useState("en");
   const [error] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
@@ -52,147 +53,104 @@ const News = () => {
     (_, index) => index + 1
   );
 
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) setCurrentPage((prevPage) => prevPage - 1);
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  useEffect(() => {
-    const handleLanguageSwitch = (event) => {
-      const { lang } = event.detail;
-      setActiveLanguage(lang);
-    };
-
-    // Listen for language changes (if triggered globally)
-    window.addEventListener("languageChange", handleLanguageSwitch);
-    return () =>
-      window.removeEventListener("languageChange", handleLanguageSwitch);
-  }, []);
-
-  if (loading) {
+   if (loading) {
     return <p>Loading news...</p>; // Display a loading message while fetching
   }
 
   if (error) {
     return <p>{error}</p>; // Display the error message if any
   }
-
-  // eslint-disable-next-line no-unused-vars
-  const lastNewsImageUrl =
-    newsData.length > 0 ? newsData[0].fields.Image[0].url : "";
-
   return (
-    <>
-      <section id="news" className="section news">
-        <div
-          className={`news-container ${
-            activeLanguage === "ar" ? "align-right" : "align-left"
-          }`}
-        >
-          <h2
-            className="news-title"
-            data-en="BytechS News"
-            data-ar="أخبار بايتكس"
-          >
-            {activeLanguage === "en" ? "BytechS News" : "أخبار بايتكس"}
-          </h2>
+    <section id="news" className="section news">
+      <div
+        className={`news-container ${
+          language === "ar" ? "align-right" : "align-left"
+        }`}
+      >
+        <h2 className="news-title">
+          {language === "en" ? "BytechS News" : "أخبار بايتكس"}
+        </h2>
 
-          {/* Carousel */}
-          <div className="carousel">
-            <div className="carousel-wrapper">
-              {currentNewsData.length > 0 ? (
-                currentNewsData.map((record) => {
-                  const { fields } = record;
-                  const imageUrl = fields.Image ? fields.Image[0].url : "";
+        {/* News List */}
+        <div className="carousel">
+          <div className="carousel-wrapper">
+            {currentNewsData.length > 0 ? (
+              currentNewsData.map((record) => {
+                const { fields } = record;
+                const imageUrl = fields.Image ? fields.Image[0].url : "";
 
-                  return (
-                    <div key={record.id} className="carousel-slide">
-                      <div className="image-container">
-                        <a href={fields.Post}>
-                          {imageUrl && <img src={imageUrl} alt={fields.Name} />}
-                        </a>
-                      </div>
-                      <div className="content-container">
-                        <span className="event-tag">
-                          {activeLanguage === "en"
-                            ? fields.Tag_eng
-                            : fields.Tag_ar}
-                        </span>
-                        <p className="event-title">
-                          {activeLanguage === "en"
-                            ? fields.Title_eng
-                            : fields.Title_ar}
-                        </p>
-                        <p className="event-content">
-                          {activeLanguage === "en"
-                            ? fields.Content_eng
-                            : fields.Content_ar}
-                        </p>
-                      </div>
-                      <p
-                        className={`${
-                          activeLanguage === "ar"
-                            ? "event-date-ar"
-                            : "event-date-en"
-                        }`}
-                      >
-                        {fields.Date}
+                return (
+                  <div key={record.id} className="carousel-slide">
+                    <div className="image-container">
+                      <a href={fields.Post}>
+                        {imageUrl && <img src={imageUrl} alt={fields.Name} />}
+                      </a>
+                    </div>
+                    <div className="content-container">
+                      <span className="event-tag">
+                        {language === "en" ? fields.Tag_eng : fields.Tag_ar}
+                      </span>
+                      <p className="event-title">
+                        {language === "en" ? fields.Title_eng : fields.Title_ar}
+                      </p>
+                      <p className="event-content">
+                        {language === "en"
+                          ? fields.Content_eng
+                          : fields.Content_ar}
                       </p>
                     </div>
-                  );
-                })
-              ) : (
-                <p>No news available at the moment.</p>
-              )}
-            </div>
-          </div>
-
-          <div className="pagination">
-            <button
-              className={`${activeLanguage === "ar" ? "arrow" : ""}`}
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              <FontAwesomeIcon
-                icon={faChevronLeft}
-                style={{ color: "#32eddf" }}
-              />
-            </button>
-            {pageNumbers.map((number) => (
-              <button
-                key={number}
-                onClick={() => handlePageClick(number)}
-                className={currentPage === number ? "active" : ""}
-                data-en={number}
-                data-ar={number}
-              >
-                {number}
-              </button>
-            ))}
-            <button
-              className={`${activeLanguage === "ar" ? "arrow" : ""}`}
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-            >
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                style={{ color: "#32eddf" }}
-              />
-            </button>
+                    <p
+                      className={
+                        language === "ar" ? "event-date-ar" : "event-date-en"
+                      }
+                    >
+                      {fields.Date}
+                    </p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>No news available at the moment.</p>
+            )}
           </div>
         </div>
-      </section>
 
-      {/* Render FollowUs component and pass the last image URL */}
-      {/* <FollowUs followImage={lastNewsImageUrl} /> */}
-    </>
+        {/* Pagination */}
+        <div className="pagination">
+          <button
+            className={`${language === "ar" ? "arrow" : ""}`}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              style={{ color: "#32eddf" }}
+            />
+          </button>
+          {pageNumbers.map((number) => (
+            <button
+              key={number}
+              onClick={() => setCurrentPage(number)}
+              className={currentPage === number ? "active" : ""}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            className={`${language === "ar" ? "arrow" : ""}`}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+          >
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              style={{ color: "#32eddf" }}
+            />
+          </button>
+        </div>
+      </div>
+    </section>
   );
 };
 
