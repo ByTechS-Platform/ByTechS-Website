@@ -2,7 +2,7 @@
 import E_Sport from "./assets/7.png";
 import SupplyChainlogistics from "./assets/z2.png";
 import DigitalMarketing from "./assets/c3.png";
-import FinancialProducts from "./assets/4.png";
+import IT from "./assets/IT.png";
 // import Sustainability from "./assets/5.png";
 
 const CommunitiesData = [
@@ -175,7 +175,7 @@ const CommunitiesData = [
   },
   {
     id: 4,
-    image: FinancialProducts,
+    image: IT,
     title: "ByTechs IT Department",
     titleAr: "قسم تقنية المعلومات",
     distinctive:
