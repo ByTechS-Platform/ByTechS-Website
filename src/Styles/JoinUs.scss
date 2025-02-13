@@ -272,6 +272,7 @@
     .form-group {
       flex-direction: column;
 
+
       .input-field {
         width: 100%;
         margin-bottom: 1rem;
@@ -284,6 +285,13 @@
   }
 
   .join-us-form {
+    .step{
+      width: 90%;
+    }
+    .step-4{
+      width: 100%;
+    }
+
     .radio-group {
       width: 100%;
       label {
