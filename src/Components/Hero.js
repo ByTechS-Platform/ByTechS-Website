@@ -33,7 +33,6 @@ const Hero = () => {
           </p>
 
           <h1>{language === "ar" ? "قــريــبـاً ••• " : "COMING SOON •••"}</h1>
-
           <div className="progress-bar-wrapper">
             <div className="progress-bar">
               <div ref={progressBarRef} className="progress"></div>
@@ -42,6 +41,11 @@ const Hero = () => {
               0%
             </span>
           </div>
+          <p className="T2">
+            {language === "ar"
+              ? "منصة بايتكس الرقمية"
+              : "ByTechs Digital Platform"}
+          </p>
         </div>
 
         {/* Illustration Images */}

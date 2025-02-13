@@ -13,8 +13,16 @@
       align-items: start;
 
       .T1 {
-        font-weight: 400;
+        font-weight: 200;
         font-size: 40px;
+        width: auto;
+        height: 34px;
+        line-height: 33.6px;
+        text-align: center !important;
+      }
+      .T2 {
+        font-weight: 400;
+        font-size: 34px;
         width: auto;
         height: 34px;
         line-height: 33.6px;
@@ -155,11 +163,18 @@
         width: 65%;
 
         .T1 {
-          font-weight: 400;
+          font-weight: 200;
           font-size: 35px;
           width: auto;
           height: 34px;
           line-height: 33.6px;
+        }
+        .T2 {
+          font-weight: 400;
+          font-size: 28px;
+          width: auto;
+          height: 34px;
+          line-height: 30px;
         }
 
         h1 {
@@ -167,7 +182,7 @@
           font-size: 75px;
           line-height: 132px;
           width: 100%;
-          margin: 5%;
+          margin: 5% 0;
         }
 
         /* =================================
@@ -218,11 +233,17 @@
         // margin-left: -10%;
         .T1 {
           // font-family: "IBM Plex Sans";
-          font-weight: 400;
+          font-weight: 200;
           font-size: 26px;
           width: 100%;
           margin-left: -1%;
           margin-bottom: 5%;
+        }
+        .T2 {
+          // font-family: "IBM Plex Sans";
+          font-weight: 400;
+          font-size: 22px;
+          width: 100%;
         }
 
         /* Styling for 'COMING SOON ...' Heading */
@@ -286,8 +307,14 @@
 
         .T1 {
           // font-family: "IBM Plex Sans";
-          font-weight: 300;
+          font-weight: 200;
           font-size: 24px;
+          line-height: 1.2;
+        }
+        .T2 {
+          // font-family: "IBM Plex Sans";
+          font-weight: 300;
+          font-size: 20px;
           line-height: 1.2;
         }
 
@@ -345,8 +372,14 @@
       width: 100%;
       margin-top: 30%;
       .T1 {
-        font-weight: 400;
+        font-weight: 200;
         font-size: 17px;
+        line-height: 1.2;
+        width: 100%;
+      }
+      .T2 {
+        font-weight: 400;
+        font-size: 12px;
         line-height: 1.2;
         width: 100%;
       }
