@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ReactGA from "react-ga4";
 import {
   BrowserRouter as Router,
   Route,
@@ -26,6 +27,8 @@ const ScrollToSection = () => {
 
   return null; // No UI, just handles scrolling
 };
+
+ReactGA.initialize("G-FXNRWYV63R");
 function App() {
   const [isLightMode] = useState(false);
   const [activeSection] = useState("home");
