@@ -143,16 +143,16 @@ const communities = [
       ar: "فريق متخصص في تطوير الحلول التقنية المبتكرة التي تلبي احتياجات بايتكس، إضافةً إلى صيانة وتحديث منصات بايتكس الرقمية بشكل مستمر.",
     },
   },
-  {
-    name: {
-      en: "PR & Communications Department",
-      ar: "قسم الاتصال الداخلي والعلاقات العامة",
-    },
-    details: {
-      en: "It fosters a work environment defined by transparency and open communication. and develops internal communication and public relations skills in an innovative way.",
-      ar: "يعزز بيئة عمل تتسم بالشفافية والتواصل المفتوح.ويطور مهارات الاتصال الداخلي والعلاقات العامة بشكل مبتكر",
-    },
-  },
+  // {
+  //   name: {
+  //     en: "PR & Communications Department",
+  //     ar: "قسم الاتصال الداخلي والعلاقات العامة",
+  //   },
+  //   details: {
+  //     en: "It fosters a work environment defined by transparency and open communication. and develops internal communication and public relations skills in an innovative way.",
+  //     ar: "يعزز بيئة عمل تتسم بالشفافية والتواصل المفتوح.ويطور مهارات الاتصال الداخلي والعلاقات العامة بشكل مبتكر",
+  //   },
+  // },
 ];
 
 const JoinUs = () => {
@@ -163,6 +163,37 @@ const JoinUs = () => {
 
   // Track the current step (1: Personal, 2: Academic/Experience, 3: Additional Questions, 4: Community Selection)
   const [step, setStep] = useState(1);
+
+  const errorMessages = {
+    personalInfo: {
+      en: "Please fill in all required personal information fields.",
+      ar: "يرجى ملء جميع الحقول المطلوبة للمعلومات الشخصية.",
+    },
+    emailInvalid: {
+      en: "Please enter a valid email address.",
+      ar: "يرجى إدخال عنوان بريد إلكتروني صالح.",
+    },
+    academicInfo: {
+      en: "Please fill in your academic information.",
+      ar: "يرجى ملء جميع الحقول المطلوبة للمعلومات الأكاديمية.",
+    },
+    certificates: {
+      en: "Please list your certificates.",
+      ar: "يرجى إدخال الشهادات أو الدورات التدريبية الخاصة بك.",
+    },
+    experience: {
+      en: "Please describe your work or volunteer experience.",
+      ar: "يرجى وصف تجربتك العملية أو التطوعية.",
+    },
+    additionalQuestions: {
+      en: "Please complete all required fields.",
+      ar: "يرجى إكمال جميع الحقول المطلوبة.",
+    },
+    selectCommunity: {
+      en: "Please select a community.",
+      ar: "يرجى اختيار المجتمع.",
+    },
+  };
 
   // Our form state now includes all fields plus the new "community" field
   const [formData, setFormData] = useState({
@@ -224,81 +255,87 @@ const JoinUs = () => {
     }));
   };
 
-  // Simple form validation function (validates all required fields)
-  const validateForm = () => {
-    setError(null);
-    // Validate Step 1: Personal Information
-    if (
-      !formData.nameAr.trim() ||
-      !formData.nameEn.trim() ||
-      !formData.gender ||
-      !formData.idNumber.trim() ||
-      !formData.nationality.trim() ||
-      !formData.dob ||
-      !formData.email.trim() ||
-      !formData.phone.trim() ||
-      !formData.residence.trim()
-    ) {
-      setError("Please fill in all required personal information fields.");
-      return false;
-    }
+ const validateForm = (step) => {
+   setError(null);
 
-    // Basic email format validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError("Please enter a valid email address.");
-      return false;
-    }
+   if (step === 1) {
+     if (
+       !formData.nameAr.trim() ||
+       !formData.nameEn.trim() ||
+       !formData.gender ||
+       !formData.idNumber.trim() ||
+       !formData.nationality.trim() ||
+       !formData.dob ||
+       !formData.email.trim() ||
+       !formData.phone.trim() ||
+       !formData.residence.trim()
+     ) {
+       setError(errorMessages.personalInfo[language]);
+       return false;
+     }
 
-    // Validate Step 2: Academic & Work Experience Information
-    if (!formData.major.trim() || !formData.degree.trim()) {
-      setError("Please fill in your academic information fields.");
-      return false;
-    }
-    if (
-      formData.hasCertificates === "Yes" &&
-      !formData.certificatesDetails.trim()
-    ) {
-      setError("Please list your certificates or courses.");
-      return false;
-    }
-    if (
-      formData.hasExperience === "Yes" &&
-      !formData.experienceDetails.trim()
-    ) {
-      setError("Please describe your work or volunteer experience.");
-      return false;
-    }
+     // Email Validation
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(formData.email)) {
+       setError(errorMessages.emailInvalid[language]);
+       return false;
+     }
+   }
 
-    // Validate Step 3: Additional Questions
-    if (
-      !formData.whyByTechs.trim() ||
-      !formData.commitment ||
-      !formData.terms
-    ) {
-      setError(
-        "Please answer all required questions in the additional questions section."
-      );
-      return false;
-    }
-    // Validate Step 4: Community Selection
-    if (!formData.community) {
-      setError("Please select a community.");
-      return false;
-    }
-    return true;
-  };
+   if (step === 2) {
+     if (!formData.major.trim() || !formData.degree.trim()) {
+       setError(errorMessages.academicInfo[language]);
+       return false;
+     }
+     if (
+       formData.hasCertificates === "Yes" &&
+       !formData.certificatesDetails.trim()
+     ) {
+       setError(errorMessages.certificates[language]);
+       return false;
+     }
+     if (
+       formData.hasExperience === "Yes" &&
+       !formData.experienceDetails.trim()
+     ) {
+       setError(errorMessages.experience[language]);
+       return false;
+     }
+   }
+
+   if (step === 3) {
+     if (
+       !formData.whyByTechs.trim() 
+      //  !formData.commitment ||
+      //  !formData.terms
+     ) {
+       setError(errorMessages.additionalQuestions[language]);
+       return false;
+     }
+   }
+
+   if (step === 4 && !formData.community) {
+     setError(errorMessages.selectCommunity[language]);
+     return false;
+   }
+
+   return true;
+ };
+
 
   // Navigation functions
-  const nextStep = () => setStep((prev) => prev + 1);
+ const nextStep = () => {
+   if (!validateForm(step)) return; // If validation fails, stop here
+   setStep((prev) => prev + 1);
+ };
+
   const prevStep = () => setStep((prev) => prev - 1);
 
   // On final submission, prepare and send data to Airtable.
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm(4)) return;
+
     setLoading(true);
     setError(null);
     setSuccess(null);
@@ -371,7 +408,7 @@ const JoinUs = () => {
         terms: "",
         community: "",
       });
-      setStep(1);
+      // setStep(1);
     } catch (error) {
       console.error(error);
       const errorMessage =
