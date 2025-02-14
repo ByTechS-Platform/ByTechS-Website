@@ -60,10 +60,10 @@ const NavBar = () => {
   const renderNavLinks = () => {
     const links = [
       { href: "home", en: "Home", ar: "الرئيسية" },
-      { href: "about", en: "About Us", ar: "من نحن؟" },
+      { href: "about", en: "About Us", ar: "عن بايتكس "},
       { href: "communities", en: "Communities", ar: "المجتمعات" },
-      { href: "news", en: "News", ar: "الأخبار" },
-      { href: "contact", en: "Contact Us", ar: "تواصل معنا" },
+      { href: "news", en: "News", ar: "الأخبـار" },
+      { href: "contact", en: "Contact us", ar: "تواصل معنا" },
     ];
 
     return links.map((link) => (
