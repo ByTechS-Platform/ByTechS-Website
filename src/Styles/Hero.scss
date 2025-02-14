@@ -288,7 +288,7 @@
 @media (max-width: 768px) {
   .section {
     .container {
-      padding: 5% 3%;
+      padding: 2% 3%;
       .content {
         // width: 65%;
         // margin-left: -15%;
@@ -353,7 +353,7 @@
 /* Adjustments for small mobile phones */
 @media (max-width: 480px) {
   .section .container {
-    padding: 5% 3% 10% 3%;
+    padding: 2% 3% 10% 3%;
     // width: 100%;
     flex-direction: column;
     .content {
@@ -361,13 +361,13 @@
       margin-top: 30%;
       .T1 {
         font-weight: 200;
-        font-size: 17px;
+        font-size: 22px;
         line-height: 1.2;
         width: 100%;
       }
       .T2 {
         font-weight: 400;
-        font-size: 12px;
+        font-size: 18px;
         line-height: 1.2;
         width: 100%;
       }
