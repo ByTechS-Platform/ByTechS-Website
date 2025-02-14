@@ -9,7 +9,7 @@ const CommunitiesData = [
   {
     id: 1,
     image: E_Sport,
-    title: "ByTechs eSports",
+    title: "ByTechS eSports",
     titleAr: "مجتمع الرياضات الإلكترونية",
     distinctive:
       "A community that combines e-sports and technical development to enhance skills in gaming and teamwork. Also, it provides an environment that blends passion for gaming with the development of technical and managerial skills.",
@@ -73,7 +73,7 @@ const CommunitiesData = [
   {
     id: 2,
     image: SupplyChainlogistics,
-    title: "ByTechs Supply Chain & Logistics",
+    title: "ByTechS Supply Chain & Logistics",
     titleAr: "مجتمع سلاسل الإمداد واللوجستيات",
     distinctive:
       "Focuses on empowering members through hands-on workshops and innovative programs. Provides awareness opportunities to apply and transfer knowledge to the community.",
@@ -176,7 +176,7 @@ const CommunitiesData = [
   {
     id: 4,
     image: IT,
-    title: "ByTechs IT Department",
+    title: "ByTechS IT Department",
     titleAr: "قسم تقنية المعلومات",
     distinctive:
       "A specialized team in developing innovative technical solutions that meet ByTechS's needs, and maintaining and continuously updating ByTechS's digital platforms.",
