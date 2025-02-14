@@ -170,7 +170,7 @@ nav {
 // ======================================================
 
 /* For screens up to 1500px */
-@media (max-width: 1500px) {
+@media (max-width: 1500px), (min-width: 1500px) {
   nav {
     img.logo {
       height: 75px;

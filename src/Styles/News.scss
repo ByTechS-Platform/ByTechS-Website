@@ -163,7 +163,7 @@
   }
 
   /* Responsive Styles */
-  @media (max-width: 1500px) {
+  @media (max-width: 1500px), (min-width: 1500px) {
     .carousel-slide {
       max-width: 50%;
       height: 600px;
