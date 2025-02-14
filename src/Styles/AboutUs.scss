@@ -56,6 +56,7 @@
             }
             
             h3 {
+              margin: 5px 0;
               font-size: 18px;
               color: #5552e1;
             }
@@ -133,7 +134,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: auto;
+      // margin-bottom: auto;
       // margin-left: -20%;
 
       .shapes {
@@ -176,17 +177,31 @@
       align-items: center;
 
       .content {
-        max-width: 80%;
+        max-width: 75%;
         padding: 30px;
+
+        h2 {
+          font-size: 30px;
+        }
+  
+        p {
+          font-size: 16px;
+          line-height: 25px;
+        }
+
+        .cards-wrapper .card{
+          padding: 15px;
+
+          p{
+            margin: 5px 1px;
+            line-height: normal;
+          }
+          ul{
+            margin: 5px;
+          }
+        }
       }
 
-      h2 {
-        font-size: 28px;
-      }
-
-      p {
-        font-size: 12px;
-      }
 
       .illustration {
         margin-left: 0;
