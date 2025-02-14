@@ -74,7 +74,7 @@ const CommunitiesData = [
     id: 2,
     image: SupplyChainlogistics,
     title: "ByTechs Supply Chain & Logistics",
-    titleAr: "مجتمع سلاسل الإمداد والخدمات اللوجستية",
+    titleAr: "مجتمع سلاسل الإمداد واللوجستيات",
     distinctive:
       "Focuses on empowering members through hands-on workshops and innovative programs. Provides awareness opportunities to apply and transfer knowledge to the community.",
     distinctiveAr:

@@ -6,7 +6,7 @@ import { useLanguage } from "../utils/LanguageContext";
 
 const tabs = [
   { en: "Vision & Objective", ar: "الرؤية والهدف" },
-  { en: "Why us", ar: "لماذا نحن؟" },
+  { en: "Why us", ar: "لماذا نحن" },
   { en: "Distinctive", ar: "ما يميزنا" },
   { en: "Audience", ar: "الجمهور" },
   { en: "Activities", ar: "الأنشطة" },
@@ -20,6 +20,7 @@ const Communities = () => {
 
   const handleCardClick = (card) => {
     setSelectedCard(card);
+    setActiveTab(tabs[0].en);
     // Check if we're on a mobile viewport (adjust breakpoint as needed)
     if (window.innerWidth <= 768) {
       const leftPanel = document.querySelector(".left-panel");
