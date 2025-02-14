@@ -22,6 +22,7 @@ const { language } = useLanguage(); // Get active language from context
   const [error] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
+  
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -68,7 +69,7 @@ const { language } = useLanguage(); // Get active language from context
         }`}
       >
         <h2 className="news-title">
-          {language === "en" ? "BytechS News" : "أخبار بايتكس"}
+          {language === "en" ? "ByTechS News" : "أخبار بايتكس"}
         </h2>
 
         {/* News List */}

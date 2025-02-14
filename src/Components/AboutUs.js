@@ -18,10 +18,11 @@ const AboutUs = () => {
             language === "ar" ? "align-right" : "align-left"
           }`}
         >
-          <h2 data-en="What is Bytechs?" data-ar="عن مبادرة بايتكس">
-            {language === "en" ? "What is Bytechs?" : "عن مبادرة بايتكس"}
+          <h2 data-en="What is ByTechS?" data-ar="عن مبادرة بايتكس">
+            {language === "en" ? "What is ByTechS?" : "عن مبادرة بايتكس"}
           </h2>
-          <p className="about-paragraph"
+          <p
+            className="about-paragraph"
             data-en="An initiative reshaping the world of technology by creating a sustainable ecosystem to activate the technical movement in artificial intelligence and emerging technologies. We support innovation, entrepreneurship, and applied research to contribute to achieving the three pillars of Saudi Vision 2030: an ambitious nation, a vibrant society, and a thriving economy."
             data-ar="مبادرة تعمل على إعادة تشكيل عالم التقنية من خلال خلق نظام بيئي مستدام لتفعيل الحراك التقني في مجالات الذكاء الاصطناعي والتقنيات الناشئة. ندعم الابتكار، ريادة الأعمال، والبحث العملي لنساهم في تحقيق أعمدة رؤية المملكة الثلاث وطن طموح، مجتمع حيوي، واقتصاد مزدهر."
           >

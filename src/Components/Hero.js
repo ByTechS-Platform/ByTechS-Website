@@ -35,7 +35,7 @@ const Hero = () => {
           <p className="T2">
             {language === "ar"
               ? "منصة بايتكس الرقمية"
-              : "ByTechs Digital Platform"}
+              : "ByTechS Digital Platform"}
           </p>
           <h1>{language === "ar" ? "قــريــبـاً ••• " : "COMING SOON •••"}</h1>
           <div className="progress-bar-wrapper">
