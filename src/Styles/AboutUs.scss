@@ -14,7 +14,7 @@
     // flex-direction: row; /* Default layout for larger screens */
 
     .content {
-      padding: 40px;
+      padding: 20px 35px;
       border-radius: 20px;
       max-width: 65%;
       // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -25,12 +25,19 @@
         color: #5552e1;
       }
       p {
-        margin-bottom: 20px;
+        margin: 10px;
         font-size: 20px;
         color: #1d1c4f;
         font-weight: 400;
         line-height: 32px;
         // text-align: justify;
+      }
+      .about-paragraph {
+        text-align: justify;
+      }
+
+      ul {
+        margin: 10px;
       }
 
       .cards-wrapper {
@@ -44,7 +51,7 @@
           background-color: #fff;
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
           border-radius: 5px;
-          padding: 40px 20px 20px 20px;
+          padding: 20px;
 
           .card-top {
             display: flex;
@@ -54,7 +61,7 @@
               width: 30px;
               height: auto;
             }
-            
+
             h3 {
               margin: 5px 0;
               font-size: 18px;
@@ -90,7 +97,7 @@
           }
 
           .card.goal {
-             grid-column: span 2 // Place goal card in the second column
+            grid-column: span 2; // Place goal card in the second column
             // grid-row: span 2; // Make it span both rows
           }
           .card.values {
@@ -107,7 +114,7 @@
 
       h2 {
         font-size: 32px;
-        margin-bottom: 10px;
+        margin: 10px;
         color: rgb(255, 255, 255);
       }
 
@@ -146,7 +153,7 @@
       }
 
       .BytechsPurple img {
-        width: 100%;
+        width: 270px;
       }
 
       .BytechsPurple {
@@ -183,25 +190,24 @@
         h2 {
           font-size: 30px;
         }
-  
+
         p {
           font-size: 16px;
           line-height: 25px;
         }
 
-        .cards-wrapper .card{
+        .cards-wrapper .card {
           padding: 15px;
 
-          p{
+          p {
             margin: 5px 1px;
             line-height: normal;
           }
-          ul{
+          ul {
             margin: 5px;
           }
         }
       }
-
 
       .illustration {
         margin-left: 0;
@@ -253,14 +259,6 @@
 
       .illustration {
         display: none;
-        // flex: 1;
-        // .shapes {
-        //   margin: 1%;
-        //   gap: 10px;
-        //   img {
-        //     width: 78px;
-        //   }
-        // }
       }
     }
   }
