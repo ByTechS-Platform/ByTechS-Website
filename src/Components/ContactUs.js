@@ -65,8 +65,8 @@ const ContactUs = () => {
           <h2>{language === "ar" ? "تواصل معنا" : "Contact Us"}</h2>
           <p>
             {language === "ar"
-              ? "للحصول على مزيد من المعلومات حول BytechS تواصل معنا على: BytechS.contact@bytechs.net"
-              : "Reach out to get more information about BytechS at: BytechS.contact@bytechs.net"}
+              ? "للمزيد من المعلومات والاستفسارات تواصل معنا عبر البريد الإلكتروني: info@bytechs.net"
+              : "For more information and inquiries reach out at: info@bytechs.net"}
           </p>
           <form id="contact-form" ref={formRef} onSubmit={handleSubmit}>
             <div className="form-group">
@@ -80,7 +80,7 @@ const ContactUs = () => {
                 type="email"
                 name="email1"
                 placeholder={
-                  language === "ar" ? "البريد الالكتروني" : "Your Email"
+                  language === "ar" ? "البريد الإلكتروني" : "Your Email"
                 }
                 required
               />
@@ -109,12 +109,12 @@ const ContactUs = () => {
               ></textarea>
             </div>
             <button type="submit">
-              {language === "ar" ? "أرسل الرسالة" : "SUBMIT MESSAGE"}
+              {language === "ar" ? "إرسال" : "Submit"}
             </button>
           </form>
 
           <Link to="/join-us" className="join-us">
-            {language === "ar" ? "إنضم لفريقنا" : "Join Our Team"}
+            {language === "ar" ? "انضم لفريق بايتكس" : "Join ByTechS Team"}
           </Link>
         </div>
       </div>
