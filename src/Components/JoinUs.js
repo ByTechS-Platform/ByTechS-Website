@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import shape1 from "../assets/Shape12.svg";
 
@@ -15,11 +14,14 @@ const tableName = "JoinUs";
 const translations = {
   joinUsTitle: { en: "Join Us", ar: "انضم إلينا" },
   joinUsInstruction: {
-    en: "Fill out the form below to join our team.",
-    ar: "املأ النموذج أدناه للانضمام إلى فريقنا.",
+    en: "Fill out the form below to join our team",
+    ar: "املأ النموذج أدناه للانضمام إلى فريقنا",
   },
   personalInfo: { en: "Personal Information", ar: "المعلومات الشخصية" },
-  fullNameArabic: { en: "Full Name (Arabic)", ar: "الاسم الكامل (بالعربية)" },
+  fullNameArabic: {
+    en: "Full Name (Arabic)",
+    ar: " الاسم الثلاثي (باللغة العربية)",
+  },
   fullNameEnglish: {
     en: "Full Name (English)",
     ar: "الاسم الكامل (بالإنجليزية)",
@@ -47,12 +49,12 @@ const translations = {
   },
   academicInfo: {
     en: "Academic, Professional & Experience Information",
-    ar: "المعلومات الأكاديمية والمهنية والتجريبية",
+    ar: "المعلومات الأكاديمية والمهنية",
   },
   academicMajor: { en: "Academic Major", ar: "التخصص الدراسي" },
   degree: {
     en: "Educational Qualification (e.g., Diploma, Bachelor's, etc.)",
-    ar: "المؤهل العلمي (مثل الدبلوم، البكالوريوس، إلخ)",
+    ar: "المؤهل العلمي (مثل الدبلوم، البكالوريوس، ...)",
   },
   certificatesQuestion: {
     en: "Do you have any relevant professional certificates or courses?",
@@ -60,11 +62,11 @@ const translations = {
   },
   certificatesDetails: {
     en: "List the most significant certificates or courses",
-    ar: "اذكر أهم الشهادات أو الدورات",
+    ar: "أذكر أهم الشهادات أو الدورات",
   },
   experienceQuestion: {
     en: "Do you have any relevant work or volunteer experience?",
-    ar: "هل لديك خبرة عمل أو تطوعية ذات صلة؟",
+    ar: "هل لديك خبرة عملية أو تطوعية ذات صلة؟",
   },
   experienceDetails: {
     en: "Describe your most significant work or volunteer experience",
@@ -76,7 +78,7 @@ const translations = {
   },
   hearAbout: {
     en: "Where did you hear about ByTechS?  ",
-    ar: "من أين سمعت عن ByTechS؟  ",
+    ar: "من أين سمعت عن بايتكس؟  ",
   },
   expectation: {
     en: "What do you expect the initiative to offer you?  ",
@@ -167,7 +169,7 @@ const JoinUs = () => {
   const errorMessages = {
     personalInfo: {
       en: "Please fill in all required personal information fields.",
-      ar: "يرجى ملء جميع الحقول المطلوبة للمعلومات الشخصية.",
+      ar: "يرجى تعبئة جميع الحقول المطلوبة للمعلومات الشخصية.",
     },
     emailInvalid: {
       en: "Please enter a valid email address.",
@@ -175,7 +177,7 @@ const JoinUs = () => {
     },
     academicInfo: {
       en: "Please fill in your academic information.",
-      ar: "يرجى ملء جميع الحقول المطلوبة للمعلومات الأكاديمية.",
+      ar: "يرجى تعبئة جميع الحقول المطلوبة للمعلومات الأكاديمية.",
     },
     certificates: {
       en: "Please list your certificates.",
@@ -190,8 +192,8 @@ const JoinUs = () => {
       ar: "يرجى إكمال جميع الحقول المطلوبة.",
     },
     selectCommunity: {
-      en: "Please select a community.",
-      ar: "يرجى اختيار المجتمع.",
+      en: "Please select a community and accept the terms and conditions.",
+      ar: "يرجى اختيار المجتمع والموافقة على الشروط والاحكام.",
     },
   };
 
@@ -255,79 +257,84 @@ const JoinUs = () => {
     }));
   };
 
- const validateForm = (step) => {
-   setError(null);
+  const validateForm = (step) => {
+    setError(null);
 
-   if (step === 1) {
-     if (
-       !formData.nameAr.trim() ||
-       !formData.nameEn.trim() ||
-       !formData.gender ||
-       !formData.idNumber.trim() ||
-       !formData.nationality.trim() ||
-       !formData.dob ||
-       !formData.email.trim() ||
-       !formData.phone.trim() ||
-       !formData.residence.trim()
-     ) {
-       setError(errorMessages.personalInfo[language]);
-       return false;
-     }
+    if (step === 1) {
+      if (
+        !formData.nameAr.trim() ||
+        !formData.nameEn.trim() ||
+        !formData.gender ||
+        !formData.idNumber.trim() ||
+        !formData.nationality.trim() ||
+        !formData.dob ||
+        !formData.email.trim() ||
+        !formData.phone.trim() ||
+        !formData.residence.trim()
+      ) {
+        setError(errorMessages.personalInfo[language]);
+        return false;
+      }
 
-     // Email Validation
-     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-     if (!emailRegex.test(formData.email)) {
-       setError(errorMessages.emailInvalid[language]);
-       return false;
-     }
-   }
+      // Email Validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setError(errorMessages.emailInvalid[language]);
+        return false;
+      }
+    }
 
-   if (step === 2) {
-     if (!formData.major.trim() || !formData.degree.trim()) {
-       setError(errorMessages.academicInfo[language]);
-       return false;
-     }
-     if (
-       formData.hasCertificates === "Yes" &&
-       !formData.certificatesDetails.trim()
-     ) {
-       setError(errorMessages.certificates[language]);
-       return false;
-     }
-     if (
-       formData.hasExperience === "Yes" &&
-       !formData.experienceDetails.trim()
-     ) {
-       setError(errorMessages.experience[language]);
-       return false;
-     }
-   }
+    if (step === 2) {
+      if (!formData.major.trim() || !formData.degree.trim()) {
+        setError(errorMessages.academicInfo[language]);
+        return false;
+      }
+      if (
+        formData.hasCertificates === "Yes" &&
+        !formData.certificatesDetails.trim()
+      ) {
+        setError(errorMessages.certificates[language]);
+        return false;
+      }
+      if (
+        formData.hasExperience === "Yes" &&
+        !formData.experienceDetails.trim()
+      ) {
+        setError(errorMessages.experience[language]);
+        return false;
+      }
+    }
 
-   if (step === 3) {
-     if (
-       !formData.whyByTechs.trim() 
-      //  !formData.commitment ||
-      //  !formData.terms
-     ) {
-       setError(errorMessages.additionalQuestions[language]);
-       return false;
-     }
-   }
+    if (step === 3) {
+      if (
+        !formData.whyByTechs.trim()
+        //  !formData.commitment ||
+        //  !formData.terms
+      ) {
+        setError(errorMessages.additionalQuestions[language]);
+        return false;
+      }
+    }
 
-   if (step === 4 && !formData.community) {
-     setError(errorMessages.selectCommunity[language]);
-     return false;
-   }
+    if (step === 4) {
+      if (
+        !formData.community ||
+        formData.commitment === "No" ||
+        formData.terms === "No"
+      ) {
+        setError(errorMessages.selectCommunity[language]);
+        return false;
+      }
+    }
 
-   return true;
- };
-
+    return true;
+  };
 
   // Navigation functions
- const nextStep = () => {
-   if (!validateForm(step)) return; // If validation fails, stop here
-   setStep((prev) => prev + 1);
- };
+  const nextStep = () => {
+    if (!validateForm(step)) return; // If validation fails, stop here
+    setStep((prev) => prev + 1);
+  };
 
   const prevStep = () => setStep((prev) => prev - 1);
 
@@ -487,7 +494,11 @@ const JoinUs = () => {
                     />
                   </div>
                   {/* <div className="input-field"> */}
-                  <div className="radio-group">
+                  <div
+                    className={`radio-group ${
+                      language === "ar" ? "align-right" : "align-left"
+                    }`}
+                  >
                     <p
                       className={`${
                         language === "ar" ? "align-right" : "align-left"
@@ -574,7 +585,7 @@ const JoinUs = () => {
                       id="email"
                       type="email"
                       name="email"
-                      placeholder="example@mail.com"
+                      placeholder="example@domain.com"
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -880,10 +891,10 @@ const JoinUs = () => {
                 >
                   <span
                     data-en="For more details about communities click here"
-                    data-ar="لتفاصيل اكثر عن المجتمعات اضغط هنا"
+                    data-ar="لمعرفة المزيد عن المجتمعات اضغط هنا"
                   >
                     {language === "ar"
-                      ? "لتفاصيل اكثر عن المجتمعات اضغط هنا"
+                      ? "لمعرفة المزيد عن المجتمعات اضغط هنا"
                       : "For more details about communities click here"}
                   </span>
                 </button>
@@ -982,7 +993,12 @@ const JoinUs = () => {
                   </button>
                   <button
                     type="submit"
-                    disabled={!formData.community || loading}
+                    disabled={
+                      !formData.community || !formData.commitment || !formData.terms ||
+                      formData.commitment === "No" ||
+                      formData.terms === "No" ||
+                      loading
+                    }
                   >
                     {loading
                       ? translations.submitting[language]
@@ -991,7 +1007,6 @@ const JoinUs = () => {
                 </div>
               </div>
             )}
-
             {error && <p className="error-message">{error}</p>}
           </form>
         )}
