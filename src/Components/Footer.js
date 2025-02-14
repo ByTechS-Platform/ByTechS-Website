@@ -46,10 +46,10 @@ const Footer = () => {
           </div>
           <div className="right-content">
             <p
-              data-en="© 2024 Bytechs. All rights reserved."
-              data-ar="© 2024 بايتكس. جميع الحقوق محفوظة."
+              data-en="© 2024 ByTechS. All rights reserved."
+              data-ar="جميع الحقوق محفوظة . بايتكس 2024"
             >
-              © 2024 بايتكس. جميع الحقوق محفوظة.
+              جميع الحقوق محفوظة . بايتكس 2024
             </p>
           </div>
         </div>

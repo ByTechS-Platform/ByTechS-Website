@@ -15,11 +15,15 @@ footer {
     gap: 20px;
     width: 100%;
 
+    .right-content{
+      margin: 0;
+    }
+    
    .left-content {
       flex: 1;
       text-align: center;
       img{
-        width: 100px;
+        width: 90px;
         margin-right: 5px;
       }
     }
@@ -41,5 +45,11 @@ footer {
     .right-content{
       flex: 1;
     }
+
+     @media (max-width: 480px){
+      p{
+        font-size: 12px;
+      }
+     }
   }
 }
