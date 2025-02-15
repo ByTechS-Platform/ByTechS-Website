@@ -60,7 +60,7 @@ const NavBar = () => {
   const renderNavLinks = () => {
     const links = [
       { href: "home", en: "Home", ar: "الرئيسية" },
-      { href: "about", en: "About Us", ar: "عن بايتكس "},
+      { href: "about", en: "About us", ar: "عن بايتكس "},
       { href: "communities", en: "Communities", ar: "المجتمعات" },
       { href: "news", en: "News", ar: "الأخبـار" },
       { href: "contact", en: "Contact us", ar: "تواصل معنا" },
