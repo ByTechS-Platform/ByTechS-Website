@@ -5,8 +5,13 @@ import whatsappLogo from "../assets/whatsapp-brands-solid.svg";
 import instagramLogo from "../assets/instagram-brands-solid.svg";
 import linkedinLogo from "../assets/linkedin-brands-solid.svg";
 import coloredLogo from "../assets/BytechsColor.png";
+import { useLanguage } from "../utils/LanguageContext"; // Import the custom hook
+
 
 const Footer = () => {
+
+    const { language } = useLanguage();
+
   return (
     <div>
       <footer>
@@ -46,6 +51,9 @@ const Footer = () => {
           </div>
           <div className="right-content">
             <p
+              className={` ${
+                language === "ar" ? "align-right" : ""
+              }`}
               data-en="© 2024 ByTechS. All rights reserved."
               data-ar="جميع الحقوق محفوظة . بايتكس 2024"
             >
