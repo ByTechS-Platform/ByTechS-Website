@@ -1,6 +1,8 @@
 /* =================================
    Contact Us Section
 ================================= */
+@import "./variables";
+
 .contact {
   background-color: rgb(255, 255, 255);
   color: #282a36;
@@ -63,7 +65,7 @@
     }
 
     form button {
-      background-color: #6272a4;
+      background-color: $prime-dark-hover;
       color: rgb(255, 255, 255);
       padding: 15px;
       border: none;
@@ -73,8 +75,8 @@
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .contact form button:hover {
-      background-color: #5350a6;
+    form button:hover {
+      background-color: $prime-dark-active;
     }
 
     .illustration {
