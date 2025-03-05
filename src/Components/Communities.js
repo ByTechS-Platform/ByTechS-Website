@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Styles/Communities.scss";
 import CommunitiesData from "../CommunitiesData";
 import BYLogo from "../assets/BY-logo.png";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../utils/LanguageContext";
 
 const tabs = [
@@ -37,16 +38,14 @@ const Communities = () => {
         language === "ar" ? "align-right" : "align-left"
       }`}
     >
+      <h2 className="section-title">
+        {language === "ar" ? "المجتمعات" : "Communities"}
+      </h2>
       <div className="cards-container">
         <div className="left-panel">
           {selectedCard ? (
             <div className="card-details">
               <div className="tabs">
-                <h1 className="card-title">
-                  {language === "ar"
-                    ? selectedCard.titleAr
-                    : selectedCard.title}
-                </h1>
                 <div className="image-container">
                   <img
                     className="card-lg-image"
@@ -54,6 +53,11 @@ const Communities = () => {
                     alt={selectedCard.title}
                   />
                 </div>
+                <h1 className="card-title">
+                  {language === "ar"
+                    ? selectedCard.titleAr
+                    : selectedCard.title}
+                </h1>
                 <div className="tabs-container">
                   {tabs.map((tab) => (
                     <button
@@ -157,22 +161,29 @@ const Communities = () => {
         </div>
 
         <div className="right-panel">
-          {CommunitiesData.map((card) => (
-            <div
-              key={card.id}
-              className={`card ${
-                selectedCard && selectedCard.id === card.id ? "selected" : ""
-              }`}
-              onClick={() => handleCardClick(card)}
-            >
-              <div className="image-container">
-                <img src={card.image} alt={card.title} />
+          <div className="cards-wrapper">
+            {CommunitiesData.map((card) => (
+              <div
+                key={card.id}
+                className={`card ${
+                  selectedCard && selectedCard.id === card.id ? "selected" : ""
+                }`}
+                onClick={() => handleCardClick(card)}
+              >
+                <div className="image-container">
+                  <img src={card.image} alt={card.title} />
+                </div>
+                <h4 className="card-title">
+                  {language === "ar" ? card.titleAr : card.title}
+                </h4>
               </div>
-              <h4 className="card-title">
-                {language === "ar" ? card.titleAr : card.title}
-              </h4>
-            </div>
-          ))}
+            ))}
+          </div>
+          <Link to="/join-us" className="join-us-button">
+         
+              {language === "ar" ? "انضم لفريق بايتكس" : "Join ByTechS Team"}
+            
+          </Link>
         </div>
       </div>
     </section>
