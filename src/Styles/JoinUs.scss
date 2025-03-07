@@ -121,20 +121,26 @@
   }
 
   input,
-  textarea,
-  select {
+  textarea, select{
     width: 90%;
     padding: 0.75rem;
     margin-bottom: 1rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    // border: none;
+    border: 0px solid #ccc;
     border-radius: 4px;
+    background-color: #F6F7F9;
     transition: border-color 0.3s ease;
+    font-family: "IBM Plex Sans Arabic";
 
     &:focus {
       outline: none;
-      border-color: #007bff;
+      border: 1px solid #007bff;
     }
+  }
+
+  select {
+    width: 97%;
   }
 
   textarea {

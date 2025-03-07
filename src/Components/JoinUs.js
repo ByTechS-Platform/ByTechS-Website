@@ -146,11 +146,25 @@ const NationalityDropdown = ({ onSelect, language, value }) => {
       <option value="">
         {language === "ar" ? "اختر الجنسية" : "Select Nationality"}
       </option>
-      {countries.map((country) => (
+      {/* {countries.map((country) => (
         <option key={country.cca3} value={country.name.common}>
           {country.name.common}
         </option>
-      ))}
+      ))} */}
+      {countries.map((country) => {
+        // Get the Arabic translation if available
+        const countryNameArabic = country.translations?.ara?.common;
+        // Display Arabic if language is "ar" and the translation exists; otherwise, use the English name.
+        const displayName =
+          language === "ar" && countryNameArabic
+            ? countryNameArabic
+            : country.name.common;
+        return (
+          <option key={country.cca3} value={country.name.common}>
+            {displayName}
+          </option>
+        );
+      })}
     </select>
   );
 };
