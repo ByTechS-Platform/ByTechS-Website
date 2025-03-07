@@ -112,10 +112,10 @@ const ContactUs = () => {
               {language === "ar" ? "إرسال" : "Submit"}
             </button>
           </form>
-
+{/* 
           <Link to="/join-us" className="join-us">
             {language === "ar" ? "انضم لفريق بايتكس" : "Join ByTechS Team"}
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>
