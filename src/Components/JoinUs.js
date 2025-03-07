@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
@@ -112,6 +112,49 @@ const translations = {
   no: { en: "No", ar: "لا" },
 };
 
+const NationalityDropdown = ({ onSelect, language, value }) => {
+  const [countries, setCountries] = useState([]);
+  const defaultCountry = "Saudi Arabia";
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((response) => {
+        const sortedCountries = response.data.sort((a, b) =>
+          a.name.common.localeCompare(b.name.common)
+        );
+        setCountries(sortedCountries);
+        // Set default if value is empty and default country exists in the list
+        if (
+          !value &&
+          sortedCountries.find((c) => c.name.common === defaultCountry)
+        ) {
+          onSelect(defaultCountry);
+        }
+      })
+      .catch((error) => console.error("Error fetching countries:", error));
+  }, []);
+
+  return (
+    <select
+      id="nationality"
+      name="nationality"
+      value={value}
+      onChange={(e) => onSelect(e.target.value)}
+      required
+    >
+      <option value="">
+        {language === "ar" ? "اختر الجنسية" : "Select Nationality"}
+      </option>
+      {countries.map((country) => (
+        <option key={country.cca3} value={country.name.common}>
+          {country.name.common}
+        </option>
+      ))}
+    </select>
+  );
+};
+
 ////////////////////////////////////////////////////////////////
 const communities = [
   {
@@ -158,12 +201,8 @@ const communities = [
 ];
 
 const JoinUs = () => {
-  // eslint-disable-next-line no-unused-vars
-  const navigate = useNavigate();
-  // Access the active language from context
-  const { language } = useLanguage();
 
-  // Track the current step (1: Personal, 2: Academic/Experience, 3: Additional Questions, 4: Community Selection)
+  const { language } = useLanguage();
   const [step, setStep] = useState(1);
 
   const errorMessages = {
@@ -551,14 +590,15 @@ const JoinUs = () => {
                       {translations.nationality[language]}
                       <span className="required">*</span>
                     </label>
-                    <input
-                      id="nationality"
-                      type="text"
-                      name="nationality"
-                      // placeholder={translations.nationality[language]}
+                    <NationalityDropdown
+                      onSelect={(value) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          nationality: value,
+                        }))
+                      }
+                      language={language}
                       value={formData.nationality}
-                      onChange={handleChange}
-                      required
                     />
                   </div>
                   <div className="input-field">
