@@ -37,11 +37,11 @@ const translations = {
   residence: { en: "Place of Residence", ar: "مكان الإقامة" },
   githubAccounts: {
     en: "GitHub Account  ",
-    ar: "GitHub،  ",
+    ar: " حساب GitHub ",
   },
   linkedInbAccounts: {
     en: "LinkedIn Account  ",
-    ar: "LinkedIn  ",
+    ar: "حساب لينكدان ",
   },
   otherLink: {
     en: "Portfolio or other account  ",
@@ -525,7 +525,7 @@ const JoinUs = () => {
                       id="nameAr"
                       type="text"
                       name="nameAr"
-                      // placeholder={translations.fullNameArabic[language]}
+                      placeholder="الاسم كامل"
                       value={formData.nameAr}
                       onChange={handleChange}
                       required
@@ -540,7 +540,7 @@ const JoinUs = () => {
                       id="nameEn"
                       type="text"
                       name="nameEn"
-                      // placeholder={translations.fullNameEnglish[language]}
+                      placeholder="Full Name"
                       value={formData.nameEn}
                       onChange={handleChange}
                       required
@@ -593,7 +593,7 @@ const JoinUs = () => {
                       id="idNumber"
                       type="text"
                       name="idNumber"
-                      // placeholder={translations.idNumber[language]}
+                      placeholder="xxxxxxxxxx"
                       value={formData.idNumber}
                       onChange={handleChange}
                       required
@@ -652,9 +652,9 @@ const JoinUs = () => {
                     </label>
                     <input
                       id="phone"
-                      type="text"
+                      type="tel"
                       name="phone"
-                      placeholder="+966"
+                      placeholder="+966 xxxxxxxxx"
                       value={formData.phone}
                       onChange={handleChange}
                       required
@@ -670,7 +670,11 @@ const JoinUs = () => {
                       id="residence"
                       type="text"
                       name="residence"
-                      // placeholder={translations.residence[language]}
+                      placeholder={
+                        language === "ar"
+                          ? "الدمام"
+                          : "Dammam"
+                      }
                       value={formData.residence}
                       onChange={handleChange}
                       required
@@ -1048,7 +1052,9 @@ const JoinUs = () => {
                   <button
                     type="submit"
                     disabled={
-                      !formData.community || !formData.commitment || !formData.terms ||
+                      !formData.community ||
+                      !formData.commitment ||
+                      !formData.terms ||
                       formData.commitment === "No" ||
                       formData.terms === "No" ||
                       loading
