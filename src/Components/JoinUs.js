@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from "react";
 import axios from "axios";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
 import { useNavigate } from "react-router-dom";
@@ -650,14 +652,24 @@ const JoinUs = () => {
                       {translations.phone[language]}{" "}
                       <span className="required">*</span>
                     </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      name="phone"
-                      placeholder="+966 xxxxxxxxx"
+                    <PhoneInput
+                      country={"sa"}
+                      inputProps={{
+                        id: "phone",
+                        name: "phone",
+                        placeholder: "+966 xxxxxxxxx",
+                        required: true,
+                      }}
+                      inputStyle={{ direction: "ltr" }}
                       value={formData.phone}
-                      onChange={handleChange}
-                      required
+                      onChange={(phone) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          phone: phone,
+                        }))
+                      }
+
+                      // onChange={handleChange}
                     />
                   </div>
 
@@ -670,11 +682,7 @@ const JoinUs = () => {
                       id="residence"
                       type="text"
                       name="residence"
-                      placeholder={
-                        language === "ar"
-                          ? "الدمام"
-                          : "Dammam"
-                      }
+                      placeholder={language === "ar" ? "الدمام" : "Dammam"}
                       value={formData.residence}
                       onChange={handleChange}
                       required
