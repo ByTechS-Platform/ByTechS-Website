@@ -118,13 +118,13 @@ nav {
 
     .burger-icon {
       span:nth-child(1) {
-        transform: translateY(8.5px) rotate(45deg);
+        transform: translateY(9px) rotate(45deg);
       }
       span:nth-child(2) {
         opacity: 0;
       }
       span:nth-child(3) {
-        transform: translateY(-8.5px) rotate(-45deg);
+        transform: translateY(-9px) rotate(-45deg);
       }
     }
   }
