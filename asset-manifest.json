@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ByTechS-Website/static/css/main.ecab7665.css",
-    "main.js": "/ByTechS-Website/static/js/main.46bf38ad.js",
+    "main.css": "/ByTechS-Website/static/css/main.fe074483.css",
+    "main.js": "/ByTechS-Website/static/js/main.828fbb87.js",
     "static/js/453.ecfe0b1f.chunk.js": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js",
     "static/media/Shape12.svg": "/ByTechS-Website/static/media/Shape12.f176a5dd9740a586b06e40fd1b102ca8.svg",
     "static/media/7.png": "/ByTechS-Website/static/media/7.bc28bf784eea960018a7.png",
@@ -22,12 +22,12 @@
     "index.html": "/ByTechS-Website/index.html",
     "static/media/linkedin-brands-solid.svg": "/ByTechS-Website/static/media/linkedin-brands-solid.73d26cb767e0fe3086c5eeb14a2933de.svg",
     "static/media/x-twitter-brands-solid.svg": "/ByTechS-Website/static/media/x-twitter-brands-solid.78c9c3d9f0018151a3bbd2b0ee95c106.svg",
-    "main.ecab7665.css.map": "/ByTechS-Website/static/css/main.ecab7665.css.map",
-    "main.46bf38ad.js.map": "/ByTechS-Website/static/js/main.46bf38ad.js.map",
+    "main.fe074483.css.map": "/ByTechS-Website/static/css/main.fe074483.css.map",
+    "main.828fbb87.js.map": "/ByTechS-Website/static/js/main.828fbb87.js.map",
     "453.ecfe0b1f.chunk.js.map": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ecab7665.css",
-    "static/js/main.46bf38ad.js"
+    "static/css/main.fe074483.css",
+    "static/js/main.828fbb87.js"
   ]
 }
