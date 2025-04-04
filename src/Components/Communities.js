@@ -180,9 +180,7 @@ const Communities = () => {
             ))}
           </div>
           <Link to="/join-us" className="join-us-button">
-         
               {language === "ar" ? "انضم لفريق بايتكس" : "Join ByTechS Team"}
-            
           </Link>
         </div>
       </div>

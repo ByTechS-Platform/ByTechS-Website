@@ -16,11 +16,12 @@
     color: #5552e1;
   }
    .join-us-button {
-    background-color: $prime-dark;
+    background-color: $prime;
     align-self: center;
     color: rgb(255, 255, 255);
-    width: 120px;
+    width: fit-content;
     padding: 15px;
+    text-decoration: none;
     border: none;
     cursor: pointer;
     border-radius: 10px;
