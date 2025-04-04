@@ -22,6 +22,8 @@ const ScrollToSection = () => {
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [location]);
 
