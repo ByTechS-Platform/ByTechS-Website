@@ -11,6 +11,7 @@ import Home from "./Home";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import JoinUs from "./Components/JoinUs";
+import QuizComponent from "./Components/QuizComponent";
 
 const ScrollToSection = () => {
   const location = useLocation();
@@ -43,6 +44,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/join-us" element={<JoinUs />} />
+          <Route path="/QuizComponent" element={<QuizComponent />} />
         </Routes>
       </Router>
       <Footer />
