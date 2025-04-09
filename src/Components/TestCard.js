@@ -1,15 +1,24 @@
 import { ReactComponent as Xicon } from "../assets/images/TwitterXLogo.svg";
+import StyledCard from "./StyledCard";
 
-const TestCard = ({ title, paragraphs, image, alt, dir, isArabic }) => (
-  <div className="ai-user-card">
+const TestCard = ({
+  title,
+  paragraphs,
+  image,
+  alt,
+  dir,
+  isArabic,
+  bg,
+  circle,
+}) => (
+  <StyledCard bg={bg} circle={circle}>
     <div className="content" dir={dir}>
       <div className="top-content">
         <h2>{title}</h2>
       </div>
 
-      {paragraphs.map((text, idx) => (
-        <p key={idx}>{text}</p>
-      ))}
+      {Array.isArray(paragraphs) &&
+        paragraphs.map((text, idx) => <p key={idx}>{text}</p>)}
 
       <button className="share-button">
         <span className="share-text">
@@ -22,7 +31,7 @@ const TestCard = ({ title, paragraphs, image, alt, dir, isArabic }) => (
     <div className="robot-image">
       <img src={image} alt={alt} />
     </div>
-  </div>
+  </StyledCard>
 );
 
 export default TestCard;

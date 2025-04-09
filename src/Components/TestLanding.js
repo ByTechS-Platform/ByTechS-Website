@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const TestLanding = () => {
   return (
@@ -8,6 +8,6 @@ const TestLanding = () => {
       <Link to="/QuizComponent">go to test</Link>
     </div>
   );
-}
+};
 
-export default TestLanding
+export default TestLanding;
