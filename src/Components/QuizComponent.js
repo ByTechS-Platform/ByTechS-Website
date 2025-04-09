@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import QuizData from "../utils/quizData"; // your quiz data file
 import { useLanguage } from "../utils/LanguageContext"; // adjust path if needed
+import TestOutput from "./TestOutput";
 
 const { personalQuestions, quizQuestions } = QuizData;
 
@@ -92,13 +93,7 @@ const QuizComponent = () => {
   };
 
   const getResultComponent = () => {
-    if (score >= 50)
-      return <div>{isArabic ? "المبدع التقني" : "Tech Innovator"}</div>;
-    if (score >= 40)
-      return <div>{isArabic ? "المحلل المنطقي" : "Logical Analyst"}</div>;
-    if (score >= 25)
-      return <div>{isArabic ? "المستخدم العملي" : "Practical User"}</div>;
-    return <div>{isArabic ? "المستكشف الفضولي" : "Curious Explorer"}</div>;
+    return <TestOutput score={score} />;
   };
 
   const isQuizStep = step > 0;
@@ -247,6 +242,5 @@ const QuizComponent = () => {
     </div>
   );
 };
-
 
 export default QuizComponent;
