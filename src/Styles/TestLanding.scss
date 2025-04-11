@@ -1,0 +1,78 @@
+.test-landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: white;
+  min-height: 100vh;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+
+  .split-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    width: 75%;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    .text-box {
+      flex: 1;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+
+      .dots {
+        font-size: 4rem;
+        color: #524fe1; // Indigo-700
+      }
+
+      font-size: 1.3rem;
+      color: #524fe1;
+      line-height: 2.8rem;
+      max-width: 600px;
+      text-align: center;
+      white-space: pre-line;
+
+      .quiz-button {
+        background-color: #524fe1;
+        color: #fff;
+        padding: 0.1rem 2rem;
+        font-weight: bold;
+        border-radius: 2rem;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: background 0.3s;
+
+        &:hover {
+          background-color: #6366f1;
+        }
+      }
+    }
+
+    .image-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .title {
+        max-width: 20rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #4338ca;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      img {
+        width: 80%;
+        object-fit: contain;
+        border-radius: 1rem;
+      }
+    }
+  }
+}
