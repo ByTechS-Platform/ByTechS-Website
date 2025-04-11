@@ -1,4 +1,5 @@
 import React from "react";
+import "../Styles/FormStyles.scss";
 
 const StepNavigation = ({
   isArabic,
@@ -9,30 +10,44 @@ const StepNavigation = ({
   onSubmit,
 }) => {
   const isLast = step === totalSteps;
+
   return (
-    <div className="flex justify-between items-center mt-4">
-      {step > 0 && (
-        <button onClick={onPrev} className="bg-gray-300 px-4 py-2 rounded">
-          {isArabic ? "السابق" : "Previous"}
-        </button>
-      )}
-      {!isLast ? (
-        <button
-          onClick={onNext}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          {isArabic ? "التالي" : "Next"}
-        </button>
+    <div className="step-navigation">
+      {isLast ? (
+        <>
+          <button className="btn btn-primary" onClick={onSubmit}>
+            {isArabic ? "الاطلاع على النتيجة" : "View Result"}
+          </button>
+          <button className="btn btn-secondary" onClick={onPrev}>
+            {isArabic ? "العودة إلى الصفحة الرئيسية" : "Back to Home"}
+          </button>
+        </>
       ) : (
-        <button
-          onClick={onSubmit}
-          className="bg-green-600 text-white px-4 py-2 rounded"
-        >
-          {isArabic ? "إرسال" : "Submit"}
-        </button>
+        <div className="nav-buttons">
+          {step > 0 && (
+            <button className="btn btn-outline" onClick={onPrev}>
+              {isArabic ? "السابق" : "Previous"}
+            </button>
+          )}
+          <button className="btn btn-primary" onClick={onNext}>
+            {isArabic ? "التالي →" : "Next →"}
+          </button>
+        </div>
       )}
     </div>
   );
 };
-//Test
+
 export default StepNavigation;
+
+/*
+ <button className="btn btn-primary" onClick={onNext}>
+            {isArabic ? "التالي →" : "Next →"}
+          </button>
+          {step > 0 && (
+            <button className="btn btn-outline" onClick={onPrev}>
+              {isArabic ? "السابق" : "Previous"}
+            </button>
+          )}
+
+*/

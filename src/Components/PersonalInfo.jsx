@@ -1,11 +1,13 @@
 import React from "react";
+import "../Styles/FormStyles.scss";
 
 const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
-  <div className="mb-6">
-    <h3 className="text-xl font-bold mb-4">
+  <div className="personal-info">
+    <h3 className="section-title">
       {isArabic ? "المعلومات الشخصية" : "Personal Information"}
     </h3>
-    <div className="space-y-4">
+
+    <div className="form-fields">
       {[
         {
           name: "fullName",
@@ -13,34 +15,37 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
           type: "text",
         },
         {
-          name: "phone",
-          label: isArabic ? "رقم الجوال" : "Phone Number",
-          type: "text",
-        },
-        {
           name: "email",
           label: isArabic ? "البريد الإلكتروني" : "Email",
           type: "email",
         },
+        {
+          name: "phone",
+          label: isArabic ? "رقم الجوال" : "Phone Number",
+          type: "text",
+        },
       ].map(({ name, label, type }) => (
-        <div key={name}>
-          <label className="block font-medium mb-1">{label}</label>
+        <div className="form-group" key={name}>
+          <label>{label}</label>
           <input
             type={type}
             name={name}
             value={formData[name]}
             onChange={onInputChange}
-            className="border rounded p-2 w-full"
+            placeholder={
+              isArabic ? `الرجاء إدخال ${label}` : `Enter your ${label}`
+            }
           />
         </div>
       ))}
-      <div>
-        <label className="block font-medium mb-1">
+
+      <div className="form-group">
+        <label>
           {isArabic
             ? "قيّم نفسك بالذكاء الاصطناعي (1 إلى 10)"
             : "Rate yourself in AI (1 to 10)"}
         </label>
-        <div className="flex gap-2 flex-wrap">
+        <div className="radio-group">
           {[...Array(10)].map((_, i) => {
             const val = (i + 1).toString();
             return (
@@ -51,7 +56,6 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
                   value={val}
                   checked={formData.selfEvaluation === val}
                   onChange={onInputChange}
-                  className="mr-1"
                 />
                 {val}
               </label>
@@ -62,6 +66,5 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
     </div>
   </div>
 );
-//Test
 
 export default PersonalInfo;
