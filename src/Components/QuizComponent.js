@@ -5,6 +5,8 @@ import TestOutput from "./TestOutput";
 import PersonalInfo from "./PersonalInfo";
 import QuizQuestion from "./QuizQuestion";
 import StepNavigation from "./StepNavigation";
+import "../Styles/QuizStyles.scss";
+import QuastionRobot from "../assets/images/QARobot.png";
 
 const { quizQuestions } = QuizData;
 
@@ -98,25 +100,14 @@ const QuizComponent = () => {
   const isLastStep = step === quizQuestions.length;
 
   return (
-    <div dir={dir} className="max-w-xl mx-auto p-6">
-      {!submitted ? (
+    <div style={{ backgroundColor: "white" }}>
+      {step === 0 ? (
         <>
-          {step === 0 ? (
-            <PersonalInfo
-              isArabic={isArabic}
-              formData={formData}
-              onInputChange={handleInputChange}
-            />
-          ) : (
-            <QuizQuestion
-              questionData={quizQuestions[quizIndex]}
-              index={quizIndex}
-              isArabic={isArabic}
-              selected={formData.answers[quizIndex]}
-              onChange={handleAnswerChange}
-            />
-          )}
-
+          <PersonalInfo
+            isArabic={isArabic}
+            formData={formData}
+            onInputChange={handleInputChange}
+          />
           <StepNavigation
             isArabic={isArabic}
             step={step}
@@ -125,12 +116,47 @@ const QuizComponent = () => {
             onNext={nextStep}
             onSubmit={handleSubmit}
           />
-
-          {error && <p className="text-red-600 mt-4 font-medium">{error}</p>}
         </>
       ) : (
-        <div className="text-center text-xl font-bold mt-10">
-          <TestOutput score={score} />
+        <div dir={dir} className="quiz-wrapper">
+          <div className="quiz-right">
+            {!submitted ? (
+              <>
+                <QuizQuestion
+                  questionData={quizQuestions[quizIndex]}
+                  index={quizIndex}
+                  isArabic={isArabic}
+                  selected={formData.answers[quizIndex]}
+                  onChange={handleAnswerChange}
+                />
+                {error && <p className="error-text">{error}</p>}
+              </>
+            ) : (
+              <div className="text-center text-xl font-bold mt-10">
+                <TestOutput score={score} />
+              </div>
+            )}
+          </div>
+          <div className="quiz-divider">
+            <div
+              className="progress-line"
+              style={{
+                height: `${(step / quizQuestions.length) * 100}%`,
+              }}
+            ></div>
+          </div>
+
+          <div className="quiz-left">
+            <img src={QuastionRobot} alt="Robot" className="robot-img" />
+            <StepNavigation
+              isArabic={isArabic}
+              step={step}
+              totalSteps={quizQuestions.length}
+              onPrev={prevStep}
+              onNext={nextStep}
+              onSubmit={handleSubmit}
+            />
+          </div>
         </div>
       )}
     </div>

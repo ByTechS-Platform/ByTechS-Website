@@ -1,4 +1,5 @@
 import React from "react";
+import "../Styles/QuizStyles.scss";
 
 const QuizQuestion = ({
   questionData,
@@ -7,28 +8,28 @@ const QuizQuestion = ({
   selected,
   onChange,
 }) => (
-  <div className="mb-6">
-    <h3 className="text-xl font-bold mb-4">
-      {isArabic ? "السؤال" : "Question"} {index + 1}
-    </h3>
-    <p className="mb-4 font-medium">
+  <div>
+    <h3>{isArabic ? `السؤال ${index + 1}` : `Question ${index + 1}`}</h3>
+    <p className="question-text">
       {isArabic ? questionData.ar : questionData.en}
     </p>
-    {Object.entries(questionData.options).map(([key, val]) => (
-      <label key={key} className="block mb-2">
-        <input
-          type="radio"
-          name={`quiz-${index}`}
-          value={key}
-          checked={selected === key}
-          onChange={() => onChange(index, key)}
-          className="mr-2"
-        />
-        {isArabic ? val.ar : val.en}
-      </label>
-    ))}
+    {Object.entries(questionData.options).map(([key, val]) => {
+      const value = isArabic ? val.ar : val.en;
+      const isSelected = selected === key;
+      return (
+        <div
+          key={key}
+          className={`answer-option ${isSelected ? "selected" : ""}`}
+          onClick={() => onChange(index, key)}
+        >
+          <span className="answer-text">{value}</span>
+          <span className="letter">{key}</span>
+        </div>
+      );
+    })}
   </div>
 );
+
 //Test
 
 export default QuizQuestion;
