@@ -62,5 +62,6 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
     </div>
   </div>
 );
+//Test
 
 export default PersonalInfo;
