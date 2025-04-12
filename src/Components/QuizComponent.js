@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import QuizData from "../utils/quizData"; // your quiz data file
-import { useLanguage } from "../utils/LanguageContext"; // adjust path if needed
+import QuizData from "../utils/quizData";
+import { useLanguage } from "../utils/LanguageContext";
 import TestOutput from "./TestOutput";
+import PersonalInfo from "./PersonalInfo";
+import QuizQuestion from "./QuizQuestion";
+import StepNavigation from "./StepNavigation";
+import "../Styles/QuizStyles.scss";
+import QuastionRobot from "../assets/images/QARobot.png";
 
-const { personalQuestions, quizQuestions } = QuizData;
+const { quizQuestions } = QuizData;
 
 const QuizComponent = () => {
   const { language } = useLanguage();
@@ -15,7 +20,7 @@ const QuizComponent = () => {
     fullName: "",
     phone: "",
     email: "",
-    selfEvaluation: "", // 1–10 scale
+    selfEvaluation: "",
     answers: Array(quizQuestions.length).fill(""),
   });
   const [submitted, setSubmitted] = useState(false);
@@ -42,7 +47,6 @@ const QuizComponent = () => {
     const total = calculateScore();
     setScore(total);
     setSubmitted(true);
-
     console.log("Submitted:", formData, "Score:", total);
   };
 
@@ -62,7 +66,6 @@ const QuizComponent = () => {
         );
         return false;
       }
-      // Optional: basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
         setError(
@@ -92,155 +95,73 @@ const QuizComponent = () => {
     setStep((prev) => prev - 1);
   };
 
-  const getResultComponent = () => {
-    return <TestOutput score={score} />;
-  };
-
   const isQuizStep = step > 0;
   const quizIndex = step - 1;
   const isLastStep = step === quizQuestions.length;
 
   return (
-    <div dir={dir} className="max-w-xl mx-auto p-6">
-      {!submitted ? (
+    <div style={{ backgroundColor: "white" }}>
+      {step === 0 ? (
         <>
-          {/* Step 0 – Personal Info */}
-          {step === 0 && (
-            <div className="mb-6">
-              <h3 className="text-xl font-bold mb-4">
-                {isArabic ? "المعلومات الشخصية" : "Personal Information"}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block font-medium mb-1">
-                    {isArabic ? "الاسم الثلاثي" : "Full Name"}
-                  </label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    className="border rounded p-2 w-full"
-                  />
-                </div>
-                <div>
-                  <label className="block font-medium mb-1">
-                    {isArabic ? "رقم الجوال" : "Phone Number"}
-                  </label>
-                  <input
-                    type="text"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="border rounded p-2 w-full"
-                  />
-                </div>
-                <div>
-                  <label className="block font-medium mb-1">
-                    {isArabic ? "البريد الإلكتروني" : "Email"}
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="border rounded p-2 w-full"
-                  />
-                </div>
-                <div>
-                  <label className="block font-medium mb-1">
-                    {isArabic
-                      ? "قيّم نفسك بالذكاء الاصطناعي (1 إلى 10)"
-                      : "Rate yourself in AI (1 to 10)"}
-                  </label>
-                  <div className="flex gap-2 flex-wrap">
-                    {[...Array(10)].map((_, i) => {
-                      const val = (i + 1).toString();
-                      return (
-                        <label key={val}>
-                          <input
-                            type="radio"
-                            name="selfEvaluation"
-                            value={val}
-                            checked={formData.selfEvaluation === val}
-                            onChange={handleInputChange}
-                            className="mr-1"
-                          />
-                          {val}
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Quiz Questions Step-by-Step */}
-          {isQuizStep && (
-            <div className="mb-6">
-              <h3 className="text-xl font-bold mb-4">
-                {isArabic ? "السؤال" : "Question"} {quizIndex + 1}
-              </h3>
-              <p className="mb-4 font-medium">
-                {isArabic
-                  ? quizQuestions[quizIndex].ar
-                  : quizQuestions[quizIndex].en}
-              </p>
-              {Object.entries(quizQuestions[quizIndex].options).map(
-                ([key, val]) => (
-                  <label key={key} className="block mb-2">
-                    <input
-                      type="radio"
-                      name={`quiz-${quizIndex}`}
-                      value={key}
-                      checked={formData.answers[quizIndex] === key}
-                      onChange={() => handleAnswerChange(quizIndex, key)}
-                      className="mr-2"
-                    />
-                    {isArabic ? val.ar : val.en}
-                  </label>
-                )
-              )}
-            </div>
-          )}
-
-          {/* Navigation */}
-          <div className="flex justify-between items-center mt-4">
-            {step > 0 && (
-              <button
-                onClick={prevStep}
-                className="bg-gray-300 px-4 py-2 rounded"
-              >
-                {isArabic ? "السابق" : "Previous"}
-              </button>
-            )}
-            {!isLastStep ? (
-              <button
-                onClick={nextStep}
-                className="bg-blue-600 text-white px-4 py-2 rounded"
-              >
-                {isArabic ? "التالي" : "Next"}
-              </button>
-            ) : (
-              <button
-                onClick={handleSubmit}
-                className="bg-green-600 text-white px-4 py-2 rounded"
-              >
-                {isArabic ? "إرسال" : "Submit"}
-              </button>
-            )}
-          </div>
-
-          {error && <p className="text-red-600 mt-4 font-medium">{error}</p>}
+          <PersonalInfo
+            isArabic={isArabic}
+            formData={formData}
+            onInputChange={handleInputChange}
+          />
+          <StepNavigation
+            isArabic={isArabic}
+            step={step}
+            totalSteps={quizQuestions.length}
+            onPrev={prevStep}
+            onNext={nextStep}
+            onSubmit={handleSubmit}
+          />
         </>
       ) : (
-        <div className="text-center text-xl font-bold mt-10">
-          {getResultComponent()}
+        <div dir={dir} className="quiz-wrapper">
+          <div className="quiz-right">
+            {!submitted ? (
+              <>
+                <QuizQuestion
+                  questionData={quizQuestions[quizIndex]}
+                  index={quizIndex}
+                  isArabic={isArabic}
+                  selected={formData.answers[quizIndex]}
+                  onChange={handleAnswerChange}
+                />
+                {error && <p className="error-text">{error}</p>}
+              </>
+            ) : (
+              <div className="text-center text-xl font-bold mt-10">
+                <TestOutput score={score} />
+              </div>
+            )}
+          </div>
+          <div className="quiz-divider">
+            <div
+              className="progress-line"
+              style={{
+                height: `${(step / quizQuestions.length) * 100}%`,
+              }}
+            ></div>
+          </div>
+
+          <div className="quiz-left">
+            <img src={QuastionRobot} alt="Robot" className="robot-img" />
+            <StepNavigation
+              isArabic={isArabic}
+              step={step}
+              totalSteps={quizQuestions.length}
+              onPrev={prevStep}
+              onNext={nextStep}
+              onSubmit={handleSubmit}
+            />
+          </div>
         </div>
       )}
     </div>
   );
 };
+//Test
 
 export default QuizComponent;
