@@ -1,5 +1,10 @@
+.quiz-container{
+  min-height: 80vh;
+
+}
 .quiz-wrapper {
   display: flex;
+  justify-content: center;
   min-height: 100vh;
   background-color: white;
 

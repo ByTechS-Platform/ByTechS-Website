@@ -100,7 +100,7 @@ const QuizComponent = () => {
   const isLastStep = step === quizQuestions.length;
 
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div className="quiz-container" style={{ backgroundColor: "white" }}>
       {step === 0 ? (
         <>
           <PersonalInfo
