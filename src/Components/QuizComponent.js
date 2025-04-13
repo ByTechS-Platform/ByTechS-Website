@@ -108,6 +108,15 @@ const QuizComponent = () => {
             formData={formData}
             onInputChange={handleInputChange}
           />
+          {error && (
+            <p
+              className="error-text"
+              style={{ color: "red", textAlign: "center" }}
+            >
+              {error}
+            </p>
+          )}
+
           <StepNavigation
             isArabic={isArabic}
             step={step}
