@@ -1,8 +1,8 @@
 // import AssistiveTechnology from "./assets/1.png";
-import E_Sport from "./assets/7.png";
-import SupplyChainlogistics from "./assets/z2.png";
-import DigitalMarketing from "./assets/c3.png";
-import IT from "./assets/IT.png";
+import E_Sport from "./assets/E-Sport 2.png";
+import SupplyChainlogistics from "./assets/Supply Chain & logistics.png";
+import DigitalMarketing from "./assets/Digital Marketing 2.png";
+import IT from "./assets/it (3).png";
 // import Sustainability from "./assets/5.png";
 
 const CommunitiesData = [
@@ -231,6 +231,94 @@ const CommunitiesData = [
       "مطوري الواجهة الخلفية: تطوير خدمات الخادم وإدارة قواعد البيانات.",
       "مختصي الأمن السيبراني: حماية المشاريع التقنية من التهديدات وضمان أمن البيانات.",
       "مختص التوثيق التقني: إعداد الوثائق التقنية وأدلة المستخدم والمطور.",
+    ],
+  },
+  {
+    id: 5,
+    image: IT,
+    title: "PR & Communications Team",
+    titleAr: "فريق الاتصال الداخلي والعلاقات العامة",
+    distinctive:
+      "A fundamental link between internal teams and external stakeholders, fostering a culture of open communication. Integrates public relations, digital marketing, and media to present a professional and impactful image of the initiative.",
+    distinctiveAr:
+      "همزة وصل أساسية بين الفرق الداخلية والجهات الخارجية، تعزز ثقافة التواصل المفتوح، وتدمج بين العلاقات العامة والتسويق الرقمي والإعلام لتقديم صورة احترافية ومؤثرة عن المبادرة.",
+    objective:
+      "To build and activate an effective communication strategy both internally and externally that contributes to achieving the initiative's goals and enhances its presence and brand image.",
+    objectiveAr:
+      "بناء وتفعيل استراتيجية تواصل فعالة داخل وخارج المبادرة، تساهم في تحقيق الأهداف وتعزز من حضورها وصورتها الذهنية.",
+    vision:
+      "To become a leading reference in internal communication management and sustainable public relations, aligning with the initiative's aspirations and expanding its impact.",
+    visionAr:
+      "أن يكون الفريق مرجعًا رائدًا في إدارة الاتصال الداخلي وبناء علاقات عامة مستدامة تواكب تطلعات المبادرة وتوسّع أثرها.",
+    whyUs: [
+      "Enhance your skills in public relations, marketing, and digital media.",
+      "Contribute to shaping the initiative's image and voice.",
+      "Build a strong network internally and externally.",
+      "Innovate in creating campaigns and content that showcase your impact.",
+    ],
+    whyUsAr: [
+      "تطوير مهاراتك في العلاقات العامة، التسويق، والإعلام الرقمي.",
+      "المشاركة في صنع صورة المبادرة وصوتها أمام الجمهور.",
+      "بناء شبكة علاقات قوية داخل وخارج بيئة العمل.",
+      "الإبداع في صناعة حملات ومحتوى يعكس أثرك وفريقك.",
+    ],
+    audience:
+      "Internal teams and members for enhanced coordination, and external entities to develop relationships and strengthen partnerships.",
+    audienceAr:
+      "الفرق والأعضاء داخل المبادرة والجهات الخارجية لتطوير العلاقات وتعزيز الشراكات.",
+    activities: [
+      "Organize internal and external events.",
+      "Prepare professional media campaigns.",
+      "Develop visual and written content that reflects the initiative's identity.",
+      "Document events and activities with media coverage.",
+      "Manage digital platforms and boost engagement.",
+    ],
+    activitiesAr: [
+      "تنظيم فعاليات داخلية وخارجية.",
+      "إعداد حملات إعلامية احترافية.",
+      "تطوير محتوى مرئي ومكتوب يعكس هوية المبادرة.",
+      "توثيق الفعاليات والأنشطة وتغطيتها إعلاميًا.",
+      "إدارة المنصات الرقمية ورفع مستوى التفاعل.",
+    ],
+    structure: [
+      "Public Relations - External Communications Officer: Coordinates with supporters and sponsors; sends cooperation letters and represents the team officially.",
+      "Public Relations - Documentation and Follow-up Officer: Archives partnerships and documents all external communications.",
+      "Internal Communication - Community Communication Officer: Publishes official announcements, unifies communication language, and promotes internal initiatives.",
+      "HR Support - Governance and Development Officer: Establishes and enforces internal policies.",
+      "HR Support - Membership and Recruitment Officer: Recruits new members and assigns them to appropriate tasks.",
+      "HR Support - Documentation and Support Assistant: Provides administrative support and documents meetings and outcomes.",
+      "Business Development - Business Developer: Seeks partnership opportunities that serve the team's objectives.",
+      "Business Development - Development Executor: Implements and monitors field partnerships and evaluates their impact.",
+      "Digital Marketing (Design) - Graphic Designer: Designs fixed posts and visual identity.",
+      "Digital Marketing (Design) - Motion Designer: Produces animated promotional videos.",
+      "Digital Marketing (Content) - Content Writer: Crafts educational and awareness texts.",
+      "Digital Marketing (Content) - Marketing Writer: Develops advertising slogans and marketing campaigns.",
+      "Digital Marketing (Media Production) - Photographer: Documents events through photographs.",
+      "Digital Marketing (Media Production) - Videographer: Films activities and events.",
+      "Digital Marketing (Media Production) - Video Editor: Edits videos professionally for digital publication.",
+      "Digital Marketing (Platform Management) - TikTok Specialist: Creates innovative and engaging content.",
+      "Digital Marketing (Platform Management) - Instagram Specialist: Coordinates and designs visual content for publishing.",
+      "Digital Marketing (Platform Management) - LinkedIn Specialist: Produces professional content for a business audience.",
+    ],
+    structureAr: [
+      "العلاقات العامة - مسؤول التواصل الخارجي: ينسق مع الجهات الداعمة والرعاة؛ يرسل خطابات التعاون ويمثل الفريق رسميًا.",
+      "العلاقات العامة - مسؤول التوثيق والمتابعة: يؤرشف التعاونات والشراكات ويوثق كل تواصل خارجي.",
+      "التواصل الداخلي - مسؤول التواصل المجتمعي: ينشر الإعلانات الرسمية داخل الفرق، ويوحد لغة التواصل، ويروج للمبادرات الداخلية.",
+      "الموارد البشرية - مسؤول الحوكمة والتطوير: يضع السياسات الداخلية ويضمن الالتزام بها.",
+      "الموارد البشرية - مسؤول العضوية والاستقطاب: يستقطب أعضاء جدد ويوزعهم على المهام المناسبة.",
+      "الموارد البشرية - مساعد التوثيق والدعم: يدعم الفرق إداريًا ويوثق الاجتماعات والنتائج.",
+      "تطوير الأعمال - مطور الأعمال: يبحث عن فرص شراكات تخدم أهداف الفريق.",
+      "تطوير الأعمال - منفذ التطوير: ينفذ ويتابع الشراكات ميدانيًا ويقيّم أثرها.",
+      "التسويق الرقمي (قسم التصميم) - مصمم جرافيك: يصمم المنشورات الثابتة والهوية البصرية.",
+      "التسويق الرقمي (قسم التصميم) - مصمم موشن: يُعد فيديوهات ترويجية متحركة.",
+      "التسويق الرقمي (قسم المحتوى) - كاتب محتوى: يصيغ نصوصًا تعليمية وتوعوية.",
+      "التسويق الرقمي (قسم المحتوى) - كاتب تسويقي: يكتب عبارات دعائية وحملات تسويقية.",
+      "التسويق الرقمي (قسم الإنتاج الإعلامي) - مصور فوتوغرافي: يوثق الفعاليات بالصور.",
+      "التسويق الرقمي (قسم الإنتاج الإعلامي) - مصور فيديو: يصور الأنشطة.",
+      "التسويق الرقمي (قسم الإنتاج الإعلامي) - محرر فيديو: يقوم بمونتاج احترافي للنشر الرقمي.",
+      "التسويق الرقمي (إدارة المنصات) - مختص تيك توك: يبتكر محتوى إبداعي وتفاعلي.",
+      "التسويق الرقمي (إدارة المنصات) - مختص إنستقرام: ينظم وينشر ويتولى التصميم البصري.",
+      "التسويق الرقمي (إدارة المنصات) - مختص لينكدإن: ينتج محتوى احترافي للجمهور المهني.",
     ],
   },
 
