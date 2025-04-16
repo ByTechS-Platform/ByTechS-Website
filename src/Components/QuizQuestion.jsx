@@ -22,8 +22,8 @@ const QuizQuestion = ({
           className={`answer-option ${isSelected ? "selected" : ""}`}
           onClick={() => onChange(index, key)}
         >
-          <span className="letter">{key}</span>
           <span className="answer-text">{value}</span>
+          <span className="letter">{key}</span>
         </div>
       );
     })}

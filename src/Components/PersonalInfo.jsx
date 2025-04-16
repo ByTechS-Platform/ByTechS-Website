@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/FormStyles.scss";
 
 const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
-  <div className="personal-info" dir={isArabic ? "rtl" : "ltr"}>
+  <div className="personal-info">
     <h3 className="section-title">
       {isArabic ? "المعلومات الشخصية" : "Personal Information"}
     </h3>
@@ -26,8 +26,7 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
         },
       ].map(({ name, label, type }) => (
         <div className="form-group" key={name}>
-          <label>{label}<span className="required"> *</span></label>
-           
+          <label>{label}</label>
           <input
             type={type}
             name={name}
@@ -45,7 +44,6 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
           {isArabic
             ? "قيّم نفسك بالذكاء الاصطناعي (1 إلى 10)"
             : "Rate yourself in AI (1 to 10)"}
-          <span className="required">*</span>
         </label>
         <div className="radio-group">
           {[...Array(10)].map((_, i) => {

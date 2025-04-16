@@ -1,20 +1,14 @@
-.quiz-container{
-  // min-height: 80vh;
-  font-family: "IBM Plex Sans Arabic";
-}
 .quiz-wrapper {
   display: flex;
-  justify-content: center;
-  min-height: 80vh;
+  min-height: 100vh;
   background-color: white;
-  // align-items: center;
 
   .quiz-left {
     width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 2rem;
     background-color: #fff;
 
@@ -28,17 +22,17 @@
     position: relative;
     width: 8px;
     background-color: #e5e7eb;
-    // border-radius: 6px;
-    // margin-inline: 1rem;
+    border-radius: 6px;
+    margin-inline: 1rem;
 
     .progress-line {
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
       width: 100%;
       background-color: #4f46e5;
       transition: height 0.4s ease;
-      // border-radius: 6px;
+      border-radius: 6px;
     }
   }
 
@@ -62,22 +56,21 @@
     }
     .answer-text {
       font-size: 1.1rem;
-      // font-weight: 900;
-      color: #706D6D;
+      font-weight: 900;
+      color: black;
     }
 
     .answer-option {
       display: flex;
-      justify-content: right;
+      justify-content: space-between;
       align-items: center;
       background-color: #fff;
-      // border: 2px solid #e5e7eb;
+      border: 2px solid #e5e7eb;
       border-radius: 0.75rem;
-      padding: 1rem 2rem;
+      padding: 1rem;
       margin-bottom: 1rem;
       cursor: pointer;
       transition: all 0.3s;
-      position: relative;
 
       &:hover {
         border-color: #4f46e5;
@@ -88,29 +81,17 @@
         background-color: #4f46e5;
         color: white;
         border-color: #4f46e5;
-
-        .letter{
-          background-color: #4f46e5;
-          color: white;
-        }
-
-        .answer-text{
-          color: white;
-        }
       }
 
       .letter {
-        background: white;
-        color: #706D6D;
+        background: #f3f4f6;
         border-radius: 999px;
         font-weight: bold;
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: absolute;
-        right: -25px;
       }
     }
 
