@@ -1,12 +1,10 @@
-import React from 'react'
+import React from "react";
 import Hero from "./Components/Hero";
 import News from "./Components/News";
 import ContactUs from "./Components/ContactUs";
-import Communities from './Components/Communities';
+import Communities from "./Components/Communities";
 import AboutUs from "./Components/AboutUs";
-import TestLanding from './Components/TestLanding';
-
-
+import TestLanding from "./Components/TestLanding";
 
 const Home = () => {
   return (
@@ -19,6 +17,6 @@ const Home = () => {
       <ContactUs />
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
