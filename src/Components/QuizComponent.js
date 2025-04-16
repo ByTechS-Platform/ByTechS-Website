@@ -100,7 +100,7 @@ const QuizComponent = () => {
   const isLastStep = step === quizQuestions.length;
 
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <section id="quiz" className="quiz-container" style={{ backgroundColor: "white" }}>
       {step === 0 ? (
         <>
           <PersonalInfo
@@ -108,6 +108,15 @@ const QuizComponent = () => {
             formData={formData}
             onInputChange={handleInputChange}
           />
+          {error && (
+            <p
+              className="error-text"
+              style={{ color: "red", textAlign: "center" }}
+            >
+              {error}
+            </p>
+          )}
+
           <StepNavigation
             isArabic={isArabic}
             step={step}
@@ -159,7 +168,7 @@ const QuizComponent = () => {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 //Test

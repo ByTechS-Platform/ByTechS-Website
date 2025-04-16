@@ -1,9 +1,14 @@
+@import "./variables";
+
 .personal-info {
   max-width: 450px;
   margin: 0 auto;
-  text-align: right;
-  background-color: wh;
+  padding: 20px 0 ;
+  // text-align: right;
+  background-color: white;
+  font-family: "IBM Plex Sans Arabic";
 
+  
   .section-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -22,6 +27,12 @@
     flex-direction: column;
     gap: 0.5rem;
 
+    .required {
+    color: $red;
+    margin-left: 2px;
+    font-weight: bold;
+  }
+
     label {
       font-weight: 600;
       color: #333;
@@ -34,6 +45,7 @@
       border-radius: 0.75rem;
       font-size: 0.95rem;
       transition: border 0.2s ease;
+      font-family: "IBM Plex Sans Arabic";
 
       &:focus {
         border-color: #4f46e5;

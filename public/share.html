@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Personality Result</title>
+
+    <script>
+      // Read ?type= from the URL
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get("type");
+
+      const imageMap = {
+        TechInnovator:
+          "https://res.cloudinary.com/djlowrnre/image/upload/v1744702294/TechInnovatorAIUser_cozc4d.png",
+        LogicalAnalyst:
+          "https://res.cloudinary.com/djlowrnre/image/upload/v1744702294/LogicalAnalystAIUser_d3ogyt.png",
+        PracticalUser:
+          "https://res.cloudinary.com/djlowrnre/image/upload/v1744702294/PracticalAIUser_l5cr8t.png",
+        CuriousExplorer:
+          "https://res.cloudinary.com/djlowrnre/image/upload/v1744702294/CuriousExplorerAIUser_ceegbj.png",
+      };
+
+      const image = imageMap[type] || imageMap.TechInnovator;
+
+      // Dynamically create Twitter card meta tag
+      const meta = document.createElement("meta");
+      meta.name = "twitter:card";
+      meta.content = "summary_large_image";
+      document.head.appendChild(meta);
+
+      const title = document.createElement("meta");
+      title.name = "twitter:title";
+      title.content = "اختبار الذكاء الاصطناعي لشخصيتك التقنية!";
+      document.head.appendChild(title);
+
+      const desc = document.createElement("meta");
+      desc.name = "twitter:description";
+      desc.content = "شارك نتيجتك التقنية مع ByTechS!";
+      document.head.appendChild(desc);
+
+      const img = document.createElement("meta");
+      img.name = "twitter:image";
+      img.content = image;
+      document.head.appendChild(img);
+    </script>
+  </head>
+  <body>
+    <h1>جاري تحميل نتيجتك...</h1>
+    <p>إذا لم يتم إعادة التوجيه، اضغط <a id="redirect" href="#">هنا</a>.</p>
+
+    <script>
+      // Optional redirect after 2s
+      setTimeout(() => {
+        document.getElementById("redirect").click();
+      }, 2000);
+    </script>
+  </body>
+</html>
