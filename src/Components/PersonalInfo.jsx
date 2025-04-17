@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/FormStyles.scss";
 
 const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
-  <div className="personal-info" dir={isArabic ? "rtl" : "ltr"}>
+  <section className="personal-info" dir={isArabic ? "rtl" : "ltr"}>
     <h3 className="section-title">
       {isArabic ? "المعلومات الشخصية" : "Personal Information"}
     </h3>
@@ -66,7 +66,7 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
         </div>
       </div>
     </div>
-  </div>
+  </section>
 );
 
 export default PersonalInfo;

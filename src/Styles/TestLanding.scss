@@ -68,11 +68,13 @@
         line-height: 1.6;
       }
 
-      img {
+      .video{
         width: 80%;
         object-fit: contain;
         border-radius: 1rem;
+        border: white;
       }
+      
     }
   }
 }

@@ -7,6 +7,7 @@ import QuizQuestion from "./QuizQuestion";
 import StepNavigation from "./StepNavigation";
 import "../Styles/QuizStyles.scss";
 import QuastionRobot from "../assets/images/QARobot.png";
+import QuastionRobot1 from "../assets/Videos/Quiz-side.mp4";
 
 const { quizQuestions } = QuizData;
 
@@ -100,8 +101,16 @@ const QuizComponent = () => {
   const isLastStep = step === quizQuestions.length;
 
   return (
-    <section id="quiz" className="quiz-container" style={{ backgroundColor: "white" }}>
-      {step === 0 ? (
+    <section
+      id="quiz"
+      className="quiz-container"
+      style={{ backgroundColor: "white" }}
+    >
+      {submitted ? (
+        <div className="quiz-result-full">
+          <TestOutput score={score} />
+        </div>
+      ) : step === 0 ? (
         <>
           <PersonalInfo
             isArabic={isArabic}
@@ -129,23 +138,16 @@ const QuizComponent = () => {
       ) : (
         <div dir={dir} className="quiz-wrapper">
           <div className="quiz-right">
-            {!submitted ? (
-              <>
-                <QuizQuestion
-                  questionData={quizQuestions[quizIndex]}
-                  index={quizIndex}
-                  isArabic={isArabic}
-                  selected={formData.answers[quizIndex]}
-                  onChange={handleAnswerChange}
-                />
-                {error && <p className="error-text">{error}</p>}
-              </>
-            ) : (
-              <div className="text-center text-xl font-bold mt-10">
-                <TestOutput score={score} />
-              </div>
-            )}
+            <QuizQuestion
+              questionData={quizQuestions[quizIndex]}
+              index={quizIndex}
+              isArabic={isArabic}
+              selected={formData.answers[quizIndex]}
+              onChange={handleAnswerChange}
+            />
+            {error && <p className="error-text">{error}</p>}
           </div>
+
           <div className="quiz-divider">
             <div
               className="progress-line"
@@ -156,7 +158,15 @@ const QuizComponent = () => {
           </div>
 
           <div className="quiz-left">
-            <img src={QuastionRobot} alt="Robot" className="robot-img" />
+            <video
+              src={QuastionRobot1}
+              alt="Robot"
+              className="robot-img"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
             <StepNavigation
               isArabic={isArabic}
               step={step}
@@ -170,6 +180,7 @@ const QuizComponent = () => {
       )}
     </section>
   );
+
 };
 //Test
 

@@ -1,6 +1,14 @@
 .quiz-container{
   // min-height: 80vh;
   font-family: "IBM Plex Sans Arabic";
+  min-height: 80vh;
+
+  .quiz-result-full{
+    background-color: white;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+  }
 }
 .quiz-wrapper {
   display: flex;

@@ -11,7 +11,7 @@ const StyledCard = styled.div`
   padding: 3rem 4rem;
   direction: rtl;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
+
   max-width: 1200px;
   font-family: "IBM Plex Sans Arabic";
   background-color: ${(props) => props.bg || "#b4b4ef"};

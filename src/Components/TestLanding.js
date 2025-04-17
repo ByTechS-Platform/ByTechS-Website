@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RobotImage from "../assets/images/TestLangingImage.png";
+import RobotVideo from "../assets/Videos/Homepage.mp4";
 import "../Styles/TestLanding.scss";
 
 const TestLanding = () => {
@@ -22,7 +23,15 @@ const TestLanding = () => {
         {/* Right (Image) */}
         <div className="image-box">
           <h1 className="title">ما هي شخصيتك في عالم الذكاء الاصطناعي؟</h1>
-          <img src={RobotImage} alt="AI Robot" />
+          <video
+            className="video"
+            src={RobotVideo}
+            alt="AI Robot"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
         </div>
       </div>
     </div>
