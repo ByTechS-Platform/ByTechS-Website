@@ -57,20 +57,20 @@ const QuizComponent = () => {
     console.log("Submitted:", formData, "Score:", total);
 
     const airtableData = {
-    fields: {
-      Name: formData.fullName,
-      Phone: formData.phone,
-      Email: formData.email,
-      Self_Evaluation: formData.selfEvaluation,
-      Result: total,
+      fields: {
+        Name: formData.fullName,
+        Phone: formData.phone,
+        Email: formData.email,
+        Self_Evaluation: formData.selfEvaluation,
+        Score: total,
 
-      // Dynamically map answers to Question_1 ... Question_15
-      ...formData.answers.reduce((acc, answer, index) => {
-        acc[`Question_${index + 1}`] = answer;
-        return acc;
-      }, {}),
-    },
-  };
+        // Dynamically map answers to Question_1 ... Question_15
+        ...formData.answers.reduce((acc, answer, index) => {
+          acc[`Question_${index + 1}`] = answer;
+          return acc;
+        }, {}),
+      },
+    };
 
     console.log("Sending to Airtable:", airtableData);
   try {
