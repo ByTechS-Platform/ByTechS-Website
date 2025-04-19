@@ -176,17 +176,7 @@ const QuizComponent = () => {
         </>
       ) : (
         <div dir={dir} className="quiz-wrapper">
-          <div className="quiz-right">
-            <QuizQuestion
-              questionData={quizQuestions[quizIndex]}
-              index={quizIndex}
-              isArabic={isArabic}
-              selected={formData.answers[quizIndex]}
-              onChange={handleAnswerChange}
-            />
-            {error && <p className="error-text">{error}</p>}
-          </div>
-
+          {/* Divider (Progress Line) */}
           <div className="quiz-divider">
             <div
               className="progress-line"
@@ -196,6 +186,36 @@ const QuizComponent = () => {
             ></div>
           </div>
 
+          {/* Quiz Content */}
+          <div className="quiz-right">
+            {!submitted ? (
+              <>
+                <QuizQuestion
+                  questionData={quizQuestions[quizIndex]}
+                  index={quizIndex}
+                  isArabic={isArabic}
+                  selected={formData.answers[quizIndex]}
+                  onChange={handleAnswerChange}
+                />
+                {error && <p className="error-text">{error}</p>}
+                {/* ✅ Always render buttons here (desktop + mobile) */}
+                <div className="mobile-buttons">
+                  <StepNavigation
+                    isArabic={isArabic}
+                    step={step}
+                    totalSteps={quizQuestions.length}
+                    onPrev={prevStep}
+                    onNext={nextStep}
+                    onSubmit={handleSubmit}
+                  />
+                </div>
+              </>
+            ) : (
+              <TestOutput score={score} />
+            )}
+          </div>
+
+          {/* Robot Animation (Desktop Only) */}
           <div className="quiz-left">
             <video
               src={QuastionRobot1}
@@ -206,14 +226,17 @@ const QuizComponent = () => {
               muted
               playsInline
             />
-            <StepNavigation
-              isArabic={isArabic}
-              step={step}
-              totalSteps={quizQuestions.length}
-              onPrev={prevStep}
-              onNext={nextStep}
-              onSubmit={handleSubmit}
-            />
+            {/* 🔁 Buttons here only show on desktop */}
+            <div className="desktop-buttons">
+              <StepNavigation
+                isArabic={isArabic}
+                step={step}
+                totalSteps={quizQuestions.length}
+                onPrev={prevStep}
+                onNext={nextStep}
+                onSubmit={handleSubmit}
+              />
+            </div>
           </div>
         </div>
       )}

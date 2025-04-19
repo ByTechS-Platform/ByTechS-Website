@@ -53,7 +53,7 @@ const TestCard = ({
 
         <button className="share-button" onClick={handleShare}>
           <span className="share-text">
-            {isArabic ? "شارك النتيجة عبر" : "Share your result via"}
+            {isArabic ? "صور الشاشة وشارك النتيجة عبر" : "Take a screenshot and share your result via"}
           </span>
           <Xicon className="x-icon" />
         </button>
