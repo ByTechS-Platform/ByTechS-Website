@@ -135,14 +135,31 @@ const Communities = () => {
                   {activeTab === "Structure" && (
                     <>
                       <h2>{language === "ar" ? "الهيكلة" : "Structure"}</h2>
-                      <ul>
-                        {(language === "ar"
+                      {selectedCard.id === 5 ? (
+                        (language === "ar"
                           ? selectedCard.structureAr
                           : selectedCard.structure
-                        ).map((point, index) => (
-                          <li key={index}>{point}</li>
-                        ))}
-                      </ul>
+                        ).map((section, index) => (
+                          <div key={index} className="structure-section">
+                            <h3 className="structure-title">{section.title}</h3>
+                            <ul>
+                              {section.roles.map((role, i) => (
+                                <li key={i}>{role}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))
+                      ) : (
+                        // Default simple list for other communities
+                        <ul>
+                          {(language === "ar"
+                            ? selectedCard.structureAr
+                            : selectedCard.structure
+                          ).map((point, index) => (
+                            <li key={index}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
                     </>
                   )}
                 </div>
@@ -180,7 +197,7 @@ const Communities = () => {
             ))}
           </div>
           <Link to="/join-us" className="join-us-button">
-              {language === "ar" ? "انضم لفريق بايتكس" : "Join ByTechS Team"}
+            {language === "ar" ? "انضم لفريق بايتكس" : "Join ByTechS Team"}
           </Link>
         </div>
       </div>

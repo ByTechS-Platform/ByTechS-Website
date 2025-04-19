@@ -120,8 +120,13 @@
 
         h2 {
           font-size: 20px;
-          color: $prime;
+          color: $prime-dark;
         }
+        h3{
+          font-size: 16px;
+          color: $prime-hover;
+        }
+        
         p {
           font-size: 16px;
           color: #333;
