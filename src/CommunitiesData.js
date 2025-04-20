@@ -3,6 +3,7 @@ import E_Sport from "./assets/E-Sport 2.png";
 import SupplyChainlogistics from "./assets/Supply Chain & logistics.png";
 import DigitalMarketing from "./assets/Digital Marketing 2.png";
 import IT from "./assets/it (3).png";
+import PR from "./assets/images/PR 1.png";
 // import Sustainability from "./assets/5.png";
 
 const CommunitiesData = [
@@ -235,7 +236,7 @@ const CommunitiesData = [
   },
   {
     id: 5,
-    image: IT,
+    image: PR,
     title: "PR & Communications Team",
     titleAr: "فريق الاتصال الداخلي والعلاقات العامة",
     distinctive:
