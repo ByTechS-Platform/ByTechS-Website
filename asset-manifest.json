@@ -1,19 +1,26 @@
 {
   "files": {
-    "main.css": "/ByTechS-Website/static/css/main.fe074483.css",
-    "main.js": "/ByTechS-Website/static/js/main.828fbb87.js",
+    "main.css": "/ByTechS-Website/static/css/main.8d258caa.css",
+    "main.js": "/ByTechS-Website/static/js/main.33efda34.js",
     "static/js/453.ecfe0b1f.chunk.js": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js",
+    "static/media/Curious.png": "/ByTechS-Website/static/media/Curious.189a340d45d61883f39b.png",
+    "static/media/Logical.png": "/ByTechS-Website/static/media/Logical.e651541e713dfb3e7ccb.png",
+    "static/media/TestLangingImage.png": "/ByTechS-Website/static/media/TestLangingImage.4105f4ade906d0c98561.png",
+    "static/media/Tech.png": "/ByTechS-Website/static/media/Tech.f508be41b80f678ed260.png",
+    "static/media/Practical.png": "/ByTechS-Website/static/media/Practical.7a12811c6cca483654f2.png",
+    "static/media/QARobot.png": "/ByTechS-Website/static/media/QARobot.9d65b1e48b30b04a1e2a.png",
     "static/media/Shape12.svg": "/ByTechS-Website/static/media/Shape12.f176a5dd9740a586b06e40fd1b102ca8.svg",
-    "static/media/7.png": "/ByTechS-Website/static/media/7.bc28bf784eea960018a7.png",
     "static/media/shapesHomePage1.png": "/ByTechS-Website/static/media/shapesHomePage1.2725cf399d3cd21fdf8e.png",
+    "static/media/it (3).png": "/ByTechS-Website/static/media/it (3).7dd214798666f8481dba.png",
     "static/media/shapesContactPage1.png": "/ByTechS-Website/static/media/shapesContactPage1.3eb2a01ee1f042ed6a75.png",
+    "static/media/PR 1.png": "/ByTechS-Website/static/media/PR 1.c4468de7a4a65a0c8537.png",
+    "static/media/Digital Marketing 2.png": "/ByTechS-Website/static/media/Digital Marketing 2.20b5e0ecb84f36642da8.png",
     "static/media/shapesHomePage3.png": "/ByTechS-Website/static/media/shapesHomePage3.d43cd1267792435085e6.png",
-    "static/media/c3.png": "/ByTechS-Website/static/media/c3.f95fc6c15b836f3b2584.png",
+    "static/media/Supply Chain & logistics.png": "/ByTechS-Website/static/media/Supply Chain & logistics.44aa0b0d099585f51503.png",
+    "static/media/E-Sport 2.png": "/ByTechS-Website/static/media/E-Sport 2.40d8810c102bac755a02.png",
     "static/media/shapesContactPage3.png": "/ByTechS-Website/static/media/shapesContactPage3.6edced73ee8ba9521369.png",
     "static/media/shapesHomePage2.png": "/ByTechS-Website/static/media/shapesHomePage2.96625be5228a822ce4b7.png",
-    "static/media/z2.png": "/ByTechS-Website/static/media/z2.1bc49301b06c5241b33a.png",
     "static/media/shapesContactPage2.png": "/ByTechS-Website/static/media/shapesContactPage2.153a8efdc894dc268073.png",
-    "static/media/IT.png": "/ByTechS-Website/static/media/IT.fc06843caf3e86ab3903.png",
     "static/media/Bytechs-purple.png": "/ByTechS-Website/static/media/Bytechs-purple.21462fc73bcaae1e199b.png",
     "static/media/Bytechs_شعار - ملون 1.png": "/ByTechS-Website/static/media/Bytechs_شعار - ملون 1.2b7bd3b2a784f0b3c9f9.png",
     "static/media/BY-logo.png": "/ByTechS-Website/static/media/BY-logo.e015615c543ed6e4c89f.png",
@@ -21,13 +28,14 @@
     "static/media/whatsapp-brands-solid.svg": "/ByTechS-Website/static/media/whatsapp-brands-solid.4276cc686fcd8c84b5376c1712695a10.svg",
     "index.html": "/ByTechS-Website/index.html",
     "static/media/linkedin-brands-solid.svg": "/ByTechS-Website/static/media/linkedin-brands-solid.73d26cb767e0fe3086c5eeb14a2933de.svg",
+    "static/media/TwitterXLogo.svg": "/ByTechS-Website/static/media/TwitterXLogo.5e2abb191d86b74a59d43e599e2cc14b.svg",
     "static/media/x-twitter-brands-solid.svg": "/ByTechS-Website/static/media/x-twitter-brands-solid.78c9c3d9f0018151a3bbd2b0ee95c106.svg",
-    "main.fe074483.css.map": "/ByTechS-Website/static/css/main.fe074483.css.map",
-    "main.828fbb87.js.map": "/ByTechS-Website/static/js/main.828fbb87.js.map",
+    "main.8d258caa.css.map": "/ByTechS-Website/static/css/main.8d258caa.css.map",
+    "main.33efda34.js.map": "/ByTechS-Website/static/js/main.33efda34.js.map",
     "453.ecfe0b1f.chunk.js.map": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe074483.css",
-    "static/js/main.828fbb87.js"
+    "static/css/main.8d258caa.css",
+    "static/js/main.33efda34.js"
   ]
 }
