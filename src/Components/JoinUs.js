@@ -204,16 +204,16 @@ const communities = [
       ar: "فريق متخصص في تطوير الحلول التقنية المبتكرة التي تلبي احتياجات بايتكس، إضافةً إلى صيانة وتحديث منصات بايتكس الرقمية بشكل مستمر.",
     },
   },
-  // {
-  //   name: {
-  //     en: "PR & Communications Department",
-  //     ar: "قسم الاتصال الداخلي والعلاقات العامة",
-  //   },
-  //   details: {
-  //     en: "It fosters a work environment defined by transparency and open communication. and develops internal communication and public relations skills in an innovative way.",
-  //     ar: "يعزز بيئة عمل تتسم بالشفافية والتواصل المفتوح.ويطور مهارات الاتصال الداخلي والعلاقات العامة بشكل مبتكر",
-  //   },
-  // },
+  {
+    name: {
+      en: "PR & Communications Department",
+      ar: "قسم الاتصال الداخلي والعلاقات العامة",
+    },
+    details: {
+      en: "A fundamental link between internal teams and external stakeholders, fostering a culture of open communication. Integrates public relations, digital marketing, and media to present a professional and impactful image of the initiative.",
+      ar: "همزة وصل أساسية بين الفرق الداخلية والجهات الخارجية، تعزز ثقافة التواصل المفتوح، وتدمج بين العلاقات العامة والتسويق الرقمي والإعلام لتقديم صورة احترافية ومؤثرة عن المبادرة.",
+    },
+  },
 ];
 
 const JoinUs = () => {
