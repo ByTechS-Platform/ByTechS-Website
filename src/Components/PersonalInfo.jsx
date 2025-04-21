@@ -23,11 +23,16 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
           name: "phone",
           label: isArabic ? "رقم الجوال" : "Phone Number",
           type: "text",
+          pattern: "^05\\d{8}$",
+          maxLength: 10,
         },
       ].map(({ name, label, type }) => (
         <div className="form-group" key={name}>
-          <label>{label}<span className="required"> *</span></label>
-           
+          <label>
+            {label}
+            <span className="required"> *</span>
+          </label>
+
           <input
             type={type}
             name={name}
