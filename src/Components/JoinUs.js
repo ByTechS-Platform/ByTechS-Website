@@ -82,6 +82,10 @@ const translations = {
     en: "Where did you hear about ByTechS?  ",
     ar: "من أين سمعت عن بايتكس؟  ",
   },
+  role: {
+    en: "Which role do you want to apply for?  ",
+    ar: "ما هو المنصب الذي تود التقدم له؟",
+  },
   expectation: {
     en: "What do you expect the initiative to offer you?  ",
     ar: "ماذا تتوقع أن تقدم لك المبادرة؟  ",
@@ -286,6 +290,7 @@ const JoinUs = () => {
 
     // Step 4: Community Selection
     community: "",
+    role: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -374,6 +379,7 @@ const JoinUs = () => {
     if (step === 4) {
       if (
         !formData.community ||
+        !formData.role||
         formData.commitment === "No" ||
         formData.terms === "No"
       ) {
@@ -427,6 +433,7 @@ const JoinUs = () => {
         Commitment: formData.commitment,
         Terms_and_Conditions: formData.terms,
         Community: formData.community,
+        Role: formData.role,
       },
     };
 
@@ -469,6 +476,7 @@ const JoinUs = () => {
         commitment: "",
         terms: "",
         community: "",
+        role: "",
       });
       // setStep(1);
     } catch (error) {
@@ -985,6 +993,23 @@ const JoinUs = () => {
                       <p>{community.details[language]}</p>
                     </div>
                   ))}
+                </div>
+                <div className="input-field">
+                  <label htmlFor="role">
+                    {translations.role[language]}{" "}
+                    <span className="required">*</span>
+                  </label>
+                  <input
+                    id="role"
+                    type="text"
+                    name="role"
+                    placeholder={
+                      language === "ar" ? "مطور الواجهة الامامية" : "Front-end Developer"
+                    }
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
 
                 <div className="radio-group">
