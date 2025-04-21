@@ -1,7 +1,7 @@
 import image1 from "../assets/images/Tech.png";
 import image2 from "../assets/images/Logical.png";
 import image3 from "../assets/images/Practical.png";
-import image4 from "../assets/images/Curious.png";
+import image4 from "../assets/images/NEW.png";
 
 export const charactersImages = {
   TechInnovator: image1,
