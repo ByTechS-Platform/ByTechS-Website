@@ -45,30 +45,27 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
         </div>
       ))}
 
-      <div className="form-group self-eval ">
-  <label>
+      <div className="form-group">
+  <label htmlFor="selfEvaluation">
     {isArabic
       ? "قيّم نفسك بالذكاء الاصطناعي (1 إلى 10)"
       : "Rate yourself in AI (1 to 10)"}
   </label>
-  <div className="rating-buttons">
-    {[...Array(10)].map((_, i) => {
-      const val = (i + 1).toString();
-      return (
-        <label key={val} className={`rating-option ${formData.selfEvaluation === val ? "selected" : ""}`}>
-          <input
-            type="radio"
-            name="selfEvaluation"
-            value={val}
-            checked={formData.selfEvaluation === val}
-            onChange={onInputChange}
-          />
-          {val}
-        </label>
-      );
-    })}
+  <input
+    type="range"
+    name="selfEvaluation"
+    id="selfEvaluation"
+    min="1"
+    max="10"
+    value={formData.selfEvaluation}
+    onChange={onInputChange}
+    className="slider"
+  />
+  <div className="slider-value">
+    {isArabic ? "التقييم:" : "Selected:"} {formData.selfEvaluation || "–"}
   </div>
 </div>
+
     </div>
   </section>
 );

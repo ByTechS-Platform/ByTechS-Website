@@ -14,9 +14,9 @@
     font-weight: bold;
     color: #4f46e5;
     margin-bottom: 2rem;
-     @media (max-width: 768px){
-    font-size: 1rem;
-  }
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   .form-fields {
@@ -134,8 +134,6 @@
         background-color: #f1f1f1;
       }
     }
-
-    
   }
 }
 
@@ -164,9 +162,9 @@
     transition: all 0.3s ease;
     color: #4b3cc2;
 
-     @media (max-width: 768px){
-    font-weight: 200;
-  }
+    @media (max-width: 768px) {
+      font-weight: 200;
+    }
 
     &:hover {
       background-color: #f0f0ff;
@@ -182,5 +180,19 @@
     input {
       display: none;
     }
+  }
+}
+.slider {
+  width: 100%;
+  margin-top: 1rem;
+  accent-color: #4f46e5; // nice purple-blue
+}
+
+.slider-value {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #333;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
   }
 }
