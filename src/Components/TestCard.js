@@ -4,6 +4,7 @@ import Xshare from "./social-media/Xshare";
 import Wshare from "./social-media/Wshare";
 import Lshare from "./social-media/Lshare";
 import SaveImage from "./social-media/SaveImage";
+import CopyShare from "./social-media/CopyShare";
 
 const TestCard = ({
   title,
@@ -47,6 +48,7 @@ const TestCard = ({
             <Xshare isArabic={isArabic} score={score} />
             <Wshare />
             <Lshare />
+            <CopyShare />
           </div>
         </div>
       </div>
