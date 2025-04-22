@@ -12,6 +12,9 @@
     padding: 3rem;
     display: flex;
     justify-content: center;
+    @media (max-width: 768px){
+    padding: 0px;
+  }
   }
 }
 .quiz-wrapper {

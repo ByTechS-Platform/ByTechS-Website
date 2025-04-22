@@ -12,7 +12,8 @@ const TestLanding = () => {
         <div className="text-box">
           <div className="dots">•••</div>
           <p className="description">
-            هل تساءلت يوماً عن مدى توافقك مع عالم الذكاء الاصطناعي؟ هل أنت مطور
+            هل تساءلت يوماً عن مدى توافقك مع عالم الذكاء الاصطناعي؟
+            <br></br>هل أنت مطور
             تقني، محلل بيانات، مستخدم عملي، أم مجرد مستكشف فضولي؟
           </p>
           <Link to="/QuizComponent" className="quiz-button">

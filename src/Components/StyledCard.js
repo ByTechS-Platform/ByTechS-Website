@@ -28,8 +28,8 @@ const StyledCard = styled.div`
   }
 
   &::before {
-    top: -300px;
-    left: -180px;
+    top: -350px;
+    left: -215px;
     width: 800.37px;
     height: 841.16px;
     background-color: ${(props) => props.circle || "#bfbff1"};

@@ -14,6 +14,9 @@
     font-weight: bold;
     color: #4f46e5;
     margin-bottom: 2rem;
+     @media (max-width: 768px){
+    font-size: 1rem;
+  }
   }
 
   .form-fields {
@@ -36,6 +39,9 @@
     label {
       font-weight: 600;
       color: #333;
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
     }
 
     input[type="text"],
@@ -51,6 +57,10 @@
         border-color: #4f46e5;
         outline: none;
       }
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
     }
 
     .radio-group {
@@ -62,7 +72,7 @@
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        font-size: 0.9rem;
+        font-size: 0.6rem;
       }
 
       input[type="radio"] {
@@ -123,6 +133,54 @@
       &:hover {
         background-color: #f1f1f1;
       }
+    }
+
+    
+  }
+}
+
+.self-eval {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  .rating-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .rating-option {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+    color: #4b3cc2;
+
+     @media (max-width: 768px){
+    font-weight: 200;
+  }
+
+    &:hover {
+      background-color: #f0f0ff;
+      border-color: #b4b4ef;
+    }
+
+    &.selected {
+      background-color: #4b3cc2;
+      color: white;
+      border-color: #4b3cc2;
+    }
+
+    input {
+      display: none;
     }
   }
 }

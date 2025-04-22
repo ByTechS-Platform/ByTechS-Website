@@ -138,6 +138,8 @@ const QuizComponent = () => {
   const isQuizStep = step > 0;
   const quizIndex = step - 1;
   const isLastStep = step === quizQuestions.length;
+  const canSubmit = formData.answers[quizQuestions.length - 1] !== "";
+
 
   return (
     <section
@@ -172,6 +174,7 @@ const QuizComponent = () => {
             onPrev={prevStep}
             onNext={nextStep}
             onSubmit={handleSubmit}
+            canSubmit={canSubmit}
           />
         </>
       ) : (
@@ -207,6 +210,7 @@ const QuizComponent = () => {
                     onPrev={prevStep}
                     onNext={nextStep}
                     onSubmit={handleSubmit}
+                    canSubmit={canSubmit}
                   />
                 </div>
               </>
@@ -235,6 +239,7 @@ const QuizComponent = () => {
                 onPrev={prevStep}
                 onNext={nextStep}
                 onSubmit={handleSubmit}
+                canSubmit={canSubmit}
               />
             </div>
           </div>

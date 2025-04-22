@@ -45,31 +45,30 @@ const PersonalInfo = ({ isArabic, formData, onInputChange }) => (
         </div>
       ))}
 
-      <div className="form-group">
-        <label>
-          {isArabic
-            ? "قيّم نفسك بالذكاء الاصطناعي (1 إلى 10)"
-            : "Rate yourself in AI (1 to 10)"}
-          <span className="required">*</span>
+      <div className="form-group self-eval ">
+  <label>
+    {isArabic
+      ? "قيّم نفسك بالذكاء الاصطناعي (1 إلى 10)"
+      : "Rate yourself in AI (1 to 10)"}
+  </label>
+  <div className="rating-buttons">
+    {[...Array(10)].map((_, i) => {
+      const val = (i + 1).toString();
+      return (
+        <label key={val} className={`rating-option ${formData.selfEvaluation === val ? "selected" : ""}`}>
+          <input
+            type="radio"
+            name="selfEvaluation"
+            value={val}
+            checked={formData.selfEvaluation === val}
+            onChange={onInputChange}
+          />
+          {val}
         </label>
-        <div className="radio-group">
-          {[...Array(10)].map((_, i) => {
-            const val = (i + 1).toString();
-            return (
-              <label key={val}>
-                <input
-                  type="radio"
-                  name="selfEvaluation"
-                  value={val}
-                  checked={formData.selfEvaluation === val}
-                  onChange={onInputChange}
-                />
-                {val}
-              </label>
-            );
-          })}
-        </div>
-      </div>
+      );
+    })}
+  </div>
+</div>
     </div>
   </section>
 );
