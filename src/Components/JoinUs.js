@@ -84,7 +84,7 @@ const translations = {
   },
   role: {
     en: "Which role do you want to apply for?  ",
-    ar: "ما هو المنصب الذي تود التقدم له؟",
+    ar: "ما هو الدور الذي تود التقدم له؟",
   },
   expectation: {
     en: "What do you expect the initiative to offer you?  ",
