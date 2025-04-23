@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ByTechS-Website/static/css/main.8d258caa.css",
-    "main.js": "/ByTechS-Website/static/js/main.ab22ead3.js",
+    "main.js": "/ByTechS-Website/static/js/main.6b11b939.js",
     "static/js/453.ecfe0b1f.chunk.js": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js",
     "static/media/Curious.png": "/ByTechS-Website/static/media/Curious.189a340d45d61883f39b.png",
     "static/media/Logical.png": "/ByTechS-Website/static/media/Logical.e651541e713dfb3e7ccb.png",
@@ -31,11 +31,11 @@
     "static/media/TwitterXLogo.svg": "/ByTechS-Website/static/media/TwitterXLogo.5e2abb191d86b74a59d43e599e2cc14b.svg",
     "static/media/x-twitter-brands-solid.svg": "/ByTechS-Website/static/media/x-twitter-brands-solid.78c9c3d9f0018151a3bbd2b0ee95c106.svg",
     "main.8d258caa.css.map": "/ByTechS-Website/static/css/main.8d258caa.css.map",
-    "main.ab22ead3.js.map": "/ByTechS-Website/static/js/main.ab22ead3.js.map",
+    "main.6b11b939.js.map": "/ByTechS-Website/static/js/main.6b11b939.js.map",
     "453.ecfe0b1f.chunk.js.map": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8d258caa.css",
-    "static/js/main.ab22ead3.js"
+    "static/js/main.6b11b939.js"
   ]
 }
