@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import QuizData from "../utils/quizData";
+import axios from "axios";
 import { useLanguage } from "../utils/LanguageContext";
 import TestOutput from "./TestOutput";
 import PersonalInfo from "./PersonalInfo";
@@ -7,8 +8,14 @@ import QuizQuestion from "./QuizQuestion";
 import StepNavigation from "./StepNavigation";
 import "../Styles/QuizStyles.scss";
 import QuastionRobot from "../assets/images/QARobot.png";
+import QuastionRobot1 from "../assets/Videos/Quiz-side.mp4";
 
 const { quizQuestions } = QuizData;
+
+const airtableApiKeyQuiz =
+  "patnw57522X1QcLB9.34fd9b1330f80ddcdab322eca85c7692335fb835475e510da16faeaa8061697c";
+const baseIdQuiz = "appnsU5CgfG55TotR";
+const tableNameQuiz = "Quiz";
 
 const QuizComponent = () => {
   const { language } = useLanguage();
@@ -43,11 +50,44 @@ const QuizComponent = () => {
   const calculateScore = () =>
     formData.answers.reduce((sum, answer) => sum + (scoreMap[answer] || 0), 0);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const total = calculateScore();
     setScore(total);
     setSubmitted(true);
     console.log("Submitted:", formData, "Score:", total);
+
+    const airtableData = {
+      fields: {
+        Name: formData.fullName,
+        Phone: formData.phone,
+        Email: formData.email,
+        Self_Evaluation: formData.selfEvaluation,
+        Score: total,
+
+        // Dynamically map answers to Question_1 ... Question_15
+        ...formData.answers.reduce((acc, answer, index) => {
+          acc[`Question_${index + 1}`] = answer;
+          return acc;
+        }, {}),
+      },
+    };
+
+    console.log("Sending to Airtable:", airtableData);
+  try {
+    await axios.post(
+      `https://api.airtable.com/v0/${baseIdQuiz}/${tableNameQuiz}`,
+      airtableData,
+      {
+        headers: {
+          Authorization: `Bearer ${airtableApiKeyQuiz}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log("Submitted to Airtable successfully");
+  } catch (err) {
+    console.error("Error submitting to Airtable:", err);
+  }
   };
 
   const validateStep = () => {
@@ -98,16 +138,35 @@ const QuizComponent = () => {
   const isQuizStep = step > 0;
   const quizIndex = step - 1;
   const isLastStep = step === quizQuestions.length;
+  const canSubmit = formData.answers[quizQuestions.length - 1] !== "";
+
 
   return (
-    <div style={{ backgroundColor: "white" }}>
-      {step === 0 ? (
+    <section
+      id="quiz"
+      className="quiz-container"
+      style={{ backgroundColor: "white" }}
+    >
+      {submitted ? (
+        <div className="quiz-result-full">
+          <TestOutput score={score} />
+        </div>
+      ) : step === 0 ? (
         <>
           <PersonalInfo
             isArabic={isArabic}
             formData={formData}
             onInputChange={handleInputChange}
           />
+          {error && (
+            <p
+              className="error-text"
+              style={{ color: "red", textAlign: "center" }}
+            >
+              {error}
+            </p>
+          )}
+
           <StepNavigation
             isArabic={isArabic}
             step={step}
@@ -115,10 +174,22 @@ const QuizComponent = () => {
             onPrev={prevStep}
             onNext={nextStep}
             onSubmit={handleSubmit}
+            canSubmit={canSubmit}
           />
         </>
       ) : (
         <div dir={dir} className="quiz-wrapper">
+          {/* Divider (Progress Line) */}
+          <div className="quiz-divider">
+            <div
+              className="progress-line"
+              style={{
+                height: `${(step / quizQuestions.length) * 100}%`,
+              }}
+            ></div>
+          </div>
+
+          {/* Quiz Content */}
           <div className="quiz-right">
             {!submitted ? (
               <>
@@ -130,37 +201,53 @@ const QuizComponent = () => {
                   onChange={handleAnswerChange}
                 />
                 {error && <p className="error-text">{error}</p>}
+                {/* ✅ Always render buttons here (desktop + mobile) */}
+                <div className="mobile-buttons">
+                  <StepNavigation
+                    isArabic={isArabic}
+                    step={step}
+                    totalSteps={quizQuestions.length}
+                    onPrev={prevStep}
+                    onNext={nextStep}
+                    onSubmit={handleSubmit}
+                    canSubmit={canSubmit}
+                  />
+                </div>
               </>
             ) : (
-              <div className="text-center text-xl font-bold mt-10">
-                <TestOutput score={score} />
-              </div>
+              <TestOutput score={score} />
             )}
           </div>
-          <div className="quiz-divider">
-            <div
-              className="progress-line"
-              style={{
-                height: `${(step / quizQuestions.length) * 100}%`,
-              }}
-            ></div>
-          </div>
 
+          {/* Robot Animation (Desktop Only) */}
           <div className="quiz-left">
-            <img src={QuastionRobot} alt="Robot" className="robot-img" />
-            <StepNavigation
-              isArabic={isArabic}
-              step={step}
-              totalSteps={quizQuestions.length}
-              onPrev={prevStep}
-              onNext={nextStep}
-              onSubmit={handleSubmit}
+            <video
+              src={QuastionRobot1}
+              alt="Robot"
+              className="robot-img"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
+            {/* 🔁 Buttons here only show on desktop */}
+            <div className="desktop-buttons">
+              <StepNavigation
+                isArabic={isArabic}
+                step={step}
+                totalSteps={quizQuestions.length}
+                onPrev={prevStep}
+                onNext={nextStep}
+                onSubmit={handleSubmit}
+                canSubmit={canSubmit}
+              />
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
+
 };
 //Test
 

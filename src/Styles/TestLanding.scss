@@ -14,7 +14,7 @@
     max-width: 1200px;
     width: 75%;
     gap: 1.5rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 
     .text-box {
       flex: 1;
@@ -68,11 +68,13 @@
         line-height: 1.6;
       }
 
-      img {
+      .video{
         width: 80%;
         object-fit: contain;
         border-radius: 1rem;
+        border: white;
       }
+      
     }
   }
 }

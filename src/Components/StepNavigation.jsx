@@ -8,6 +8,7 @@ const StepNavigation = ({
   onPrev,
   onNext,
   onSubmit,
+  canSubmit,
 }) => {
   const isLast = step === totalSteps;
 
@@ -15,7 +16,7 @@ const StepNavigation = ({
     <div className="step-navigation">
       {isLast ? (
         <>
-          <button className="btn btn-primary" onClick={onSubmit}>
+          <button className={!canSubmit ? "btn disabled-btn" : "btn btn-primary"} disabled={!canSubmit} onClick={onSubmit}>
             {isArabic ? "الاطلاع على النتيجة" : "View Result"}
           </button>
           <button className="btn btn-secondary" onClick={onPrev}>
@@ -30,7 +31,7 @@ const StepNavigation = ({
             </button>
           )}
           <button className="btn btn-primary" onClick={onNext}>
-            {isArabic ? "التالي →" : "Next →"}
+            {isArabic ? "التالي " : "Next "}
           </button>
         </div>
       )}

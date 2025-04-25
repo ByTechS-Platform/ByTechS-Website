@@ -11,40 +11,49 @@ const StyledCard = styled.div`
   padding: 3rem 4rem;
   direction: rtl;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
   max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
   font-family: "IBM Plex Sans Arabic";
   background-color: ${(props) => props.bg || "#b4b4ef"};
   color: ${(props) => props.text || "#2e2e2e"};
+  box-sizing: border-box;
 
-  &::before {
+  &::before,
+  &::after {
     content: "";
     position: absolute;
-    top: -300px;
-    left: -180px;
-    width: 800.37px;
-    height: 841.16px;
-    background-color: ${(props) => props.circle || "#bfbff1"};
     border-radius: 50%;
     z-index: 0;
   }
 
+  &::before {
+    top: -350px;
+    left: -215px;
+    width: 800.37px;
+    height: 841.16px;
+    background-color: ${(props) => props.circle || "#bfbff1"};
+  }
+
   &::after {
-    content: "";
-    position: absolute;
     bottom: -220px;
     right: -100px;
     width: 650px;
     height: 650px;
     background-color: ${(props) => props.circle || "#bfbff1"};
-    border-radius: 50%;
-    z-index: 0;
   }
 
   @media (max-width: 992px) {
     flex-direction: column-reverse;
     padding: 2rem;
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 1rem 3.5rem 1rem;
+    flex-direction: column-reverse;
+    width: 100%;
+    border-radius: 0;
   }
 
   .content {
@@ -82,6 +91,7 @@ const StyledCard = styled.div`
       font-size: 20px;
       line-height: 30px;
       text-align: justify;
+      margin: 0;
     }
 
     .share-button {
@@ -118,6 +128,17 @@ const StyledCard = styled.div`
         background-color: #e4ddfb;
       }
     }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      padding: 0;
+      align-items: center;
+
+      p {
+        text-align: center;
+        padding: 0 0.5rem;
+      }
+    }
   }
 
   .robot-image {
@@ -134,7 +155,12 @@ const StyledCard = styled.div`
       max-width: 60%;
       margin-bottom: 2rem;
     }
+
+    // @media (max-width: 768px) {
+    //   display: none;
+    // }
   }
 `;
+
 
 export default StyledCard;

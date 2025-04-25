@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RobotImage from "../assets/images/TestLangingImage.png";
+import RobotVideo from "../assets/Videos/Homepage.mp4";
 import "../Styles/TestLanding.scss";
 
 const TestLanding = () => {
@@ -11,7 +12,8 @@ const TestLanding = () => {
         <div className="text-box">
           <div className="dots">•••</div>
           <p className="description">
-            هل تساءلت يوماً عن مدى توافقك مع عالم الذكاء الاصطناعي؟ هل أنت مطور
+            هل تساءلت يوماً عن مدى توافقك مع عالم الذكاء الاصطناعي؟
+            <br></br>هل أنت مطور
             تقني، محلل بيانات، مستخدم عملي، أم مجرد مستكشف فضولي؟
           </p>
           <Link to="/QuizComponent" className="quiz-button">
@@ -22,7 +24,15 @@ const TestLanding = () => {
         {/* Right (Image) */}
         <div className="image-box">
           <h1 className="title">ما هي شخصيتك في عالم الذكاء الاصطناعي؟</h1>
-          <img src={RobotImage} alt="AI Robot" />
+          <video
+            className="video"
+            src={RobotVideo}
+            alt="AI Robot"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
         </div>
       </div>
     </div>

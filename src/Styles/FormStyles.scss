@@ -1,14 +1,22 @@
+@import "./variables";
+
 .personal-info {
   max-width: 450px;
   margin: 0 auto;
-  text-align: right;
-  background-color: wh;
+  padding: 20px 0;
+  // min-height: 67vh;
+  // text-align: right;
+  background-color: white;
+  font-family: "IBM Plex Sans Arabic";
 
   .section-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: #4f46e5;
     margin-bottom: 2rem;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   .form-fields {
@@ -22,9 +30,18 @@
     flex-direction: column;
     gap: 0.5rem;
 
+    .required {
+      color: $red;
+      margin-left: 2px;
+      font-weight: bold;
+    }
+
     label {
       font-weight: 600;
       color: #333;
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
     }
 
     input[type="text"],
@@ -34,10 +51,15 @@
       border-radius: 0.75rem;
       font-size: 0.95rem;
       transition: border 0.2s ease;
+      font-family: "IBM Plex Sans Arabic";
 
       &:focus {
         border-color: #4f46e5;
         outline: none;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
       }
     }
 
@@ -50,7 +72,7 @@
         display: flex;
         align-items: center;
         gap: 0.25rem;
-        font-size: 0.9rem;
+        font-size: 0.6rem;
       }
 
       input[type="radio"] {
@@ -77,8 +99,8 @@
 
   .btn {
     padding: 0.75rem 1.5rem;
-    border-radius: 999px;
-    font-weight: bold;
+    border-radius: 10px;
+    // font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -112,5 +134,65 @@
         background-color: #f1f1f1;
       }
     }
+  }
+}
+
+.self-eval {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  .rating-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .rating-option {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    cursor: pointer;
+    background-color: white;
+    transition: all 0.3s ease;
+    color: #4b3cc2;
+
+    @media (max-width: 768px) {
+      font-weight: 200;
+    }
+
+    &:hover {
+      background-color: #f0f0ff;
+      border-color: #b4b4ef;
+    }
+
+    &.selected {
+      background-color: #4b3cc2;
+      color: white;
+      border-color: #4b3cc2;
+    }
+
+    input {
+      display: none;
+    }
+  }
+}
+.slider {
+  width: 100%;
+  margin-top: 1rem;
+  accent-color: #4f46e5; // nice purple-blue
+}
+
+.slider-value {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #333;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
   }
 }
