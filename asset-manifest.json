@@ -1,12 +1,14 @@
 {
   "files": {
-    "main.css": "/ByTechS-Website/static/css/main.8d258caa.css",
-    "main.js": "/ByTechS-Website/static/js/main.53fcc6a5.js",
+    "main.css": "/ByTechS-Website/static/css/main.b28313d0.css",
+    "main.js": "/ByTechS-Website/static/js/main.a245ffd3.js",
     "static/js/453.ecfe0b1f.chunk.js": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js",
-    "static/media/Curious.png": "/ByTechS-Website/static/media/Curious.189a340d45d61883f39b.png",
+    "static/media/Homepage.mp4": "/ByTechS-Website/static/media/Homepage.21901a8612f2077e733a.mp4",
+    "static/media/Quiz-side.mp4": "/ByTechS-Website/static/media/Quiz-side.2bc2c4e3b1af8d54c468.mp4",
     "static/media/Logical.png": "/ByTechS-Website/static/media/Logical.e651541e713dfb3e7ccb.png",
     "static/media/TestLangingImage.png": "/ByTechS-Website/static/media/TestLangingImage.4105f4ade906d0c98561.png",
     "static/media/Tech.png": "/ByTechS-Website/static/media/Tech.f508be41b80f678ed260.png",
+    "static/media/NEW.png": "/ByTechS-Website/static/media/NEW.76e0a6e308c4ed8929c9.png",
     "static/media/Practical.png": "/ByTechS-Website/static/media/Practical.7a12811c6cca483654f2.png",
     "static/media/QARobot.png": "/ByTechS-Website/static/media/QARobot.9d65b1e48b30b04a1e2a.png",
     "static/media/Shape12.svg": "/ByTechS-Website/static/media/Shape12.f176a5dd9740a586b06e40fd1b102ca8.svg",
@@ -28,14 +30,13 @@
     "static/media/whatsapp-brands-solid.svg": "/ByTechS-Website/static/media/whatsapp-brands-solid.4276cc686fcd8c84b5376c1712695a10.svg",
     "index.html": "/ByTechS-Website/index.html",
     "static/media/linkedin-brands-solid.svg": "/ByTechS-Website/static/media/linkedin-brands-solid.73d26cb767e0fe3086c5eeb14a2933de.svg",
-    "static/media/TwitterXLogo.svg": "/ByTechS-Website/static/media/TwitterXLogo.5e2abb191d86b74a59d43e599e2cc14b.svg",
     "static/media/x-twitter-brands-solid.svg": "/ByTechS-Website/static/media/x-twitter-brands-solid.78c9c3d9f0018151a3bbd2b0ee95c106.svg",
-    "main.8d258caa.css.map": "/ByTechS-Website/static/css/main.8d258caa.css.map",
-    "main.53fcc6a5.js.map": "/ByTechS-Website/static/js/main.53fcc6a5.js.map",
+    "main.b28313d0.css.map": "/ByTechS-Website/static/css/main.b28313d0.css.map",
+    "main.a245ffd3.js.map": "/ByTechS-Website/static/js/main.a245ffd3.js.map",
     "453.ecfe0b1f.chunk.js.map": "/ByTechS-Website/static/js/453.ecfe0b1f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d258caa.css",
-    "static/js/main.53fcc6a5.js"
+    "static/css/main.b28313d0.css",
+    "static/js/main.a245ffd3.js"
   ]
 }
