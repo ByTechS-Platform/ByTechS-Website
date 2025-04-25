@@ -43,8 +43,8 @@ function App() {
         <NavBar isLightMode={isLightMode} activeSection={activeSection} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/join-us" element={<JoinUs />} />
-          <Route path="/QuizComponent" element={<QuizComponent />} />
+          <Route path="join-us" element={<JoinUs />} />
+          <Route path="QuizComponent" element={<QuizComponent />} />
         </Routes>
       </Router>
       <Footer />
