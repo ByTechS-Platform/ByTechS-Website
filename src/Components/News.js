@@ -20,6 +20,36 @@ const News = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
 
+  function getVisiblePages(current, total, delta = 1) {
+    const range = [];
+    const rangeWithDots = [];
+    let l;
+
+    for (let i = 1; i <= total; i++) {
+      if (
+        i === 1 ||
+        i === total ||
+        (i >= current - delta && i <= current + delta)
+      ) {
+        range.push(i);
+      }
+    }
+
+    for (let i of range) {
+      if (l) {
+        if (i - l === 2) {
+          rangeWithDots.push(l + 1);
+        } else if (i - l !== 1) {
+          rangeWithDots.push("…");
+        }
+      }
+      rangeWithDots.push(i);
+      l = i;
+    }
+
+    return rangeWithDots;
+  }
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -45,10 +75,8 @@ const News = () => {
   const currentNewsData = newsData.slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(newsData.length / itemsPerPage);
-  const pageNumbers = Array.from(
-    { length: totalPages },
-    (_, index) => index + 1
-  );
+  const visiblePages = getVisiblePages(currentPage, totalPages);
+
 
   if (loading) {
     return <p>Loading news...</p>;
@@ -124,7 +152,7 @@ const News = () => {
               style={{ color: "#32eddf" }}
             />
           </button>
-          {pageNumbers.map((number) => (
+          {visiblePages.map((number) => (
             <button
               key={number}
               onClick={() => setCurrentPage(number)}
