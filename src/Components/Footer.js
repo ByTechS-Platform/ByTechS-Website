@@ -9,8 +9,7 @@ import { useLanguage } from "../utils/LanguageContext"; // Import the custom hoo
 
 
 const Footer = () => {
-
-    const { language } = useLanguage();
+  const { language } = useLanguage();
 
   return (
     <div>

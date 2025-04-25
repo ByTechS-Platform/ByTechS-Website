@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { useLanguage } from "../utils/LanguageContext"; // Import context
 import "../Styles/ContactUs.scss";
 import emailjs from "emailjs-com";
-import { Link } from "react-router-dom";
 import { validateForm } from "../utils/formUtils"; // Optional: form validation utility
 import shape1 from "../assets/shapesContactPage1.png";
 import shape2 from "../assets/shapesContactPage2.png";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import "../Styles/SideNav.scss"; // Optional: for styling the side nav
+import "../Styles/SideNav.scss";
 
 const SideNav = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -11,7 +11,7 @@ const SideNav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Define the threshold at 25% of the viewport height
+      // Define the threshold at 5% of the viewport height
       const threshold = window.innerHeight * 0.5;
       const sectionElements = sections.map((id) => document.getElementById(id));
 

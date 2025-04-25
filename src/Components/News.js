@@ -4,25 +4,21 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { useLanguage } from "../utils/LanguageContext";
-// import FollowUs from "./FollowUs";
 import "../Styles/News.scss";
 
-// Airtable config (move these to a secure environment in production)
 const airtableApiKey =
   "pat042Mj9r5Dx98ff.d155c54347ad8585d7dfac9236640398c2592d36036b4f53722c8e1875a6bea1";
 const baseId = "app9KzhrevXRJVMgJ";
 const tableName = "News";
 
 const News = () => {
-const { language } = useLanguage(); // Get active language from context
+  const { language } = useLanguage();
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 2;
-  
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -54,12 +50,12 @@ const { language } = useLanguage(); // Get active language from context
     (_, index) => index + 1
   );
 
-   if (loading) {
-    return <p>Loading news...</p>; // Display a loading message while fetching
+  if (loading) {
+    return <p>Loading news...</p>;
   }
 
   if (error) {
-    return <p>{error}</p>; // Display the error message if any
+    return <p>{error}</p>;
   }
   return (
     <section id="news" className="section news">

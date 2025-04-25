@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useLanguage } from "../utils/LanguageContext"; // Import the context
+import { useLanguage } from "../utils/LanguageContext"; 
 import "../Styles/Hero.scss";
 import shape1 from "../assets/shapesHomePage1.png";
 import shape2 from "../assets/shapesHomePage2.png";

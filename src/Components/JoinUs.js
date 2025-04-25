@@ -4,7 +4,6 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
-import { useNavigate } from "react-router-dom";
 import shape1 from "../assets/Shape12.svg";
 
 const airtableApiKey =
@@ -12,7 +11,6 @@ const airtableApiKey =
 const baseId = "app9KzhrevXRJVMgJ";
 const tableName = "JoinUs";
 
-// Translations for the JoinUs component
 const translations = {
   joinUsTitle: { en: "Join Us", ar: "انضم إلينا" },
   joinUsInstruction: {
@@ -152,15 +150,8 @@ const NationalityDropdown = ({ onSelect, language, value }) => {
       <option value="">
         {language === "ar" ? "اختر الجنسية" : "Select Nationality"}
       </option>
-      {/* {countries.map((country) => (
-        <option key={country.cca3} value={country.name.common}>
-          {country.name.common}
-        </option>
-      ))} */}
       {countries.map((country) => {
-        // Get the Arabic translation if available
         const countryNameArabic = country.translations?.ara?.common;
-        // Display Arabic if language is "ar" and the translation exists; otherwise, use the English name.
         const displayName =
           language === "ar" && countryNameArabic
             ? countryNameArabic
@@ -175,7 +166,7 @@ const NationalityDropdown = ({ onSelect, language, value }) => {
   );
 };
 
-////////////////////////////////////////////////////////////////
+
 const communities = [
   {
     name: { en: "ByTechs eSports", ar: "مجتمع الرياضات الإلكترونية" },
@@ -256,7 +247,7 @@ const JoinUs = () => {
     },
   };
 
-  // Our form state now includes all fields plus the new "community" field
+
   const [formData, setFormData] = useState({
     // Step 1: Personal Information
     nameAr: "",
@@ -276,17 +267,17 @@ const JoinUs = () => {
     // Step 2: Academic & Work Experience Information
     major: "",
     degree: "",
-    hasCertificates: "", // "Yes" or "No"
+    hasCertificates: "", 
     certificatesDetails: "",
-    hasExperience: "", // "Yes" or "No"
+    hasExperience: "", 
     experienceDetails: "",
 
     // Step 3: Additional Questions
     whyByTechs: "",
     hearAbout: "",
     expectation: "",
-    commitment: "", // "Yes" or "No"
-    terms: "", // "Yes" or "No"
+    commitment: "",
+    terms: "",
 
     // Step 4: Community Selection
     community: "",
@@ -299,7 +290,7 @@ const JoinUs = () => {
 
   const handleScrollToSection = (sectionId) => {
     const url = `${window.location.origin}/#${sectionId}`;
-    window.open(url, "_blank"); // Opens the section in a new tab
+    window.open(url, "_blank"); 
   };
 
   const getIndicatorClass = (indicatorStep) => {
@@ -308,7 +299,7 @@ const JoinUs = () => {
     return "";
   };
 
-  // Generic change handler for inputs and radio buttons
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -336,7 +327,6 @@ const JoinUs = () => {
         return false;
       }
 
-      // Email Validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
         setError(errorMessages.emailInvalid[language]);
@@ -368,8 +358,6 @@ const JoinUs = () => {
     if (step === 3) {
       if (
         !formData.whyByTechs.trim()
-        //  !formData.commitment ||
-        //  !formData.terms
       ) {
         setError(errorMessages.additionalQuestions[language]);
         return false;
@@ -393,7 +381,7 @@ const JoinUs = () => {
 
   // Navigation functions
   const nextStep = () => {
-    if (!validateForm(step)) return; // If validation fails, stop here
+    if (!validateForm(step)) return;
     setStep((prev) => prev + 1);
   };
 
