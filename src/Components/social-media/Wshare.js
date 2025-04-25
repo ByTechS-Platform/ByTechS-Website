@@ -1,10 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { useLanguage } from "../../utils/LanguageContext";
 
-const Wshare = () => {
+const Wshare = ({ resultType }) => {
+
+  const { language } = useLanguage();
+  const isArabic = language === "ar";
+  
+  const handleShare = () => {
+    const baseLink = "https://bytechs.net";
+    const message = isArabic
+      ? `🎉 لقد حصلت على نتيجة "${resultType}" في اختبار الذكاء الاصطناعي! \nجربه الآن: ${baseLink}`
+      : `🎉 I got "${resultType}" in the AI Quiz!\nTry it yourself: ${baseLink}`;
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/?text=${encodedMessage}`;
+    window.open(url, "_blank");
+  };
   return (
     <StyledWrapper>
-      <button className="Btn">
+      <button className="Btn" onClick={handleShare}>
         <span className="svgContainer">
           <svg
             viewBox="0 0 448 512"

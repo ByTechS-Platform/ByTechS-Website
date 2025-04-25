@@ -1,10 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-const Lshare = () => {
+const Lshare = ({ resultType }) => {
+  const shareToLinkedIn = () => {
+    if (!resultType) {
+      console.error("Result type is missing!");
+      return;
+    }
+    const slug = resultType.toLowerCase().replace(/\s+/g, "-");
+
+    const url = encodeURIComponent(
+      `https://bytechs-platform.github.io/ByTechS-Website//quiz-result/${slug}`
+    );
+    const text = encodeURIComponent(
+      `I got "${resultType}" in this AI Quiz! 🚀 Try it too!`
+    );
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`;
+    window.open(linkedInUrl, "_blank");
+  };
+
   return (
     <StyledWrapper>
-      <button className="Btn">
+      <button className="Btn" onClick={shareToLinkedIn}>
         <span className="svgContainer">
           <svg
             viewBox="0 0 448 512"

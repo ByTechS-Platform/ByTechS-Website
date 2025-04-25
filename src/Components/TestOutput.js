@@ -35,6 +35,7 @@ const TestOutput = ({ score }) => {
       bg={bg}
       circle={circle}
       score={score}
+      profileKey={profileKey}
     />
   );
 };

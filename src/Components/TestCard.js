@@ -16,6 +16,7 @@ const TestCard = ({
   score,
   bg,
   circle,
+  profileKey,
 }) => {
   return (
     <StyledCard bg={bg} circle={circle}>
@@ -46,8 +47,8 @@ const TestCard = ({
             }}
           >
             <Xshare isArabic={isArabic} score={score} />
-            <Wshare />
-            <Lshare />
+            <Wshare resultType={profileKey} />
+            <Lshare resultType={profileKey} />
             <CopyShare />
           </div>
         </div>
