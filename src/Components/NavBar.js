@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import "../Styles/Navbar.scss";
 import logo from "../assets/Bytechs_شعار - أبيض 3.png";
 import coloredLogo from "../assets/Bytechs_شعار - ملون 1.png";
@@ -10,34 +11,27 @@ const NavBar = () => {
   const { language, setLanguage } = useLanguage();
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [isLightBackground, setIsLightBackground] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
 
-  // Emit global language change event
+  // Toggle between English and Arabic
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "ar" : "en";
     setLanguage(newLanguage);
-    switchLanguage(newLanguage); // Update the DOM elements
+    switchLanguage(newLanguage);
     window.dispatchEvent(
       new CustomEvent("languageChange", { detail: { lang: newLanguage } })
     );
   };
 
+  // Update nav style based on background brightness
   const handleScroll = useCallback(() => {
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const sectionBottom = section.getBoundingClientRect().bottom;
-
-      if (
-        sectionTop <= window.innerHeight / 2 &&
-        sectionBottom >= window.innerHeight / 2
-      ) {
-        const backgroundColor =
-          window.getComputedStyle(section).backgroundColor;
-        const [r, g, b] = backgroundColor.match(/\d+/g).map(Number);
-        const isLight = (r + g + b) / 3 > 200;
-        setIsLightBackground(isLight);
+      const { top, bottom } = section.getBoundingClientRect();
+      if (top <= window.innerHeight / 2 && bottom >= window.innerHeight / 2) {
+        const bg = window.getComputedStyle(section).backgroundColor;
+        const [r, g, b] = bg.match(/\d+/g).map(Number);
+        setIsLightBackground((r + g + b) / 3 > 200);
       }
     });
   }, []);
@@ -47,38 +41,33 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const toggleBurgerMenu = () => setBurgerMenuOpen((prevState) => !prevState);
+  const toggleBurgerMenu = () => setBurgerMenuOpen((prev) => !prev);
 
-  const handleNavigation = (section) => {
-    if (location.pathname !== "/") {
-      navigate(`/#${section}`);
-    } else {
-      window.location.hash = section;
-    }
-  };
+  // Define your in-page sections
+  const navItems = [
+    { id: "home", en: "Home", ar: "الرئيسية" },
+    { id: "about", en: "About us", ar: "عن بايتكس" },
+    { id: "communities", en: "Communities", ar: "المجتمعات" },
+    { id: "news", en: "News", ar: "الأخبـار" },
+    { id: "contact", en: "Contact us", ar: "تواصل معنا" },
+  ];
 
-  const renderNavLinks = () => {
-    const links = [
-      { href: "home", en: "Home", ar: "الرئيسية" },
-      { href: "about", en: "About us", ar: "عن بايتكس "},
-      { href: "communities", en: "Communities", ar: "المجتمعات" },
-      { href: "news", en: "News", ar: "الأخبـار" },
-      { href: "contact", en: "Contact us", ar: "تواصل معنا" },
-    ];
-
-    return links.map((link) => (
-      <li key={link.href}>
-        <button
-          onClick={() => handleNavigation(link.href)}
-          data-en={link.en}
-          data-ar={link.ar}
+  // Render links that scroll to sections
+  const renderNavLinks = () =>
+    navItems.map((item) => (
+      <li key={item.id}>
+        <HashLink
+          smooth
+          to={`/#${item.id}`}
+          className="nav-link"
           style={{ color: isLightBackground ? "black" : "white" }}
+          data-en={item.en}
+          data-ar={item.ar}
         >
-          {language === "en" ? link.en : link.ar}
-        </button>
+          {language === "en" ? item.en : item.ar}
+        </HashLink>
       </li>
     ));
-  };
 
   return (
     <nav
@@ -105,34 +94,30 @@ const NavBar = () => {
         <button
           className={`Eng ${language === "en" ? "active" : ""}`}
           onClick={toggleLanguage}
+          aria-label="Switch to English"
           style={{
             color:
               language === "en"
-                ? isLightBackground
-                  ? "#5552e1"
-                  : "#5552e1"
+                ? "#5552e1"
                 : isLightBackground
                 ? "#333"
                 : "#ddd",
           }}
-          aria-label="Switch to English"
         >
           English
         </button>
         <button
           className={`AR ${language === "ar" ? "active" : ""}`}
           onClick={toggleLanguage}
+          aria-label="Switch to Arabic"
           style={{
             color:
               language === "ar"
-                ? isLightBackground
-                  ? "#5552e1"
-                  : "#5552e1"
+                ? "#5552e1"
                 : isLightBackground
                 ? "#333"
                 : "#ddd",
           }}
-          aria-label="Switch to Arabic"
         >
           العربية
         </button>
@@ -145,13 +130,13 @@ const NavBar = () => {
         <div className="burger-icon">
           <span
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
-          ></span>
+          />
           <span
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
-          ></span>
+          />
           <span
             style={{ backgroundColor: isLightBackground ? "black" : "white" }}
-          ></span>
+          />
         </div>
         <ul className="burger-links">
           {renderNavLinks()}
@@ -159,34 +144,30 @@ const NavBar = () => {
             <button
               className={`Eng ${language === "en" ? "active" : ""}`}
               onClick={toggleLanguage}
+              aria-label="Switch to English"
               style={{
                 color:
                   language === "en"
-                    ? isLightBackground
-                      ? "#5552e1"
-                      : "#5552e1"
+                    ? "#5552e1"
                     : isLightBackground
                     ? "#333"
                     : "#ddd",
               }}
-              aria-label="Switch to English"
             >
               English
             </button>
             <button
               className={`AR ${language === "ar" ? "active" : ""}`}
               onClick={toggleLanguage}
+              aria-label="Switch to Arabic"
               style={{
                 color:
                   language === "ar"
-                    ? isLightBackground
-                      ? "#5552e1"
-                      : "#5552e1"
+                    ? "#5552e1"
                     : isLightBackground
                     ? "#333"
                     : "#ddd",
               }}
-              aria-label="Switch to Arabic"
             >
               العربية
             </button>

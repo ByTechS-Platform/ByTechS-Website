@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ReactGA from "react-ga4";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   useLocation,
