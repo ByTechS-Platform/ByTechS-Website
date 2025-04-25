@@ -44,7 +44,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="join-us" element={<JoinUs />} />
-          <Route path="QuizComponent" element={<QuizComponent />} />
+          <Route path="Quiz" element={<QuizComponent />} />
         </Routes>
       </Router>
       <Footer />
