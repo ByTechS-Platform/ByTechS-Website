@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -6,9 +6,8 @@ import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
 import shape1 from "../assets/Shape12.svg";
 
-const airtableApiKey =
-  "pat042Mj9r5Dx98ff.d155c54347ad8585d7dfac9236640398c2592d36036b4f53722c8e1875a6bea1";
-const baseId = "app9KzhrevXRJVMgJ";
+const airtableApiKey = process.env.AIRTABLE_API_KEY;
+const baseId = process.env.AIRTABLE_BASE_ID;
 const tableName = "JoinUs";
 
 const translations = {
@@ -212,7 +211,6 @@ const communities = [
 ];
 
 const JoinUs = () => {
-
   const { language } = useLanguage();
   const [step, setStep] = useState(1);
 
