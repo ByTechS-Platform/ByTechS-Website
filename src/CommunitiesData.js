@@ -237,8 +237,8 @@ const CommunitiesData = [
   {
     id: 5,
     image: PR,
-    title: "PR & Communications Team",
-    titleAr: "فريق الاتصال الداخلي والعلاقات العامة",
+    title: "PR & Communication Department",
+    titleAr: "قسم الاتصال الداخلي والعلاقات العامة",
     distinctive:
       "A fundamental link between internal teams and external stakeholders, fostering a culture of open communication. Integrates public relations, digital marketing, and media to present a professional and impactful image of the initiative.",
     distinctiveAr:
