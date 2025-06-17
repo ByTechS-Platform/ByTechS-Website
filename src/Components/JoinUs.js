@@ -314,11 +314,15 @@ const JoinUs = () => {
     setError(null);
 
     if (step === 1) {
+      const id = formData.idNumber.trim();
+
       if (
         !formData.nameAr.trim() ||
         !formData.nameEn.trim() ||
         !formData.gender ||
-        !formData.idNumber.trim() ||
+        id.length !== 10 ||
+        !/^[12]/.test(id) ||
+        !/^\d{10}$/.test(id) ||
         !formData.nationality.trim() ||
         !formData.dob ||
         !formData.email.trim() ||
