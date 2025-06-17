@@ -4,12 +4,14 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "../Styles/JoinUs.scss";
 import { useLanguage } from "../utils/LanguageContext";
+import { useNavigate } from "react-router-dom";
 import shape1 from "../assets/Shape12.svg";
 
 const airtableApiKey = process.env.AIRTABLE_API_KEY;
 const baseId = process.env.AIRTABLE_BASE_ID;
 const tableName = "JoinUs";
 
+// Translations for the JoinUs component
 const translations = {
   joinUsTitle: { en: "Join Us", ar: "انضم إلينا" },
   joinUsInstruction: {
@@ -79,10 +81,6 @@ const translations = {
     en: "Where did you hear about ByTechS?  ",
     ar: "من أين سمعت عن بايتكس؟  ",
   },
-  role: {
-    en: "Which role do you want to apply for?  ",
-    ar: "ما هو الدور الذي تود التقدم له؟",
-  },
   expectation: {
     en: "What do you expect the initiative to offer you?  ",
     ar: "ماذا تتوقع أن تقدم لك المبادرة؟  ",
@@ -121,7 +119,7 @@ const NationalityDropdown = ({ onSelect, language, value }) => {
 
   useEffect(() => {
     axios
-      .get("https://restcountries.com/v3.1/all")
+      .get("https://restcountries.com/v3.1/all?fields=name,translations,cca3")
       .then((response) => {
         const sortedCountries = response.data.sort((a, b) =>
           a.name.common.localeCompare(b.name.common)
@@ -149,8 +147,15 @@ const NationalityDropdown = ({ onSelect, language, value }) => {
       <option value="">
         {language === "ar" ? "اختر الجنسية" : "Select Nationality"}
       </option>
+      {/* {countries.map((country) => (
+        <option key={country.cca3} value={country.name.common}>
+          {country.name.common}
+        </option>
+      ))} */}
       {countries.map((country) => {
+        // Get the Arabic translation if available
         const countryNameArabic = country.translations?.ara?.common;
+        // Display Arabic if language is "ar" and the translation exists; otherwise, use the English name.
         const displayName =
           language === "ar" && countryNameArabic
             ? countryNameArabic
@@ -165,7 +170,7 @@ const NationalityDropdown = ({ onSelect, language, value }) => {
   );
 };
 
-
+////////////////////////////////////////////////////////////////
 const communities = [
   {
     name: { en: "ByTechs eSports", ar: "مجتمع الرياضات الإلكترونية" },
@@ -198,16 +203,16 @@ const communities = [
       ar: "فريق متخصص في تطوير الحلول التقنية المبتكرة التي تلبي احتياجات بايتكس، إضافةً إلى صيانة وتحديث منصات بايتكس الرقمية بشكل مستمر.",
     },
   },
-  {
-    name: {
-      en: "PR & Communications Department",
-      ar: "قسم الاتصال الداخلي والعلاقات العامة",
-    },
-    details: {
-      en: "A fundamental link between internal teams and external stakeholders, fostering a culture of open communication. Integrates public relations, digital marketing, and media to present a professional and impactful image of the initiative.",
-      ar: "همزة وصل أساسية بين الفرق الداخلية والجهات الخارجية، تعزز ثقافة التواصل المفتوح، وتدمج بين العلاقات العامة والتسويق الرقمي والإعلام لتقديم صورة احترافية ومؤثرة عن المبادرة.",
-    },
-  },
+  // {
+  //   name: {
+  //     en: "PR & Communications Department",
+  //     ar: "قسم الاتصال الداخلي والعلاقات العامة",
+  //   },
+  //   details: {
+  //     en: "It fosters a work environment defined by transparency and open communication. and develops internal communication and public relations skills in an innovative way.",
+  //     ar: "يعزز بيئة عمل تتسم بالشفافية والتواصل المفتوح.ويطور مهارات الاتصال الداخلي والعلاقات العامة بشكل مبتكر",
+  //   },
+  // },
 ];
 
 const JoinUs = () => {
@@ -245,7 +250,7 @@ const JoinUs = () => {
     },
   };
 
-
+  // Our form state now includes all fields plus the new "community" field
   const [formData, setFormData] = useState({
     // Step 1: Personal Information
     nameAr: "",
@@ -265,21 +270,20 @@ const JoinUs = () => {
     // Step 2: Academic & Work Experience Information
     major: "",
     degree: "",
-    hasCertificates: "", 
+    hasCertificates: "", // "Yes" or "No"
     certificatesDetails: "",
-    hasExperience: "", 
+    hasExperience: "", // "Yes" or "No"
     experienceDetails: "",
 
     // Step 3: Additional Questions
     whyByTechs: "",
     hearAbout: "",
     expectation: "",
-    commitment: "",
-    terms: "",
+    commitment: "", // "Yes" or "No"
+    terms: "", // "Yes" or "No"
 
     // Step 4: Community Selection
     community: "",
-    role: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -288,7 +292,7 @@ const JoinUs = () => {
 
   const handleScrollToSection = (sectionId) => {
     const url = `${window.location.origin}/#${sectionId}`;
-    window.open(url, "_blank"); 
+    window.open(url, "_blank"); // Opens the section in a new tab
   };
 
   const getIndicatorClass = (indicatorStep) => {
@@ -297,7 +301,7 @@ const JoinUs = () => {
     return "";
   };
 
-
+  // Generic change handler for inputs and radio buttons
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -325,6 +329,7 @@ const JoinUs = () => {
         return false;
       }
 
+      // Email Validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
         setError(errorMessages.emailInvalid[language]);
@@ -356,6 +361,8 @@ const JoinUs = () => {
     if (step === 3) {
       if (
         !formData.whyByTechs.trim()
+        //  !formData.commitment ||
+        //  !formData.terms
       ) {
         setError(errorMessages.additionalQuestions[language]);
         return false;
@@ -365,7 +372,6 @@ const JoinUs = () => {
     if (step === 4) {
       if (
         !formData.community ||
-        !formData.role||
         formData.commitment === "No" ||
         formData.terms === "No"
       ) {
@@ -379,7 +385,7 @@ const JoinUs = () => {
 
   // Navigation functions
   const nextStep = () => {
-    if (!validateForm(step)) return;
+    if (!validateForm(step)) return; // If validation fails, stop here
     setStep((prev) => prev + 1);
   };
 
@@ -419,7 +425,6 @@ const JoinUs = () => {
         Commitment: formData.commitment,
         Terms_and_Conditions: formData.terms,
         Community: formData.community,
-        Role: formData.role,
       },
     };
 
@@ -462,7 +467,6 @@ const JoinUs = () => {
         commitment: "",
         terms: "",
         community: "",
-        role: "",
       });
       // setStep(1);
     } catch (error) {
@@ -979,23 +983,6 @@ const JoinUs = () => {
                       <p>{community.details[language]}</p>
                     </div>
                   ))}
-                </div>
-                <div className="input-field">
-                  <label htmlFor="role">
-                    {translations.role[language]}{" "}
-                    <span className="required">*</span>
-                  </label>
-                  <input
-                    id="role"
-                    type="text"
-                    name="role"
-                    placeholder={
-                      language === "ar" ? "مطور الواجهة الامامية" : "Front-end Developer"
-                    }
-                    value={formData.role}
-                    onChange={handleChange}
-                    required
-                  />
                 </div>
 
                 <div className="radio-group">
