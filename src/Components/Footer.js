@@ -7,9 +7,9 @@ import linkedinLogo from "../assets/linkedin-brands-solid.svg";
 import coloredLogo from "../assets/BytechsColor.png";
 import { useLanguage } from "../utils/LanguageContext"; // Import the custom hook
 
-
 const Footer = () => {
   const { language } = useLanguage();
+  const Year = new Date().getFullYear();
 
   return (
     <div>
@@ -50,13 +50,13 @@ const Footer = () => {
           </div>
           <div className="right-content">
             <p
-              className={` ${
-                language === "ar" ? "align-right" : ""
-              }`}
-              data-en="© 2024 ByTechS. All rights reserved."
-              data-ar="جميع الحقوق محفوظة . بايتكس 2024"
+              className={language === "ar" ? "align-right" : ""}
+              data-en="© ByTechS All rights reserved."
+              data-ar="جميع الحقوق محفوظة . بايتكس"
             >
-              جميع الحقوق محفوظة . بايتكس 2024
+              {language === "ar"
+                ? `جميع الحقوق محفوظة . بايتكس ${Year}`
+                : `© ByTechS All rights reserved. ${Year}`}
             </p>
           </div>
         </div>
